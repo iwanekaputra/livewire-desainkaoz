@@ -36,7 +36,7 @@
 
     {{-- kategori produk --}}
     <div class="row mt-4">
-        <h5 class="text-center fw-bold">Produk</h5>
+        <h5 class="text-center" style="font-family:'Myriad-Pro Bold';">Produk</h5>
     </div>
     <div class="row mt-2">
         @foreach ($categories as $category)
@@ -55,7 +55,7 @@
 {{-- desain kategori --}}
 <div class="child-main">
     <div class="row mt-3">
-        <h5 class="text-center fw-bold">Desain Kategori</h5>
+        <h5 class="text-center" style="font-family:'Myriad-Pro Bold';">Desain Kategori</h5>
     </div>
     <div class="row">
         <div class="cover">
@@ -92,7 +92,7 @@
     <hr>
     {{-- products --}}
     <div class="d-flex justify-content-between">
-        <h4 class="fw-bold">Featured Products</h4>
+        <h4 style="font-family:'Myriad-Pro Bold';">Featured Products</h4>
         {{-- <h4><a href="{{ route('products.index') }}" class="text-decoration-none text-dark">More <i class="fa fa-arrow-right fs-5" aria-hidden="true"></i>
         </a></h4> --}}
     </div>
@@ -123,9 +123,9 @@
                     </div>
                 </div>
                 <div class="card-body mt-2 p-0">
-                    <h6 class="card-title fw-bold">{{ $uploadProductDesign->title }}</h6>
+                    <h6 class="card-title" style="font-family:'Myriad-Pro Bold';">{{ $uploadProductDesign->title }}</h6>
                     <p class="card-title">By {{ $uploadProductDesign->user->first_name }}</p>
-                    <h6 class="mt-2 fw-bold">Rp. {{ number_format($uploadProductDesign->total_price, 0, ',','.') }}</h6>
+                    <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp. {{ number_format($uploadProductDesign->total_price, 0, ',','.') }}</h6>
                 </div>
             </div>
         </a>
@@ -140,7 +140,7 @@
     {{-- design --}}
     <hr>
     <div class="d-flex justify-content-between mt-4">
-        <h4 class="fw-bold">Featured Design</h4>
+        <h4 style="font-family:'Myriad-Pro Bold';">Featured Design</h4>
         {{-- <h4><a href="" class="text-decoration-none text-dark">More <i class="fa fa-arrow-right fs-5" aria-hidden="true"></i>
         </a></h4> --}}
     </div>
@@ -150,9 +150,9 @@
             <div class="card child-card border-0" >
                 <img src="{{ asset('uploads/design/' . $productDesign->image) }}" class="card-img-top" alt="...">
                 <div class="card-body mt-2 p-0">
-                    <h5 class="card-title fw-bold">{{ $productDesign->title }}</h5>
+                    <h5 class="card-title" style="font-family:'Myriad-Pro Bold';">{{ $productDesign->title }}</h5>
                     <p class="card-title">By {{ $productDesign->user->first_name }}</p>
-                    <h6 class="mt-2 fw-bold">Rp. {{ number_format($productDesign->price, 0, ',','.') }}</h6>
+                    <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp. {{ number_format($productDesign->price, 0, ',','.') }}</h6>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@
     {{-- artist --}}
     <hr>
     <div class="row mt-4">
-        <h4 class="fw-bold">Featured Artist</h4>
+        <h4 style="font-family:'Myriad-Pro Bold';">Featured Artist</h4>
     </div>
     <div class="row mt-4" style="margin-bottom: 5rem; gap: 2rem">
         @foreach ($stores as $store)
@@ -175,7 +175,7 @@
                 <img src="{{ asset('uploads/images/' . $store->cover) }}" class="card-img-top" alt="...">
                 <div class="card-body d-block text-center profile position-relative border-0" style="top : -40px;">
                     <img src="{{ asset('uploads/images/' . $store->image) }}" alt="" width="40px" class="rounded-circle img-thumbnail">
-                    <p style="font-size: 15px" class="mt-2 fw-bold">DesainKaoz</p>
+                    <p style="font-size: 15px" class="mt-2" style="font-family:'Myriad-Pro Bold';">DesainKaoz</p>
                     <button class="btn btn-white rounded-0 shadow">View Shop</button>
                 </div>
             </div>
@@ -188,11 +188,11 @@
     <div class="row justify-content-between p-3 align-items-center" style="background-color: #f9f9f9">
         <div class="col-lg-6">
             <img src="{{ asset('assets/img/logo-ulasan.svg') }}" alt="" class="w-25">
-            <span class="fw-bold h5 ms-4"> Ulasan Desainkaoz Online</span>
+            <span class="h5 ms-4" style="font-family:'Myriad-Pro Bold';"> Ulasan Desainkaoz Online</span>
         </div>
         <div class="col-lg-6">
             <div class="d-flex gap-3 justify-content-end align-items-center">
-                <h1 class="fw-bold" style="font-size: 3rem">0.0<strong class="fs-5">/0</strong> </h1>
+                <h1 style="font-size: 3rem;font-family:'Myriad-Pro Bold';">0.0<strong class="fs-4" style="font-family:'Myriad-Pro Bold';">/0</strong> </h1>
                 <div>
                     <i class="fa fa-star fs-5" aria-hidden="true"></i>
                     <i class="fa fa-star fs-5" aria-hidden="true"></i>
@@ -207,7 +207,7 @@
 
     <div class="row mt-5">
         <div class="col">
-            <h5 class="fw-bold">Lorem </h5>
+            <h5 style="font-family:'Myriad-Pro Bold';">Lorem </h5>
             <p align="justify" style="font-size: 12px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid eum quae maiores, corrupti laboriosam harum vel cumque! Deleniti consequatur veritatis maiores perferendis at aliquam doloremque quo? Sapiente laborum ut vero! Distinctio veritatis similique, omnis quam dolor minus neque incidunt quae? Dolore aliquid atque vel qui laboriosam assumenda ullam sapiente dolor?</p>
         </div>
     </div>

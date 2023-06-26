@@ -7,7 +7,7 @@
                     <img src="{{ asset('banner/background-default.png') }}" class="d-block w-100" alt="...">
                     <div class="position-absolute" style="top :70px; left : 30px">
                     <img src="{{ asset('assets/img/about-hero.svg') }}" alt="" width="150" class="rounded-circle img-thumbnail" >
-                <span class="text-white fw-bold ms-3">Desain kaoz</span>
+                <span class="text-white ms-3 fs-5" style="font-family: 'Myriad-Pro Bold';">Desainkaoz</span>
                 </div>
                   </div>
                 </div>
@@ -19,6 +19,12 @@
                 <input type="radio" class="tabs_item" name="tabs-example" id="home_tab" checked>
                 <label for="home_tab" class="tabs_name">Beli Produk</label>
                 <div class="tabs_content mt-3">
+                        <select class="form-select border border-dark rounded-0" style="width:15rem;" >
+                            <option selected class="bg-secondary">T-Shirt</option>
+                            <option value="1">Sweater</option>
+                            <option value="2">Hoodie</option>
+                            <option value="3">Topi</option>
+                        </select>
                     <div class="row" style="gap : 2rem">
                         @foreach ($uploadProductDesigns as $uploadProductDesign)
                             <div class="col-lg-2 col-6 mt-2">
@@ -46,9 +52,9 @@
                                         </div>
                                     </div>
                                     <div class="card-body mt-2 p-0">
-                                        <h6 class="card-title fw-bold">{{ $uploadProductDesign->title }}</h6>
+                                        <h6 class="card-title" style="font-family: 'Myriad-Pro Bold';">{{ $uploadProductDesign->title }}</h6>
                                         <p class="card-title">By {{ $uploadProductDesign->user->first_name }}</p>
-                                        <h6 class="mt-2 fw-bold">Rp. {{ number_format($uploadProductDesign->total_price, 0, ',','.') }}</h6>
+                                        <h6 class="mt-2" style="font-family: 'Myriad-Pro Bold';">Rp. {{ number_format($uploadProductDesign->total_price, 0, ',','.') }}</h6>
                                     </div>
                                 </div>
                             </a>
@@ -59,7 +65,12 @@
                 <input type="radio" class="tabs_item" name="tabs-example" id="about_tab">
                 <label for="about_tab" class="tabs_name">Desain</label>
                 <div class="tabs_content mt-3">
-                   <p>1</p>
+                   <select class="form-select border border-dark rounded-0" style="width:15rem;" >
+                            <option selected>Motor</option>
+                            <option value="1">Islami</option>
+                            <option value="2">Sport</option>
+                            <option value="3">Mobil</option>
+                        </select>
                 </div>
                 <input type="radio" class="tabs_item" name="tabs-example" id="profile_tab">
                 <label for="profile_tab" class="tabs_name">Profil</label>
@@ -67,12 +78,12 @@
                     <div class="container">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h6 class="fw-bold">DesainKaoz</h6>
+                                <h6 class="fs-4" style="font-family: 'Myriad-Pro Bold';">DesainKaoz</h6>
                                 <p>Joined March 2023 - 100 design</p>
                                 {{-- <button class="btn btn-info">Message</button> --}}
                             </div>
                             <div>
-                                <button class="btn text-dark rounded-0 text-dark" style="background-color: #adadad">Message</button>
+                                <button class="btn text-dark rounded-0" style="background-color: #adadad">Message</button>
                                 <button class="btn btn-white text-dark rounded-0" style="border : 1px solid #adadad">Follow</button>
                             </div>
                         </div>

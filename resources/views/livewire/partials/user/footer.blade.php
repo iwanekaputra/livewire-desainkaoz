@@ -81,8 +81,8 @@
             <div class="col-lg-3 d-flex justify-content-center align-items-center flex-column" >
 
                     <img src="{{ asset('logo/icon-logo-footer.svg') }}" class="mb-3" alt="" width="150">
-                    <span style="color: #ADADAD;">Hak Cipta 2023</span>
-                    <span style="color: #ADADAD;">PT. DESAIN KAOS INDONESIA</span>
+                    <span style="color: #ADADAD;font-size:2vh; font-family: 'Myriad-Pro';">Hak Cipta 2023</span>
+                    <span style="color: #ADADAD;font-size:1vw;font-family: 'Myriad-Pro';">PT. DESAIN KAOS INDONESIA</span>
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
             <div class="col-lg-3">
                 <div class="d-flex flex-column">
                     <div class="col">
-                        <h5 class="fw-bold">Produk</h5>
+                        <h5 style="font-family: 'Myriad-Pro Bold';">Produk</h5>
                         <div class="border shadow py-3 px-3">
                             @foreach ($categories as $category)
                                 <p class="px-2 text-bold"><a href="{{ route('products.category', $category->id) }}" class="text-decoration-none text-dark">{{ $category->name }}</a></p>
@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="col mt-4">
-                        <h5 class="fw-bold">Filters</h5>
+                        <h5 style="font-family: 'Myriad-Pro Bold';">Filters</h5>
                         <div class="border shadow py-3 px-3">
                             <p class="px-2"><a class="text-decoration-none text-dark">All T shirt</a></p>
                             @foreach ($styles as $style)
@@ -125,9 +125,9 @@
                                 </div>
                             </div>
                             <div class="card-body mt-2 p-0">
-                                <h6 class="card-title fw-bold">{{ $product->title }}</h6>
+                                <h6 class="card-title" style="font-family: 'Myriad-Pro Bold';">{{ $product->title }}</h6>
                                 <p class="card-title">By {{ $product->user->first_name }}</p>
-                                <h6 class="mt-2 fw-bold">Rp. {{ number_format($product->total_price, 0, ',','.') }}</h6>
+                                <h6 class="mt-2" style="font-family: 'Myriad-Pro Bold';">Rp. {{ number_format($product->total_price, 0, ',','.') }}</h6>
                             </div>
                         </div>
                     </a>
