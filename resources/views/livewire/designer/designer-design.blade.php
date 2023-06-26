@@ -63,7 +63,7 @@
                         <div class="card child-card border-0">
                             <img src="{{ $uploadProductDesignApproved->image }}" class="" alt="..." style="border : 0.5px solid black">
                             <div class="card-body mt-2 p-0">
-                                <p class="card-title fw-bold">ID : {{ $uploadProductDesignApproved->id }}</p>
+                                <p class="card-title" style="font-family: 'Myriad-Pro Bold';">ID : {{ $uploadProductDesignApproved->id }}</p>
                                 <p class="card-title">Terjual : 0</p>
 
                             </div>

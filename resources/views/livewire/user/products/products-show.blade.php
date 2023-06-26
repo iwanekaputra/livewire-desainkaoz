@@ -104,7 +104,7 @@
                 <div class="col-lg-7 mt-5">
                     <div class="">
                         <div class="card-body">
-                            <h1 class="fw-bold">{{ $title }}</h1>
+                            <h1 style="font-family: 'Myriad-Pro Bold';">{{ $title }}</h1>
                             <h6 class="py-2">{{ $design }} Tshirt designed and sold by <a href="#" class="text-decoration-none">{{ $username }}</a></h6>
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
@@ -137,7 +137,7 @@
 
 
                                 </div>
-                                <h3 class="fw-bold">Rp. {{ number_format($total_price, 0, ',','.') }}</h3>
+                                <h3 style="font-family: 'Myriad-Pro Bold';">Rp. {{ number_format($total_price, 0, ',','.') }}</h3>
                                 <h6>Shipping</h6>
                                 <div class="row mt-4 pb-3">
                                     <div class="col-5 d-grid">
@@ -198,12 +198,12 @@
     <div class="main mt-5">
         <div class="tabs">
             <input type="radio" class="tabs_item" name="tabs-example" id="home_tab" checked>
-            <label for="home_tab" class="tabs_name px-5 fw-bold">Detail</label>
+            <label for="home_tab" class="tabs_name px-5" style="font-family: 'Myriad-Pro Bold';">Detail</label>
             <div class="tabs_content mt-3">
                 {{-- {{ $product->description }} --}}
             </div>
             <input type="radio" class="tabs_item" name="tabs-example" id="about_tab">
-            <label for="about_tab" class="tabs_name px-5 fw-bold">Reviews</label>
+            <label for="about_tab" class="tabs_name px-5" style="font-family: 'Myriad-Pro Bold';">Reviews</label>
             <div class="tabs_content mt-3">
                <p></p>
             </div>
