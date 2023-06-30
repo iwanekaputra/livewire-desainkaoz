@@ -90,7 +90,7 @@ Route::get('products', ProductsShow::class)->name('products.index');
 Route::get('products/category/{id}', ProductsCategory::class)->name('products.category');
 Route::get('products/{id}', ProductsShow::class)->name('products.show');
 
-Route::get('shop', DesignerShop::class)->name('designer.shop');
+Route::get('shop/{id}', DesignerShop::class)->name('designer.shop');
 
 
 Route::get('products/design/category/{id}', ProductsDesignCategory::class)->name('products.design.category');

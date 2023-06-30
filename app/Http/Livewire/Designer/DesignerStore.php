@@ -11,6 +11,7 @@ class DesignerStore extends Component
     use WithFileUploads;
 
     public $image;
+    public $front;
     public $cover;
     public $name;
     public $url;
@@ -19,6 +20,7 @@ class DesignerStore extends Component
 
     public $image_update;
     public $cover_update;
+    public $front_update;
 
     public function mount() {
         $this->store = Store::where("user_id", auth()->user()->id)->first();
@@ -27,11 +29,13 @@ class DesignerStore extends Component
         $this->description = optional($this->store)->description;
         $this->image = optional($this->store)->image;
         $this->cover = optional($this->store)->cover;
+        $this->front = optional($this->store)->front_image;
     }
 
     public function store() {
         $image_name = '';
         $cover_name = '';
+        $front_name = '';
 
 
         if($this->image_update) {
@@ -47,6 +51,12 @@ class DesignerStore extends Component
             $img_path = asset('uploads/images/'.$cover_name);
         }
 
+        if($this->front_update) {
+            $front_name = time().'-'.$this->front_update->getClientOriginalName();
+            $res = $this->front_update->storeAs('images',$front_name, 'custom_public_path');
+            $img_path = asset('uploads/images/'.$front_name);
+        }
+
         if($this->store) {
             $this->store->update([
                 'name' => $this->name,
@@ -54,6 +64,7 @@ class DesignerStore extends Component
                 'description' => $this->description,
                 'image' => $image_name ? $image_name : $this->image,
                 'cover' => $cover_name ? $cover_name : $this->cover,
+                'front_image' => $front_name ? $front_name : $this->front
             ]);
 
             return $this->dispatchBrowserEvent('swal:modal', [
@@ -71,7 +82,8 @@ class DesignerStore extends Component
             'url' => $this->url,
             'description' => $this->description,
             'image' => $image_name,
-            'cover' => $cover_name
+            'cover' => $cover_name,
+            'front_image' => $front_name
         ]);
 
 

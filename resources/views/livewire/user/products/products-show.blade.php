@@ -5,8 +5,8 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class=" mb-3">
-                        <img class="card-img img-fluid border" src="{{ $image }}" alt="Card image cap"
-                            id="product-detail">
+                        <img class="card-img img-fluid border main-image" src="{{ $image }}" alt="Card image cap" id="product-detail" >
+
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -32,11 +32,12 @@
                                                     alt="Product Image 1">
                                             </a>
                                         </div>
-                                        {{-- <div class="col-4">
+                                        <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{{ asset('assets/img/product_single_02.jpg') }}"
-                                        alt="Product Image 2">
-                                        </a>
+                                                <img class="card-img img-fluid" src="{{ asset('uploads/design/' . $productDesign) }}">
+                                            </a>
+                                        </div>
+
                                     </div>
                                     <div class="col-4">
                                         <a href="#">
@@ -124,68 +125,81 @@
                 <div class="col-lg-2 mt-4">
                     <h6>Size :</h6>
                 </div>
-                <div class="col-lg-8">
-                    <ul class="list-inline pb-3">
-                        <div wire:ignore>
-                            <li class="list-inline-item mt-2">
-                                <span
-                                    class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold"
-                                    style="width : 100px; height : 40px;background-color: #e9e9e9;"
-                                    wire:click="addSize('S')">S</span>
-                            </li>
-                            <li class="list-inline-item mt-2">
-                                <span
-                                    class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold"
-                                    style="width : 100px; height : 40px;background-color: #e9e9e9"
-                                    wire:click="addSize('M')">M</span>
-                            </li>
-                            <li class="list-inline-item mt-2">
-                                <span
-                                    class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold"
-                                    style="width : 100px; height : 40px;background-color: #e9e9e9"
-                                    wire:click="addSize('L')">L</span>
-                            </li>
-                            <li class="list-inline-item mt-2">
-                                <span
-                                    class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold"
-                                    style="width : 100px; height : 40px;background-color: #e9e9e9"
-                                    wire:click="addSize('XXL')">XL</span>
-                            </li>
-                            <li class="list-inline-item mt-2">
-                                <span
-                                    class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold"
-                                    style="width : 100px; height : 40px;background-color: #e9e9e9"
-                                    wire:click="addSize('XXXL')">XXL</span>
-                            </li>
-                        </div>
+                <!-- col end -->
+                <div class="col-lg-7 mt-5">
+                    <div class="">
+                        <div class="card-body">
+                            <h1 style="font-family: 'Myriad-Pro Bold';">{{ $title }}</h1>
+                            <h6 class="py-2">{{ $design }} Tshirt designed and sold by <a href="#" class="text-decoration-none">{{ $username }}</a></h6>
+                            <div class="row">
+                                <div class="col-lg-2 mt-4">
+                                    <h6>Color :</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <ul class="list-inline pb-3">
+                                        <div wire:ignore>
+                                            @foreach ($images as $image)
+                                                <li class="list-inline-item mt-2">
+                                                    <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $image->color }};" data-img="{{ $image->image }}"></span>
+                                                </li>
+                                            @endforeach
+
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                                <input type="hidden" name="product-title" value="Activewear">
+                                <div class="row">
+                                    <div class="col-lg-2 mt-4">
+                                        <h6>Size :</h6>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <ul class="list-inline pb-3">
+                                            <div wire:ignore>
+                                                <li class="list-inline-item mt-2">
+                                                    <span class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold" style="width : 100px; height : 40px;background-color: #e9e9e9;" wire:click="addSize('S')">S</span>
+                                                </li>
+                                                <li class="list-inline-item mt-2">
+                                                    <span class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold" style="width : 100px; height : 40px;background-color: #e9e9e9" wire:click="addSize('M')">M</span>
+                                                </li>
+                                                <li class="list-inline-item mt-2">
+                                                    <span class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold" style="width : 100px; height : 40px;background-color: #e9e9e9" wire:click="addSize('L')">L</span>
+                                                </li>
+                                                <li class="list-inline-item mt-2">
+                                                    <span class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold" style="width : 100px; height : 40px;background-color: #e9e9e9" wire:click="addSize('XXL')">XL</span>
+                                                </li>
+                                                <li class="list-inline-item mt-2">
+                                                    <span class="btn btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold" style="width : 100px; height : 40px;background-color: #e9e9e9" wire:click="addSize('XXXL')">XXL</span>
+                                                </li>
+                                            </div>
 
 
-                    </ul>
-                </div>
-
-
-            </div>
-            <h3 style="font-family: 'Myriad-Pro Bold';">Rp. {{ number_format($total_price, 0, ',','.') }}</h3>
-            <h6>Shipping</h6>
-            <div class="row mt-4 pb-3">
-                <div class="col-5 d-grid">
-                    <button type="submit" class="btn btn-dark btn-lg rounded-0" name="submit" value="buy">BELI</button>
-                </div>
-                <div class="col-5 d-grid">
-                    <button class="btn btn-dark btn-lg rounded-0" wire:click="addCart">KERANJANG</button>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-lg-3 d-flex">
-                    <i class="far fa-heart px-2"></i>
-                    <h6 style="font-family: 'Myriad-Pro Bold';">Favorite</h6>
-                </div>
-                <div class="col-lg-3 d-flex">
-                    <i class="fas fa-share-alt px-2"></i>
-                    <h6 style="font-family: 'Myriad-Pro Bold';">Share</h6>
-                </div>
-            </div>
-            <hr>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3 style="font-family: 'Myriad-Pro Bold';">Rp. {{ number_format($total_price, 0, ',','.') }}</h3>
+                                <h6>Shipping</h6>
+                                <div class="row mt-4 pb-3">
+                                    <div class="col-5 d-grid">
+                                        <button type="submit" class="btn btn-dark btn-lg rounded-0" name="submit" value="buy">BELI</button>
+                                    </div>
+                                    <div class="col-5 d-grid">
+                                        <button class="btn btn-dark btn-lg rounded-0" wire:click="addCart">KERANJANG</button>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-lg-3 d-flex">
+                                        <i class="far fa-heart px-2"></i>
+                                        <h6>Favorite</h6>
+                                    </div>
+                                    <div class="col-lg-3 d-flex">
+                                        <i class="fas fa-share-alt px-2"></i>
+                                        <h6>Share</h6>
+                                    </div>
+                                </div>
+                                <hr>
 
             <div class="row">
                 <div class="col-lg-4 d-flex">
@@ -245,6 +259,20 @@
         </div>
 
     </div>
-</nav>
+    </nav>
 
+    <script>
+
+
+        $('.btn-color').click(function() {
+            let img = $(this).attr('data-img');
+            $('.main-image').attr('src', img)
+        })
+    </script>
 </div>
+
+
+
+
+
+

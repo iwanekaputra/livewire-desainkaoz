@@ -21,6 +21,7 @@ class CreateStoresTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('cover')->nullable();
+            $table->string('front_image')->nullable();
             $table->timestamps();
         });
     }

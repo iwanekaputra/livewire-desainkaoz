@@ -21,6 +21,8 @@ class ProductsShow extends Component
     public $username;
     public $total_price;
     public $size;
+    public $images;
+    public $productDesign;
 
     public $countProduct;
 
@@ -30,10 +32,12 @@ class ProductsShow extends Component
         $this->price = $product->price;
         $this->username = $product->user->first_name;
         $this->product_id = $product->id;
-        $this->image = $product->image;
+        $this->image = $product->uploadProductDesignVariants[0]->image;
+        $this->images = $product->uploadProductDesignVariants;
         $this->title = $product->title;
         $this->design = $product->designCategory->name;
         $this->total_price = $product->total_price;
+        $this->productDesign = $product->productDesign->image;
 
         $this->countProduct = $this->getCountProduct();
     }

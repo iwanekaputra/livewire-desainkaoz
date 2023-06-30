@@ -15,7 +15,7 @@
             @endif
             @foreach ($uploadProductDesigns as $uploadProductDesign)
                 <div class="col-lg-5">
-                    <img src="{{ $uploadProductDesign->image }}" alt="" width="320" height="320">
+                    <img src="{{ $uploadProductDesign->uploadProductDesignVariants[0]->image }}" alt="" width="320" height="320">
                     <div class="d-flex justify-content-center mt-2">
                         <button class="btn btn-warning text-center">Desain menunggu verifikasi admin <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                         </button>

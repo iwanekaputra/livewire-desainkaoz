@@ -18,6 +18,7 @@ class CreateUploadProductDesignsTable extends Migration
             $table->foreignId('design_category_id')->nullable();
             $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id')->nullable();
+            $table->foreignId('product_design_id')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('tags')->nullable();

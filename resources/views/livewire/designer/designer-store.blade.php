@@ -48,8 +48,29 @@
                     <p>Gambar harus berukuran lebar 1250px dan tinggi 392px dan dalam format JPEG atau PNG</p>
             </div>
         </div>
-        <hr>
+        <div class="row">
+            <div class="col">
+                <h5>Gambar Depan</h5>
+                @if ($front_update || $front)
+                    @if ($front_update)
+                        <div class="mb-2">
+                            <img src="{{ $front_update->temporaryUrl() }}" alt="" width="100">
+                        </div>
+                    @elseif ($front)
+                        <div class="mb-2">
+                            <img src="{{ asset("uploads/images/" . $front) }}" alt="" width="100">
+                        </div>
+                    @endif
+                @else
+                    <img src="{{ asset('icon/penjualan.png') }}" alt="" width="100">
+                @endif
 
+
+                <button type="button" class="btn btn-dark rounded-0" id="loadFileXml" onclick="document.getElementById('front').click();">Pilih Gambar</button>
+                    <input type="file" style="display:none;" id="front" name="image" wire:model="front_update" />
+                    <p>Gambar harus berukuran lebar 500px dan tinggi 500px dan dalam format JPEG atau PNG</p>
+            </div>
+        </div>
         <div class="row">
             <label for="exampleFormControlInput1" class="form-label">Nama Toko</label>
             <div class="col-lg-10">
