@@ -25,12 +25,12 @@
                     <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('assets/img/icon-designer.svg') }}" alt="" width="25">
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu w-100">
                         @if (auth()->user()->role_id == "2")
-                            <li class="py-1" style="font-size : 12px"><a class="dropdown-item text-dark" href="{{ route("designer.setting") }}"><img src="{{ asset("assets/img/icon-account-setting.svg") }}" alt="" class="px-2" width="40"> Account Setting</a></li>
-                            <li class="py-1" style="font-size : 12px"><a class="dropdown-item text-dark" href="#"><img src="{{ asset("assets/img/icon-profile.svg") }}" alt="" class="px-2" width="40"> Profile</a></li>
-                            <li class="py-1" style="font-size : 12px"><a class="dropdown-item text-dark" href="{{ route('designer.saldo') }}"><img src="{{ asset("assets/img/icon-saldo.svg") }}" alt="" class="px-2" width="40"> Saldo</a></li>
-                            <li class="py-1" style="font-size : 12px"><a class="dropdown-item text-dark" href="{{ route("designer.upload-design") }}"><img src="{{ asset("assets/img/icon-upload-design.svg") }}" alt="" class="px-2" width="40"> Upload Desain</a></li>
+                            <li class="py-1"><a class="dropdown-item text-dark" href="{{ route("designer.setting") }}"><img src="{{ asset("assets/img/icon-account-setting.svg") }}" alt="" class="px-2" width="40"> Account Setting</a></li>
+                            <li class="py-1"><a class="dropdown-item text-dark" href="#"><img src="{{ asset("assets/img/icon-profile.svg") }}" alt="" class="px-2" width="40"> Profile</a></li>
+                            <li class="py-1"><a class="dropdown-item text-dark" href="{{ route('designer.saldo') }}"><img src="{{ asset("assets/img/icon-saldo.svg") }}" alt="" class="px-2" width="40"> Saldo</a></li>
+                            <li class="py-1"><a class="dropdown-item text-dark" href="{{ route("designer.upload-design") }}"><img src="{{ asset("assets/img/icon-upload-design.svg") }}" alt="" class="px-2" width="40"> Upload Desain</a></li>
                             <div style="border-bottom : 1px solid black"></div>
                         @endif
                         <form action="{{ url('logout') }}" method="POST">

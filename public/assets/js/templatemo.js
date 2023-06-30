@@ -46,9 +46,10 @@ $(document).ready(function() {
     $('.btn-size').click(function(){
       var this_val = $(this).html();
       $("#product-size").val(this_val);
-      $(".btn-size").removeClass('btn-success');
+      $(".btn-size").removeClass('btn-dark');
+    //   $(this).removeClass('border');
       $(this).removeClass('btn-secondary');
-      $(this).addClass('btn-success');
+      $(this).addClass('btn-dark');
       $(this).addClass('text-dark');
 
       return false;

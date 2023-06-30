@@ -18,10 +18,10 @@ class Index extends Component
         return view('livewire.landingpage.index',[
             'categories' => Category::get(),
             'designCategories' => DesignCategory::get(),
-            'uploadProductDesigns' => UploadProductDesign::where('is_approved', 1)->get(),
+            'uploadProductDesigns' => UploadProductDesign::where('is_approved', 1)->latest()->paginate(10),
             'sliders' => Slider::get(),
-            'productDesigns' => ProductDesign::get(),
-            'stores' => Store::get()
+            'productDesigns' => ProductDesign::latest()->get(),
+            'stores' => Store::latest()->get()
         ])->extends('layouts.app');
     }
 }

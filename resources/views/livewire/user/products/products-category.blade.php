@@ -102,7 +102,7 @@
                     @forelse ($products as $product)
                     <div class="col-lg-2 col-6 mt-2">
                         <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark"><div class="card child-card border-0">
-                            <img src="{{ $product->image }}" class="" alt="..." style="border : 0.5px solid black">
+                            <img src="{{ $product->uploadProductDesignVariants[0]->image}}" class="" alt="..." style="border : 0.5px solid black">
                             <div class="border shadow d-flex justify-content-center align-items-center rounded-circle position-absolute top-0 end-0" style="width : 30px; height : 30px" >
                                 <div class="con-like">
                                     <input title="like" type="checkbox" class="like">

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class=" mb-3">
-                        <img class="card-img img-fluid border" src="{{ $image }}" alt="Card image cap" id="product-detail" >
+                        <img class="card-img img-fluid border main-image" src="{{ $image }}" alt="Card image cap" id="product-detail" >
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -29,16 +29,11 @@
                                                 <img class="card-img img-fluid" src="{{ $image; }}" alt="Product Image 1">
                                             </a>
                                         </div>
-                                        {{-- <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="{{ asset('assets/img/product_single_02.jpg') }}" alt="Product Image 2">
-                                            </a>
-                                        </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="{{ asset('assets/img/product_single_03.jpg') }}" alt="Product Image 3">
+                                                <img class="card-img img-fluid" src="{{ asset('uploads/design/' . $productDesign) }}">
                                             </a>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--/.First slide-->
@@ -106,6 +101,25 @@
                         <div class="card-body">
                             <h1 style="font-family: 'Myriad-Pro Bold';">{{ $title }}</h1>
                             <h6 class="py-2">{{ $design }} Tshirt designed and sold by <a href="#" class="text-decoration-none">{{ $username }}</a></h6>
+                            <div class="row">
+                                <div class="col-lg-2 mt-4">
+                                    <h6>Color :</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <ul class="list-inline pb-3">
+                                        <div wire:ignore>
+                                            @foreach ($images as $image)
+                                                <li class="list-inline-item mt-2">
+                                                    <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $image->color }};" data-img="{{ $image->image }}"></span>
+                                                </li>
+                                            @endforeach
+
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-lg-2 mt-4">
@@ -134,8 +148,6 @@
 
                                         </ul>
                                     </div>
-
-
                                 </div>
                                 <h3 style="font-family: 'Myriad-Pro Bold';">Rp. {{ number_format($total_price, 0, ',','.') }}</h3>
                                 <h6>Shipping</h6>
@@ -212,6 +224,17 @@
     </div>
     </nav>
 
+    <script>
+
+
+        $('.btn-color').click(function() {
+            let img = $(this).attr('data-img');
+            $('.main-image').attr('src', img)
+        })
+    </script>
 </div>
+
+
+
 
 

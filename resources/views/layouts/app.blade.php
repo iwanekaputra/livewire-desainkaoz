@@ -381,8 +381,14 @@
     cursor: w-resize;
     }
 
-    #container:hover {
-        border : 1px dashed black
+    .tshirt-layer:hover,
+    .hoodie-layer:hover,
+    .sweater-layer:hover,
+    .hat-layer:hover,
+    .bag-layer:hover,
+    .sticker:hover
+    {
+        border : 1px dashed white
     }
 
     .dropdown-item:hover {
@@ -391,6 +397,15 @@
 
     .nav-link:hover {
         color: #ccc;
+    }
+
+    .nav-tabs > .nav-item > .active {
+        border-style: none;
+        border-bottom : 2px solid black;
+    }
+
+    .nav-link:hover{
+        border-style: none;
     }
     </style>
   </head>
