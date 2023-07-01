@@ -115,9 +115,9 @@ class UploadDesign extends Component
             'tags' => $this->tags,
             'description' => $this->description,
             'url' => $this->url,
-            'price_design' => $this->priceTshirt,
+            'price_design' => $this->priceHoodie,
             'is_approved' => 0,
-            'total_price' => 100000 + $this->priceTshirt,
+            'total_price' => 200000 + $this->priceHoodie,
             'user_id' => auth()->user()->id
         ]);
 
@@ -140,9 +140,9 @@ class UploadDesign extends Component
             'tags' => $this->tags,
             'description' => $this->description,
             'url' => $this->url,
-            'price_design' => $this->priceTshirt,
+            'price_design' => $this->priceSweater,
             'is_approved' => 0,
-            'total_price' => 100000 + $this->priceTshirt,
+            'total_price' => 150000 + $this->priceSweater,
             'user_id' => auth()->user()->id
         ]);
 
@@ -164,9 +164,9 @@ class UploadDesign extends Component
             'tags' => $this->tags,
             'description' => $this->description,
             'url' => $this->url,
-            'price_design' => $this->priceTshirt,
+            'price_design' => $this->priceHat,
             'is_approved' => 0,
-            'total_price' => 100000 + $this->priceTshirt,
+            'total_price' => 50000 + $this->priceHat,
             'user_id' => auth()->user()->id
         ]);
 
@@ -188,9 +188,9 @@ class UploadDesign extends Component
             'tags' => $this->tags,
             'description' => $this->description,
             'url' => $this->url,
-            'price_design' => $this->priceTshirt,
+            'price_design' => $this->priceBag,
             'is_approved' => 0,
-            'total_price' => 100000 + $this->priceTshirt,
+            'total_price' => 20000 + $this->priceBag,
             'user_id' => auth()->user()->id
         ]);
 

@@ -86,19 +86,19 @@
                         <div class="mt-4">
                             <h6>Color : Black</h6>
                             <div class="mt-3 d-flex gap-2">
-                                <div style="width : 40px; height : 40px; background-color : black; border : 2px solid silver" class="tshirt-color" data-image="tshirt-black.png">
+                                <div style="width : 40px; height : 40px; background-color : #141414; border : 2px solid silver" class="tshirt-color" data-image="tshirt-black.png">
                                 </div>
-                                <div style="width : 40px; height : 40px; background-color : white; border : 2px solid silver" class="tshirt-color" data-image="tshirt-white.png">
+                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver" class="tshirt-color" data-image="tshirt-white.png">
                                 </div>
-                                <div style="width : 40px; height : 40px; background-color : silver; border : 2px solid #silver" class="tshirt-color" data-image="tshirt-silver.png">
+                                <div style="width : 40px; height : 40px; background-color : #7b7b7b; border : 2px solid #silver" class="tshirt-color" data-image="tshirt-silver.png">
                                 </div>
-                                <div style="width : 40px; height : 40px; background-color : maroon; border : 2px solid silver" class="tshirt-color" data-image="tshirt-red.png">
+                                <div style="width : 40px; height : 40px; background-color : #a60707; border : 2px solid silver" class="tshirt-color" data-image="tshirt-red.png">
                                 </div>
-                                <div style="width : 40px; height : 40px; background-color : green; border : 2px solid silver" class="tshirt-color" data-image="tshirt-green.png">
+                                <div style="width : 40px; height : 40px; background-color : #4c5d34; border : 2px solid silver" class="tshirt-color" data-image="tshirt-green.png">
                                 </div>
-                                <div style="width : 40px; height : 40px; background-color : navy; border : 2px solid silver" class="tshirt-color" data-image="tshirt-blue.png">
+                                <div style="width : 40px; height : 40px; background-color : #252c5f; border : 2px solid silver" class="tshirt-color" data-image="tshirt-blue.png">
                                 </div>
-                                <div style="width : 40px; height : 40px; background-color : yellow; border : 2px solid silver" class="tshirt-color" data-image="tshirt-yellow.png">
+                                <div style="width : 40px; height : 40px; background-color : #e47200; border : 2px solid silver" class="tshirt-color" data-image="tshirt-yellow.png">
                                 </div>
                             </div>
                         </div>
@@ -139,14 +139,14 @@
                         <div class="mt-4">
                             <h6>Color : Black</h6>
                             <div class="mt-3 d-flex gap-2">
-                                <div style="width : 40px; height : 40px; background-color : black; border : 2px solid silver" class="hoodie-color" data-image="hoodie-black.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : white; border : 2px solid silver" class="hoodie-color" data-image="hoodie-white.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : chocolate; border : 2px solid silver" class="hoodie-color" data-image="hoodie-chocolate.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : green; border : 2px solid silver" class="hoodie-color" data-image="hoodie-green.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : red; border : 2px solid silver" class="hoodie-color" data-image="hoodie-red.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : navy; border : 2px solid silver" class="hoodie-color" data-image="hoodie-navy.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : yellow; border : 2px solid silver" class="hoodie-color" data-image="hoodie-yellow.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : silver; border : 2px solid silver" class="hoodie-color" data-image="hoodie-silver.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #2f2f2f; border : 2px solid silver" class="hoodie-color" data-image="hoodie-black.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver" class="hoodie-color" data-image="hoodie-white.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #995f2f; border : 2px solid silver" class="hoodie-color" data-image="hoodie-chocolate.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #44672f; border : 2px solid silver" class="hoodie-color" data-image="hoodie-green.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #ad322d; border : 2px solid silver" class="hoodie-color" data-image="hoodie-red.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #3d4367; border : 2px solid silver" class="hoodie-color" data-image="hoodie-navy.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #ab7a2b; border : 2px solid silver" class="hoodie-color" data-image="hoodie-yellow.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #6e6e6e; border : 2px solid silver" class="hoodie-color" data-image="hoodie-silver.png"></div>
                             </div>
                         </div>
                         <hr>
@@ -186,13 +186,13 @@
                         <div class="mt-4">
                             <h6>Color : Black</h6>
                             <div class="mt-3 d-flex gap-2">
-                                <div style="width : 40px; height : 40px; background-color : black; border : 2px solid silver" class="sweater-color" data-image="sweater-black.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : white; border : 2px solid silver" class="sweater-color" data-image="sweater-white.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : silver; border : 2px solid silver" class="sweater-color" data-image="sweater-silver.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : green; border : 2px solid silver" class="sweater-color" data-image="sweater-green.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : red; border : 2px solid silver" class="sweater-color" data-image="sweater-red.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : navy; border : 2px solid silver" class="sweater-color" data-image="sweater-navy.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : yellow; border : 2px solid silver" class="sweater-color" data-image="sweater-yellow.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #242220; border : 2px solid silver" class="sweater-color" data-image="sweater-black.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver" class="sweater-color" data-image="sweater-white.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #828282; border : 2px solid silver" class="sweater-color" data-image="sweater-silver.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #2d4821; border : 2px solid silver" class="sweater-color" data-image="sweater-green.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #851d1d; border : 2px solid silver" class="sweater-color" data-image="sweater-red.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #212f49; border : 2px solid silver" class="sweater-color" data-image="sweater-navy.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #c47d21; border : 2px solid silver" class="sweater-color" data-image="sweater-yellow.png"></div>
 
                             </div>
                         </div>
@@ -234,11 +234,11 @@
                         <div class="mt-4">
                             <h6>Color : Black</h6>
                             <div class="mt-3 d-flex gap-2">
-                                <div style="width : 40px; height : 40px; background-color : black; border : 2px solid silver" class="hat-color" data-image="hat-black.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : white; border : 2px solid silver" class="hat-color" data-image="hat-white.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : green; border : 2px solid silver" class="hat-color" data-image="hat-green.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : red; border : 2px solid silver" class="hat-color" data-image="hat-red.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : blue; border : 2px solid silver" class="hat-color" data-image="hat-blue.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #000; border : 2px solid silver" class="hat-color" data-image="hat-black.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver" class="hat-color" data-image="hat-white.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #395b22; border : 2px solid silver" class="hat-color" data-image="hat-green.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #ad0000; border : 2px solid silver" class="hat-color" data-image="hat-red.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #324a6f; border : 2px solid silver" class="hat-color" data-image="hat-blue.png"></div>
                             </div>
                         </div>
                         <hr>
@@ -278,8 +278,8 @@
                         <div class="mt-4">
                             <h6>Color : Black</h6>
                             <div class="mt-3 d-flex gap-2">
-                                <div style="width : 40px; height : 40px; background-color : black; border : 2px solid silver" class="bag-color" data-image="bag-black.png"></div>
-                                <div style="width : 40px; height : 40px; background-color : white; border : 2px solid silver" class="bag-color" data-image="bag-white.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #000; border : 2px solid silver" class="bag-color" data-image="bag-black.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver" class="bag-color" data-image="bag-white.png"></div>
 
 
                             </div>
@@ -1466,7 +1466,8 @@
         let nodeHat = document.getElementById('hat-capture');
         let nodeBag = document.getElementById('bag-capture');
 
-        // $('body').css('filter', 'blur(10px)')
+
+        $('body').css('filter', 'blur(10px)')
         const tshirt = await getImageTshirt(nodeTshirt)
         $('#tshirt-tab').removeClass('active')
         $('#tshirt-tab').attr('aria-selected', 'false')
@@ -1512,6 +1513,8 @@
         $('#bag-tab-pane').addClass('active')
         const bag = await getImageBag(nodeBag)
 
+        $('body').css('filter', 'blur(0)')
+
         window.livewire.emit('tes', {
             'tshirt' : tshirt,
             'hoodie' : hoodie,
@@ -1530,43 +1533,43 @@
         let t = [];
 
         let imgTshirt = [];
-        imgTshirt.push('black')
+        imgTshirt.push('#141414')
         document.getElementById('tshirt-main-image').style.backgroundImage = `url('{{ asset('assets/img/tshirt-black.png') }}')`;
         imgTshirt.push(await getImage(nodeTshirt))
         t.push(imgTshirt);
 
         let imgTshirt2 = [];
-        imgTshirt2.push('white')
+        imgTshirt2.push('#fff')
         document.getElementById('tshirt-main-image').style.backgroundImage = `url('{{ asset('assets/img/tshirt-white.png') }}')`;
         imgTshirt2.push(await getImage(nodeTshirt))
         t.push(imgTshirt2);
 
         let imgTshirt3 = [];
-        imgTshirt3.push('silver')
+        imgTshirt3.push('#7b7b7b')
         document.getElementById('tshirt-main-image').style.backgroundImage = `url('{{ asset('assets/img/tshirt-silver.png') }}')`;
         imgTshirt3.push(await getImage(nodeTshirt))
         t.push(imgTshirt3);
 
         let imgTshirt4 = [];
-        imgTshirt4.push('maroon')
+        imgTshirt4.push('#a60707')
         document.getElementById('tshirt-main-image').style.backgroundImage = `url('{{ asset('assets/img/tshirt-red.png') }}')`;
         imgTshirt4.push(await getImage(nodeTshirt))
         t.push(imgTshirt4);
 
         let imgTshirt5 = [];
-        imgTshirt5.push('green')
+        imgTshirt5.push('#4c5d34')
         document.getElementById('tshirt-main-image').style.backgroundImage = `url('{{ asset('assets/img/tshirt-green.png') }}')`;
         imgTshirt5.push(await getImage(nodeTshirt))
         t.push(imgTshirt5);
 
         let imgTshirt6 = [];
-        imgTshirt6.push('blue')
+        imgTshirt6.push('#252c5f')
         document.getElementById('tshirt-main-image').style.backgroundImage = `url('{{ asset('assets/img/tshirt-blue.png') }}')`;
         imgTshirt6.push(await getImage(nodeTshirt))
         t.push(imgTshirt6);
 
         let imgTshirt7 = [];
-        imgTshirt7.push('yellow')
+        imgTshirt7.push('#e47200')
         document.getElementById('tshirt-main-image').style.backgroundImage = `url('{{ asset('assets/img/tshirt-yellow.png') }}')`;
         imgTshirt7.push(await getImage(nodeTshirt))
         t.push(imgTshirt7);
@@ -1579,49 +1582,49 @@
         let t = [];
 
         let imgHoodie = [];
-        imgHoodie.push('black')
+        imgHoodie.push('#2f2f2f')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-black.png') }}')`;
         imgHoodie.push(await getImage(nodeHoodie))
         t.push(imgHoodie);
 
         let imgHoodie2 = [];
-        imgHoodie2.push('white')
+        imgHoodie2.push('#f0f0f0')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-white.png') }}')`;
         imgHoodie2.push(await getImage(nodeHoodie))
         t.push(imgHoodie2);
 
         let imgHoodie3 = [];
-        imgHoodie3.push('chocolate')
+        imgHoodie3.push('#995f2f')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-chocolate.png') }}')`;
         imgHoodie3.push(await getImage(nodeHoodie))
         t.push(imgHoodie3);
 
         let imgHoodie4 = [];
-        imgHoodie4.push('green')
+        imgHoodie4.push('#44672f')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-green.png') }}')`;
         imgHoodie4.push(await getImage(nodeHoodie))
         t.push(imgHoodie4);
 
         let imgHoodie5 = [];
-        imgHoodie5.push('red')
+        imgHoodie5.push('#ad322d')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-red.png') }}')`;
         imgHoodie5.push(await getImage(nodeHoodie))
         t.push(imgHoodie5);
 
         let imgHoodie6 = [];
-        imgHoodie6.push('navy')
+        imgHoodie6.push('#3d4367')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-navy.png') }}')`;
         imgHoodie6.push(await getImage(nodeHoodie))
         t.push(imgHoodie6);
 
         let imgHoodie7 = [];
-        imgHoodie7.push('yellow')
+        imgHoodie7.push('#ab7a2b')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-yellow.png') }}')`;
         imgHoodie7.push(await getImage(nodeHoodie))
         t.push(imgHoodie7);
 
         let imgHoodie8 = [];
-        imgHoodie8.push('silver')
+        imgHoodie8.push('#6e6e6e')
         document.getElementById('hoodie-main-image').style.backgroundImage = `url('{{ asset('assets/img/hoodie-silver.png') }}')`;
         imgHoodie8.push(await getImage(nodeHoodie))
         t.push(imgHoodie8);
@@ -1636,43 +1639,43 @@
         let t = [];
 
         let imgSweater = [];
-        imgSweater.push('black')
+        imgSweater.push('#242220')
         document.getElementById('sweater-main-image').style.backgroundImage = `url('{{ asset('assets/img/sweater-black.png') }}')`;
         imgSweater.push(await getImage(nodeSweater))
         t.push(imgSweater);
 
         let imgSweater2 = [];
-        imgSweater2.push('white')
+        imgSweater2.push('#f0f0f0')
         document.getElementById('sweater-main-image').style.backgroundImage = `url('{{ asset('assets/img/sweater-white.png') }}')`;
         imgSweater2.push(await getImage(nodeSweater))
         t.push(imgSweater2);
 
         let imgSweater3 = [];
-        imgSweater3.push('silver')
+        imgSweater3.push('#828282')
         document.getElementById('sweater-main-image').style.backgroundImage = `url('{{ asset('assets/img/sweater-silver.png') }}')`;
         imgSweater3.push(await getImage(nodeSweater))
         t.push(imgSweater3);
 
         let imgSweater4 = [];
-        imgSweater4.push('green')
+        imgSweater4.push('#2d4821')
         document.getElementById('sweater-main-image').style.backgroundImage = `url('{{ asset('assets/img/sweater-green.png') }}')`;
         imgSweater4.push(await getImage(nodeSweater))
         t.push(imgSweater4);
 
         let imgSweater5 = [];
-        imgSweater5.push('red')
+        imgSweater5.push('#851d1d')
         document.getElementById('sweater-main-image').style.backgroundImage = `url('{{ asset('assets/img/sweater-red.png') }}')`;
         imgSweater5.push(await getImage(nodeSweater))
         t.push(imgSweater5);
 
         let imgSweater6 = [];
-        imgSweater6.push('navy')
+        imgSweater6.push('#212f49')
         document.getElementById('sweater-main-image').style.backgroundImage = `url('{{ asset('assets/img/sweater-navy.png') }}')`;
         imgSweater6.push(await getImage(nodeSweater))
         t.push(imgSweater6);
 
         let imgSweater7 = [];
-        imgSweater7.push('yellow')
+        imgSweater7.push('#c47d21')
         document.getElementById('sweater-main-image').style.backgroundImage = `url('{{ asset('assets/img/sweater-yellow.png') }}')`;
         imgSweater7.push(await getImage(nodeSweater))
         t.push(imgSweater7);
@@ -1685,31 +1688,31 @@
         let t = [];
 
         let imgHat = [];
-        imgHat.push('black')
+        imgHat.push('#000')
         document.getElementById('hat-main-image').style.backgroundImage = `url('{{ asset('assets/img/hat-black.png') }}')`;
         imgHat.push(await getImage(nodeHat))
         t.push(imgHat);
 
         let imgHat2 = [];
-        imgHat2.push('white')
+        imgHat2.push('#fff')
         document.getElementById('hat-main-image').style.backgroundImage = `url('{{ asset('assets/img/hat-white.png') }}')`;
         imgHat2.push(await getImage(nodeHat))
         t.push(imgHat2);
 
         let imgHat3 = [];
-        imgHat3.push('green')
+        imgHat3.push('#395b22')
         document.getElementById('hat-main-image').style.backgroundImage = `url('{{ asset('assets/img/hat-green.png') }}')`;
         imgHat3.push(await getImage(nodeHat))
         t.push(imgHat3);
 
         let imgHat4 = [];
-        imgHat4.push('red')
+        imgHat4.push('#ad0000')
         document.getElementById('hat-main-image').style.backgroundImage = `url('{{ asset('assets/img/hat-red.png') }}')`;
         imgHat4.push(await getImage(nodeHat))
         t.push(imgHat4);
 
         let imgHat5 = [];
-        imgHat5.push('blue')
+        imgHat5.push('#324a6f')
         document.getElementById('hat-main-image').style.backgroundImage = `url('{{ asset('assets/img/hat-blue.png') }}')`;
         imgHat5.push(await getImage(nodeHat))
         t.push(imgHat5);
@@ -1723,14 +1726,14 @@
         let bagImage;
         let t = [];
         let imgBag = [];
-        imgBag.push('black')
+        imgBag.push('#000')
         document.getElementById('bag-main-image').style.backgroundImage = `url('{{ asset('assets/img/bag-black.png') }}')`;
         imgBag.push(await getImage(nodeBag))
         t.push(imgBag);
 
 
         let imgBag2 = [];
-        imgBag2.push('white')
+        imgBag2.push('#fff')
         document.getElementById('bag-main-image').style.backgroundImage = `url('{{ asset('assets/img/bag-white.png') }}')`;
         imgBag2.push(await getImage(nodeBag))
         t.push(imgBag2);
