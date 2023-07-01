@@ -97,7 +97,7 @@
         </a></h4> --}}
     </div>
     <div class="row mt-2 justify-content-start" style="gap : 2rem">
-        @foreach ($uploadProductDesigns as $uploadProductDesign)
+        @forelse ($uploadProductDesigns as $uploadProductDesign)
         <div class="col-lg-2 col-6 mt-2">
             <a href="{{ route('products.show', $uploadProductDesign->id) }}" class="text-decoration-none text-dark"><div class="card child-card border-0">
                 <img src="{{ $uploadProductDesign->uploadProductDesignVariants[0]->image }}" alt="..." style="border : 0.5px solid black">
@@ -130,7 +130,11 @@
             </div>
         </a>
         </div>
-        @endforeach
+        @empty
+        <div class="text-center alert alert-dark">
+            Tidak Ada product
+        </div>
+        @endforelse
 
         </div>
     </div>
@@ -235,4 +239,36 @@
     </div>
 </div>
     {{-- end artist --}}
+
+
+    <div class="main">
+        <div class="row mt-5">
+            <div class="col-12">
+                <h1 class="text-center"><img src="{{ asset("assets/img/logo-us.svg") }}" class="w-25"></h1>
+                <h3 class="text-center fs-3" style="font-family: 'Myriad-Pro Bold'; color:#4c4c4c;">Platform indie art
+                    terbaik hasil kurator!</h3>
+                <h6 class="text-center fs-5" style="color: #4c4c4c;font-family:'Myriad-Pro';">Print On Demand Kaos
+                    Distro<br>Dengan Kualitas Cetak Resolusi Tinggi</h6>
+            </div>
+
+            <hr class="mt-4 mb-4">
+        </div>
+        <div class="row justify-content-evenly mt-4">
+            <div class="col-2">
+                <img src="{{asset("assets/img/us-1.svg")}}" alt="" srcset="" class="img-fluid w-75 ">
+            </div>
+            <div class="col-2">
+                <img src="{{asset("assets/img/us-2.svg")}}" alt="" srcset="" class="img-fluid w-75 ">
+            </div>
+            <div class="col-2">
+                <img src="{{asset("assets/img/us-3.svg")}}" alt="" srcset="" class="img-fluid w-75 ">
+            </div>
+            <div class="col-2">
+                <img src="{{asset("assets/img/us-4.svg")}}" alt="" srcset="" class="img-fluid w-75 ">
+            </div>
+            <div class="col-2">
+                <img src="{{asset("assets/img/us-5.svg")}}" alt="" srcset="" class="img-fluid w-75 ">
+            </div>
+        </div>
+    </div>
 </div>

@@ -162,11 +162,11 @@
                                 <div class="row mt-3">
                                     <div class="col-lg-3 d-flex">
                                         <i class="far fa-heart px-2"></i>
-                                        <h6>Favorite</h6>
+                                        <h6 style="font-family: 'Myriad-Pro Bold';">Favorite</h6>
                                     </div>
                                     <div class="col-lg-3 d-flex">
                                         <i class="fas fa-share-alt px-2"></i>
-                                        <h6>Share</h6>
+                                        <h6 style="font-family: 'Myriad-Pro Bold';">Share</h6>
                                     </div>
                                 </div>
                                 <hr>
@@ -207,15 +207,16 @@
     </section>
     <!-- Close Content -->
 <nav>
+    <hr class="main mt-3 mb-3">
     <div class="main mt-5">
         <div class="tabs">
             <input type="radio" class="tabs_item" name="tabs-example" id="home_tab" checked>
-            <label for="home_tab" class="tabs_name px-5" style="font-family: 'Myriad-Pro Bold';">Detail</label>
+            <label for="home_tab" class="tabs_name px-5 fs-4" style="font-family: 'Myriad-Pro Bold';">Detail</label>
             <div class="tabs_content mt-3">
                 {{-- {{ $product->description }} --}}
             </div>
             <input type="radio" class="tabs_item" name="tabs-example" id="about_tab">
-            <label for="about_tab" class="tabs_name px-5" style="font-family: 'Myriad-Pro Bold';">Reviews</label>
+            <label for="about_tab" class="tabs_name px-5 fs-4" style="font-family: 'Myriad-Pro Bold';">Reviews</label>
             <div class="tabs_content mt-3">
                <p></p>
             </div>
