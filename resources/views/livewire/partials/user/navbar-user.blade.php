@@ -1,6 +1,7 @@
 <div>
     <nav class="navbar d-flex">
         <a class="navbar-brand ms-3" href="{{ route("index") }}"><img src="{{ asset('logo/icon-logo.svg') }}" alt=""></a>
+
         <div class="nav d-flex justify-content-between gap-5">
             <div class="col-7">
                 <div class="input-group flex-wrap d-flex">

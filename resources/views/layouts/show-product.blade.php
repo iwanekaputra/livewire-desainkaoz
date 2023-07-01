@@ -37,7 +37,11 @@
         font-family: "Myriad-Pro";
         font-size: 16px;
     }
-
+    
+    @font-face{
+    font-family: "Myriad-Pro Bold";
+    src: url({{ asset('MyriadPro-Bold.otf') }}) format("truetype");
+    }
 
     @font-face{
     font-family: "Myriad-Pro Bold";
