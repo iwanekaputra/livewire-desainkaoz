@@ -169,7 +169,7 @@
                     <div class="row mt-5">
                         <div class="col-lg-7">
                             <div id="hoodie-capture" style="width : 500px; height : 500px">
-                                <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/hoodie-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/hoodie-black.jpg') }}'); background-repeat : no-repeat; background-size : 100% 100%"
                                     id="hoodie-main-image">
                                     <div class="hoodie-layer position-relative"
                                         style="width : 200px; top : 100px; left : 150px; height : 240px; ">
@@ -192,21 +192,21 @@
                                 <h6>Color : Black</h6>
                                 <div class="mt-3 d-flex gap-2">
                                     <div style="width : 40px; height : 40px; background-color : #2f2f2f; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-black.png"></div>
+                                        class="hoodie-color" data-image="hoodie-black.jpg"></div>
                                     <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-white.png"></div>
+                                        class="hoodie-color" data-image="hoodie-white.jpg"></div>
                                     <div style="width : 40px; height : 40px; background-color : #995f2f; border : 2px solid silver"
                                         class="hoodie-color" data-image="hoodie-chocolate.png"></div>
                                     <div style="width : 40px; height : 40px; background-color : #44672f; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-green.png"></div>
+                                        class="hoodie-color" data-image="hoodie-green.jpg"></div>
                                     <div style="width : 40px; height : 40px; background-color : #ad322d; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-red.png"></div>
+                                        class="hoodie-color" data-image="hoodie-red.jpg"></div>
                                     <div style="width : 40px; height : 40px; background-color : #3d4367; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-navy.png"></div>
+                                        class="hoodie-color" data-image="hoodie-navy.jpg"></div>
                                     <div style="width : 40px; height : 40px; background-color : #ab7a2b; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-yellow.png"></div>
+                                        class="hoodie-color" data-image="hoodie-yellow.jpg"></div>
                                     <div style="width : 40px; height : 40px; background-color : #6e6e6e; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-silver.png"></div>
+                                        class="hoodie-color" data-image="hoodie-silver.jpg"></div>
                                 </div>
                             </div>
                             <hr>
