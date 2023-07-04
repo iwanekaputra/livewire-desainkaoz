@@ -35,6 +35,7 @@ use App\Http\Livewire\Landingpage\Register;
 use App\Http\Livewire\User\CartIndex;
 use App\Http\Livewire\User\Checkout;
 use App\Http\Livewire\User\Custom;
+use App\Http\Livewire\User\Order;
 use App\Http\Livewire\User\Products\ProductsCategory;
 use App\Http\Livewire\User\Products\ProductsShow;
 use App\Http\Livewire\User\ProductsDesign\ProductsDesignCategory;
@@ -101,6 +102,8 @@ Route::get('shop/{id}', DesignerShop::class)->name('designer.shop');
 Route::get('products/design/category/{id}', ProductsDesignCategory::class)->name('products.design.category');
 
 Route::get('carts', CartIndex::class)->name('carts.index');
+Route::get('order', Order::class)->name('order');
+
 Route::get('checkout', Checkout::class)->name('checkout');
 
 Route::get('upload-design', UploadDesign::class)->name('designer.upload-design');

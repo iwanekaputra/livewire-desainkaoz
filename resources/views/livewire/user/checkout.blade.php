@@ -4,17 +4,19 @@
             <div class="col-lg-8">
                 <form action="">
                     <div class="row bg-white border">
-                        <h2>Checkout</h2>
+                        <h2 class="mt-2" style="font-family:'Myriad-Pro Bold';">Checkout</h2>
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" value="{{ auth()->user()->email }}" disabled>
-                              </div>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                    value="{{ auth()->user()->email }}" disabled>
+                            </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" value="{{ auth()->user()->first_name }}" disabled>
+                                <input type="text" class="form-control" id="username"
+                                    value="{{ auth()->user()->first_name }}" disabled>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -23,9 +25,10 @@
                                 <select class="form-select" aria-label="Default select example" wire:model="provinceId">
                                     <option selected>Pilih Provinsi</option>
                                     @foreach ($provinces as $province)
-                                        <option value="{{ $province['province_id'] }}">{{ $province['province'] }}</option>
+                                        <option value="{{ $province['province_id'] }}">{{ $province['province'] }}
+                                        </option>
                                     @endforeach
-                                  </select>
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -33,13 +36,13 @@
                                 <label for="city" class="form-label">Kota</label>
                                 <select class="form-select" aria-label="Default select example" wire:model="cityId">
                                     <option selected>Pilih Kota</option>
-                                    @if($cities)
-                                    @foreach ($cities as $city)
-                                        <option value="{{ $city['city_id'] }}">{{ $city['city_name'] }}</option>
-                                    @endforeach
+                                    @if ($cities)
+                                        @foreach ($cities as $city)
+                                            <option value="{{ $city['city_id'] }}">{{ $city['city_name'] }}</option>
+                                        @endforeach
                                     @endif
 
-                                  </select>
+                                </select>
                             </div>
                         </div>
 
@@ -51,7 +54,7 @@
                                     <option value="jne">JNE</option>
                                     <option value="pos">POS</option>
                                     <option value="tiki">TIKI</option>
-                                  </select>
+                                </select>
                             </div>
                         </div>
 
@@ -60,13 +63,15 @@
                                 <label for="city" class="form-label">Layanan</label>
                                 <select class="form-select" aria-label="Default select example" wire:model="ongkir">
                                     <option selected>Pilih Layanan</option>
-                                    @if($costs)
-                                    @foreach ($costs as $cost)
-                                        <option value="{{ $cost['cost'][0]['value'] }}">{{ $cost['service'] }} - {{ $cost['description'] }} - Rp. {{ number_format($cost['cost'][0]['value'], 0, ',','.') }}</option>
-                                    @endforeach
+                                    @if ($costs)
+                                        @foreach ($costs as $cost)
+                                            <option value="{{ $cost['cost'][0]['value'] }}">{{ $cost['service'] }} -
+                                                {{ $cost['description'] }} - Rp.
+                                                {{ number_format($cost['cost'][0]['value'], 0, ',', '.') }}</option>
+                                        @endforeach
                                     @endif
 
-                                  </select>
+                                </select>
                             </div>
                         </div>
 
@@ -74,7 +79,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" wire:model="address"></textarea>
-                              </div>
+                            </div>
                         </div>
                     </div>
 
@@ -82,7 +87,7 @@
             </div>
 
             <div class="col-lg-4">
-                <h2>Pesanan</h2>
+                <h2 style="font-family:'Myriad-Pro Bold';">Pesanan</h2>
                 <table class="table">
                     <tbody class="">
                         <tr>
@@ -90,7 +95,7 @@
                                 <h5>Sub Total</h5>
                             </th>
                             <td>
-                                Rp. {{ number_format($price,0,',','.') }}
+                                Rp. {{ number_format($price, 0, ',', '.') }}
                             </td>
                         </tr>
                         <tr>
@@ -103,7 +108,7 @@
                             <th>
                                 <h5>Total</h5>
                             </th>
-                            <td>Rp. {{ number_format($price + $ongkir, 0, ',','.') }}</td>
+                            <td>Rp. {{ number_format($price + $ongkir, 0, ',', '.') }}</td>
                         </tr>
                     </tbody>
                 </table>

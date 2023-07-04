@@ -109,11 +109,11 @@ try {
 
 // Success
 if ($response->transaction_status == 'capture') {
-    echo "<p>Transaksi berhasil.</p>";
-    echo "<p>Status transaksi untuk order id $response->order_id: " .
+    echo "<p>Transaksi Berhasil.</p>";
+    echo "<p>Status Transaksi untuk Order ID $response->order_id: " .
         "$response->transaction_status</p>";
 
-    echo "<h3>Detail transaksi:</h3>";
+    echo "<h3>Detail Transaksi:</h3>";
     echo "<pre>";
     var_dump($response);
     echo "</pre>";

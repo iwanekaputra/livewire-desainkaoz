@@ -65,7 +65,7 @@ class Login extends Component
             if($user->role_id == "1") {
                 $this->dispatchBrowserEvent('swal:modal', [
                     'type' => 'success',
-                    'message' => 'Berhasil masuk',
+                    'message' => 'Berhasil Masuk',
                     'text' => 'Mohon ditunggu',
                     'timer' => 3000,
                     'action' => 'moveToDashboard'
@@ -75,7 +75,7 @@ class Login extends Component
             if($user->role_id == "2" || $user->role_id == "3") {
                 $this->dispatchBrowserEvent('swal:modal', [
                     'type' => 'success',
-                    'message' => 'Berhasil masuk',
+                    'message' => 'Berhasil Masuk',
                     'text' => 'Mohon ditunggu',
                     'timer' => 3000,
                     'action' => 'moveToIndex'

@@ -872,7 +872,7 @@
                         <textarea class="form-control" id="description" rows="3" wire:model="description" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="categort" class="form-label">Pilih Kategeri</label>
+                        <label for="categort" class="form-label">Pilih Kategori</label>
                         <select class="form-select" aria-label="Default select example"
                             wire:model="design_category_id" required>
                             <option>---Pilih Kategori---</option>

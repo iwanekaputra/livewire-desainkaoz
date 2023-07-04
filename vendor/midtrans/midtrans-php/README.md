@@ -305,7 +305,7 @@ For full example on Credit Card 3DS transaction refer to:
 ```php
 // Success
 if($response->transaction_status == 'capture') {
-    echo "<p>Transaksi berhasil.</p>";
+    echo "<p>Transaksi Berhasil.</p>";
     echo "<p>Status transaksi untuk order id $response->order_id: " .
         "$response->transaction_status</p>";
 
