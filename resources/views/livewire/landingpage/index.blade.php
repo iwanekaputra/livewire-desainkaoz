@@ -165,14 +165,10 @@
         </a></h4> --}}
     </div>
     <div class="row" style="gap : 2rem">
-        @foreach ($productDesigns as $productDesign)
-            <div class="col-lg-2 col-6 mt-2">
-                <a href="{{ route('products.show', $uploadProductDesign->id) }}"
-                    class="text-decoration-none text-dark">
-                    <div class="card child-card border-0">
-                        <img src="{{ asset('uploads/design/' . $productDesign->image) }}" class=""
-                            alt="..." style="border : 0.5px solid black">
-
+        @forelse ($productDesigns as $productDesign)
+        <div class="col-lg-2 col-6 mt-2">
+            <div class="card child-card border-0">
+                <img src="{{ asset('uploads/design/' . $productDesign->image) }}" class="" alt="..." style="border : 0.5px solid black">
                         <div class="border shadow d-flex justify-content-center align-items-center rounded-circle position-absolute top-0 end-0"
                             style="width : 30px; height : 30px">
                             <div class="con-like">
@@ -208,7 +204,13 @@
                     </div>
                 </a>
             </div>
-        @endforeach
+        </div>
+        @empty
+            <div class="text-center alert alert-dark">
+                Tidak Ada Design
+            </div>
+        @endforelse
+
     </div>
 </div>
 {{-- end design --}}
@@ -221,24 +223,22 @@
         <h4 style="font-family:'Myriad-Pro Bold';">Featured Artist</h4>
     </div>
     <div class="row mt-4" style="margin-bottom: 5rem; gap: 2rem">
-        @foreach ($stores as $store)
-            <div class="col-lg-2 mt-2 mb-5">
-                <div class="card border-0 shadow child-card" style="height : 300px">
-                    <img src="{{ asset('uploads/images/' . $store->front_image) }}" class="card-img-top"
-                        alt="...">
-                    <div class="card-body d-block text-center profile position-relative border-0"
-                        style="top : -40px;">
-                        <img src="{{ asset('uploads/images/' . $store->image) }}" alt="" width="40px"
-                            class="rounded-circle img-thumbnail">
-                        <p style="font-size: 15px" class="mt-2" style="font-family:'Myriad-Pro Bold';">DesainKaoz
-                        </p>
-                        <a href="{{ route('designer.shop', $store->user->id) }}"
-                            class="btn btn-white rounded-0 shadow">View Shop</a>
-                    </div>
+        @forelse ($stores as $store)
+        <div class="col-lg-2 mt-2 mb-5">
+            <div class="card border-0 shadow child-card" style="height : 300px">
+                <img src="{{ asset('uploads/images/' . $store->front_image) }}" class="card-img-top" alt="...">
+                <div class="card-body d-block text-center profile position-relative border-0" style="top : -40px;">
+                    <img src="{{ asset('uploads/images/' . $store->image) }}" alt="" width="40px" class="rounded-circle img-thumbnail">
+                    <p style="font-size: 15px" class="mt-2" style="font-family:'Myriad-Pro Bold';">DesainKaoz</p>
+                    <a href="{{ route('designer.shop', $store->user->id) }}" class="btn btn-white rounded-0 shadow">View Shop</a>
                 </div>
             </div>
-        @endforeach
-
+        </div>
+        @empty
+            <div class="text-center alert alert-dark">
+                Tidak Ada toko
+            </div>
+        @endforelse
         <hr>
     </div>
 

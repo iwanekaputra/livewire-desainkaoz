@@ -43,7 +43,7 @@
                             </li>
                         </form>
                     </ul>
-                  </div>
+                </div>
             </li>
             @else
                 <li> <a class="nav-link" aria-current="page" href="{{ route('login') }}">Masuk</a></li>
@@ -61,9 +61,11 @@
     <div class="row mt-3">
         <div class="col d-flex gap-5">
             <li class="list-group-item">
-                <h6 class="mouse-point" data-bs-toggle="dropdown" aria-expanded="false">Desain Kategori</h6>
-                <div class="dropdown shadow">
-                    <ul class="dropdown-menu">
+                <div class="dropdown">
+                    <a class="text-decoration-none text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Desain Kategori
+                    </a>
+                    <ul class="dropdown-menu w-100">
                         @foreach ($designCategories as $designCategory)
                             <li class="py-2">
                                 <a class="dropdown-item" href="{{ route('products.design.category', $designCategory->id) }}">
@@ -72,14 +74,15 @@
                                 </a>
                             </li>
                         @endforeach
-
                     </ul>
                 </div>
             </li>
             <li class="list-group-item">
-                <h6 class="mouse-point" data-bs-toggle="dropdown" aria-expanded="false">Appareal</h6>
                 <div class="dropdown">
-                    <ul class="dropdown-menu">
+                    <a class="text-decoration-none text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Apparel
+                    </a>
+                    <ul class="dropdown-menu w-100">
                         @foreach ($appareals as $appareal)
                         <li class="py-2">
                             <a class="dropdown-item" href="#">
@@ -87,14 +90,15 @@
                             {{ $appareal->name }}</a>
                         </li>
                         @endforeach
-
                     </ul>
                 </div>
             </li>
             <li class="list-group-item">
-                <h6 class="mouse-point" data-bs-toggle="dropdown" aria-expanded="false">Accesories</h6>
                 <div class="dropdown">
-                    <ul class="dropdown-menu">
+                    <a class="text-decoration-none text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Accessories
+                    </a>
+                    <ul class="dropdown-menu w-100">
                         @foreach ($accesories as $accesory)
                         <li class="py-2">
                             <a class="dropdown-item" href="#">
@@ -102,10 +106,30 @@
                             {{ $accesory->name }}</a>
                         </li>
                         @endforeach
-
                     </ul>
                 </div>
-            </li><li class="list-group-item"><h6>Kids</h6></li>
+            </li>
+            <li class="list-group-item">
+                <div class="dropdown">
+                    <a class="text-decoration-none text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Kids
+                    </a>
+                    <ul class="dropdown-menu w-100">
+                        @forelse ($kids as $kid)
+                        <li class="py-2">
+                            <a class="dropdown-item" href="#">
+                            <img class="px-2" src="{{ asset('storage/produk/' . $accesory->image) }}" alt="" width="40">
+                            {{ $accesory->name }}</a>
+                        </li>
+                        @empty
+                            <li class="py-2">
+                                <a class="dropdown-item" href="#">
+                                Not Available</a>
+                            </li>
+                        @endforelse
+                    </ul>
+                </div>
+            </li>
             <li class="list-group-item"><h6><a href="{{ route('custom') }}" class="text-decoration-none text-dark"> Custom</a></h6></li>
         </div>
     </div>
