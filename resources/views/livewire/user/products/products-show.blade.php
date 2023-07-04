@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class=" mb-3">
-                        <img class="card-img img-fluid border main-image" src="{{ $image }}" alt="Card image cap" id="product-detail" >
+                        <img wire:ignore.self class="card-img img-fluid border main-image" src="{{ $image }}" alt="Card image cap" id="product-detail" >
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -109,10 +109,10 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <ul class="list-inline pb-3">
-                                        <div wire:ignore>
+                                        <div >
                                             @foreach ($images as $image)
                                                 <li class="list-inline-item mt-2">
-                                                    <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $image->color }};" data-img="{{ $image->image }}"></span>
+                                                    <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $image->color }};" data-img="{{ $image->image }}" wire:click="addColor('{{ $image->color }}')"></span>
                                                 </li>
                                             @endforeach
 

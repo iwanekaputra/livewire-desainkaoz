@@ -28,7 +28,8 @@ class NavbarUser extends Component
         return view('livewire.partials.user.navbar-user', [
             'designCategories' => DesignCategory::get(),
             'appareals' => Category::where('sub_category_id', 1)->get(),
-            'accesories' => Category::where('sub_category_id', 2)->get()
+            'accesories' => Category::where('sub_category_id', 2)->get(),
+            'kids' => Category::where('sub_category_id', 3)->get()
         ])->extends('layouts.app');
     }
 }

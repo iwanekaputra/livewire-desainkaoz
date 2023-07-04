@@ -21,6 +21,7 @@ class ProductsShow extends Component
     public $username;
     public $total_price;
     public $size;
+    public $color;
     public $images;
     public $productDesign;
 
@@ -63,7 +64,8 @@ class ProductsShow extends Component
         $cart = Cart::create([
             'upload_product_design_id' => $this->product_id,
             'user_id' => auth()->user()->id,
-            'size' => "M",
+            'size' => $this->size,
+            'color' => $this->color,
             'total_price' => $this->total_price,
             'quantity' => 1
         ]);
@@ -82,6 +84,10 @@ class ProductsShow extends Component
 
     public function addSize($size) {
         $this->size = $size;
+    }
+
+    public function addColor($color) {
+        $this->color = $color;
     }
 
     public function getCountProduct() {

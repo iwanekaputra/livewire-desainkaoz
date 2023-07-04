@@ -51,6 +51,17 @@
         </li>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+            <span>Transaction</span>
+        </h6>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.transactions.index') }}">
+                <i class="fa fa-usd" aria-hidden="true"></i>
+                Transaction
+            </a>
+        </li>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
             <span>Notikasi</span>
         </h6>
 

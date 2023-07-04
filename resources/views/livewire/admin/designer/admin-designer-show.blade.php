@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <img src="{{ $productDesign->image }}" alt="">
+            <img src="{{ $productDesign->uploadProductDesignVariants->first()->image }}" alt="">
         </div>
     </div>
     <div class="row mt-5">

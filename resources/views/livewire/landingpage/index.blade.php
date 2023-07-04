@@ -149,9 +149,9 @@
         </a></h4> --}}
     </div>
     <div class="row" style="gap : 2rem">
-        @foreach ($productDesigns as $productDesign)
+        @forelse ($productDesigns as $productDesign)
         <div class="col-lg-2 col-6 mt-2">
-            <a href="{{ route('products.show', $uploadProductDesign->id) }}" class="text-decoration-none text-dark"><div class="card child-card border-0">
+            <div class="card child-card border-0">
                 <img src="{{ asset('uploads/design/' . $productDesign->image) }}" class="" alt="..." style="border : 0.5px solid black">
 
                 <div class="border shadow d-flex justify-content-center align-items-center rounded-circle position-absolute top-0 end-0" style="width : 30px; height : 30px" >
@@ -180,9 +180,12 @@
                     <p class="card-title">By {{ $productDesign->user->first_name }}</p>
                 </div>
             </div>
-        </a>
         </div>
-        @endforeach
+        @empty
+            <div class="text-center alert alert-dark">
+                Tidak Ada Design
+            </div>
+        @endforelse
     </div>
 </div>
     {{-- end design --}}
@@ -195,7 +198,7 @@
         <h4 style="font-family:'Myriad-Pro Bold';">Featured Artist</h4>
     </div>
     <div class="row mt-4" style="margin-bottom: 5rem; gap: 2rem">
-        @foreach ($stores as $store)
+        @forelse ($stores as $store)
         <div class="col-lg-2 mt-2 mb-5">
             <div class="card border-0 shadow child-card" style="height : 300px">
                 <img src="{{ asset('uploads/images/' . $store->front_image) }}" class="card-img-top" alt="...">
@@ -206,7 +209,11 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @empty
+            <div class="text-center alert alert-dark">
+                Tidak Ada toko
+            </div>
+        @endforelse
 
         <hr>
     </div>

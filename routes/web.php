@@ -14,6 +14,8 @@ use App\Http\Livewire\Admin\Products\AdminProductsIndex;
 use App\Http\Livewire\Admin\Sliders\AdminSlidersCreate;
 use App\Http\Livewire\Admin\SubCategories\AdminSubCategoriesCreate;
 use App\Http\Livewire\Admin\SubCategories\AdminSubCategoriesIndex;
+use App\Http\Livewire\Admin\Transactions\AdminTransactionsEdit;
+use App\Http\Livewire\Admin\Transactions\AdminTransactionsIndex;
 use App\Http\Livewire\Admin\Users\AdminUsersIndex;
 use App\Http\Livewire\Admin\VariantProducts\AdminColorsCreate;
 use App\Http\Livewire\Admin\VariantProducts\AdminSizesCreate;
@@ -85,6 +87,9 @@ Route::get('/admin/sub-categories/create', AdminSubCategoriesCreate::class)->nam
 
 Route::get('/admin/designer/index', AdminDesignerIndex::class)->name('admin.designer.index');
 Route::get('/admin/designer/show/{id}', AdminDesignerShow::class)->name('admin.designer.show');
+
+Route::get('/admin/transactions', AdminTransactionsIndex::class)->name('admin.transactions.index');
+Route::get('/admin/transactions/{id}', AdminTransactionsEdit::class)->name('admin.transactions.edit');
 
 Route::get('products', ProductsShow::class)->name('products.index');
 Route::get('products/category/{id}', ProductsCategory::class)->name('products.category');

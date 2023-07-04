@@ -18,6 +18,7 @@ class CreateCartsTable extends Migration
             $table->foreignId('upload_product_design_id');
             $table->foreignId('user_id');
             $table->string('size');
+            $table->string('color');
             $table->string('total_price');
             $table->string('quantity');
             $table->timestamps();

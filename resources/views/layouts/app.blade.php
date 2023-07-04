@@ -391,6 +391,14 @@
         border : 1px dashed white
     }
 
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .dropdown>.dropdown-toggle:active {
+        pointer-events: none;
+    }
+
     .dropdown-item:hover {
         background-color: transparent;
     }

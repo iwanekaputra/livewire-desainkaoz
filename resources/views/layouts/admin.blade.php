@@ -29,7 +29,7 @@
 
     <style>
 
-    @font-face{
+@font-face{
         font-family: "Myriad-Pro";
         src: url({{ asset('MyriadPro-Regular.otf') }}) format("truetype");
     }
@@ -37,6 +37,11 @@
     *  {
         font-family: "Myriad-Pro";
         font-size: 16px;
+    }
+
+    @font-face{
+        font-family: "Myriad-Pro Bold";
+        src: url({{ asset('MyriadPro-Bold.otf') }}) format("truetype");
     }
 
       .bd-placeholder-img {
