@@ -26,6 +26,8 @@ class Checkout extends Component
     public $ongkir;
     public $courier;
     public $address;
+    public $province;
+    public $city;
 
     public function mount() {
         $this->carts = Cart::where('user_id', auth()->user()->id)->get();
@@ -46,21 +48,27 @@ class Checkout extends Component
             'key' => 'b8f31ec36be6ecde1386c67c11067ee6'
         ]);
 
-        dd($response->json());
+        $results = $response['rajaongkir']['results']['province'];
+        $this->province = $results;
+
         $this->getCities();
     }
 
-    // public function updatedCityId() {
-    //     // $this->getCost();
-    // }
+    public function updatedCityId() {
+        $response = Http::get('https://api.rajaongkir.com/starter/city', [
+            'id' => $this->cityId,
+            'province' => $this->provinceId,
+            'key' => 'b8f31ec36be6ecde1386c67c11067ee6'
+        ]);
+
+        $results = $response->json();
+
+        $this->city = $results['rajaongkir']['results']['city_name'];
+    }
 
     public function updatedCourier() {
         $this->getCost();
     }
-
-    // public function updatedOngkir() {
-    //     dd($this->ongkir);
-    // }
 
     public function getCities() {
         $response = Http::get('https://api.rajaongkir.com/starter/city', [
@@ -89,7 +97,11 @@ class Checkout extends Component
     public function pay() {
 
         $user = Auth::user();
-        $user->update(['address' => $this->address]);
+        $user->update([
+            'address' => $this->address,
+            'province' => $this->province,
+            'city' => $this->city
+        ]);
 
         $code = 'STORE-' . mt_rand(000000, 999999);
 
