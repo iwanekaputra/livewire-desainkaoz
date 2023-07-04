@@ -189,10 +189,20 @@
                                     <button type="submit" class="btn btn-dark btn-lg rounded-0" name="submit"
                                         value="buy">BELI</button>
                                 </div>
+                                @if (auth()->user())
                                 <div class="col-5 d-grid">
                                     <button class="btn btn-dark btn-lg rounded-0"
                                         wire:click="addCart">KERANJANG</button>
                                 </div>
+                                @else
+                                <div class="col-5 d-grid">
+                                    <a href="{{ route('login') }}" class="btn btn-dark btn-lg rounded-0"
+                                    >KERANJANG</a>
+                                </div>
+                                @endif
+
+
+
                             </div>
                             <div class="row mt-3">
                                 <div class="col-lg-3 d-flex">
