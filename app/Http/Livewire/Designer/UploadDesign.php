@@ -28,7 +28,7 @@ class UploadDesign extends Component
     public $imageDesign;
 
     protected $listeners = [
-        'tes',
+        'submitForm',
         'change',
         'stepBack'
     ];
@@ -41,29 +41,9 @@ class UploadDesign extends Component
     }
 
 
-    public function changeStep($step) {
-        $this->step = $step;
-    }
 
-    public function tes($data) {
-        $this->step = 2;
-        $this->base = $data;
-    }
 
-    public function change() {
-        $this->step = 3;
-    }
-
-    public function stepChange() {
-        $this->step = 3;
-    }
-
-    public function stepBack() {
-        $this->step = 1;
-    }
-
-    public function submitForm() {
-
+    public function submitForm($data) {
         if($this->imageDesign) {
             $image_name=time().'-'.$this->imageDesign->getClientOriginalName();
 
@@ -71,37 +51,37 @@ class UploadDesign extends Component
             $img_path = asset('uploads/design/'.$image_name);
 
             $productDesign = ProductDesign::create([
-                'design_category_id' => $this->design_category_id,
+                'design_category_id' => $data['designCategoryId'],
                 'category_id' => 1,
                 'user_id' => auth()->user()->id,
-                'title' => $this->title,
-                'tags' => $this->tags,
+                'title' => $data['title'],
+                'tags' => $data['tags'],
                 'image' => $image_name,
-                'description' => $this->description,
-                'price' => $this->priceTshirt
+                'description' => $data['description'],
+                'price' => $data['priceTshirt']
             ]);
         }
 
         $createTshirt = UploadProductDesign::create([
             'category_id' => 1,
             'product_design_id' => $productDesign->id,
-            'title' => $this->title,
-            'design_category_id' => $this->design_category_id,
-            'tags' => $this->tags,
-            'description' => $this->description,
-            'url' => $this->url,
-            'price_design' => $this->priceTshirt,
+            'title' => $data['title'],
+            'design_category_id' => $data['designCategoryId'],
+            'tags' => $data['tags'],
+            'description' => $data['description'],
+            'url' => $data['url'],
+            'price_design' => $data['priceTshirt'],
             'is_approved' => 0,
-            'total_price' => 100000 + $this->priceTshirt,
+            'total_price' => 100000 + $data['priceTshirt'],
             'user_id' => auth()->user()->id
         ]);
 
-        if($this->base['tshirt']) {
-            foreach($this->base['tshirt'] as $base) {
+        if($data['tshirt']) {
+            foreach($data['tshirt'] as $tshirt) {
                 UploadProductDesignVariant::create([
-                    'color' => $base[0],
+                    'color' => $tshirt[0],
                     'upload_product_design_id' => $createTshirt->id,
-                    'image' => $base[1]
+                    'image' => $tshirt[1]
                 ]);
             }
         }
@@ -110,23 +90,23 @@ class UploadDesign extends Component
         $createHoodie = UploadProductDesign::create([
             'category_id' => 2,
             'product_design_id' => $productDesign->id,
-            'title' => $this->title,
-            'design_category_id' => $this->design_category_id,
-            'tags' => $this->tags,
-            'description' => $this->description,
-            'url' => $this->url,
-            'price_design' => $this->priceHoodie,
+            'title' => $data['title'],
+            'design_category_id' => $data['designCategoryId'],
+            'tags' => $data['tags'],
+            'description' => $data['description'],
+            'url' => $data['url'],
+            'price_design' => $data['priceHoodie'],
             'is_approved' => 0,
-            'total_price' => 200000 + $this->priceHoodie,
+            'total_price' => 200000 + $data['priceHoodie'],
             'user_id' => auth()->user()->id
         ]);
 
-        if($this->base['hoodie']) {
-            foreach($this->base['hoodie'] as $base) {
+        if($data['hoodie']) {
+            foreach($data['hoodie'] as $hoodie) {
                 UploadProductDesignVariant::create([
-                    'color' => $base[0],
+                    'color' => $hoodie[0],
                     'upload_product_design_id' => $createHoodie->id,
-                    'image' => $base[1]
+                    'image' => $hoodie[1]
                 ]);
             }
         }
@@ -135,23 +115,23 @@ class UploadDesign extends Component
         $createSweater = UploadProductDesign::create([
             'category_id' => 3,
             'product_design_id' => $productDesign->id,
-            'title' => $this->title,
-            'design_category_id' => $this->design_category_id,
-            'tags' => $this->tags,
-            'description' => $this->description,
-            'url' => $this->url,
-            'price_design' => $this->priceSweater,
+            'title' => $data['title'],
+            'design_category_id' => $data['designCategoryId'],
+            'tags' => $data['tags'],
+            'description' => $data['description'],
+            'url' => $data['url'],
+            'price_design' => $data['priceSweater'],
             'is_approved' => 0,
-            'total_price' => 150000 + $this->priceSweater,
+            'total_price' => 150000 + $data['priceSweater'],
             'user_id' => auth()->user()->id
         ]);
 
-        if($this->base['sweater']) {
-            foreach($this->base['sweater'] as $base) {
+        if($data['sweater']) {
+            foreach($data['sweater'] as $sweater) {
                 UploadProductDesignVariant::create([
-                    'color' => $base[0],
+                    'color' => $sweater[0],
                     'upload_product_design_id' => $createSweater->id,
-                    'image' => $base[1]
+                    'image' => $sweater[1]
                 ]);
             }
         }
@@ -159,23 +139,23 @@ class UploadDesign extends Component
         $createHat = UploadProductDesign::create([
             'category_id' => 4,
             'product_design_id' => $productDesign->id,
-            'title' => $this->title,
-            'design_category_id' => $this->design_category_id,
-            'tags' => $this->tags,
-            'description' => $this->description,
-            'url' => $this->url,
-            'price_design' => $this->priceHat,
+            'title' => $data['title'],
+            'design_category_id' => $data['designCategoryId'],
+            'tags' => $data['tags'],
+            'description' => $data['description'],
+            'url' => $data['url'],
+            'price_design' => $data['priceHat'],
             'is_approved' => 0,
-            'total_price' => 50000 + $this->priceHat,
+            'total_price' => 50000 + $data['priceHat'],
             'user_id' => auth()->user()->id
         ]);
 
-        if($this->base['hat']) {
-            foreach($this->base['hat'] as $base) {
+        if($data['hat']) {
+            foreach($data['hat'] as $hat) {
                 UploadProductDesignVariant::create([
-                    'color' => $base[0],
+                    'color' => $hat[0],
                     'upload_product_design_id' => $createHat->id,
-                    'image' => $base[1]
+                    'image' => $hat[1]
                 ]);
             }
         }
@@ -183,23 +163,23 @@ class UploadDesign extends Component
         $createBag = UploadProductDesign::create([
             'category_id' => 4,
             'product_design_id' => $productDesign->id,
-            'title' => $this->title,
-            'design_category_id' => $this->design_category_id,
-            'tags' => $this->tags,
-            'description' => $this->description,
-            'url' => $this->url,
-            'price_design' => $this->priceBag,
+            'title' => $data['title'],
+            'design_category_id' => $data['designCategoryId'],
+            'tags' => $data['tags'],
+            'description' => $data['description'],
+            'url' => $data['url'],
+            'price_design' => $data['priceBag'],
             'is_approved' => 0,
-            'total_price' => 20000 + $this->priceBag,
+            'total_price' => 20000 + $data['priceBag'],
             'user_id' => auth()->user()->id
         ]);
 
-        if($this->base['bag']) {
-            foreach($this->base['bag'] as $base) {
+        if($data['bag']) {
+            foreach($data['bag'] as $bag) {
                 UploadProductDesignVariant::create([
-                    'color' => $base[0],
+                    'color' => $bag[0],
                     'upload_product_design_id' => $createBag->id,
-                    'image' => $base[1]
+                    'image' => $bag[1]
                 ]);
             }
         }

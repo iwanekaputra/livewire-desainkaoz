@@ -202,8 +202,6 @@
                             <p class="card-title">By {{ $productDesign->user->first_name }}</p>
                         </div>
                     </div>
-                </a>
-            </div>
         </div>
         @empty
             <div class="text-center alert alert-dark">
