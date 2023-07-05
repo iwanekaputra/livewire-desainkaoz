@@ -18,7 +18,8 @@
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $cart->uploadProductDesign->title }}</td>
-                                <td>{{ $cart->quantity }}</td>
+                                <td><input class="form-control" type="number" value="{{ $cart->quantity }}"
+                                        aria-label="default input example"></td>
                                 <td>Rp. {{ number_format($cart->total_price, 0, ',', '.') }}</td>
                                 <td>
                                     <h3>
