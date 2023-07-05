@@ -45,10 +45,6 @@
                     </li>
                 </ul>
                 <hr>
-                <a href="#" class="btn btn-dark position-relative" style="left:90%;" data-abc="true"> Beli Lagi
-                </a>
-                <a href="#" class="btn btn-dark position-relative" style="left:72%;" data-abc="true"> Lacak
-                </a>
             </div>
         </article>
         <article class="card mt-3">
@@ -96,10 +92,6 @@
                     </li>
                 </ul>
                 <hr>
-                <a href="#" class="btn btn-dark position-relative" style="left:90%;" data-abc="true"> Beli Lagi
-                </a>
-                <a href="#" class="btn btn-dark position-relative" style="left:72%;" data-abc="true"> Lacak
-                </a>
             </div>
         </article>
         <article class="card mt-3">
@@ -148,11 +140,6 @@
                     </li>
                 </ul>
                 <hr>
-                <a href="#" class="btn btn-dark position-relative" style="left:90%;" data-abc="true"> Beli
-                    Lagi
-                </a>
-                <a href="#" class="btn btn-dark position-relative" style="left:72%;" data-abc="true"> Lacak
-                </a>
             </div>
         </article>
         <article class="card mt-3">
@@ -202,9 +189,6 @@
                     </li>
                 </ul>
                 <hr>
-                <a href="#" class="btn btn-dark position-relative" style="left:90%;" data-abc="true"> Beli
-                    Lagi
-                </a>
             </div>
         </article>
     </div>
