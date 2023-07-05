@@ -56,7 +56,7 @@ class Register extends Component
 
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
-            'message' => 'Silahkan Cek email untuk verifikasi akun',
+            'message' => 'Silahkan Cek Email Untuk Verifikasi Akun',
             'text' => '',
             'timer' => 3000,
             'action' => 'moveToIndex'
