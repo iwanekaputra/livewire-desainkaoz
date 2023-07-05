@@ -53,8 +53,7 @@ class ProductsShow extends Component
 
             $this->dispatchBrowserEvent('swal:modal', [
                 'type' => 'success',
-                'message' => 'Berhasil update ke keranjang!',
-                'text' => 'oke',
+                'message' => 'Berhasil Update ke Keranjang!',
                 'timer' => 3000
             ]);
 
@@ -73,8 +72,7 @@ class ProductsShow extends Component
         if($cart) {
             $this->dispatchBrowserEvent('swal:modal', [
                 'type' => 'success',
-                'message' => 'Berhasil tambah ke keranjang!',
-                'text' => 'oke',
+                'message' => 'Berhasil Tambah ke Keranjang!',
                 'timer' => 3000
             ]);
 

@@ -820,9 +820,10 @@
                         <textarea class="form-control" id="description" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="categort" class="form-label">Pilih Kategeri</label>
-                        <select class="form-select" aria-label="Default select example" id="designCategoryId"
-                            required>
+                        <label for="categort" class="form-label">Pilih Kategori</label>
+                        <select class="form-select" aria-label="Default select example"
+                            wire:model="design_category_id" required>
+
                             <option>---Pilih Kategori---</option>
                             @foreach ($designCategories as $designCategory)
                                 <option value="{{ $designCategory->id }}">{{ $designCategory->name }}</option>

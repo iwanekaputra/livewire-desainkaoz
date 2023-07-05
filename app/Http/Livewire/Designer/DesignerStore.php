@@ -69,7 +69,7 @@ class DesignerStore extends Component
 
             return $this->dispatchBrowserEvent('swal:modal', [
                 'type' => 'success',
-                'message' => 'Berhasil update toko',
+                'message' => 'Berhasil Update Toko',
                 'text' => '',
                 'timer' => 3000,
                 'action' => ''
@@ -90,7 +90,7 @@ class DesignerStore extends Component
 
         return $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
-            'message' => 'Berhasil tambah toko',
+            'message' => 'Berhasil Tambah Toko',
             'text' => '',
             'timer' => 3000,
             'action' => ''

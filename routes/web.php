@@ -35,6 +35,7 @@ use App\Http\Livewire\Landingpage\Register;
 use App\Http\Livewire\User\CartIndex;
 use App\Http\Livewire\User\Checkout;
 use App\Http\Livewire\User\Custom;
+use App\Http\Livewire\User\Order;
 use App\Http\Livewire\User\Products\ProductsCategory;
 use App\Http\Livewire\User\Products\ProductsShow;
 use App\Http\Livewire\User\ProductsDesign\ProductsDesignCategory;
@@ -96,6 +97,19 @@ Route::prefix('designer')->middleware(['auth', 'designer'])->group(function () {
     Route::get('design', DesignerDesign::class)->name('designer.design');
 });
 
+Route::get('products', ProductsShow::class)->name('products.index');
+Route::get('products/category/{id}', ProductsCategory::class)->name('products.category');
+Route::get('products/{id}', ProductsShow::class)->name('products.show');
+
+Route::get('shop/{id}', DesignerShop::class)->name('designer.shop');
+
+
+Route::get('products/design/category/{id}', ProductsDesignCategory::class)->name('products.design.category');
+
+Route::get('carts', CartIndex::class)->name('carts.index');
+Route::get('order', Order::class)->name('order');
+
+Route::get('checkout', Checkout::class)->name('checkout');
 
 
 Route::get('carts', CartIndex::class)->name('carts.index')->middleware(['auth']);
