@@ -12,13 +12,13 @@
     </div>
     <div class="main">
         <div class="row mt-5">
-            <div class="col-lg-4 " style="{{ $step === 1 ? 'background-color: #9da19e' : 'background-color: silver' }}">
+            <div class="col-lg-4" id="upload-design" style="background-color: #9da19e">
                 <h3 class="text-center mt-2" style="font-family: 'Myriad-Pro Bold';">Upload Design</h3>
             </div>
-            <div class="col-lg-4" style="{{ $step === 2 ? 'background-color: #9da19e' : 'background-color: silver' }}">
+            <div class="col-lg-4" id="harga" style="background-color: silver">
                 <h3 class="text-center mt-2" style="font-family: 'Myriad-Pro Bold';">Harga</h3>
             </div>
-            <div class="col-lg-4" style="{{ $step === 3 ? 'background-color: #9da19e' : 'background-color: silver' }}">
+            <div class="col-lg-4" id="publish" style="background-color: silver">
                 <h3 class="text-center mt-2" style="font-family: 'Myriad-Pro Bold';">Publish</h3>
             </div>
         </div>
@@ -173,7 +173,7 @@
                             <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/hoodie-black.jpg') }}'); background-repeat : no-repeat; background-size : 100% 100%"
                                 id="hoodie-main-image">
                                 <div class="hoodie-layer position-relative"
-                                    style="width : 200px; top : 100px; left : 150px; height : 240px; ">
+                                    style="width : 200px; top : 80px; left : 150px; height : 360px; ">
                                 </div>
                             </div>
                         </div>
@@ -402,6 +402,22 @@
                             type="button">Next</button>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div id="sticker-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-color : white"
+                                id="sticker-main-image">
+                                <div class="sticker-layer position-relative"
+                                    style="width : 270px; top : 140px; left : 120px; height : 220px; ">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
@@ -510,7 +526,7 @@
                             </div>
                             <div class="row">
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0" id="back-step-1" style="width : 45%"><i
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
                                     <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
@@ -580,7 +596,7 @@
                             </div>
                             <div class="row">
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0" style="width : 45%"><i
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
                                     <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
@@ -650,7 +666,7 @@
                             </div>
                             <div class="row">
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0" style="width : 45%"><i
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
                                     <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
@@ -721,7 +737,7 @@
                             </div>
                             <div class="row">
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0" style="width : 45%"><i
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
                                     <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
@@ -791,7 +807,72 @@
                             </div>
                             <div class="row">
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0" style="width : 45%"><i
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
+                                            class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        Back</button>
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
+                                            class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-6" id="preview-image">
+                        <img class="border" id="sticker-image-step-2" alt="" width="400">
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <h4>Sticker</h4>
+
+                        <div class="mt-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <p class="mt-2"><strong>Profit Estimator for: </strong></p>
+                                    <p class="mt-4"><strong>Harga Dasar: </strong></p>
+                                    <p class="mt-3"><strong>Royalti Desain </strong></p>
+                                    <p class="mt-4"><strong>Harga Jual: </strong></p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Sticker Vinyl Putih</button>
+                                    <p class="mt-3" id="sticker-harga-dasar">5000</p>
+                                    <input type="number" class="" id="price-sticker">
+                                    <p class="mt-3" id="sticker-harga-jual"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td scope="col">10 items</td>
+                                            <td scope="col" class="text-end" id="sticker-10-items"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">100 items</td>
+                                            <td scope="col" class="text-end" id="sticker-100-items"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">250 items</td>
+                                            <td scope="col" class="text-end" id="sticker-250-items"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">500 items</td>
+                                            <td scope="col" class="text-end" id="sticker-500-items"></td>
+                                        </tr>
+                                        <tr class="bg-warning">
+                                            <td scope="col">1000 items</td>
+                                            <td scope="col" class="text-end" id="sticker-1000-items"></td>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
                                     <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
@@ -837,8 +918,9 @@
                         <label for="url" class="form-label">URL</label>
                         <input type="text" class="form-control" id="url" required>
                     </div>
-
+                    <button class="btn btn-dark mt-4 rounded-0" id="back-step-2">Back</button>
                     <button class="btn btn-dark mt-4 rounded-0" id="publish">Publish</button>
+
             </div>
 
             <div class="col-lg-5">
@@ -854,10 +936,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"
         integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://unpkg.com/konva@7.0.0/konva.min.js"></script>
+    {{-- <script src="https://unpkg.com/konva@7.0.0/konva.min.js"></script> --}}
+    <script src="https://unpkg.com/konva@9.2.0/konva.min.js"></script>
+
 
     <script>
-        if ({{ $step }} === 1) {
 
             // layer tshirt
             var stage = new Konva.Stage({
@@ -873,7 +956,7 @@
             let stage2 = new Konva.Stage({
                 container: '.hoodie-layer',
                 width: 198,
-                height: 238,
+                height: 355,
             });
 
             let layer2 = new Konva.Layer();
@@ -908,6 +991,17 @@
 
             let layer5 = new Konva.Layer();
             stage5.add(layer5);
+
+            var stage6 = new Konva.Stage({
+                container: '.sticker-layer',
+                width: 268,
+                height: 218,
+                });
+
+                var layer6 = new Konva.Layer();
+                stage6.add(layer6);
+
+
 
 
 
@@ -984,6 +1078,8 @@
                     });
 
 
+
+
                     layer.add(theImg);
                     layer.draw();
 
@@ -998,6 +1094,188 @@
 
                     layer5.add(theImg5);
                     layer5.draw();
+
+
+
+                    Konva.Image.fromURL(url, function (image) {
+                        layer6.add(image);
+                        image.setAttrs({
+                            x: 30,
+                            y: 0,
+                            borderSize: 10,
+                            width: 210,
+                            height: 210,
+
+                            borderColor: '#e3e6e4',
+                        });
+
+                        image.filters([Border]);
+                        image.cache();
+                    });
+
+                    // now we will define our border filter
+
+                    var canvas = document.createElement('canvas');
+                    var tempCanvas = document.createElement('canvas');
+
+                    // make all pixels opaque 100% (except pixels that 100% transparent)
+                    function removeTransparency(canvas) {
+                        var ctx = canvas.getContext('2d');
+
+                        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                        var nPixels = imageData.data.length;
+                        for (var i = 3; i < nPixels; i += 4) {
+                        if (imageData.data[i] > 0) {
+                            imageData.data[i] = 255;
+                        }
+                        }
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.putImageData(imageData, 0, 0);
+                        return canvas;
+                    }
+
+                    function Border(imageData) {
+                        var nPixels = imageData.data.length;
+
+                        var size = this.getAttr('borderSize') || 0;
+
+                        // - first set correct dimensions for canvases
+                        canvas.width = imageData.width;
+                        canvas.height = imageData.height;
+
+                        tempCanvas.width = imageData.width;
+                        tempCanvas.height = imageData.height;
+
+                        // - the draw original shape into temp canvas
+                        tempCanvas.getContext('2d').putImageData(imageData, 0, 0);
+
+                        // - then we need to remove alpha chanel, because it will affect shadow (transparent shapes has smaller shadow)
+                        removeTransparency(tempCanvas);
+
+                        var ctx = canvas.getContext('2d');
+                        var color = this.getAttr('borderColor') || 'black';
+
+                        // 3. we will use shadow as border
+                        // so we just need apply shadow on the original image
+                        ctx.save();
+                        ctx.shadowColor = color;
+                        ctx.shadowBlur = size;
+                        ctx.drawImage(tempCanvas, 0, 0);
+                        ctx.restore();
+
+                        // - Then we will dive in into image data of [original image + shadow]
+                        // and remove transparency from shadow
+                        var tempImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                        var SMOOTH_MIN_THRESHOLD = 3;
+                        var SMOOTH_MAX_THRESHOLD = 10;
+
+                        let val, hasValue;
+
+                        var offset = 3;
+
+                        for (var i = 3; i < nPixels; i += 4) {
+                        // skip opaque pixels
+                        if (imageData.data[i] === 255) {
+                            continue;
+                        }
+
+                        val = tempImageData.data[i];
+                        hasValue = val !== 0;
+                        if (!hasValue) {
+                            continue;
+                        }
+                        if (val > SMOOTH_MAX_THRESHOLD) {
+                            val = 255;
+                        } else if (val < SMOOTH_MIN_THRESHOLD) {
+                            val = 0;
+                        } else {
+                            val =
+                            ((val - SMOOTH_MIN_THRESHOLD) /
+                                (SMOOTH_MAX_THRESHOLD - SMOOTH_MIN_THRESHOLD)) *
+                            255;
+                        }
+                        tempImageData.data[i] = val;
+                        }
+
+                        // draw resulted image (original + shadow without opacity) into canvas
+                        ctx.putImageData(tempImageData, 0, 0);
+
+                        // then fill whole image with color (after that shadow is colored)
+                        ctx.save();
+                        ctx.globalCompositeOperation = 'source-in';
+                        ctx.fillStyle = color;
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.restore();
+
+                        // then we need to copy colored shadow into original imageData
+                        var newImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                        var indexesToProcess = [];
+                        for (var i = 3; i < nPixels; i += 4) {
+                        var hasTransparentOnTop =
+                            imageData.data[i - imageData.width * 4 * offset] === 0;
+                        var hasTransparentOnTopRight =
+                            imageData.data[i - (imageData.width * 4 + 4) * offset] === 0;
+                        var hasTransparentOnTopLeft =
+                            imageData.data[i - (imageData.width * 4 - 4) * offset] === 0;
+                        var hasTransparentOnRight = imageData.data[i + 4 * offset] === 0;
+                        var hasTransparentOnLeft = imageData.data[i - 4 * offset] === 0;
+                        var hasTransparentOnBottom =
+                            imageData.data[i + imageData.width * 4 * offset] === 0;
+                        var hasTransparentOnBottomRight =
+                            imageData.data[i + (imageData.width * 4 + 4) * offset] === 0;
+                        var hasTransparentOnBottomLeft =
+                            imageData.data[i + (imageData.width * 4 - 4) * offset] === 0;
+                        var hasTransparentAround =
+                            hasTransparentOnTop ||
+                            hasTransparentOnRight ||
+                            hasTransparentOnLeft ||
+                            hasTransparentOnBottom ||
+                            hasTransparentOnTopRight ||
+                            hasTransparentOnTopLeft ||
+                            hasTransparentOnBottomRight ||
+                            hasTransparentOnBottomLeft;
+
+                        // if pixel presented in original image - skip it
+                        // because we need to change only shadow area
+                        if (
+                            imageData.data[i] === 255 ||
+                            (imageData.data[i] && !hasTransparentAround)
+                        ) {
+                            continue;
+                        }
+                        if (!newImageData.data[i]) {
+                            // skip transparent pixels
+                            continue;
+                        }
+                        indexesToProcess.push(i);
+                        }
+
+                        for (var index = 0; index < indexesToProcess.length; index += 1) {
+                        var i = indexesToProcess[index];
+
+                        var alpha = imageData.data[i] / 255;
+
+                        if (alpha > 0 && alpha < 1) {
+                            var aa = 1 + 1;
+                        }
+                        imageData.data[i] = newImageData.data[i];
+                        imageData.data[i - 1] =
+                            newImageData.data[i - 1] * (1 - alpha) +
+                            imageData.data[i - 1] * alpha;
+                        imageData.data[i - 2] =
+                            newImageData.data[i - 2] * (1 - alpha) +
+                            imageData.data[i - 2] * alpha;
+                        imageData.data[i - 3] =
+                            newImageData.data[i - 3] * (1 - alpha) +
+                            imageData.data[i - 3] * alpha;
+
+                        if (newImageData.data[i] < 255 && alpha > 0) {
+                            var bb = 1 + 1;
+                        }
+                        }
+                    }
 
                 }
             });
@@ -1133,15 +1411,15 @@
             });
             layer2.add(selectionRectangle2);
 
-            var b1, b1, c2, c2;
+            var b1, c1, b2, c2;
             stage2.on('mousedown touchstart', (e) => {
                 // do nothing if we mousedown on eny shape
                 if (e.target !== stage2) {
                     return;
                 }
                 b1 = stage2.getPointerPosition().x;
-                b1 = stage2.getPointerPosition().y;
-                c2 = stage2.getPointerPosition().x;
+                c1 = stage2.getPointerPosition().y;
+                b2 = stage2.getPointerPosition().x;
                 c2 = stage2.getPointerPosition().y;
 
 
@@ -1578,7 +1856,8 @@
                 }
                 layer5.draw();
             });
-        }
+
+
 
 
 
@@ -1604,6 +1883,7 @@
         let sweater;
         let hat;
         let bag;
+        let sticker;
 
         $(".step-1").click(async () => {
             let nodeTshirt = document.getElementById('tshirt-capture');
@@ -1611,6 +1891,7 @@
             let nodeSweater = document.getElementById('sweater-capture');
             let nodeHat = document.getElementById('hat-capture');
             let nodeBag = document.getElementById('bag-capture');
+            let nodeSticker = document.getElementById('sticker-capture');
 
             $("#exampleModal").modal("show")
 
@@ -1655,6 +1936,7 @@
             $('#hoodie-tab-pane').addClass('show')
             $('#hoodie-tab-pane').addClass('active')
 
+
             hoodie = await getImageHoodie(nodeHoodie)
             $('#hoodie-tab').removeClass('active')
             $('#hoodie-tab').attr('aria-selected', 'false')
@@ -1688,6 +1970,10 @@
             $('#bag-tab-pane').addClass('show')
             $('#bag-tab-pane').addClass('active')
             bag = await getImageBag(nodeBag)
+            sticker = await getImageSticker(nodeSticker)
+
+            $('#harga').css("background-color", '#9da19e')
+            $('#upload-design').css("background-color", 'silver')
 
             $("#exampleModal").modal("hide")
 
@@ -1699,7 +1985,7 @@
             $('#sweater-image-step-2').attr('src', sweater[0][1])
             $('#hat-image-step-2').attr('src', hat[0][1])
             $('#bag-image-step-2').attr('src', bag[0][1])
-
+            $('#sticker-image-step-2').attr('src', sticker)
 
 
             // window.livewire.emit('tes', {
@@ -1718,6 +2004,9 @@
         const getImageTshirt = async (nodeTshirt) => {
             let tshirtImage;
             let t = [];
+
+            tr.nodes([]);
+            layer.draw();
 
             let imgTshirt = [];
             imgTshirt.push('#141414')
@@ -1841,6 +2130,9 @@
             let hoodieImage;
             let t = [];
 
+            tr2.nodes([]);
+            layer2.draw();
+
             let imgHoodie = [];
             imgHoodie.push('#2f2f2f')
             document.getElementById('hoodie-main-image').style.backgroundImage =
@@ -1906,6 +2198,9 @@
             let sweaterImage;
             let t = [];
 
+            tr3.nodes([]);
+            layer3.draw();
+
             let imgSweater = [];
             imgSweater.push('#242220')
             document.getElementById('sweater-main-image').style.backgroundImage =
@@ -1962,6 +2257,9 @@
             let hatImage;
             let t = [];
 
+            tr4.nodes([]);
+            layer4.draw();
+
             let imgHat = [];
             imgHat.push('#000')
             document.getElementById('hat-main-image').style.backgroundImage =
@@ -2005,6 +2303,10 @@
         const getImageBag = async (nodeBag) => {
             let bagImage;
             let t = [];
+
+            tr5.nodes([]);
+            layer5.draw();
+
             let imgBag = [];
             imgBag.push('#000')
             document.getElementById('bag-main-image').style.backgroundImage =
@@ -2019,6 +2321,18 @@
                 `url('{{ asset('assets/img/bag-white.png') }}')`;
             imgBag2.push(await getImage(nodeBag))
             t.push(imgBag2);
+
+            return t;
+
+        }
+
+
+        const getImageSticker = async (nodeSticker) => {
+            let stickerImage;
+            let t = [];
+            let imgSticker = [];
+            imgSticker.push(await getImage(nodeSticker))
+            t.push(imgSticker);
 
             return t;
 
@@ -2116,11 +2430,28 @@
                 `url('{{ asset('assets/img/${img}') }}')`;
         })
 
-        $('#back-step-1').click(function() {
+        $('.back-step-1').click(function() {
             $('.step1').removeClass('d-none');
             $('.step2').addClass('d-none');
             $('.step3').addClass('d-none');
+
+            $('#upload-design').css("background-color", '#9da19e')
+            $('#harga').css("background-color", 'silver')
+            $('#publish').css("background-color", 'silver')
+
         })
+
+        $('#back-step-2').click(function() {
+            $('.step2').removeClass('d-none');
+            $('.step1').addClass('d-none');
+            $('.step3').addClass('d-none');
+
+            $('#upload-design').css("background-color", 'silver')
+            $('#harga').css("background-color", '#9da19e')
+            $('#publish').css("background-color", 'silver')
+        })
+
+
 
         $('#price-tshirt').on('input', function() {
             let items1 = $('#price-tshirt').val() * 10;
@@ -2214,10 +2545,32 @@
             $('#bag-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
         })
 
+        $('#price-sticker').on('input', function() {
+            let items1 = $('#price-sticker').val() * 10;
+            let items2 = $('#price-sticker').val() * 100;
+            let items3 = $('#price-sticker').val() * 250;
+            let items4 = $('#price-sticker').val() * 500;
+            let items5 = $('#price-sticker').val() * 1000;
+
+            let hargaDasar = parseInt($("#sticker-harga-dasar").text()) + parseInt($('#price-sticker').val());
+
+            $('#sticker-harga-jual').text('Rp. '+ hargaDasar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
+
+            $('#sticker-10-items').text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sticker-100-items').text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sticker-250-items').text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sticker-500-items').text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sticker-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+        })
+
         $('.step-2').click(function() {
             $('.step1').addClass('d-none')
             $('.step2').addClass('d-none')
             $('.step3').removeClass('d-none')
+
+            $('#harga').css("background-color", 'silver')
+            $('#upload-design').css("background-color", 'silver')
+            $('#publish').css("background-color", '#9da19e')
         })
 
         $('#publish').click(function() {
@@ -2227,6 +2580,7 @@
             let priceSweater = $('#price-sweater').val();
             let priceHat = $('#price-hat').val();
             let priceBag = $('#price-bag').val();
+            let priceSticker = $('#price-sticker').val();
 
             // form publish
             let title = $("#title").val();
@@ -2235,7 +2589,6 @@
             let tags = $('#tags').val();
             let url = $('#url').val();
 
-            console.log(designCategoryId)
 
 
             window.livewire.emit('submitForm', {
@@ -2244,11 +2597,13 @@
                 'sweater': sweater,
                 'hat': hat,
                 'bag': bag,
+                'sticker': sticker,
                 'priceTshirt' : priceTshirt,
                 'priceHoodie' : priceHoodie,
                 'priceSweater' : priceSweater,
                 'priceHat' : priceHat,
                 'priceBag' : priceBag,
+                'priceSticker' : priceSticker,
                 'title' : title,
                 'description' : description,
                 'designCategoryId' : designCategoryId,

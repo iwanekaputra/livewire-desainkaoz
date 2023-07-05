@@ -59,7 +59,7 @@ class UploadDesign extends Component
                 'tags' => $data['tags'],
                 'image' => $image_name,
                 'description' => $data['description'],
-                'price' => $data['priceTshirt']
+                'price' => (int) $data['priceTshirt']
             ]);
         }
 
@@ -73,7 +73,7 @@ class UploadDesign extends Component
             'url' => $data['url'],
             'price_design' => $data['priceTshirt'],
             'is_approved' => 0,
-            'total_price' => 100000 + $data['priceTshirt'],
+            'total_price' => 100000 + (int) $data['priceTshirt'],
             'user_id' => auth()->user()->id
         ]);
 
@@ -99,7 +99,7 @@ class UploadDesign extends Component
             'url' => $data['url'],
             'price_design' => $data['priceHoodie'],
             'is_approved' => 0,
-            'total_price' => 200000 + $data['priceHoodie'],
+            'total_price' => 200000 + (int) $data['priceHoodie'],
             'user_id' => auth()->user()->id
         ]);
 
@@ -124,7 +124,7 @@ class UploadDesign extends Component
             'url' => $data['url'],
             'price_design' => $data['priceSweater'],
             'is_approved' => 0,
-            'total_price' => 150000 + $data['priceSweater'],
+            'total_price' => 150000 + (int) $data['priceSweater'],
             'user_id' => auth()->user()->id
         ]);
 
@@ -148,7 +148,7 @@ class UploadDesign extends Component
             'url' => $data['url'],
             'price_design' => $data['priceHat'],
             'is_approved' => 0,
-            'total_price' => 50000 + $data['priceHat'],
+            'total_price' => 50000 + (int) $data['priceHat'],
             'user_id' => auth()->user()->id
         ]);
 
@@ -163,7 +163,7 @@ class UploadDesign extends Component
         }
 
         $createBag = UploadProductDesign::create([
-            'category_id' => 4,
+            'category_id' => 5,
             'product_design_id' => $productDesign->id,
             'title' => $data['title'],
             'design_category_id' => $data['designCategoryId'],
@@ -172,7 +172,7 @@ class UploadDesign extends Component
             'url' => $data['url'],
             'price_design' => $data['priceBag'],
             'is_approved' => 0,
-            'total_price' => 20000 + $data['priceBag'],
+            'total_price' => 20000 + (int) $data['priceBag'],
             'user_id' => auth()->user()->id
         ]);
 
@@ -182,6 +182,30 @@ class UploadDesign extends Component
                     'color' => $bag[0],
                     'upload_product_design_id' => $createBag->id,
                     'image' => $bag[1]
+                ]);
+            }
+        }
+
+
+        $createSticker = UploadProductDesign::create([
+            'category_id' => 6,
+            'product_design_id' => $productDesign->id,
+            'title' => $data['title'],
+            'design_category_id' => $data['designCategoryId'],
+            'tags' => $data['tags'],
+            'description' => $data['description'],
+            'url' => $data['url'],
+            'price_design' => $data['priceSticker'],
+            'is_approved' => 0,
+            'total_price' => 20000 + (int) $data['priceSticker'],
+            'user_id' => auth()->user()->id
+        ]);
+
+        if($data['sticker']) {
+            foreach($data['sticker'] as $bag) {
+                UploadProductDesignVariant::create([
+                    'upload_product_design_id' => $createBag->id,
+                    'image' => $bag[0]
                 ]);
             }
         }

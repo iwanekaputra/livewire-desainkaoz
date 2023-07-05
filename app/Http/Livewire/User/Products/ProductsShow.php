@@ -34,9 +34,10 @@ class ProductsShow extends Component
     public function mount($id) {
         $this->productId = $id;
         $product = UploadProductDesign::where('id', $id)->first();
-        $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->when($this->style, function($query, $style) {
+        $this->productVariants = UploadProductDesignVariant::when($this->style, function($query, $style) {
             return $query->where('style', $style);
-        })->get();
+        })->where("upload_product_design_id", $id)->get();
+
 
         $this->user_id = $product->user_id;
         $this->price = $product->price;
