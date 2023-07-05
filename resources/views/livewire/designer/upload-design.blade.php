@@ -919,7 +919,7 @@
                         <input type="text" class="form-control" id="url" required>
                     </div>
                     <button class="btn btn-dark mt-4 rounded-0" id="back-step-2">Back</button>
-                    <button class="btn btn-dark mt-4 rounded-0" id="publish">Publish</button>
+                    <button class="btn btn-dark mt-4 rounded-0" id="submit">Publish</button>
 
             </div>
 
@@ -2573,7 +2573,7 @@
             $('#publish').css("background-color", '#9da19e')
         })
 
-        $('#publish').click(function() {
+        $('#submit').click(function() {
 
             let priceTshirt = $('#price-tshirt').val();
             let priceHoodie = $('#price-hoodie').val();
