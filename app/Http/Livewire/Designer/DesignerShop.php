@@ -22,6 +22,7 @@ class DesignerShop extends Component
         $this->store = Store::where("user_id", $this->user_id)->first();
     }
 
+
     public function render()
     {
         return view('livewire.designer.designer-shop', [
