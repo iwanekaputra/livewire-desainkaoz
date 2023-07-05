@@ -16,6 +16,7 @@ class CreateUploadProductDesignVariantsTable extends Migration
         Schema::create('upload_product_design_variants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('upload_product_design_id');
+            $table->string("style")->nullable();
             $table->string("color")->nullable();
             $table->longText('image')->nullable();
             $table->timestamps();

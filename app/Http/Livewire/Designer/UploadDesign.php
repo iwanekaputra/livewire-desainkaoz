@@ -26,6 +26,7 @@ class UploadDesign extends Component
     public $priceHat;
     public $priceBag;
     public $imageDesign;
+    public $style;
 
     protected $listeners = [
         'submitForm',
@@ -80,8 +81,9 @@ class UploadDesign extends Component
             foreach($data['tshirt'] as $tshirt) {
                 UploadProductDesignVariant::create([
                     'color' => $tshirt[0],
+                    'style' => $tshirt[1],
                     'upload_product_design_id' => $createTshirt->id,
-                    'image' => $tshirt[1]
+                    'image' => $tshirt[2]
                 ]);
             }
         }
