@@ -106,9 +106,9 @@
                         <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
                             onclick="document.querySelector('.file_input').click()">Replace Image</button>
                         <h6 class="mt-3 ms-1">Style :</h6>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Lengan Pendek</option>
-                            <option value="1">Lengan Panjang</option>
+                        <select class="form-select" aria-label="Default select example" id="style">
+                            <option value="Lengan Pendek">Lengan Pendek</option>
+                            <option value="Lengan Panjang">Lengan Panjang</option>
                         </select>
 
 
@@ -124,25 +124,25 @@
                             <h6>Color : Black</h6>
                             <div class="mt-3 d-flex gap-2">
                                 <div style="width : 40px; height : 40px; background-color : #141414; border : 2px solid silver"
-                                    class="tshirt-color" data-image="tshirt-black.png">
+                                    class="tshirt-color" id="tshirt-black" data-image="tshirt-black.png">
                                 </div>
                                 <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
-                                    class="tshirt-color" data-image="tshirt-white.png">
+                                    class="tshirt-color" id="tshirt-white" data-image="tshirt-white.png">
                                 </div>
                                 <div style="width : 40px; height : 40px; background-color : #7b7b7b; border : 2px solid #silver"
-                                    class="tshirt-color" data-image="tshirt-silver.png">
+                                    class="tshirt-color" id="tshirt-silver" data-image="tshirt-silver.png">
                                 </div>
                                 <div style="width : 40px; height : 40px; background-color : #a60707; border : 2px solid silver"
-                                    class="tshirt-color" data-image="tshirt-red.png">
+                                    class="tshirt-color" id="tshirt-red" data-image="tshirt-red.png">
                                 </div>
                                 <div style="width : 40px; height : 40px; background-color : #4c5d34; border : 2px solid silver"
-                                    class="tshirt-color" data-image="tshirt-green.png">
+                                    class="tshirt-color" id="tshirt-green" data-image="tshirt-green.png">
                                 </div>
                                 <div style="width : 40px; height : 40px; background-color : #252c5f; border : 2px solid silver"
-                                    class="tshirt-color" data-image="tshirt-blue.png">
+                                    class="tshirt-color" id="tshirt-blue" data-image="tshirt-blue.png">
                                 </div>
                                 <div style="width : 40px; height : 40px; background-color : #e47200; border : 2px solid silver"
-                                    class="tshirt-color" data-image="tshirt-yellow.png">
+                                    class="tshirt-color" id="tshirt-yellow" data-image="tshirt-yellow.png">
                                 </div>
                             </div>
                         </div>
@@ -249,27 +249,27 @@
                         <hr>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-dark rounded-0" style="width : 45%"
-                                id="front-image">Front</button>
+                                id="front-image-sweater">Front</button>
                             <button class="btn btn-dark rounded-0" style="width : 45%"
-                                id="back-image">Back</button>
+                                id="back-image-sweater">Back</button>
                         </div>
                         <div class="mt-4">
                             <h6>Color : Black</h6>
                             <div class="mt-3 d-flex gap-2">
                                 <div style="width : 40px; height : 40px; background-color : #242220; border : 2px solid silver"
-                                    class="sweater-color" data-image="sweater-black.png"></div>
+                                    class="sweater-color" id="sweater-black" data-image="sweater-black.png"></div>
                                 <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
-                                    class="sweater-color" data-image="sweater-white.png"></div>
+                                    class="sweater-color" id="sweater-white" data-image="sweater-white.png"></div>
                                 <div style="width : 40px; height : 40px; background-color : #828282; border : 2px solid silver"
-                                    class="sweater-color" data-image="sweater-silver.png"></div>
+                                    class="sweater-color" id="sweater-silver" data-image="sweater-silver.png"></div>
                                 <div style="width : 40px; height : 40px; background-color : #2d4821; border : 2px solid silver"
-                                    class="sweater-color" data-image="sweater-green.png"></div>
+                                    class="sweater-color" id="sweater-green" data-image="sweater-green.png"></div>
                                 <div style="width : 40px; height : 40px; background-color : #851d1d; border : 2px solid silver"
-                                    class="sweater-color" data-image="sweater-red.png"></div>
+                                    class="sweater-color" id="sweater-red" data-image="sweater-red.png"></div>
                                 <div style="width : 40px; height : 40px; background-color : #212f49; border : 2px solid silver"
-                                    class="sweater-color" data-image="sweater-navy.png"></div>
+                                    class="sweater-color" id="sweater-navy" data-image="sweater-navy.png"></div>
                                 <div style="width : 40px; height : 40px; background-color : #c47d21; border : 2px solid silver"
-                                    class="sweater-color" data-image="sweater-yellow.png"></div>
+                                    class="sweater-color" id="sweater-yellow" data-image="sweater-yellow.png"></div>
 
                             </div>
                         </div>
@@ -583,7 +583,7 @@
                                     <button class="btn btn-dark rounded-0" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
-                                    <button class="btn btn-dark rounded-0" style="width : 45%" id="step-2">Next <i
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
                                             class="fa fa-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -653,7 +653,7 @@
                                     <button class="btn btn-dark rounded-0" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
-                                    <button class="btn btn-dark rounded-0" style="width : 45%" id="step-2">Next <i
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
                                             class="fa fa-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -724,7 +724,7 @@
                                     <button class="btn btn-dark rounded-0" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
-                                    <button class="btn btn-dark rounded-0" style="width : 45%" id="step-2">Next <i
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
                                             class="fa fa-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -794,7 +794,7 @@
                                     <button class="btn btn-dark rounded-0" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
-                                    <button class="btn btn-dark rounded-0" style="width : 45%" id="step-2">Next <i
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
                                             class="fa fa-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -821,9 +821,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="categort" class="form-label">Pilih Kategori</label>
-                        <select class="form-select" aria-label="Default select example"
-                            wire:model="design_category_id" required>
-
+                        <select class="form-select" id="designCategoryId" aria-label="Default select example"
+                            required>
                             <option>---Pilih Kategori---</option>
                             @foreach ($designCategories as $designCategory)
                                 <option value="{{ $designCategory->id }}">{{ $designCategory->name }}</option>
@@ -1695,7 +1694,7 @@
             $('.step1').addClass('d-none')
             $('.step2').removeClass('d-none')
 
-            $('#tshirt-image-step-2').attr('src', tshirt[0][1])
+            $('#tshirt-image-step-2').attr('src', tshirt[0][2])
             $('#hoodie-image-step-2').attr('src', hoodie[0][1])
             $('#sweater-image-step-2').attr('src', sweater[0][1])
             $('#hat-image-step-2').attr('src', hat[0][1])
@@ -1722,6 +1721,7 @@
 
             let imgTshirt = [];
             imgTshirt.push('#141414')
+            imgTshirt.push('Lengan Pendek')
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/tshirt-black.png') }}')`;
             imgTshirt.push(await getImage(nodeTshirt))
@@ -1729,6 +1729,7 @@
 
             let imgTshirt2 = [];
             imgTshirt2.push('#fff')
+            imgTshirt2.push('Lengan Pendek')
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/tshirt-white.png') }}')`;
             imgTshirt2.push(await getImage(nodeTshirt))
@@ -1736,6 +1737,7 @@
 
             let imgTshirt3 = [];
             imgTshirt3.push('#7b7b7b')
+            imgTshirt3.push('Lengan Pendek')
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/tshirt-silver.png') }}')`;
             imgTshirt3.push(await getImage(nodeTshirt))
@@ -1743,6 +1745,7 @@
 
             let imgTshirt4 = [];
             imgTshirt4.push('#a60707')
+            imgTshirt4.push('Lengan Pendek')
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/tshirt-red.png') }}')`;
             imgTshirt4.push(await getImage(nodeTshirt))
@@ -1750,6 +1753,7 @@
 
             let imgTshirt5 = [];
             imgTshirt5.push('#4c5d34')
+            imgTshirt5.push('Lengan Pendek')
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/tshirt-green.png') }}')`;
             imgTshirt5.push(await getImage(nodeTshirt))
@@ -1757,6 +1761,7 @@
 
             let imgTshirt6 = [];
             imgTshirt6.push('#252c5f')
+            imgTshirt6.push('Lengan Pendek')
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/tshirt-blue.png') }}')`;
             imgTshirt6.push(await getImage(nodeTshirt))
@@ -1764,10 +1769,70 @@
 
             let imgTshirt7 = [];
             imgTshirt7.push('#e47200')
+            imgTshirt7.push('Lengan Pendek')
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/tshirt-yellow.png') }}')`;
             imgTshirt7.push(await getImage(nodeTshirt))
             t.push(imgTshirt7);
+
+            // lengan panjang
+            let imgTshirt8 = [];
+            imgTshirt8.push('#141414')
+            imgTshirt8.push('Lengan Panjang')
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-belakang-black.png') }}')`;
+            imgTshirt8.push(await getImage(nodeTshirt))
+            t.push(imgTshirt8);
+
+            let imgTshirt9 = [];
+            imgTshirt9.push('#fff')
+            imgTshirt9.push('Lengan Panjang')
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-belakang-white.png') }}')`;
+            imgTshirt9.push(await getImage(nodeTshirt))
+            t.push(imgTshirt9);
+
+            let imgTshirt10 = [];
+            imgTshirt10.push('#7b7b7b')
+            imgTshirt10.push('Lengan Panjang')
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-belakang-silver.png') }}')`;
+            imgTshirt10.push(await getImage(nodeTshirt))
+            t.push(imgTshirt10);
+
+            let imgTshirt11 = [];
+            imgTshirt11.push('#a60707')
+            imgTshirt11.push('Lengan Panjang')
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-belakang-red.png') }}')`;
+            imgTshirt11.push(await getImage(nodeTshirt))
+            t.push(imgTshirt11);
+
+            let imgTshirt12 = [];
+            imgTshirt12.push('#4c5d34')
+            imgTshirt12.push('Lengan Panjang')
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-belakang-green.png') }}')`;
+            imgTshirt12.push(await getImage(nodeTshirt))
+            t.push(imgTshirt12);
+
+            let imgTshirt13 = [];
+            imgTshirt13.push('#252c5f')
+            imgTshirt13.push('Lengan Panjang')
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-belakang-blue.png') }}')`;
+            imgTshirt13.push(await getImage(nodeTshirt))
+            t.push(imgTshirt13);
+
+            let imgTshirt14 = [];
+            imgTshirt14.push('#e47200')
+            imgTshirt14.push('Lengan Panjang')
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-belakang-yellow.png') }}')`;
+            imgTshirt14.push(await getImage(nodeTshirt))
+            t.push(imgTshirt14);
+
+
 
             return t;
         }
@@ -1779,56 +1844,56 @@
             let imgHoodie = [];
             imgHoodie.push('#2f2f2f')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-black.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-black.jpg') }}')`;
             imgHoodie.push(await getImage(nodeHoodie))
             t.push(imgHoodie);
 
             let imgHoodie2 = [];
             imgHoodie2.push('#f0f0f0')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-white.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-white.jpg') }}')`;
             imgHoodie2.push(await getImage(nodeHoodie))
             t.push(imgHoodie2);
 
             let imgHoodie3 = [];
             imgHoodie3.push('#995f2f')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-chocolate.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-chocolate.jpg') }}')`;
             imgHoodie3.push(await getImage(nodeHoodie))
             t.push(imgHoodie3);
 
             let imgHoodie4 = [];
             imgHoodie4.push('#44672f')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-green.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-green.jpg') }}')`;
             imgHoodie4.push(await getImage(nodeHoodie))
             t.push(imgHoodie4);
 
             let imgHoodie5 = [];
             imgHoodie5.push('#ad322d')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-red.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-red.jpg') }}')`;
             imgHoodie5.push(await getImage(nodeHoodie))
             t.push(imgHoodie5);
 
             let imgHoodie6 = [];
             imgHoodie6.push('#3d4367')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-navy.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-navy.jpg') }}')`;
             imgHoodie6.push(await getImage(nodeHoodie))
             t.push(imgHoodie6);
 
             let imgHoodie7 = [];
             imgHoodie7.push('#ab7a2b')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-yellow.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-yellow.jpg') }}')`;
             imgHoodie7.push(await getImage(nodeHoodie))
             t.push(imgHoodie7);
 
             let imgHoodie8 = [];
             imgHoodie8.push('#6e6e6e')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-silver.png') }}')`;
+                `url('{{ asset('assets/img/hoodie-silver.jpg') }}')`;
             imgHoodie8.push(await getImage(nodeHoodie))
             t.push(imgHoodie8);
 
@@ -1986,13 +2051,39 @@
         })
 
         $('#back-image').click(function() {
-            document.getElementById('main-image').style.backgroundImage =
-                "url('{{ asset('assets/img/product_1-belakang.png') }}')";
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                "url('{{ asset('assets/img/tshirt-belakang-black.png') }}')";
         })
 
         $('#front-image').click(function() {
-            document.getElementById('main-image').style.backgroundImage =
-                "url('{{ asset('assets/img/product_1.png') }}')";
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                "url('{{ asset('assets/img/tshirt-black.png') }}')";
+
+            $('#tshirt-black').attr('data-image', 'tshirt-belakang-black.png')
+            $('#tshirt-white').attr('data-image', 'tshirt-belakang-white.png')
+            $('#tshirt-silver').attr('data-image', 'tshirt-belakang-silver.png')
+            $('#tshirt-green').attr('data-image', 'tshirt-belakang-green.png')
+            $('#tshirt-red').attr('data-image', 'tshirt-belakang-red.png')
+            $('#tshirt-blue').attr('data-image', 'tshirt-belakang-blue.png')
+            $('#tshirt-yellow').attr('data-image', 'tshirt-belakang-yellow.png')
+        })
+
+        $('#front-image-sweater').click(function() {
+            document.getElementById('sweater-main-image').style.backgroundImage =
+                "url('{{ asset('assets/img/sweater-black.png') }}')";
+        })
+
+        $('#back-image-sweater').click(function() {
+            document.getElementById('sweater-main-image').style.backgroundImage =
+                "url('{{ asset('assets/img/sweater-belakang-black.png') }}')";
+
+            $('#sweater-black').attr('data-image', 'sweater-belakang-black.png')
+            $('#sweater-white').attr('data-image', 'sweater-belakang-white.png')
+            $('#sweater-silver').attr('data-image', 'sweater-belakang-silver.png')
+            $('#sweater-green').attr('data-image', 'sweater-belakang-green.png')
+            $('#sweater-red').attr('data-image', 'sweater-belakang-red.png')
+            $('#sweater-navy').attr('data-image', 'sweater-belakang-navy.png')
+            $('#sweater-yellow').attr('data-image', 'sweater-belakang-yellow.png')
         })
 
         $('.tshirt-color').click(function() {
@@ -2144,6 +2235,8 @@
             let tags = $('#tags').val();
             let url = $('#url').val();
 
+            console.log(designCategoryId)
+
 
             window.livewire.emit('submitForm', {
                 'tshirt': tshirt,
@@ -2162,6 +2255,24 @@
                 'tags' : tags,
                 'url' : url
             });
+        })
+
+        $('#style').change(function() {
+            if($('#style').val() == "Lengan Panjang") {
+                document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-panjang-black.png') }}')`;
+
+                $('#tshirt-blue').attr('data-image', 'tshirt-panjang-blue.png')
+                $('#tshirt-black').attr('data-image', 'tshirt-panjang-black.png')
+                $('#tshirt-white').attr('data-image', 'tshirt-panjang-white.png')
+                $('#tshirt-silver').attr('data-image', 'tshirt-panjang-silver.png')
+                $('#tshirt-red').attr('data-image', 'tshirt-panjang-red.png')
+                $('#tshirt-green').attr('data-image', 'tshirt-panjang-green.png')
+                $('#tshirt-yellow').attr('data-image', 'tshirt-panjang-yellow.png')
+            } else {
+                document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/tshirt-black.png') }}')`;
+            }
         })
     </script>
 

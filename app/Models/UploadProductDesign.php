@@ -20,7 +20,7 @@ class UploadProductDesign extends Model
     }
 
     public function uploadProductDesignVariants() {
-        return $this->hasMany(UploadProductDesignVariant::class);
+        return $this->hasMany(UploadProductDesignVariant::class, 'upload_product_design_id', 'id');
     }
 
     public function productDesign() {
