@@ -10,7 +10,6 @@
             </div>
         </div>
     </div>
-    {{-- upload design --}}
     <div class="main">
         <div class="row mt-5">
             <div class="col-lg-4 " style="{{ $step === 1 ? 'background-color: #9da19e' : 'background-color: silver' }}">
@@ -23,391 +22,25 @@
                 <h3 class="text-center mt-2" style="font-family: 'Myriad-Pro Bold';">Publish</h3>
             </div>
         </div>
-
-        @if ($step === 1)
-            <div class="row mt-4 justify-content-center">
-                <div class="col-lg-4">
-                    <div style="width : 300px; height: 300px; border : 1px dashed black"
-                        class="d-flex align-items-center justify-content-center">
-                        <img wire:ignore.self id="design-image" style="width:100%;height:100%;">
-                    </div>
-                    <h1 class="text-center"><button class="btn btn-warning rounded-0 ms-3"
-                            onclick="document.querySelector('.file_input').click()">Upload Image</button></h1>
-                    <input type="file" class="file_input" style="display: none" wire:model="imageDesign">
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <ul class="nav nav-tabs w-100 justify-content-evenly border-0" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="tshirt-tab" data-bs-toggle="tab"
-                                data-bs-target="#tshirt-tab-pane" type="button" role="tab"
-                                aria-controls="tshirt-tab-pane" aria-selected="true">
-                                <img src="{{ asset('storage/produk/tshirt.png') }}" alt="" width="75">
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="hoodie-tab" data-bs-toggle="tab"
-                                data-bs-target="#hoodie-tab-pane" type="button" role="tab"
-                                aria-controls="hoodie-tab-pane" aria-selected="false">
-                                <img src="{{ asset('storage/produk/hoodie.png') }}" alt="" width="75">
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="sweater-tab" data-bs-toggle="tab"
-                                data-bs-target="#sweater-tab-pane" type="button" role="tab"
-                                aria-controls="sweater-tab-pane" aria-selected="false">
-                                <img src="{{ asset('storage/produk/sweater.png') }}" alt="" width="75">
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="hat-tab" data-bs-toggle="tab" data-bs-target="#hat-tab-pane"
-                                type="button" role="tab" aria-controls="hat-tab-pane" aria-selected="false">
-                                <img src="{{ asset('storage/produk/topi.png') }}" alt="" width="75">
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="bag-tab" data-bs-toggle="tab"
-                                data-bs-target="#bag-tab-pane" type="button" role="tab"
-                                aria-controls="bag-tab-pane" aria-selected="false">
-                                <img src="{{ asset('storage/produk/bag.png') }}" alt="" width="75">
-                            </button>
-                        </li>
-                        {{-- <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="sticker-tab" data-bs-toggle="tab" data-bs-target="#sticker-tab-pane" type="button" role="tab" aria-controls="sticker-tab-pane" aria-selected="false">
-                            <img src="{{ asset('storage/produk/sticker.png') }}" alt="" width="100">
-                        </button>
-                    </li> --}}
-
-                    </ul>
-                </div>
-            </div>
-
-            {{-- tab tshirt --}}
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="tshirt-tab-pane" role="tabpanel"
-                    aria-labelledby="tshirt-tab" tabindex="0">
-                    <div class="row mt-5">
-                        <div class="col-lg-7">
-                            <div id="tshirt-capture" style="width : 500px; height : 500px">
-                                <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/tshirt-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                    id="tshirt-main-image">
-                                    <div class="tshirt-layer position-relative"
-                                        style="width : 200px; top : 40px; left : 150px; height : 380px; ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-5">
-                            <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
-                                onclick="document.querySelector('.file_input').click()">Replace Image</button>
-                            <h6 class="mt-3 ms-1">Style :</h6>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Lengan Pendek</option>
-                                <option value="1">Lengan Panjang</option>
-                            </select>
-
-
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="front-image">Front</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="back-image">Back</button>
-                            </div>
-
-                            <div class="mt-4">
-                                <h6>Color : Black</h6>
-                                <div class="mt-3 d-flex gap-2">
-                                    <div style="width : 40px; height : 40px; background-color : #141414; border : 2px solid silver"
-                                        class="tshirt-color" data-image="tshirt-black.png">
-                                    </div>
-                                    <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
-                                        class="tshirt-color" data-image="tshirt-white.png">
-                                    </div>
-                                    <div style="width : 40px; height : 40px; background-color : #7b7b7b; border : 2px solid #silver"
-                                        class="tshirt-color" data-image="tshirt-silver.png">
-                                    </div>
-                                    <div style="width : 40px; height : 40px; background-color : #a60707; border : 2px solid silver"
-                                        class="tshirt-color" data-image="tshirt-red.png">
-                                    </div>
-                                    <div style="width : 40px; height : 40px; background-color : #4c5d34; border : 2px solid silver"
-                                        class="tshirt-color" data-image="tshirt-green.png">
-                                    </div>
-                                    <div style="width : 40px; height : 40px; background-color : #252c5f; border : 2px solid silver"
-                                        class="tshirt-color" data-image="tshirt-blue.png">
-                                    </div>
-                                    <div style="width : 40px; height : 40px; background-color : #e47200; border : 2px solid silver"
-                                        class="tshirt-color" data-image="tshirt-yellow.png">
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between mt-4">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="vertical">Vertical</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
-                            </div>
-                            <div class="mt-5">
-                                <h6>Harga Dasar</h6>
-                                <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                    value="100000" disabled>
-                            </div>
-                            <hr>
-                            <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
-                                type="button">Next</button>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- tab hoodie --}}
-                <div class="tab-pane fade" id="hoodie-tab-pane" role="tabpanel" aria-labelledby="hoodie-tab"
-                    tabindex="0">
-                    <div class="row mt-5">
-                        <div class="col-lg-7">
-                            <div id="hoodie-capture" style="width : 500px; height : 500px">
-                                <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/hoodie-black.jpg') }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                    id="hoodie-main-image">
-                                    <div class="hoodie-layer position-relative"
-                                        style="width : 200px; top : 100px; left : 150px; height : 240px; ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5">
-                            <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
-                                onclick="document.querySelector('.file_input').click()">Replace Image</button>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="front-image">Front</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="back-image">Back</button>
-                            </div>
-                            <div class="mt-4">
-                                <h6>Color : Black</h6>
-                                <div class="mt-3 d-flex gap-2">
-                                    <div style="width : 40px; height : 40px; background-color : #2f2f2f; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-black.jpg"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-white.jpg"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #995f2f; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-chocolate.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #44672f; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-green.jpg"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #ad322d; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-red.jpg"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #3d4367; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-navy.jpg"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #ab7a2b; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-yellow.jpg"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #6e6e6e; border : 2px solid silver"
-                                        class="hoodie-color" data-image="hoodie-silver.jpg"></div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between mt-4">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="vertical">Vertical</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
-                            </div>
-                            <div class="mt-5">
-                                <h6>Harga Dasar</h6>
-                                <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                    value="100000" disabled>
-                            </div>
-                            <hr>
-                            {{-- <button class="btn btn-dark rounded-0" style="width : 45%" id="check">Next</button> --}}
-                        </div>
-                    </div>
-                </div>
-
-                {{-- tab sweater --}}
-                <div class="tab-pane fade" id="sweater-tab-pane" role="tabpanel" aria-labelledby="sweater-tab"
-                    tabindex="0">
-                    <div class="row mt-5">
-                        <div class="col-lg-7">
-                            <div id="sweater-capture" style="width : 500px; height : 500px">
-                                <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/sweater-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                    id="sweater-main-image">
-                                    <div class="sweater-layer position-relative"
-                                        style="width : 200px; top : 40px; left : 150px; height : 380px; ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5">
-                            <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
-                                onclick="document.querySelector('.file_input').click()">Replace Image</button>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="front-image">Front</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="back-image">Back</button>
-                            </div>
-                            <div class="mt-4">
-                                <h6>Color : Black</h6>
-                                <div class="mt-3 d-flex gap-2">
-                                    <div style="width : 40px; height : 40px; background-color : #242220; border : 2px solid silver"
-                                        class="sweater-color" data-image="sweater-black.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
-                                        class="sweater-color" data-image="sweater-white.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #828282; border : 2px solid silver"
-                                        class="sweater-color" data-image="sweater-silver.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #2d4821; border : 2px solid silver"
-                                        class="sweater-color" data-image="sweater-green.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #851d1d; border : 2px solid silver"
-                                        class="sweater-color" data-image="sweater-red.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #212f49; border : 2px solid silver"
-                                        class="sweater-color" data-image="sweater-navy.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #c47d21; border : 2px solid silver"
-                                        class="sweater-color" data-image="sweater-yellow.png"></div>
-
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between mt-4">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="vertical">Vertical</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
-                            </div>
-                            <div class="mt-5">
-                                <h6>Harga Dasar</h6>
-                                <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                    value="100000" disabled>
-                            </div>
-                            <hr>
-                            {{-- <button class="btn btn-dark rounded-0" style="width : 45%" id="check">Next</button> --}}
-                        </div>
-                    </div>
-                </div>
-
-
-                {{-- tab hat --}}
-                <div class="tab-pane fade" id="hat-tab-pane" role="tabpanel" aria-labelledby="hat-tab"
-                    tabindex="0">
-                    <div class="row mt-5">
-                        <div class="col-lg-7">
-                            <div id="hat-capture" style="width : 500px; height : 500px">
-                                <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/hat-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                    id="hat-main-image">
-                                    <div class="hat-layer position-relative"
-                                        style="width : 200px; top : 100px; left : 150px; height : 200px; ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5">
-                            <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
-                                onclick="document.querySelector('.file_input').click()">Replace Image</button>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="front-image">Front</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="back-image">Back</button>
-                            </div>
-                            <div class="mt-4">
-                                <h6>Color : Black</h6>
-                                <div class="mt-3 d-flex gap-2">
-                                    <div style="width : 40px; height : 40px; background-color : #000; border : 2px solid silver"
-                                        class="hat-color" data-image="hat-black.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
-                                        class="hat-color" data-image="hat-white.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #395b22; border : 2px solid silver"
-                                        class="hat-color" data-image="hat-green.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #ad0000; border : 2px solid silver"
-                                        class="hat-color" data-image="hat-red.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #324a6f; border : 2px solid silver"
-                                        class="hat-color" data-image="hat-blue.png"></div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between mt-4">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="vertical">Vertical</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
-                            </div>
-                            <div class="mt-5">
-                                <h6>Harga Dasar</h6>
-                                <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                    value="100000" disabled>
-                            </div>
-                            <hr>
-                            {{-- <button class="btn btn-dark rounded-0" style="width : 45%" id="check">Next</button> --}}
-                        </div>
-                    </div>
-                </div>
-
-                {{-- tab bag --}}
-                <div class="tab-pane fade" id="bag-tab-pane" role="tabpanel" aria-labelledby="bag-tab"
-                    tabindex="0">
-                    <div class="row mt-5">
-                        <div class="col-lg-7">
-                            <div id="bag-capture" style="width : 500px; height : 500px">
-                                <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/bag-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                    id="bag-main-image">
-                                    <div class="bag-layer position-relative"
-                                        style="width : 270px; top : 240px; left : 120px; height : 220px; ">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5">
-                            <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
-                                onclick="document.querySelector('.file_input').click()">Replace Image</button>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="front-image">Front</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="back-image">Back</button>
-                            </div>
-                            <div class="mt-4">
-                                <h6>Color : Black</h6>
-                                <div class="mt-3 d-flex gap-2">
-                                    <div style="width : 40px; height : 40px; background-color : #000; border : 2px solid silver"
-                                        class="bag-color" data-image="bag-black.png"></div>
-                                    <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
-                                        class="bag-color" data-image="bag-white.png"></div>
-
-
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between mt-4">
-                                <button class="btn btn-dark rounded-0" style="width : 45%"
-                                    id="vertical">Vertical</button>
-                                <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
-                            </div>
-                            <div class="mt-5">
-                                <h6>Harga Dasar</h6>
-                                <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                    value="100000" disabled>
-                            </div>
-                            <hr>
-                            {{-- <button class="btn btn-dark rounded-0" style="width : 45%" id="check">Next</button> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
     </div>
-    @endif
-    {{-- end upload design --}}
 
-    @if ($step === 2)
-        <div class="row mt-2">
+    {{-- step 1 --}}
+    <div class="main step1">
+        <div class="row mt-4 justify-content-center">
+            <div class="col-lg-4">
+                <div style="width : 300px; height: 300px; border : 1px dashed black"
+                    class="d-flex align-items-center justify-content-center">
+                    <img wire:ignore.self id="design-image" style="width:100%;height:100%;">
+                </div>
+                <h1 class="text-center"><button class="btn btn-warning rounded-0 ms-3"
+                        onclick="document.querySelector('.file_input').click()">Upload Image</button></h1>
+                <input type="file" class="file_input" style="display: none" wire:model="imageDesign">
+            </div>
+        </div>
+
+        <div class="row mt-5">
             <div class="col-lg-12">
-                <ul class="nav nav-tabs w-100 justify-content-evenly border-0" id="myTab" role="tablist"
-                    wire:ignore>
+                <ul class="nav nav-tabs w-100 justify-content-evenly border-0" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="tshirt-tab" data-bs-toggle="tab"
                             data-bs-target="#tshirt-tab-pane" type="button" role="tab"
@@ -436,8 +69,380 @@
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="bag-tab" data-bs-toggle="tab" data-bs-target="#bag-tab-pane"
-                            type="button" role="tab" aria-controls="bag-tab-pane" aria-selected="false">
+                        <button class="nav-link" id="bag-tab" data-bs-toggle="tab"
+                            data-bs-target="#bag-tab-pane" type="button" role="tab"
+                            aria-controls="bag-tab-pane" aria-selected="false">
+                            <img src="{{ asset('storage/produk/bag.png') }}" alt="" width="75">
+                        </button>
+                    </li>
+                    {{-- <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sticker-tab" data-bs-toggle="tab" data-bs-target="#sticker-tab-pane" type="button" role="tab" aria-controls="sticker-tab-pane" aria-selected="false">
+                        <img src="{{ asset('storage/produk/sticker.png') }}" alt="" width="100">
+                    </button>
+                </li> --}}
+
+                </ul>
+            </div>
+        </div>
+
+        {{-- tab tshirt --}}
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tshirt-tab-pane" role="tabpanel"
+                aria-labelledby="tshirt-tab" tabindex="0">
+                <div class="row mt-5">
+                    <div class="col-lg-7">
+                        <div id="tshirt-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/tshirt-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="tshirt-main-image">
+                                <div class="tshirt-layer position-relative"
+                                    style="width : 200px; top : 40px; left : 150px; height : 380px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-5">
+                        <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
+                            onclick="document.querySelector('.file_input').click()">Replace Image</button>
+                        <h6 class="mt-3 ms-1">Style :</h6>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Lengan Pendek</option>
+                            <option value="1">Lengan Panjang</option>
+                        </select>
+
+
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="front-image">Front</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="back-image">Back</button>
+                        </div>
+
+                        <div class="mt-4">
+                            <h6>Color : Black</h6>
+                            <div class="mt-3 d-flex gap-2">
+                                <div style="width : 40px; height : 40px; background-color : #141414; border : 2px solid silver"
+                                    class="tshirt-color" data-image="tshirt-black.png">
+                                </div>
+                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
+                                    class="tshirt-color" data-image="tshirt-white.png">
+                                </div>
+                                <div style="width : 40px; height : 40px; background-color : #7b7b7b; border : 2px solid #silver"
+                                    class="tshirt-color" data-image="tshirt-silver.png">
+                                </div>
+                                <div style="width : 40px; height : 40px; background-color : #a60707; border : 2px solid silver"
+                                    class="tshirt-color" data-image="tshirt-red.png">
+                                </div>
+                                <div style="width : 40px; height : 40px; background-color : #4c5d34; border : 2px solid silver"
+                                    class="tshirt-color" data-image="tshirt-green.png">
+                                </div>
+                                <div style="width : 40px; height : 40px; background-color : #252c5f; border : 2px solid silver"
+                                    class="tshirt-color" data-image="tshirt-blue.png">
+                                </div>
+                                <div style="width : 40px; height : 40px; background-color : #e47200; border : 2px solid silver"
+                                    class="tshirt-color" data-image="tshirt-yellow.png">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="vertical">Vertical</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
+                        </div>
+                        <div class="mt-5">
+                            <h6>Harga Dasar</h6>
+                            <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
+                                value="100000" disabled>
+                        </div>
+                        <hr>
+                        <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
+                            type="button">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            {{-- tab hoodie --}}
+            <div class="tab-pane fade" id="hoodie-tab-pane" role="tabpanel" aria-labelledby="hoodie-tab"
+                tabindex="0">
+                <div class="row mt-5">
+                    <div class="col-lg-7">
+                        <div id="hoodie-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/hoodie-black.jpg') }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="hoodie-main-image">
+                                <div class="hoodie-layer position-relative"
+                                    style="width : 200px; top : 100px; left : 150px; height : 240px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
+                            onclick="document.querySelector('.file_input').click()">Replace Image</button>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="front-image">Front</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="back-image">Back</button>
+                        </div>
+                        <div class="mt-4">
+                            <h6>Color : Black</h6>
+                            <div class="mt-3 d-flex gap-2">
+                                <div style="width : 40px; height : 40px; background-color : #2f2f2f; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-black.jpg"></div>
+                                <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-white.jpg"></div>
+                                <div style="width : 40px; height : 40px; background-color : #995f2f; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-chocolate.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #44672f; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-green.jpg"></div>
+                                <div style="width : 40px; height : 40px; background-color : #ad322d; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-red.jpg"></div>
+                                <div style="width : 40px; height : 40px; background-color : #3d4367; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-navy.jpg"></div>
+                                <div style="width : 40px; height : 40px; background-color : #ab7a2b; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-yellow.jpg"></div>
+                                <div style="width : 40px; height : 40px; background-color : #6e6e6e; border : 2px solid silver"
+                                    class="hoodie-color" data-image="hoodie-silver.jpg"></div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="vertical">Vertical</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
+                        </div>
+                        <div class="mt-5">
+                            <h6>Harga Dasar</h6>
+                            <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
+                                value="100000" disabled>
+                        </div>
+                        <hr>
+                        <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
+                            type="button">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            {{-- tab sweater --}}
+            <div class="tab-pane fade" id="sweater-tab-pane" role="tabpanel" aria-labelledby="sweater-tab"
+                tabindex="0">
+                <div class="row mt-5">
+                    <div class="col-lg-7">
+                        <div id="sweater-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/sweater-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="sweater-main-image">
+                                <div class="sweater-layer position-relative"
+                                    style="width : 200px; top : 40px; left : 150px; height : 380px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
+                            onclick="document.querySelector('.file_input').click()">Replace Image</button>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="front-image">Front</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="back-image">Back</button>
+                        </div>
+                        <div class="mt-4">
+                            <h6>Color : Black</h6>
+                            <div class="mt-3 d-flex gap-2">
+                                <div style="width : 40px; height : 40px; background-color : #242220; border : 2px solid silver"
+                                    class="sweater-color" data-image="sweater-black.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
+                                    class="sweater-color" data-image="sweater-white.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #828282; border : 2px solid silver"
+                                    class="sweater-color" data-image="sweater-silver.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #2d4821; border : 2px solid silver"
+                                    class="sweater-color" data-image="sweater-green.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #851d1d; border : 2px solid silver"
+                                    class="sweater-color" data-image="sweater-red.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #212f49; border : 2px solid silver"
+                                    class="sweater-color" data-image="sweater-navy.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #c47d21; border : 2px solid silver"
+                                    class="sweater-color" data-image="sweater-yellow.png"></div>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="vertical">Vertical</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
+                        </div>
+                        <div class="mt-5">
+                            <h6>Harga Dasar</h6>
+                            <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
+                                value="100000" disabled>
+                        </div>
+                        <hr>
+                        <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
+                            type="button">Next</button>
+                    </div>
+                </div>
+            </div>
+
+
+            {{-- tab hat --}}
+            <div class="tab-pane fade" id="hat-tab-pane" role="tabpanel" aria-labelledby="hat-tab"
+                tabindex="0">
+                <div class="row mt-5">
+                    <div class="col-lg-7">
+                        <div id="hat-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/hat-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="hat-main-image">
+                                <div class="hat-layer position-relative"
+                                    style="width : 200px; top : 100px; left : 150px; height : 200px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
+                            onclick="document.querySelector('.file_input').click()">Replace Image</button>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="front-image">Front</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="back-image">Back</button>
+                        </div>
+                        <div class="mt-4">
+                            <h6>Color : Black</h6>
+                            <div class="mt-3 d-flex gap-2">
+                                <div style="width : 40px; height : 40px; background-color : #000; border : 2px solid silver"
+                                    class="hat-color" data-image="hat-black.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
+                                    class="hat-color" data-image="hat-white.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #395b22; border : 2px solid silver"
+                                    class="hat-color" data-image="hat-green.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #ad0000; border : 2px solid silver"
+                                    class="hat-color" data-image="hat-red.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #324a6f; border : 2px solid silver"
+                                    class="hat-color" data-image="hat-blue.png"></div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="vertical">Vertical</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
+                        </div>
+                        <div class="mt-5">
+                            <h6>Harga Dasar</h6>
+                            <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
+                                value="100000" disabled>
+                        </div>
+                        <hr>
+                        <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
+                            type="button">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            {{-- tab bag --}}
+            <div class="tab-pane fade" id="bag-tab-pane" role="tabpanel" aria-labelledby="bag-tab"
+                tabindex="0">
+                <div class="row mt-5">
+                    <div class="col-lg-7">
+                        <div id="bag-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/bag-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="bag-main-image">
+                                <div class="bag-layer position-relative"
+                                    style="width : 270px; top : 240px; left : 120px; height : 220px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
+                            onclick="document.querySelector('.file_input').click()">Replace Image</button>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="front-image">Front</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="back-image">Back</button>
+                        </div>
+                        <div class="mt-4">
+                            <h6>Color : Black</h6>
+                            <div class="mt-3 d-flex gap-2">
+                                <div style="width : 40px; height : 40px; background-color : #000; border : 2px solid silver"
+                                    class="bag-color" data-image="bag-black.png"></div>
+                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
+                                    class="bag-color" data-image="bag-white.png"></div>
+
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-dark rounded-0" style="width : 45%"
+                                id="vertical">Vertical</button>
+                            <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
+                        </div>
+                        <div class="mt-5">
+                            <h6>Harga Dasar</h6>
+                            <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
+                                value="100000" disabled>
+                        </div>
+                        <hr>
+                        <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
+                            type="button">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end step 1 --}}
+
+    {{-- step 2 --}}
+    <div class="main step2 d-none">
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                <ul class="nav nav-tabs w-100 justify-content-evenly border-0" id="myTab" role="tablist"
+                    wire:ignore>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="tshirt-tab-step-2" data-bs-toggle="tab"
+                            data-bs-target="#tshirt-tab-pane-step-2" type="button" role="tab"
+                            aria-controls="tshirt-tab-pane-step-2" aria-selected="true">
+                            <img src="{{ asset('storage/produk/tshirt.png') }}" alt="" width="75">
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="hoodie-tab-step-2" data-bs-toggle="tab"
+                            data-bs-target="#hoodie-tab-pane-step-2" type="button" role="tab"
+                            aria-controls="hoodie-tab-pane-step-2" aria-selected="false">
+                            <img src="{{ asset('storage/produk/hoodie.png') }}" alt="" width="75">
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="sweater-tab-step-2" data-bs-toggle="tab"
+                            data-bs-target="#sweater-tab-pane-step-2" type="button" role="tab"
+                            aria-controls="sweater-tab-pane-step-2" aria-selected="false">
+                            <img src="{{ asset('storage/produk/sweater.png') }}" alt="" width="75">
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="hat-tab-step-2" data-bs-toggle="tab" data-bs-target="#hat-tab-pane-step-2"
+                            type="button" role="tab" aria-controls="hat-tab-pane-step-2" aria-selected="false">
+                            <img src="{{ asset('storage/produk/topi.png') }}" alt="" width="75">
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="bag-tab-step-2" data-bs-toggle="tab" data-bs-target="#bag-tab-pane-step-2"
+                            type="button" role="tab" aria-controls="bag-tab-pane-step-2" aria-selected="false">
                             <img src="{{ asset('storage/produk/bag.png') }}" alt="" width="75">
                         </button>
                     </li>
@@ -445,15 +450,13 @@
             </div>
         </div>
 
-
-
         {{-- tab tshirt step 2 --}}
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tshirt-tab-pane" role="tabpanel" aria-labelledby="tshirt-tab"
+            <div class="tab-pane fade show active" id="tshirt-tab-pane-step-2" role="tabpanel" aria-labelledby="tshirt-tab"
                 tabindex="0" wire:ignore.self>
                 <div class="row mt-5">
                     <div class="col-lg-6" id="preview-image">
-                        <img src={{ $base['tshirt'][0][1] }} class="border" alt="" width="400">
+                        <img class="border" id="tshirt-image-step-2" alt="" width="400">
                     </div>
 
 
@@ -471,11 +474,9 @@
                                 <div class="col-lg-6">
                                     <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">T shirt
                                         lengan pendek</button>
-                                    <p class="mt-3">Rp. 100.000</p>
-                                    <input type="number" class="" wire:model="priceTshirt">
-                                    <p class="mt-3">Rp.
-                                        {{ $priceTshirt ? number_format(100000 + $priceTshirt, 0, ',', '.') : 100000 }}
-                                    </p>
+                                    <p class="mt-3" id="tshirt-harga-dasar">100000</p>
+                                    <input type="number" class="" id="price-tshirt">
+                                    <p class="mt-3" id="tshirt-harga-jual"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -483,33 +484,25 @@
                                     <thead>
                                         <tr>
                                             <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceTshirt ? number_format($priceTshirt * 10, 0, ',', '.') : $priceTshirt }}
+                                            <td id="tshirt-10-items" scope="col" class="text-end">
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceTshirt ? number_format($priceTshirt * 100, 0, ',', '.') : $priceTshirt }}
-                                            </td>
+                                            <td id="tshirt-100-items" scope="col" class="text-end"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceTshirt ? number_format($priceTshirt * 250, 0, ',', '.') : $priceTshirt }}
-                                            </td>
+                                            <td id="tshirt-250-items" scope="col" class="text-end"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceTshirt ? number_format($priceTshirt * 500, 0, ',', '.') : $priceTshirt }}
-                                            </td>
+                                            <td id="tshirt-500-items" scope="col" class="text-end"></td>
                                         </tr>
                                         <tr class="bg-warning">
                                             <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end">Min Profit :
-                                                {{ $priceTshirt ? number_format($priceTshirt * 1000, 0, ',', '.') : $priceTshirt }}
-                                            </td>
+                                            <td id="tshirt-1000-items" scope="col" class="text-end"></td>
                                         </tr>
                                     </thead>
 
@@ -517,10 +510,10 @@
                             </div>
                             <div class="row">
                                 <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0" style="width : 45%"><i
+                                    <button class="btn btn-dark rounded-0" id="back-step-1" style="width : 45%"><i
                                             class="fa fa-arrow-left" aria-hidden="true"></i>
                                         Back</button>
-                                    <button class="btn btn-dark rounded-0" style="width : 45%" id="step-2">Next <i
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
                                             class="fa fa-arrow-right" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -531,11 +524,11 @@
             </div>
 
             {{-- tab hoodie step 2 --}}
-            <div class="tab-pane fade" id="hoodie-tab-pane" role="tabpanel" aria-labelledby="hoodie-tab"
+            <div class="tab-pane fade" id="hoodie-tab-pane-step-2" role="tabpanel" aria-labelledby="hoodie-tab"
                 tabindex="0" wire:ignore.self>
                 <div class="row mt-5">
                     <div class="col-lg-6" id="preview-image">
-                        <img src={{ $base['hoodie'][0][1] }} class="border" alt="" width="400">
+                        <img class="border" id="hoodie-image-step-2" alt="" width="400">
                     </div>
 
 
@@ -553,11 +546,9 @@
                                 <div class="col-lg-6">
                                     <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Hoodie bahan
                                         cvc</button>
-                                    <p class="mt-3">Rp. 200.000</p>
-                                    <input type="number" class="" wire:model="priceHoodie">
-                                    <p class="mt-3">Rp.
-                                        {{ $priceHoodie ? number_format(100000 + $priceHoodie, 0, ',', '.') : 100000 }}
-                                    </p>
+                                    <p class="mt-3" id="hoodie-harga-dasar">200000</p>
+                                    <input type="number" class="" id="price-hoodie">
+                                    <p class="mt-3" id="hoodie-harga-jual"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -565,33 +556,23 @@
                                     <thead>
                                         <tr>
                                             <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHoodie ? number_format($priceHoodie * 10, 0, ',', '.') : $priceHoodie }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hoodie-10-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHoodie ? number_format($priceHoodie * 100, 0, ',', '.') : $priceHoodie }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hoodie-100-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHoodie ? number_format($priceHoodie * 250, 0, ',', '.') : $priceHoodie }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hoodie-250-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHoodie ? number_format($priceHoodie * 500, 0, ',', '.') : $priceHoodie }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hoodie-500-items"></td>
                                         </tr>
                                         <tr class="bg-warning">
                                             <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end">Min Profit :
-                                                {{ $priceHoodie ? number_format($priceHoodie * 1000, 0, ',', '.') : $priceHoodie }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hoodie-1000-items"></td>
                                         </tr>
                                     </thead>
 
@@ -613,11 +594,11 @@
             </div>
 
             {{-- tab sweater step 2 --}}
-            <div class="tab-pane fade" id="sweater-tab-pane" role="tabpanel" aria-labelledby="sweater-tab"
+            <div class="tab-pane fade" id="sweater-tab-pane-step-2" role="tabpanel" aria-labelledby="sweater-tab"
                 tabindex="0" wire:ignore.self>
                 <div class="row mt-5">
                     <div class="col-lg-6" id="preview-image">
-                        <img src={{ $base['sweater'][0][1] }} class="border" alt="" width="400">
+                        <img class="border" id="sweater-image-step-2" alt="" width="400">
                     </div>
 
 
@@ -635,11 +616,9 @@
                                 <div class="col-lg-6">
                                     <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Sweater
                                         bahan cvc</button>
-                                    <p class="mt-3">Rp. 150.000</p>
-                                    <input type="number" class="" wire:model="priceSweater">
-                                    <p class="mt-3">Rp.
-                                        {{ $priceSweater ? number_format(100000 + $priceSweater, 0, ',', '.') : 100000 }}
-                                    </p>
+                                    <p class="mt-3" id="sweater-harga-dasar">150000</p>
+                                    <input type="number" class="" id="price-sweater">
+                                    <p class="mt-3" id="sweater-harga-jual"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -647,33 +626,23 @@
                                     <thead>
                                         <tr>
                                             <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceSweater ? number_format($priceSweater * 10, 0, ',', '.') : $priceSweater }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="sweater-10-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceSweater ? number_format($priceSweater * 100, 0, ',', '.') : $priceSweater }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="sweater-100-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceSweater ? number_format($priceSweater * 250, 0, ',', '.') : $priceSweater }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="sweater-250-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceSweater ? number_format($priceSweater * 500, 0, ',', '.') : $priceSweater }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="sweater-500-items"></td>
                                         </tr>
                                         <tr class="bg-warning">
                                             <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end">Min Profit :
-                                                {{ $priceSweater ? number_format($priceSweater * 1000, 0, ',', '.') : $priceSweater }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="sweater-1000-items"></td>
                                         </tr>
                                     </thead>
 
@@ -696,11 +665,11 @@
 
 
             {{-- tab hat step 2 --}}
-            <div class="tab-pane fade" id="hat-tab-pane" role="tabpanel" aria-labelledby="hat-tab" tabindex="0"
+            <div class="tab-pane fade" id="hat-tab-pane-step-2" role="tabpanel" aria-labelledby="hat-tab" tabindex="0"
                 wire:ignore.self>
                 <div class="row mt-5">
                     <div class="col-lg-6" id="preview-image">
-                        <img src={{ $base['hat'][0][1] }} class="border" alt="" width="400">
+                        <img class="border" id="hat-image-step-2" alt="" width="400">
                     </div>
 
 
@@ -718,10 +687,9 @@
                                 <div class="col-lg-6">
                                     <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Topi
                                         Footballs Canvas</button>
-                                    <p class="mt-3">Rp. 50.000</p>
-                                    <input type="number" class="" wire:model="priceHat">
-                                    <p class="mt-3">Rp.
-                                        {{ $priceHat ? number_format(100000 + $priceHat, 0, ',', '.') : 100000 }}</p>
+                                    <p class="mt-3" id="hat-harga-dasar">50000</p>
+                                    <input type="number" class="" id="price-hat">
+                                    <p class="mt-3" id="hat-harga-jual"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -729,33 +697,23 @@
                                     <thead>
                                         <tr>
                                             <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHat ? number_format($priceHat * 10, 0, ',', '.') : $priceHat }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hat-10-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHat ? number_format($priceHat * 100, 0, ',', '.') : $priceHat }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hat-100-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHat ? number_format($priceHat * 250, 0, ',', '.') : $priceHat }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hat-250-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceHat ? number_format($priceHat * 500, 0, ',', '.') : $priceHat }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hat-500-items"></td>
                                         </tr>
                                         <tr class="bg-warning">
                                             <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end">Min Profit :
-                                                {{ $priceHat ? number_format($priceHat * 1000, 0, ',', '.') : $priceHat }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="hat-1000-items"></td>
                                         </tr>
                                     </thead>
 
@@ -777,11 +735,11 @@
             </div>
 
             {{-- tab bag step 2 --}}
-            <div class="tab-pane fade" id="bag-tab-pane" role="tabpanel" aria-labelledby="bag-tab" tabindex="0"
+            <div class="tab-pane fade" id="bag-tab-pane-step-2" role="tabpanel" aria-labelledby="bag-tab" tabindex="0"
                 wire:ignore.self>
                 <div class="row mt-5">
                     <div class="col-lg-6" id="preview-image">
-                        <img src={{ $base['bag'][0][1] }} class="border" alt="" width="400">
+                        <img class="border" id="bag-image-step-2" alt="" width="400">
                     </div>
 
 
@@ -799,10 +757,9 @@
                                 <div class="col-lg-6">
                                     <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Tote Bag
                                         Canvas</button>
-                                    <p class="mt-3">Rp. 20.000</p>
-                                    <input type="number" class="" wire:model="priceBag">
-                                    <p class="mt-3">Rp.
-                                        {{ $priceBag ? number_format(100000 + $priceBag, 0, ',', '.') : 100000 }}</p>
+                                    <p class="mt-3" id="bag-harga-dasar">20000</p>
+                                    <input type="number" class="" id="price-bag">
+                                    <p class="mt-3" id="bag-harga-jual"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -810,33 +767,23 @@
                                     <thead>
                                         <tr>
                                             <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceBag ? number_format($priceBag * 10, 0, ',', '.') : $priceBag }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="bag-10-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceBag ? number_format($priceBag * 100, 0, ',', '.') : $priceBag }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="bag-100-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceBag ? number_format($priceBag * 250, 0, ',', '.') : $priceBag }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="bag-250-items"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end">
-                                                {{ $priceBag ? number_format($priceBag * 500, 0, ',', '.') : $priceBag }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="bag-500-items"></td>
                                         </tr>
                                         <tr class="bg-warning">
                                             <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end">Min Profit :
-                                                {{ $priceBag ? number_format($priceBag * 1000, 0, ',', '.') : $priceBag }}
-                                            </td>
+                                            <td scope="col" class="text-end" id="bag-1000-items"></td>
                                         </tr>
                                     </thead>
 
@@ -857,24 +804,26 @@
                 </div>
             </div>
         </div>
-    @endif
+    </div>
+    {{-- end step 2 --}}
 
-    @if ($step === 3)
+    {{-- step 3 --}}
+    <div class="main step3 d-none">
         <div class="row mt-4">
             <div class="col-lg-7">
-                <form wire:submit.prevent="submitForm">
                     <div class="mb-3">
                         <label for="title" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="title" wire:model="title" required>
+                        <input type="text" class="form-control" id="title" required>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="description" rows="3" wire:model="description" required></textarea>
+                        <textarea class="form-control" id="description" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="categort" class="form-label">Pilih Kategori</label>
                         <select class="form-select" aria-label="Default select example"
                             wire:model="design_category_id" required>
+
                             <option>---Pilih Kategori---</option>
                             @foreach ($designCategories as $designCategory)
                                 <option value="{{ $designCategory->id }}">{{ $designCategory->name }}</option>
@@ -883,22 +832,22 @@
                     </div>
                     <div class="mb-3">
                         <label for="tags" class="form-label">Tags</label>
-                        <input type="text" class="form-control" id="tags" wire:model="tags" required>
+                        <input type="text" class="form-control" id="tags" required>
                     </div>
                     <div class="mb-3">
                         <label for="url" class="form-label">URL</label>
-                        <input type="text" class="form-control" id="url" wire:model="url" required>
+                        <input type="text" class="form-control" id="url" required>
                     </div>
 
-                    <button class="btn btn-dark mt-4 rounded-0" type="submit">Publish</button>
-                </form>
+                    <button class="btn btn-dark mt-4 rounded-0" id="publish">Publish</button>
             </div>
 
             <div class="col-lg-5">
-                <img src={{ $base['tshirt'][0][1] }} class="border" alt="" width="350">
+                <img class="border" alt="" width="350">
             </div>
         </div>
-    @endif
+    </div>
+    {{-- end step 3 --}}
     <script src="{{ asset('assets/js/fabric.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
         integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
@@ -1651,6 +1600,12 @@
         //     });
         // })
 
+        let tshirt;
+        let hoodie;
+        let sweater;
+        let hat;
+        let bag;
+
         $(".step-1").click(async () => {
             let nodeTshirt = document.getElementById('tshirt-capture');
             let nodeHoodie = document.getElementById('hoodie-capture');
@@ -1660,7 +1615,37 @@
 
             $("#exampleModal").modal("show")
 
-            const tshirt = await getImageTshirt(nodeTshirt)
+            $('#tshirt-tab').addClass('active')
+            $('#tshirt-tab').attr('aria-selected', 'false')
+            $('#tshirt-tab-pane').addClass('show')
+            $('#tshirt-tab-pane').addClass('active')
+
+            $('#hoodie-tab').removeClass('active')
+            $('#hoodie-tab').attr('aria-selected', 'false')
+            $('#hoodie-tab-pane').removeClass('show')
+            $('#hoodie-tab-pane').removeClass('active')
+
+            $('#sweater-tab').removeClass('active')
+            $('#sweater-tab').attr('aria-selected', 'false')
+            $('#sweater-tab-pane').removeClass('show')
+            $('#sweater-tab-pane').removeClass('active')
+
+            $('#hat-tab').removeClass('active')
+            $('#hat-tab').attr('aria-selected', 'false')
+            $('#hat-tab-pane').removeClass('show')
+            $('#hat-tab-pane').removeClass('active')
+
+            $('#bag-tab').removeClass('active')
+            $('#bag-tab').attr('aria-selected', 'false')
+            $('#bag-tab-pane').removeClass('show')
+            $('#bag-tab-pane').removeClass('active')
+
+            $('#tshirt-tab').addClass('active')
+            $('#tshirt-tab').attr('aria-selected', 'false')
+            $('#tshirt-tab-pane').addClass('show')
+            $('#tshirt-tab-pane').addClass('active')
+
+            tshirt = await getImageTshirt(nodeTshirt)
             $('#tshirt-tab').removeClass('active')
             $('#tshirt-tab').attr('aria-selected', 'false')
             $('#tshirt-tab-pane').removeClass('show')
@@ -1671,7 +1656,7 @@
             $('#hoodie-tab-pane').addClass('show')
             $('#hoodie-tab-pane').addClass('active')
 
-            const hoodie = await getImageHoodie(nodeHoodie)
+            hoodie = await getImageHoodie(nodeHoodie)
             $('#hoodie-tab').removeClass('active')
             $('#hoodie-tab').attr('aria-selected', 'false')
             $('#hoodie-tab-pane').removeClass('show')
@@ -1682,7 +1667,7 @@
             $('#sweater-tab-pane').addClass('show')
             $('#sweater-tab-pane').addClass('active')
 
-            const sweater = await getImageSweater(nodeSweater)
+            sweater = await getImageSweater(nodeSweater)
             $('#sweater-tab').removeClass('active')
             $('#sweater-tab').attr('aria-selected', 'false')
             $('#sweater-tab-pane').removeClass('show')
@@ -1693,7 +1678,7 @@
             $('#hat-tab-pane').addClass('show')
             $('#hat-tab-pane').addClass('active')
 
-            const hat = await getImageHat(nodeHat)
+            hat = await getImageHat(nodeHat)
             $('#hat-tab').removeClass('active')
             $('#hat-tab').attr('aria-selected', 'false')
             $('#hat-tab-pane').removeClass('show')
@@ -1703,20 +1688,28 @@
             $('#bag-tab').attr('aria-selected', 'true')
             $('#bag-tab-pane').addClass('show')
             $('#bag-tab-pane').addClass('active')
-            const bag = await getImageBag(nodeBag)
+            bag = await getImageBag(nodeBag)
 
             $("#exampleModal").modal("hide")
 
+            $('.step1').addClass('d-none')
+            $('.step2').removeClass('d-none')
+
+            $('#tshirt-image-step-2').attr('src', tshirt[0][1])
+            $('#hoodie-image-step-2').attr('src', hoodie[0][1])
+            $('#sweater-image-step-2').attr('src', sweater[0][1])
+            $('#hat-image-step-2').attr('src', hat[0][1])
+            $('#bag-image-step-2').attr('src', bag[0][1])
 
 
 
-            window.livewire.emit('tes', {
-                'tshirt': tshirt,
-                'hoodie': hoodie,
-                'sweater': sweater,
-                'hat': hat,
-                'bag': bag
-            });
+            // window.livewire.emit('tes', {
+            //     'tshirt': tshirt,
+            //     'hoodie': hoodie,
+            //     'sweater': sweater,
+            //     'hat': hat,
+            //     'bag': bag
+            // });
 
 
 
@@ -2031,14 +2024,147 @@
             document.getElementById('bag-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/${img}') }}')`;
         })
-    </script>
 
-    <script>
-        $('#step-back').click(function() {
-            console.log('ke')
-            window.livewire.emit('stepBack');
+        $('#back-step-1').click(function() {
+            $('.step1').removeClass('d-none');
+            $('.step2').addClass('d-none');
+            $('.step3').addClass('d-none');
+        })
+
+        $('#price-tshirt').on('input', function() {
+            let items1 = $('#price-tshirt').val() * 10;
+            let items2 = $('#price-tshirt').val() * 100;
+            let items3 = $('#price-tshirt').val() * 250;
+            let items4 = $('#price-tshirt').val() * 500;
+            let items5 = $('#price-tshirt').val() * 1000;
+
+            let hargaDasar = parseInt($("#tshirt-harga-dasar").text()) + parseInt($('#price-tshirt').val());
+
+            $('#tshirt-harga-jual').text('Rp. '+ hargaDasar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
+
+
+
+            $('#tshirt-10-items').text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#tshirt-100-items').text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#tshirt-250-items').text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#tshirt-500-items').text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#tshirt-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+        })
+
+        $('#price-hoodie').on('input', function() {
+            let items1 = $('#price-hoodie').val() * 10;
+            let items2 = $('#price-hoodie').val() * 100;
+            let items3 = $('#price-hoodie').val() * 250;
+            let items4 = $('#price-hoodie').val() * 500;
+            let items5 = $('#price-hoodie').val() * 1000;
+
+            let hargaDasar = parseInt($("#hoodie-harga-dasar").text()) + parseInt($('#price-hoodie').val());
+
+            $('#hoodie-harga-jual').text('Rp. '+ hargaDasar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
+
+            $('#hoodie-10-items').text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hoodie-100-items').text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hoodie-250-items').text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hoodie-500-items').text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hoodie-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+        })
+
+        $('#price-sweater').on('input', function() {
+            let items1 = $('#price-sweater').val() * 10;
+            let items2 = $('#price-sweater').val() * 100;
+            let items3 = $('#price-sweater').val() * 250;
+            let items4 = $('#price-sweater').val() * 500;
+            let items5 = $('#price-sweater').val() * 1000;
+
+            let hargaDasar = parseInt($("#sweater-harga-dasar").text()) + parseInt($('#price-sweater').val());
+
+            $('#sweater-harga-jual').text('Rp. '+ hargaDasar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
+
+            $('#sweater-10-items').text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sweater-100-items').text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sweater-250-items').text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sweater-500-items').text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#sweater-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+        })
+
+        $('#price-hat').on('input', function() {
+            let items1 = $('#price-hat').val() * 10;
+            let items2 = $('#price-hat').val() * 100;
+            let items3 = $('#price-hat').val() * 250;
+            let items4 = $('#price-hat').val() * 500;
+            let items5 = $('#price-hat').val() * 1000;
+
+            let hargaDasar = parseInt($("#hat-harga-dasar").text()) + parseInt($('#price-hat').val());
+
+            $('#hat-harga-jual').text('Rp. '+ hargaDasar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
+
+            $('#hat-10-items').text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hat-100-items').text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hat-250-items').text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hat-500-items').text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#hat-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+        })
+
+        $('#price-bag').on('input', function() {
+            let items1 = $('#price-bag').val() * 10;
+            let items2 = $('#price-bag').val() * 100;
+            let items3 = $('#price-bag').val() * 250;
+            let items4 = $('#price-bag').val() * 500;
+            let items5 = $('#price-bag').val() * 1000;
+
+            let hargaDasar = parseInt($("#bag-harga-dasar").text()) + parseInt($('#price-bag').val());
+
+            $('#bag-harga-jual').text('Rp. '+ hargaDasar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
+
+            $('#bag-10-items').text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#bag-100-items').text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#bag-250-items').text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#bag-500-items').text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $('#bag-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+        })
+
+        $('.step-2').click(function() {
+            $('.step1').addClass('d-none')
+            $('.step2').addClass('d-none')
+            $('.step3').removeClass('d-none')
+        })
+
+        $('#publish').click(function() {
+
+            let priceTshirt = $('#price-tshirt').val();
+            let priceHoodie = $('#price-hoodie').val();
+            let priceSweater = $('#price-sweater').val();
+            let priceHat = $('#price-hat').val();
+            let priceBag = $('#price-bag').val();
+
+            // form publish
+            let title = $("#title").val();
+            let description = $('#description').val();
+            let designCategoryId = $('#designCategoryId').val();
+            let tags = $('#tags').val();
+            let url = $('#url').val();
+
+
+            window.livewire.emit('submitForm', {
+                'tshirt': tshirt,
+                'hoodie': hoodie,
+                'sweater': sweater,
+                'hat': hat,
+                'bag': bag,
+                'priceTshirt' : priceTshirt,
+                'priceHoodie' : priceHoodie,
+                'priceSweater' : priceSweater,
+                'priceHat' : priceHat,
+                'priceBag' : priceBag,
+                'title' : title,
+                'description' : description,
+                'designCategoryId' : designCategoryId,
+                'tags' : tags,
+                'url' : url
+            });
         })
     </script>
 
-
 </div>
+
+

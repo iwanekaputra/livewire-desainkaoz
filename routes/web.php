@@ -60,37 +60,42 @@ Route::get('/register', Register::class)->name('register');
 
 Route::get('/custom', Custom::class)->name('custom');
 
-Route::get('/admin/dashboard', DashboardController::class)->name('admin.dashboard');
-Route::get('/admin/products', AdminProductsIndex::class)->name('admin.products.index');
-Route::get('/admin/products/create', AdminProductsCreate::class)->name('admin.products.create');
-Route::get('/admin/products/edit/{id}', AdminProductsEdit::class)->name('admin.products.edit');
+Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
+    Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
+    Route::get('products', AdminProductsIndex::class)->name('admin.products.index');
+    Route::get('products/create', AdminProductsCreate::class)->name('admin.products.create');
+    Route::get('products/edit/{id}', AdminProductsEdit::class)->name('admin.products.edit');
 
-Route::get('/designer/dashboard', DesignerDashboard::class)->name('designer.dashboard');
+    Route::get('variant/product', AdminVariantIndex::class)->name('admin.variant.index');
+    Route::get('variant/colors/create', AdminColorsCreate::class)->name('admin.colors.create');
+    Route::get('variant/sizes/create', AdminSizesCreate::class)->name('admin.sizes.create');
+    Route::get('variant/styles/create', AdminStylesCreate::class)->name('admin.styles.create');
 
-Route::get('/designer/saldo', DesignerSaldo::class)->name('designer.saldo');
-Route::get('/designer/store', DesignerStore::class)->name('designer.store');
-Route::get('/designer/setting', DesignerSetting::class)->name('designer.setting');
-Route::get('/designer/sale', DesignerSale::class)->name('designer.sale');
-Route::get('/designer/design', DesignerDesign::class)->name('designer.design');
+    Route::get('sliders', AdminSliderController::class)->name('admin.sliders');
+    Route::get('sliders/create', AdminSlidersCreate::class)->name('admin.sliders.create');
 
-Route::get('/admin/variant/product', AdminVariantIndex::class)->name('admin.variant.index');
-Route::get('/admin/variant/colors/create', AdminColorsCreate::class)->name('admin.colors.create');
-Route::get('/admin/variant/sizes/create', AdminSizesCreate::class)->name('admin.sizes.create');
-Route::get('/admin/variant/styles/create', AdminStylesCreate::class)->name('admin.styles.create');
-Route::get('/admin/sliders', AdminSliderController::class)->name('admin.sliders');
-Route::get('/admin/sliders/create', AdminSlidersCreate::class)->name('admin.sliders.create');
-Route::get('/admin/categories', AdminCategoriesIndex::class)->name('admin.categories.index');
-Route::get('/admin/categories/create', AdminCategoriesCreate::class)->name('admin.categories.create');
+    Route::get('categories', AdminCategoriesIndex::class)->name('admin.categories.index');
+    Route::get('categories/create', AdminCategoriesCreate::class)->name('admin.categories.create');
 
+    Route::get('sub-categories', AdminSubCategoriesIndex::class)->name('admin.sub-categories.index');
+    Route::get('sub-categories/create', AdminSubCategoriesCreate::class)->name('admin.sub-categories.create');
 
-Route::get('/admin/sub-categories', AdminSubCategoriesIndex::class)->name('admin.sub-categories.index');
-Route::get('/admin/sub-categories/create', AdminSubCategoriesCreate::class)->name('admin.sub-categories.create');
+    Route::get('designer/index', AdminDesignerIndex::class)->name('admin.designer.index');
+    Route::get('designer/show/{id}', AdminDesignerShow::class)->name('admin.designer.show');
 
-Route::get('/admin/designer/index', AdminDesignerIndex::class)->name('admin.designer.index');
-Route::get('/admin/designer/show/{id}', AdminDesignerShow::class)->name('admin.designer.show');
+    Route::get('transactions', AdminTransactionsIndex::class)->name('admin.transactions.index');
+    Route::get('transactions/{id}', AdminTransactionsEdit::class)->name('admin.transactions.edit');
+    Route::get('users', AdminUsersIndex::class)->name('admin.users.index');
+});
 
-Route::get('/admin/transactions', AdminTransactionsIndex::class)->name('admin.transactions.index');
-Route::get('/admin/transactions/{id}', AdminTransactionsEdit::class)->name('admin.transactions.edit');
+Route::prefix('designer')->middleware(['auth', 'designer'])->group(function () {
+    Route::get('dashboard', DesignerDashboard::class)->name('designer.dashboard');
+    Route::get('saldo', DesignerSaldo::class)->name('designer.saldo');
+    Route::get('store', DesignerStore::class)->name('designer.store');
+    Route::get('setting', DesignerSetting::class)->name('designer.setting');
+    Route::get('sale', DesignerSale::class)->name('designer.sale');
+    Route::get('design', DesignerDesign::class)->name('designer.design');
+});
 
 Route::get('products', ProductsShow::class)->name('products.index');
 Route::get('products/category/{id}', ProductsCategory::class)->name('products.category');
@@ -106,11 +111,17 @@ Route::get('order', Order::class)->name('order');
 
 Route::get('checkout', Checkout::class)->name('checkout');
 
-Route::get('upload-design', UploadDesign::class)->name('designer.upload-design');
+
+Route::get('carts', CartIndex::class)->name('carts.index')->middleware(['auth']);
+Route::get('checkout', Checkout::class)->name('checkout')->middleware(['auth']);
+Route::get('upload-design', UploadDesign::class)->name('designer.upload-design')->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware(['auth']);
 
 
-Route::get('/admin/users', AdminUsersIndex::class)->name('admin.users.index');
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+Route::get('products', ProductsShow::class)->name('products.index');
+Route::get('products/category/{id}', ProductsCategory::class)->name('products.category');
+Route::get('products/{id}', ProductsShow::class)->name('products.show');
+Route::get('shop/{id}', DesignerShop::class)->name('designer.shop');
+Route::get('products/design/category/{id}', ProductsDesignCategory::class)->name('products.design.category');
 Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
