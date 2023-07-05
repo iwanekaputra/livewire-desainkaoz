@@ -111,9 +111,9 @@
                                     <h6 class="mt-2">Style :</h6>
                                 </div>
                                 <div class="col-7">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Lengan Pendek</option>
-                                        <option value="1">Lengan Panjang</option>
+                                    <select class="form-select" aria-label="Default select example" wire:model="style">
+                                        <option value="Lengan Pendek">Lengan Pendek</option>
+                                        <option value="Lengan Panjang">Lengan Panjang</option>
                                     </select>
                                 </div>
                             </div>
@@ -126,9 +126,9 @@
                                 <div class="col-lg-8">
                                     <ul class="list-inline pb-3">
                                         <div >
-                                            @foreach ($images as $image)
+                                            @foreach ($productVariants as $productVariant)
                                                 <li class="list-inline-item mt-2">
-                                                    <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $image->color }};" data-img="{{ $image->image }}" wire:click="addColor('{{ $image->color }}')"></span>
+                                                    <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $productVariant->color }};" data-img="{{ $productVariant->image }}" wire:click="addColor('{{ $productVariant->color }}')"></span>
 
                                                 </li>
                                             @endforeach

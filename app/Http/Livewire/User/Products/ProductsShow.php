@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductSize;
 use App\Models\Size;
 use App\Models\UploadProductDesign;
+use App\Models\UploadProductDesignVariant;
 use Livewire\Component;
 
 class ProductsShow extends Component
@@ -26,9 +27,17 @@ class ProductsShow extends Component
     public $productDesign;
 
     public $countProduct;
+    public $style = 'Lengan Pendek';
+    public $productVariants;
+    public $productId;
 
     public function mount($id) {
+        $this->productId = $id;
         $product = UploadProductDesign::where('id', $id)->first();
+        $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->when($this->style, function($query, $style) {
+            return $query->where('style', $style);
+        })->get();
+
         $this->user_id = $product->user_id;
         $this->price = $product->price;
         $this->username = $product->user->first_name;
@@ -42,6 +51,17 @@ class ProductsShow extends Component
 
         $this->countProduct = $this->getCountProduct();
     }
+
+    public function updatedStyle() {
+        $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $this->productId)->when($this->style, function($query, $style) {
+            return $query->where('style', $style);
+        })->get();
+
+
+        $this->image = $this->productVariants->first()->image;
+
+    }
+
 
     public function addCart() {
         $findCart = Cart::where('upload_product_design_id', $this->product_id)->first();
