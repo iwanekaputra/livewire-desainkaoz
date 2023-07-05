@@ -40,8 +40,8 @@ class Login extends Component
         if($user->is_email_verified === 0) {
             $this->dispatchBrowserEvent('swal:modal', [
                 'type' => 'error',
-                'message' => 'Akun belum di verifikasi email',
-                'text' => 'Mohon untuk verifikasi',
+                'message' => 'Akun Belum di Verifikasi Email',
+                'text' => 'Mohon untuk Verifikasi',
                 'timer' => 3000,
                 'action' => 'moveToLogin'
             ]);
