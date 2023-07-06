@@ -120,6 +120,7 @@
                             </div>
                             @endif
 
+                            @if ($productVariants->first()->color)
                             <div class="row">
                                 <div class="col-lg-2 mt-4">
                                     <h6>Color :</h6>
@@ -128,18 +129,24 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <ul class="list-inline pb-3">
-                                        <div >
+                                        <div>
+                                            @if ($category_id != 6)
                                             @foreach ($productVariants as $productVariant)
                                                 <li class="list-inline-item mt-2">
                                                     <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $productVariant->color }};" data-img="{{ $productVariant->image }}" wire:click="addColor('{{ $productVariant->color }}')"></span>
 
                                                 </li>
                                             @endforeach
+                                            @endif
+
 
                                         </div>
                                     </ul>
                                 </div>
                             </div>
+                            @endif
+
+                            @if ($category_id != 6)
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-lg-2 mt-4">
@@ -179,11 +186,11 @@
                                                     wire:click="addSize('XXXL')">XXL</span>
                                             </li>
                                         </div>
-
-
                                     </ul>
                                 </div>
                             </div>
+                            @endif
+
                             <h3 style="font-family: 'Myriad-Pro Bold';">Rp.
                                 {{ number_format($total_price, 0, ',', '.') }}</h3>
                             <h6>Shipping</h6>

@@ -30,6 +30,7 @@ class ProductsShow extends Component
     public $style = 'Lengan Pendek';
     public $productVariants;
     public $productId;
+    public $category_id;
 
     public function mount($id) {
         $this->productId = $id;
@@ -42,6 +43,7 @@ class ProductsShow extends Component
             $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->get();
         }
 
+        $this->category_id = $product->category_id;
         $this->user_id = $product->user_id;
         $this->price = $product->price;
         $this->username = $product->user->first_name;
