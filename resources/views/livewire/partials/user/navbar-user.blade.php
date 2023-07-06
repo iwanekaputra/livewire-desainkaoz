@@ -48,11 +48,20 @@
                                             href="{{ route('designer.saldo') }}"><img
                                                 src="{{ asset('assets/img/icon-saldo.svg') }}" alt=""
                                                 class="px-2" width="40"> Saldo</a></li>
+                                    @if ($store)
                                     <li class="py-1"><a class="dropdown-item text-dark"
-                                            href="{{ route('designer.upload-design') }}"><img
-                                                src="{{ asset('assets/img/icon-upload-design.svg') }}" alt=""
-                                                class="px-2" width="40"> Upload Desain</a></li>
-                                    <div style="border-bottom : 1px solid black"></div>
+                                        href="{{ route('designer.upload-design') }}"><img
+                                            src="{{ asset('assets/img/icon-upload-design.svg') }}" alt=""
+                                            class="px-2" width="40"> Upload Desain</a></li>
+                                            <div style="border-bottom : 1px solid black"></div>
+                                    @else
+                                    <li class="py-1" wire:click="validateStore"><a class="dropdown-item text-dark"
+                                        ><img
+                                            src="{{ asset('assets/img/icon-upload-design.svg') }}" alt=""
+                                            class="px-2" width="40"> Upload Desain</a></li>
+                                <div style="border-bottom : 1px solid black"></div>
+                                    @endif
+
                                 @endif
                                 <form action="{{ url('logout') }}" method="POST">
                                     @csrf
