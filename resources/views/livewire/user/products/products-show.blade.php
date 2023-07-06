@@ -106,6 +106,7 @@
                             <h1 style="font-family: 'Myriad-Pro Bold';">{{ $title }}</h1>
                             <h6 class="py-2">{{ $design }} Tshirt designed and sold by <a href="#"
                                     class="text-decoration-none">{{ $username }}</a></h6>
+                            @if ($productVariants->first()->style)
                             <div class="row">
                                 <div class="col-2">
                                     <h6 class="mt-2">Style :</h6>
@@ -117,6 +118,8 @@
                                     </select>
                                 </div>
                             </div>
+                            @endif
+
                             <div class="row">
                                 <div class="col-lg-2 mt-4">
                                     <h6>Color :</h6>
