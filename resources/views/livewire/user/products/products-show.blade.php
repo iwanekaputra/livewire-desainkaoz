@@ -232,7 +232,7 @@
                                         src="{{ asset('assets/img/design_1.png') }}" alt="Product Image 4">
                                     <div class="d-flex justify-content-center align-items-center flex-column"
                                         style="padding-left : 10px">
-                                        <h5>Syakira</h5>
+                                        <h5>{{ $user->first_name }}</h5>
                                         <h6><span style="color : #00a83b">●</span>
 
                                             Online</h6>
