@@ -202,10 +202,10 @@ class UploadDesign extends Component
         ]);
 
         if($data['sticker']) {
-            foreach($data['sticker'] as $bag) {
+            foreach($data['sticker'] as $sticker) {
                 UploadProductDesignVariant::create([
-                    'upload_product_design_id' => $createBag->id,
-                    'image' => $bag[0]
+                    'upload_product_design_id' => $createSticker->id,
+                    'image' => $sticker[0]
                 ]);
             }
         }
