@@ -68,7 +68,7 @@
                 <div class="col-lg-2 col-6 mt-2">
                     <a href="" class="text-decoration-none text-dark">
                         <div class="card child-card border-0">
-                            <img src="{{ $uploadProductDesignApproved->image }}" class="" alt="..."
+                            <img src="{{ $uploadProductDesignApproved->uploadProductDesignVariants->first()->image }}" class="" alt="..."
                                 style="border : 0.5px solid black">
                             <div class="card-body mt-2 p-0">
                                 <p class="card-title" style="font-family: 'Myriad-Pro Bold';">ID :
