@@ -152,11 +152,22 @@ class Checkout extends Component
 
         try {
             $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
-
             return redirect($paymentUrl);
         }
         catch (Exception $e) {
             echo $e->getMessage();
+        }
+
+        // Success
+        if($response->transaction_status == 'capture') {
+            echo "<p>Transaksi berhasil.</p>";
+            echo "<p>Status transaksi untuk order id $response->order_id: " .
+                "$response->transaction_status</p>";
+
+            echo "<h3>Detail transaksi:</h3>";
+            echo "<pre>";
+            var_dump($response);
+            echo "</pre>";
         }
 
     }

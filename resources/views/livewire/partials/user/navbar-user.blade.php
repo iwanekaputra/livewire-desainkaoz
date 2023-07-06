@@ -162,7 +162,19 @@
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <h6><a href="{{ route('custom') }}" class="text-decoration-none text-dark"> Custom</a></h6>
+                    <div class="dropdown">
+                    <a class="text-decoration-none text-dark" data-bs-toggle="dropdown"
+                    aria-expanded="false"> Custom</a>
+
+                    <ul class="dropdown-menu w-100">
+                        <li class="py-2">
+                            <a class="dropdown-item" href="{{ route('custom') }}"">
+                                Custom Apparel
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
                 </li>
             </div>
         </div>
