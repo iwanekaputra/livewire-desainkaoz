@@ -2367,19 +2367,27 @@
         $('#back-image').click(function() {
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 "url('{{ asset('assets/img/tshirt-belakang-black.png') }}')";
+
+                $('#tshirt-black').attr('data-image', 'tshirt-belakang-black.png')
+                $('#tshirt-white').attr('data-image', 'tshirt-belakang-white.png')
+                $('#tshirt-silver').attr('data-image', 'tshirt-belakang-silver.png')
+                $('#tshirt-green').attr('data-image', 'tshirt-belakang-green.png')
+                $('#tshirt-red').attr('data-image', 'tshirt-belakang-red.png')
+                $('#tshirt-blue').attr('data-image', 'tshirt-belakang-blue.png')
+                $('#tshirt-yellow').attr('data-image', 'tshirt-belakang-yellow.png')
         })
 
         $('#front-image').click(function() {
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 "url('{{ asset('assets/img/tshirt-black.png') }}')";
 
-            $('#tshirt-black').attr('data-image', 'tshirt-belakang-black.png')
-            $('#tshirt-white').attr('data-image', 'tshirt-belakang-white.png')
-            $('#tshirt-silver').attr('data-image', 'tshirt-belakang-silver.png')
-            $('#tshirt-green').attr('data-image', 'tshirt-belakang-green.png')
-            $('#tshirt-red').attr('data-image', 'tshirt-belakang-red.png')
-            $('#tshirt-blue').attr('data-image', 'tshirt-belakang-blue.png')
-            $('#tshirt-yellow').attr('data-image', 'tshirt-belakang-yellow.png')
+            $('#tshirt-black').attr('data-image', 'tshirt-black.png')
+            $('#tshirt-white').attr('data-image', 'tshirt-white.png')
+            $('#tshirt-silver').attr('data-image', 'tshirt-silver.png')
+            $('#tshirt-green').attr('data-image', 'tshirt-green.png')
+            $('#tshirt-red').attr('data-image', 'tshirt-red.png')
+            $('#tshirt-blue').attr('data-image', 'tshirt-blue.png')
+            $('#tshirt-yellow').attr('data-image', 'tshirt-yellow.png')
         })
 
         $('#front-image-sweater').click(function() {
