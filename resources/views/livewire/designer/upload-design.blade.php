@@ -2069,7 +2069,7 @@
             imgTshirt8.push('#141414')
             imgTshirt8.push('Lengan Panjang')
             document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/tshirt-belakang-black.png') }}')`;
+                `url('{{ asset('assets/img/tshirt-panjang-black.png') }}')`;
             imgTshirt8.push(await getImage(nodeTshirt))
             t.push(imgTshirt8);
 
@@ -2077,7 +2077,7 @@
             imgTshirt9.push('#fff')
             imgTshirt9.push('Lengan Panjang')
             document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/tshirt-belakang-white.png') }}')`;
+                `url('{{ asset('assets/img/tshirt-panjang-white.png') }}')`;
             imgTshirt9.push(await getImage(nodeTshirt))
             t.push(imgTshirt9);
 
@@ -2085,7 +2085,7 @@
             imgTshirt10.push('#7b7b7b')
             imgTshirt10.push('Lengan Panjang')
             document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/tshirt-belakang-silver.png') }}')`;
+                `url('{{ asset('assets/img/tshirt-panjang-silver.png') }}')`;
             imgTshirt10.push(await getImage(nodeTshirt))
             t.push(imgTshirt10);
 
@@ -2093,7 +2093,7 @@
             imgTshirt11.push('#a60707')
             imgTshirt11.push('Lengan Panjang')
             document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/tshirt-belakang-red.png') }}')`;
+                `url('{{ asset('assets/img/tshirt-panjang-red.png') }}')`;
             imgTshirt11.push(await getImage(nodeTshirt))
             t.push(imgTshirt11);
 
@@ -2101,7 +2101,7 @@
             imgTshirt12.push('#4c5d34')
             imgTshirt12.push('Lengan Panjang')
             document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/tshirt-belakang-green.png') }}')`;
+                `url('{{ asset('assets/img/tshirt-panjang-green.png') }}')`;
             imgTshirt12.push(await getImage(nodeTshirt))
             t.push(imgTshirt12);
 
@@ -2109,7 +2109,7 @@
             imgTshirt13.push('#252c5f')
             imgTshirt13.push('Lengan Panjang')
             document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/tshirt-belakang-blue.png') }}')`;
+                `url('{{ asset('assets/img/tshirt-panjang-blue.png') }}')`;
             imgTshirt13.push(await getImage(nodeTshirt))
             t.push(imgTshirt13);
 
@@ -2117,7 +2117,7 @@
             imgTshirt14.push('#e47200')
             imgTshirt14.push('Lengan Panjang')
             document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/tshirt-belakang-yellow.png') }}')`;
+                `url('{{ asset('assets/img/tshirt-panjang-yellow.png') }}')`;
             imgTshirt14.push(await getImage(nodeTshirt))
             t.push(imgTshirt14);
 

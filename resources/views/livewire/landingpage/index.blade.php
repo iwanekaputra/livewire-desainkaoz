@@ -106,7 +106,7 @@
         @forelse ($uploadProductDesigns as $uploadProductDesign)
             @if ($uploadProductDesign->category_id == 6)
             <div class="col-lg-2 col-6 mt-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="{{ route('products.show', $uploadProductDesign->id) }}" class="text-decoration-none text-dark">
                     <div class="card child-card border-0">
                         <img src="{{ $uploadProductDesign->uploadProductDesignVariants->first()->image }}" alt="..."
                             style="border : 0.5px solid black">
