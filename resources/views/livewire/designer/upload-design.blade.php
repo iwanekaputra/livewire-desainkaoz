@@ -195,7 +195,7 @@
                                 <div style="width : 40px; height : 40px; background-color : #2f2f2f; border : 2px solid silver"
                                     class="hoodie-color" data-image="hoodie-black.jpg"></div>
                                 <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
-                                    class="hoodie-color" data-image="hoodie-white.jpg">\
+                                    class="hoodie-color" data-image="hoodie-white.jpg">
                                 </div>
                                 <div style="width : 40px; height : 40px; background-color : #ab7a2b; border : 2px solid silver"
                                 class="hoodie-color" data-image="hoodie-yellow.jpg"></div>

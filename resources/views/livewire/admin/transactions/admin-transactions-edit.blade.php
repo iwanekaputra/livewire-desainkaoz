@@ -70,7 +70,7 @@
 
     </div>
 
-    <form action="">
+    <form action="" wire:submit.prevent="updateResi">
         <div class="row mt-5">
             <div class="col-lg-4">
                 <div class="mb-3">
@@ -124,7 +124,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="mb-3">
-                    <button class="btn btn-dark" wire:click="updateResi">Update Resi</button>
+                    <button class="btn btn-dark" type="submit">Update Resi</button>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ class AdminTransactionsEdit extends Component
     public function updateResi() {
         $this->transaction->update([
             'resi' => $this->resi,
-            'status' => 'SHIPPING'
+            'status' => $this->status
         ]);
 
         $this->dispatchBrowserEvent('swal:modal', [
