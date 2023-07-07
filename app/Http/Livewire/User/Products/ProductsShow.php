@@ -91,8 +91,8 @@ class ProductsShow extends Component
         $cart = Cart::create([
             'upload_product_design_id' => $this->product_id,
             'user_id' => auth()->user()->id,
-            'size' => $this->size,
-            'color' => $this->color,
+            'size' => $this->size ? $this->size : "",
+            'color' => $this->color ? $this->color : "",
             'total_price' => $this->total_price,
             'quantity' => 1
         ]);
