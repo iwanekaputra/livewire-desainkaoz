@@ -113,7 +113,7 @@
                     </tbody>
                 </table>
 
-                <button class="btn btn-dark w-100" wire:click="pay">Bayar Sekarang</button>
+                <button class="btn btn-dark w-100" wire:click="pay">Checkout</button>
 
             </div>
         </div>

@@ -23,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->string('resi')->nullable();
             $table->string('province')->nullable();
             $table->string('city')->nullable();
+            $table->string('courier')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

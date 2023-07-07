@@ -39,20 +39,20 @@
         </div>
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Total Harga</div>
-            <div>Rp. {{ number_format($totalPrice,0,',','.') }}</div>
+            <div>Rp. {{ number_format($transaction->total_price,0,',','.') }}</div>
         </div>
 
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Provinsi</div>
-            <div>aoks</div>
+            <div>{{ $transaction->user->province }}</div>
         </div>
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Kota</div>
-            <div>aoks</div>
+            <div>{{ $transaction->user->city }}</div>
         </div>
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Alamat</div>
-            <div>aoks</div>
+            <div>{{ $transaction->user->address }}</div>
         </div>
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Kurir</div>
@@ -60,8 +60,14 @@
         </div>
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Status</div>
-            <div>Pending</div>
+            <div>{{ $transaction->status }}</div>
         </div>
+
+        <div class="col-lg-6 mt-3">
+            <div style="font-family:'Myriad-Pro Bold';">Resi</div>
+            <div>{{ $transaction->resi }}</div>
+        </div>
+
     </div>
 
     <form action="">
@@ -70,19 +76,46 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Status</label>
                     <select class="form-select" aria-label="Default select example" wire:model="status">
-                        <option value="PENDING">PENDING</option>
-                        <option value="SHIPPING">SHIPPING</option>
-                        <option value="SUCCESS">SUCCESS</option>
+                        @if ($transaction->status == 'PAID')
+                            <option value="PAID">PAID</option>
+                            <option value="PENDING">PENDING</option>
+                            <option value="SHIPPING">SHIPPING</option>
+                            <option value="SUCCESS">SUCCESS</option>
+                        @elseif ($transaction->status == 'PENDING')
+                            <option value="PENDING">PENDING</option>
+                            <option value="PAID">PAID</option>
+                            <option value="SHIPPING">SHIPPING</option>
+                            <option value="SUCCESS">SUCCESS</option>
+                        @elseif ($transaction->status == 'SHIPPING')
+                            <option value="SHIPPING">SHIPPING</option>
+                            <option value="PENDING">PENDING</option>
+                            <option value="PAID">PAID</option>
+                            <option value="SUCCESS">SUCCESS</option>
+                        @elseif ($transaction->status == 'SUCCESS')
+                            <option value="SUCCESS">SUCCESS</option>
+                            <option value="SHIPPING">SHIPPING</option>
+                            <option value="PENDING">PENDING</option>
+                            <option value="PAID">PAID</option>
+                        @endif
                     </select>
                 </div>
             </div>
 
 
-            @if ($status === "SHIPPING")
+            {{-- @if ($status === "SHIPPING")
             <div class="col-lg-4">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Input resi</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" wire:model="resi">
+                </div>
+            </div>
+            @endif --}}
+
+            @if ($status === 'SHIPPING')
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Input resi</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" wire:model="resi" value="{{ $resi }}">
                 </div>
             </div>
             @endif
@@ -91,7 +124,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="mb-3">
-                    <button class="btn btn-dark">Update Resi</button>
+                    <button class="btn btn-dark" wire:click="updateResi">Update Resi</button>
                 </div>
             </div>
         </div>
