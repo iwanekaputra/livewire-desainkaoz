@@ -195,17 +195,17 @@
                                 <div style="width : 40px; height : 40px; background-color : #2f2f2f; border : 2px solid silver"
                                     class="hoodie-color" data-image="hoodie-black.jpg"></div>
                                 <div style="width : 40px; height : 40px; background-color : #f0f0f0; border : 2px solid silver"
-                                    class="hoodie-color" data-image="hoodie-white.jpg"></div>
-                                <div style="width : 40px; height : 40px; background-color : #995f2f; border : 2px solid silver"
-                                    class="hoodie-color" data-image="hoodie-chocolate.png"></div>
+                                    class="hoodie-color" data-image="hoodie-white.jpg">\
+                                </div>
+                                <div style="width : 40px; height : 40px; background-color : #ab7a2b; border : 2px solid silver"
+                                class="hoodie-color" data-image="hoodie-yellow.jpg"></div>
                                 <div style="width : 40px; height : 40px; background-color : #44672f; border : 2px solid silver"
                                     class="hoodie-color" data-image="hoodie-green.jpg"></div>
                                 <div style="width : 40px; height : 40px; background-color : #ad322d; border : 2px solid silver"
                                     class="hoodie-color" data-image="hoodie-red.jpg"></div>
                                 <div style="width : 40px; height : 40px; background-color : #3d4367; border : 2px solid silver"
                                     class="hoodie-color" data-image="hoodie-navy.jpg"></div>
-                                <div style="width : 40px; height : 40px; background-color : #ab7a2b; border : 2px solid silver"
-                                    class="hoodie-color" data-image="hoodie-yellow.jpg"></div>
+
                                 <div style="width : 40px; height : 40px; background-color : #6e6e6e; border : 2px solid silver"
                                     class="hoodie-color" data-image="hoodie-silver.jpg"></div>
                             </div>
@@ -2150,7 +2150,7 @@
             let imgHoodie3 = [];
             imgHoodie3.push('#995f2f')
             document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-chocolate.jpg') }}')`;
+                `url('{{ asset('assets/img/hoodie-yellow.jpg') }}')`;
             imgHoodie3.push(await getImage(nodeHoodie))
             t.push(imgHoodie3);
 
@@ -2175,19 +2175,13 @@
             imgHoodie6.push(await getImage(nodeHoodie))
             t.push(imgHoodie6);
 
-            let imgHoodie7 = [];
-            imgHoodie7.push('#ab7a2b')
-            document.getElementById('hoodie-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/hoodie-yellow.jpg') }}')`;
-            imgHoodie7.push(await getImage(nodeHoodie))
-            t.push(imgHoodie7);
 
-            let imgHoodie8 = [];
-            imgHoodie8.push('#6e6e6e')
+            let imgHoodie7 = [];
+            imgHoodie7.push('#6e6e6e')
             document.getElementById('hoodie-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/hoodie-silver.jpg') }}')`;
-            imgHoodie8.push(await getImage(nodeHoodie))
-            t.push(imgHoodie8);
+            imgHoodie7.push(await getImage(nodeHoodie))
+            t.push(imgHoodie7);
 
 
 

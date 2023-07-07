@@ -19,30 +19,21 @@
                 </article>
                 <hr>
                 <ul class="row justify-content-centers">
+                    @foreach ($transaction->transactionDetails as $transactionDetail)
                     <li class="col-6">
                         <figure class="itemside mb-3">
                             <div class="aside">
-                                <img src="{{ asset('assets/img/tshirt-black.png') }}" class="border " width="100">
+                                <img src="{{ $transactionDetail->uploadProductDesign->uploadProductDesignVariants->first()->image }}" class="border " width="100">
                             </div>
                             <figcaption class="info align-self-center">
-                                <p class="title fs-5" style="font-family:'Myriad-Pro Bold';">Tshirt <br> <span>Lengan
-                                        Pendek, S, Black <br> Qty : x1</span>
-                                </p><span class="fs-4" style="font-family: 'Myriad-Pro Bold';">Rp 12.000 </span>
+                                <p class="title fs-5" style="font-family:'Myriad-Pro Bold';">{{ $transactionDetail->uploadProductDesign->category->name }} <br> <span> {{ $transactionDetail->size }}, <br> Qty : x1</span>
+                                </p><span class="fs-4" style="font-family: 'Myriad-Pro Bold';">Rp {{ number_format($transactionDetail->price, 0, ',','.') }} </span>
                             </figcaption>
                         </figure>
                     </li>
-                    <li class="col-6">
-                        <figure class="itemside mb-3">
-                            <div class="aside">
-                                <img src="{{ asset('assets/img/tshirt-black.png') }}" class="border " width="100">
-                            </div>
-                            <figcaption class="info align-self-center">
-                                <p class="title fs-5" style="font-family:'Myriad-Pro Bold';">Tshirt <br> <span>Lengan
-                                        Pendek, S, Black <br> Qty : x1</span>
-                                </p><span class="fs-4" style="font-family: 'Myriad-Pro Bold';">Rp 12.000 </span>
-                            </figcaption>
-                        </figure>
-                    </li>
+                    @endforeach
+
+
                 </ul>
                 <hr>
             </div>
