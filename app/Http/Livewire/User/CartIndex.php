@@ -9,12 +9,30 @@ class CartIndex extends Component
 {
     public $cart_id;
     public $total_price;
+    public $amount;
     protected $listeners = [
         'remove' => 'deleteCart'
     ];
 
     public function mount() {
         $carts = Cart::where("user_id", auth()->user()->id)->get();
+
+        foreach($carts as $cart) {
+            $this->total_price += $cart->total_price;
+        }
+    }
+
+    public function updatedAmount() {
+        foreach($this->amount as $c => $v) {
+            $cart = Cart::find($c);
+            $cart->update([
+                'quantity' => $v,
+                'total_price' => $cart->uploadProductDesign->total_price * $v
+            ]);
+        }
+
+        $carts = Cart::where("user_id", auth()->user()->id)->get();
+        $this->total_price = 0;
 
         foreach($carts as $cart) {
             $this->total_price += $cart->total_price;

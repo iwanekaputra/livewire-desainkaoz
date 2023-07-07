@@ -10,6 +10,7 @@
                             <th scope="col">Nama Produk</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Jumlah</th>
+                            <th scope="col">input jumlah</th>
                             <th scope="col" class="text-center">Hapus</th>
                         </tr>
                     </thead>
@@ -19,8 +20,9 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $cart->uploadProductDesign->title }}</td>
                                 <td>Rp. {{ number_format($cart->total_price, 0, ',', '.') }}</td>
+                                <td style="width: 10%;">{{ $cart->quantity }}</td>
                                 <td style="width: 10%;"><input class="form-control" type="number"
-                                        value="{{ $cart->quantity }}" aria-label="default input example"></td>
+                                       aria-label="default input example" wire:model="amount.{{ $cart->id }}"></td>
                                 <td class="text-center">
                                     <h3>
                                         <i class="fa fa-times text-danger" aria-hidden="true"
