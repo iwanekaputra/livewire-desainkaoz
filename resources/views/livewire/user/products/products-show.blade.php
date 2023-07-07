@@ -146,7 +146,8 @@
                             </div>
                             @endif
 
-                            @if ($category_id != 6)
+
+                            @if ($category_id == 1 || $category_id == 2 || $category_id == 3 || $category_id == 4)
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-lg-2 mt-4">

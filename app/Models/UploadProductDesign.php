@@ -10,7 +10,7 @@ class UploadProductDesign extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    public $with = ['user', 'designCategory', 'productDesign'];
+    public $with = ['user', 'designCategory', 'productDesign', 'category'];
     public function user () {
         return $this->belongsTo(User::class);
     }
@@ -25,5 +25,9 @@ class UploadProductDesign extends Model
 
     public function productDesign() {
         return $this->belongsTo(ProductDesign::class);
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }

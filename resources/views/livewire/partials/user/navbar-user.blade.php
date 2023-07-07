@@ -127,7 +127,7 @@
                         <ul class="dropdown-menu w-100">
                             @foreach ($appareals as $appareal)
                                 <li class="py-2">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('products.category', $appareal->id) }}">
                                         <img class="px-2" src="{{ asset('storage/produk/' . $appareal->image) }}"
                                             alt="" width="40">
                                         {{ $appareal->name }}</a>
@@ -145,7 +145,7 @@
                         <ul class="dropdown-menu w-100">
                             @foreach ($accesories as $accesory)
                                 <li class="py-2">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('products.category', $accesory->id) }}">
                                         <img class="px-2" src="{{ asset('storage/produk/' . $accesory->image) }}"
                                             alt="" width="40">
                                         {{ $accesory->name }}</a>

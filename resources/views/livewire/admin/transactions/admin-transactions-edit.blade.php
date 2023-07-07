@@ -56,7 +56,7 @@
         </div>
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Kurir</div>
-            <div>aoks</div>
+            <div>{{ $transaction->courier }}</div>
         </div>
         <div class="col-lg-6 mt-3">
             <div style="font-family:'Myriad-Pro Bold';">Status</div>
