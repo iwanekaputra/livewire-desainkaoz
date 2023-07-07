@@ -26,7 +26,7 @@
                                 <img src="{{ $transactionDetail->uploadProductDesign->uploadProductDesignVariants->first()->image }}" class="border " width="100">
                             </div>
                             <figcaption class="info align-self-center">
-                                <p class="title fs-5" style="font-family:'Myriad-Pro Bold';">{{ $transactionDetail->uploadProductDesign->category->name }} <br> <span> {{ $transactionDetail->size }}, <br> Qty : x1</span>
+                                <p class="title fs-5" style="font-family:'Myriad-Pro Bold';">{{ $transactionDetail->uploadProductDesign->category->name }} <br> <span> {{ $transactionDetail->size }}, <br> Qty : x{{ $transactionDetail->quantity }}</span>
                                 </p><span class="fs-4" style="font-family: 'Myriad-Pro Bold';">Rp {{ number_format($transactionDetail->price, 0, ',','.') }} </span>
                             </figcaption>
                         </figure>

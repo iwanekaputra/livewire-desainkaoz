@@ -121,6 +121,7 @@ class Checkout extends Component
                 'upload_product_design_id' => $cart->uploadProductDesign->id,
                 'price' => $cart->uploadProductDesign->total_price,
                 'status' => 'PENDING',
+                'quantity' => $cart->quantity,
                 'size' => $cart->size,
                 'color' => $cart->color,
                 'code' => $trx

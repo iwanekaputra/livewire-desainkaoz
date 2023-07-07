@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-lg-3 mt-3">
                     <div style="font-family:'Myriad-Pro Bold';">Jumlah Item</div>
-                    <div>1</div>
+                    <div>{{ $transactionDetail->quantity }}</div>
                 </div>
                 <div class="col-lg-3 mt-3">
                     <div style="font-family:'Myriad-Pro Bold';">Total Harga</div>

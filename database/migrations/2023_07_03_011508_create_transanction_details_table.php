@@ -20,6 +20,7 @@ class CreateTransanctionDetailsTable extends Migration
             $table->string('code')->nullable();
             $table->string('price')->nullable();
             $table->string('size')->nullable();
+            $table->string('quantity')->nullable();
             $table->string('color')->nullable();
             $table->timestamps();
         });
