@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 
-use Midtrans\Snap;
-use Midtrans\Config;
+
 
 class Checkout extends Component
 {
@@ -110,8 +109,7 @@ class Checkout extends Component
             'shipping_price' => $this->ongkir,
             'total_price' => $this->price + $this->ongkir,
             'status' => 'PENDING',
-            // 'province' =>
-            // 'city' =>
+            'courier' => $this->courier,
             'code' => $code
         ]);
 
@@ -129,46 +127,7 @@ class Checkout extends Component
             ]);
         }
 
-        Config::$serverKey = config('services.midtrans.serverKey');
-        Config::$isProduction = config("services.midtrans.isProduction");
-        Config::$isSanitized = config('services.midtrans.isSanitized');
-        Config::$is3ds = config('services.midtrans.is3ds');
-
-
-        $midtrans = [
-            'transaction_details' => [
-                'order_id' => $code,
-                'gross_amount' => (int) $this->price + (int) $this->ongkir,
-            ],
-            'customer_details' => [
-                'first_name' => auth()->user()->name,
-                'email' => auth()->user()->email
-            ],
-            'enabled_payments' => [
-                'gopay', 'permata_va', 'bank_transfer'
-            ],
-            'vtweb' => []
-        ];
-
-        try {
-            $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
-            return redirect($paymentUrl);
-        }
-        catch (Exception $e) {
-            echo $e->getMessage();
-        }
-
-        // Success
-        if($response->transaction_status == 'capture') {
-            echo "<p>Transaksi berhasil.</p>";
-            echo "<p>Status transaksi untuk order id $response->order_id: " .
-                "$response->transaction_status</p>";
-
-            echo "<h3>Detail transaksi:</h3>";
-            echo "<pre>";
-            var_dump($response);
-            echo "</pre>";
-        }
+        return redirect()->route("pay", $transaction->id);
 
     }
 

@@ -12,8 +12,8 @@
                             <div class="col-4"> <strong style="font-family:'Myriad-Pro Bold';">Status :</strong> <br>
                                 {{ $transaction->status }} </div>
                             <div class="col-4"> <strong style="font-family:'Myriad-Pro Bold';">Kurir :</strong>
-                                JNE <br> <strong style="font-family:'Myriad-Pro Bold';">Resi :</strong>
-                                JP09015438791 </div>
+                                {{ $transaction->courier }} <br> <strong style="font-family:'Myriad-Pro Bold';">Resi :</strong>
+                                {{ $transaction->resi }} </div>
                         </div>
                     </div>
                 </article>
@@ -48,7 +48,7 @@
             </div>
         </article>
         @empty
-        <div class="alert alert-dark" role="alert">
+        <div class="alert alert-dark text-center mt-5" role="alert">
             Tidak ada data pesanan
           </div>
 

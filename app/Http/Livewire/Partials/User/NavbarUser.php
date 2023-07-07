@@ -19,7 +19,7 @@ class NavbarUser extends Component
     ];
 
     public function mount() {
-        $this->store = Store::where('user_id', auth()->user()->id)->first();
+        // $this->store = Store::where('user_id', auth()->user()->id)->first();
     }
 
     public function updateCart() {

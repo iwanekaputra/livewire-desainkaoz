@@ -20,11 +20,9 @@
                         <td>{{ $transaction->code }}</td>
                         <td>{{ $transaction->user->first_name }}</td>
                         <td>
-                            @if($transaction->status == 'PENDING')
                             <span class="badge text-bg-warning">
                                 {{ $transaction->status }}
                             </span>
-                            @endif
                         </td>
                         <td>
                             <a href="{{ route('admin.transactions.edit', $transaction->id) }}" class="text-decoration-none btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>

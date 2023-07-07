@@ -48,21 +48,28 @@
                                             href="{{ route('designer.saldo') }}"><img
                                                 src="{{ asset('assets/img/icon-saldo.svg') }}" alt=""
                                                 class="px-2" width="40"> Saldo</a></li>
-                                    @if ($store)
+                                    {{-- @if ($store) --}}
                                     <li class="py-1"><a class="dropdown-item text-dark"
                                         href="{{ route('designer.upload-design') }}"><img
                                             src="{{ asset('assets/img/icon-upload-design.svg') }}" alt=""
                                             class="px-2" width="40"> Upload Desain</a></li>
                                             <div style="border-bottom : 1px solid black"></div>
-                                    @else
-                                    <li class="py-1" wire:click="validateStore"><a class="dropdown-item text-dark"
+                                    {{-- @else --}}
+                                    {{-- <li class="py-1" wire:click="validateStore"><a class="dropdown-item text-dark"
                                         ><img
                                             src="{{ asset('assets/img/icon-upload-design.svg') }}" alt=""
                                             class="px-2" width="40"> Upload Desain</a></li>
                                 <div style="border-bottom : 1px solid black"></div>
-                                    @endif
+                                    @endif --}}
 
                                 @endif
+
+                                @if (auth()->user()->role_id == '3')
+                                <li class="py-1"><a class="dropdown-item text-dark"
+                                    href="{{ route('order') }}"><img src="{{ asset('assets/img/sent.png') }}"
+                                        alt="" class="px-2" width="38"> Pesanan</a></li>
+                                @endif
+
                                 <form action="{{ url('logout') }}" method="POST">
                                     @csrf
                                     <li class="py-1" style="font-size : 12px">

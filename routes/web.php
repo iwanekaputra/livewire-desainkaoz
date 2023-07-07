@@ -32,6 +32,7 @@ use App\Http\Livewire\Designer\UploadDesign;
 use App\Http\Livewire\Landingpage\Index;
 use App\Http\Livewire\Landingpage\Login;
 use App\Http\Livewire\Landingpage\Register;
+use App\Http\Livewire\Pay;
 use App\Http\Livewire\User\CartIndex;
 use App\Http\Livewire\User\Checkout;
 use App\Http\Livewire\User\Custom;
@@ -125,3 +126,5 @@ Route::get('products/{id}', ProductsShow::class)->name('products.show');
 Route::get('shop/{id}', DesignerShop::class)->name('designer.shop');
 Route::get('products/design/category/{id}', ProductsDesignCategory::class)->name('products.design.category');
 Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
+
+Route::get("pay/{id}", Pay::class)->name('pay');
