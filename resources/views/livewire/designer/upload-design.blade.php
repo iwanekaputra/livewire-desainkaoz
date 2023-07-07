@@ -2387,6 +2387,14 @@
         $('#front-image-sweater').click(function() {
             document.getElementById('sweater-main-image').style.backgroundImage =
                 "url('{{ asset('assets/img/sweater-black.png') }}')";
+
+                $('#sweater-black').attr('data-image', 'sweater-black.png')
+                $('#sweater-white').attr('data-image', 'sweater-white.png')
+                $('#sweater-silver').attr('data-image', 'sweater-silver.png')
+                $('#sweater-green').attr('data-image', 'sweater-green.png')
+                $('#sweater-red').attr('data-image', 'sweater-red.png')
+                $('#sweater-navy').attr('data-image', 'sweater-navy.png')
+                $('#sweater-yellow').attr('data-image', 'sweater-yellow.png')
         })
 
         $('#back-image-sweater').click(function() {
