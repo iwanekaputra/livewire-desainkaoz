@@ -46,6 +46,10 @@
             border-radius: 0.10rem
         }
 
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
         .card-header:first-child {
             border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0
         }
