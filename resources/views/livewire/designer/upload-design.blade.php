@@ -32,7 +32,7 @@
                     class="d-flex align-items-center justify-content-center">
                     <img wire:ignore.self id="design-image" style="width:100%;height:100%;">
                 </div>
-                <h1 class="text-center"><button class="btn btn-warning rounded-0 ms-3"
+                <h1 style="margin-left: 4.5rem"><button class="btn btn-warning rounded-0 ms-3"
                         onclick="document.querySelector('.file_input').click()">Upload Image</button></h1>
                 <input type="file" class="file_input" style="display: none" wire:model="imageDesign">
             </div>
@@ -219,7 +219,7 @@
                         <div class="mt-5">
                             <h6>Harga Dasar</h6>
                             <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                value="100000" disabled>
+                                value="200000" disabled>
                         </div>
                         <hr>
                         <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
@@ -282,7 +282,7 @@
                         <div class="mt-5">
                             <h6>Harga Dasar</h6>
                             <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                value="100000" disabled>
+                                value="150000" disabled>
                         </div>
                         <hr>
                         <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
@@ -341,7 +341,7 @@
                         <div class="mt-5">
                             <h6>Harga Dasar</h6>
                             <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                value="100000" disabled>
+                                value="50000" disabled>
                         </div>
                         <hr>
                         <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
@@ -395,7 +395,7 @@
                         <div class="mt-5">
                             <h6>Harga Dasar</h6>
                             <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                value="100000" disabled>
+                                value="20000" disabled>
                         </div>
                         <hr>
                         <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
