@@ -19,23 +19,11 @@ class Login extends Component
 
     public function login () {
         $this->validate([
-            'email'     => 'required|email',
+            'email'     => 'required|email|exists:users,email',
             'password'  => 'required'
         ]);
 
         $user = User::where('email', $this->email)->first();
-
-        if(!$user) {
-            $this->dispatchBrowserEvent('swal:modal', [
-                'type' => 'error',
-                'message' => 'Akun belum terdaftar',
-                'text' => 'Mohon untuk daftar terlebih dahulu',
-                'timer' => 3000,
-                'action' => 'moveToLogin'
-            ]);
-
-            return;
-        }
 
         if($user->is_email_verified === 0) {
             $this->dispatchBrowserEvent('swal:modal', [
@@ -48,6 +36,7 @@ class Login extends Component
 
             return;
         }
+
         if($user->status === 0 && $user->role_id == "2") {
             $this->dispatchBrowserEvent('swal:modal', [
                 'type' => 'error',
@@ -81,16 +70,6 @@ class Login extends Component
                     'action' => 'moveToIndex'
                 ]);
             }
-        } else {
-            $this->dispatchBrowserEvent('swal:modal', [
-                'type' => 'error',
-                'message' => 'Email atau Password salah',
-                'text' => '',
-                'timer' => 3000,
-                'action' => 'moveToLogin'
-            ]);
-
-            return;
         }
     }
 
