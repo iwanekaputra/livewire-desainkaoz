@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VerifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,7 @@ class AuthController extends Controller
                 if(!$user->is_email_verified) {
                     $verifyUser->user->is_email_verified = 1;
                     $verifyUser->user->save();
-                    $message = "Your e-mail is verified. You can now login.";
+                    $message = "Your e-mail is verified. waiting approve from admin.";
                 } else {
                     $message = "Your e-mail is already verified. You can now login.";
                 }
@@ -39,7 +40,7 @@ class AuthController extends Controller
                     $verifyUser->user->is_email_verified = 1;
                     $verifyUser->user->status = 1;
                     $verifyUser->user->save();
-                    $message = "Your e-mail is verified. You can now login.";
+                    $message = "Your e-mail is verified. waiting approve from admin.";
                 } else {
                     $message = "Your e-mail is already verified. You can now login.";
                 }
