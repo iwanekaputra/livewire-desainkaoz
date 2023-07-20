@@ -17,7 +17,7 @@ class Register extends Component
     public $email;
     public $password;
     public $password_confirmation;
-    public $role_id;
+    public $role_id = 3; // user
 
     protected $listeners = [
         'moveToIndex'
@@ -25,7 +25,7 @@ class Register extends Component
 
     public function register() {
         $this->validate([
-            'first_name'      => 'required',
+            'first_name' => 'required',
             'last_name' => 'required',
             'email'     => 'required|email|unique:users',
             'password'  => 'required|confirmed',
@@ -49,8 +49,8 @@ class Register extends Component
         ]);
 
         $details = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'body' => 'This is for testing email using smtp',
+            'title' => '',
+            'body' => '',
             'token' => $token
         ];
 
