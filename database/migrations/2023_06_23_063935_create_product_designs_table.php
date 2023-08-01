@@ -23,6 +23,10 @@ class CreateProductDesignsTable extends Migration
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->string('price')->nullable();
+            $table->string('width')->nullable();
+            $table->string('height')->nullable();
+            $table->string('sumbu_x')->nullable();
+            $table->string('sumbu_y')->nullable();
             $table->timestamps();
         });
     }
