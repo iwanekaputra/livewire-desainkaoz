@@ -8,7 +8,7 @@
                         <div id="tshirt-capture" style="width : calc(500px); height : calc(500px)">
                             <div style="width : calc(500px); height : calc(500px); background-image : url('{{ asset('assets/img/tshirt-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
                                 id="tshirt-main-image">
-                                <div class="tshirt-layer-5 position-relative"
+                                <div class="tshirt-layer-{{ $productId }} position-relative"
                                     style="width : calc(200px); top : calc(40px); left : calc(150px); height : calc(380px); ">
                                 </div>
                             </div>

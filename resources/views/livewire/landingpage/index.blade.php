@@ -111,7 +111,7 @@
                     <div id="tshirt-capture" style="width : calc(500px / 3); height : calc(500px / 3)">
                         <div style="width : calc(500px / 3); height : calc(500px / 3); background-image : url('{{ asset('assets/img/tshirt-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
                             id="tshirt-main-image">
-                            <div class="tshirt-layer-5 position-relative"
+                            <div class="tshirt-layer-{{ $productDesign->id }} position-relative"
                                 style="width : calc(200px / 3); top : calc(40px / 3); left : calc(150px / 3); height : calc(380px / 3); ">
                             </div>
                         </div>
