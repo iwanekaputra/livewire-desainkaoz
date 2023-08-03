@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\ProductDesign;
 use App\Models\VerifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,5 +54,17 @@ class AuthController extends Controller
         $deleteToken = $verifyUser->delete();
 
         return $message;
+    }
+
+    public function upload() {
+        return response()->json([
+         'data' => ProductDesign::get()
+        ]);
+    }
+
+    public function uploadShow($id) {
+        return response()->json([
+            'data' => ProductDesign::find($id)
+        ]);
     }
 }

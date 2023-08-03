@@ -159,7 +159,7 @@
                         </div>
                         <hr>
                         <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
-                            type="button">Next</button>
+                            type="button" disabled wire:ignore.self>Next</button>
                     </div>
                 </div>
             </div>
@@ -282,352 +282,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- tab hoodie step 2 --}}
-            <div class="tab-pane fade" id="hoodie-tab-pane-step-2" role="tabpanel" aria-labelledby="hoodie-tab"
-                tabindex="0" wire:ignore.self>
-                <div class="row mt-5">
-                    <div class="col-lg-6" id="preview-image">
-                        <img class="border" id="hoodie-image-step-2" alt="" width="400">
-                    </div>
-
-
-                    <div class="col-lg-6">
-                        <h4>Hoodie</h4>
-
-                        <div class="mt-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <p class="mt-2"><strong>Profit Estimator for: </strong></p>
-                                    <p class="mt-4"><strong>Harga Dasar: </strong></p>
-                                    <p class="mt-3"><strong>Royalti Desain </strong></p>
-                                    <p class="mt-4"><strong>Harga Jual: </strong></p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Hoodie bahan
-                                        cvc</button>
-                                    <p class="mt-3" id="hoodie-harga-dasar">200000</p>
-                                    <input type="number" class="" id="price-hoodie">
-                                    <p class="mt-3" id="hoodie-harga-jual"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end" id="hoodie-10-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end" id="hoodie-100-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end" id="hoodie-250-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end" id="hoodie-500-items"></td>
-                                        </tr>
-                                        <tr class="bg-warning">
-                                            <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end" id="hoodie-1000-items"></td>
-                                        </tr>
-                                    </thead>
-
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
-                                            class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Back</button>
-                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
-                                            class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- tab sweater step 2 --}}
-            <div class="tab-pane fade" id="sweater-tab-pane-step-2" role="tabpanel" aria-labelledby="sweater-tab"
-                tabindex="0" wire:ignore.self>
-                <div class="row mt-5">
-                    <div class="col-lg-6" id="preview-image">
-                        <img class="border" id="sweater-image-step-2" alt="" width="400">
-                    </div>
-
-
-                    <div class="col-lg-6">
-                        <h4>Sweater</h4>
-
-                        <div class="mt-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <p class="mt-2"><strong>Profit Estimator for: </strong></p>
-                                    <p class="mt-4"><strong>Harga Dasar: </strong></p>
-                                    <p class="mt-3"><strong>Royalti Desain </strong></p>
-                                    <p class="mt-4"><strong>Harga Jual: </strong></p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Sweater
-                                        bahan cvc</button>
-                                    <p class="mt-3" id="sweater-harga-dasar">150000</p>
-                                    <input type="number" class="" id="price-sweater">
-                                    <p class="mt-3" id="sweater-harga-jual"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end" id="sweater-10-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end" id="sweater-100-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end" id="sweater-250-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end" id="sweater-500-items"></td>
-                                        </tr>
-                                        <tr class="bg-warning">
-                                            <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end" id="sweater-1000-items"></td>
-                                        </tr>
-                                    </thead>
-
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
-                                            class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Back</button>
-                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
-                                            class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            {{-- tab hat step 2 --}}
-            <div class="tab-pane fade" id="hat-tab-pane-step-2" role="tabpanel" aria-labelledby="hat-tab" tabindex="0"
-                wire:ignore.self>
-                <div class="row mt-5">
-                    <div class="col-lg-6" id="preview-image">
-                        <img class="border" id="hat-image-step-2" alt="" width="400">
-                    </div>
-
-
-                    <div class="col-lg-6">
-                        <h4>Topi</h4>
-
-                        <div class="mt-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <p class="mt-2"><strong>Profit Estimator for: </strong></p>
-                                    <p class="mt-4"><strong>Harga Dasar: </strong></p>
-                                    <p class="mt-3"><strong>Royalti Desain </strong></p>
-                                    <p class="mt-4"><strong>Harga Jual: </strong></p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Topi
-                                        Footballs Canvas</button>
-                                    <p class="mt-3" id="hat-harga-dasar">50000</p>
-                                    <input type="number" class="" id="price-hat">
-                                    <p class="mt-3" id="hat-harga-jual"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end" id="hat-10-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end" id="hat-100-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end" id="hat-250-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end" id="hat-500-items"></td>
-                                        </tr>
-                                        <tr class="bg-warning">
-                                            <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end" id="hat-1000-items"></td>
-                                        </tr>
-                                    </thead>
-
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
-                                            class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Back</button>
-                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
-                                            class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- tab bag step 2 --}}
-            <div class="tab-pane fade" id="bag-tab-pane-step-2" role="tabpanel" aria-labelledby="bag-tab" tabindex="0"
-                wire:ignore.self>
-                <div class="row mt-5">
-                    <div class="col-lg-6" id="preview-image">
-                        <img class="border" id="bag-image-step-2" alt="" width="400">
-                    </div>
-
-
-                    <div class="col-lg-6">
-                        <h4>Bag</h4>
-
-                        <div class="mt-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <p class="mt-2"><strong>Profit Estimator for: </strong></p>
-                                    <p class="mt-4"><strong>Harga Dasar: </strong></p>
-                                    <p class="mt-3"><strong>Royalti Desain </strong></p>
-                                    <p class="mt-4"><strong>Harga Jual: </strong></p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Tote Bag
-                                        Canvas</button>
-                                    <p class="mt-3" id="bag-harga-dasar">20000</p>
-                                    <input type="number" class="" id="price-bag">
-                                    <p class="mt-3" id="bag-harga-jual"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end" id="bag-10-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end" id="bag-100-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end" id="bag-250-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end" id="bag-500-items"></td>
-                                        </tr>
-                                        <tr class="bg-warning">
-                                            <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end" id="bag-1000-items"></td>
-                                        </tr>
-                                    </thead>
-
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
-                                            class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Back</button>
-                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
-                                            class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-5">
-                    <div class="col-lg-6" id="preview-image">
-                        <img class="border" id="sticker-image-step-2" alt="" width="400">
-                    </div>
-
-
-                    <div class="col-lg-6">
-                        <h4>Sticker</h4>
-
-                        <div class="mt-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <p class="mt-2"><strong>Profit Estimator for: </strong></p>
-                                    <p class="mt-4"><strong>Harga Dasar: </strong></p>
-                                    <p class="mt-3"><strong>Royalti Desain </strong></p>
-                                    <p class="mt-4"><strong>Harga Jual: </strong></p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">Sticker Vinyl Putih</button>
-                                    <p class="mt-3" id="sticker-harga-dasar">5000</p>
-                                    <input type="number" class="" id="price-sticker">
-                                    <p class="mt-3" id="sticker-harga-jual"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <td scope="col">10 items</td>
-                                            <td scope="col" class="text-end" id="sticker-10-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">100 items</td>
-                                            <td scope="col" class="text-end" id="sticker-100-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">250 items</td>
-                                            <td scope="col" class="text-end" id="sticker-250-items"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="col">500 items</td>
-                                            <td scope="col" class="text-end" id="sticker-500-items"></td>
-                                        </tr>
-                                        <tr class="bg-warning">
-                                            <td scope="col">1000 items</td>
-                                            <td scope="col" class="text-end" id="sticker-1000-items"></td>
-                                        </tr>
-                                    </thead>
-
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="d-flex justify-content-between mt-4">
-                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
-                                            class="fa fa-arrow-left" aria-hidden="true"></i>
-                                        Back</button>
-                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
-                                            class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     {{-- end step 2 --}}
@@ -706,6 +360,7 @@
                 img.src = url;
 
                 $('#design-image').attr('src', url);
+                $('.step-1').removeAttr('disabled');
                 img.onload = function() {
 
                     var img_width = img.width;
@@ -730,7 +385,7 @@
 
 
                     layer.add(theImg);
-                    layer.draw();theImg.absolutePosition().y
+                    layer.draw();
 
 
 
@@ -904,7 +559,6 @@
 
                 }
             });
-            55
             // tshirt
             var tr = new Konva.Transformer();
             layer.add(tr);
@@ -926,9 +580,9 @@
             stage.on('mousedown touchstart', (e) => {
                 // do nothing if we mousedown on eny shape
                 if (e.target !== stage) {
-                    x2 = stage.getPointerPosition().x;
                     return;
                 }
+                x2 = stage.getPointerPosition().x;
                 x1 = stage.getPointerPosition().x;
                 y1 = stage.getPointerPosition().y;
                 y2 = stage.getPointerPosition().y;
@@ -945,10 +599,10 @@
             stage.on('mousemove touchmove', () => {
                 // no nothing if we didn't start selection
                 if (!selectionRectangle.visible()) {
-                    x2 = stage.getPointerPosition().x;
-                    y2 = stage.getPointerPosition().y;
                     return;
                 }
+                x2 = stage.getPointerPosition().x;
+                y2 = stage.getPointerPosition().y;
 
 
                 selectionRectangle.setAttrs({
@@ -959,15 +613,6 @@
                 });
                 layer.batchDraw();
             });
-
-            // stage.on('dragend', function (e) {
-            //     console.log(theImg)
-            // })
-
-            stage.on('dragend heightChange', function (e) {
-                console.log(theImg.width() * theImg.scaleX());
-                console.log(theImg.height() * theImg.scaleY())
-            })
 
             stage.on('mouseup touchend', () => {
                 // no nothing if we didn't start selection
@@ -1031,34 +676,6 @@
                 layer.draw();
             });
 
-
-
-
-        // $('#step-1').click(function() {
-        //     tr.nodes([]);
-        //     layer.draw();
-        //     var node = document.getElementById('capture');
-
-        //     domtoimage.toPng(node)
-        //     .then(function (dataUrl) {
-        //         var img = new Image();
-        //         img.src = dataUrl;
-        //         let base64 = dataUrl;
-        //         window.livewire.emit('tes', dataUrl);
-        //     })
-        //     .catch(function (error) {
-        //         console.error('oops, something went wrong!', error);
-        //     });
-        // })
-
-
-        $('#step-2').click(function() {
-            window.livewire.emit('change');
-        })
-
-        $('#step-back').click(function() {
-            window.livewire.emit('stepBack');
-        })
 
         $('#back-image').click(function() {
             document.getElementById('tshirt-main-image').style.backgroundImage =
@@ -1136,6 +753,16 @@
             $('#tshirt-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
         })
 
+        $('.step-1').click(function() {
+            $('.step1').addClass('d-none')
+            $('.step2').removeClass('d-none')
+            $('.step3').addClass('d-none')
+
+            $('#harga').css("background-color", '#9da19e')
+            $('#upload-design').css("background-color", 'silver')
+            $('#publish').css("background-color", 'silver')
+        })
+
         $('.step-2').click(function() {
             $('.step1').addClass('d-none')
             $('.step2').addClass('d-none')
@@ -1146,9 +773,30 @@
             $('#publish').css("background-color", '#9da19e')
         })
 
+
+
         $('#submit').click(function() {
+            let title = $('#title').val();
+            let description = $('#description').val();
+            let designCategoryId = $('#designCategoryId').val();
+            let tags = $('#tags').val();
+            let url = $('#url').val();
+
+            let price = $('#price-tshirt').val();
 
 
+            window.livewire.emit('submitForm', {
+                'title' : title,
+                'description' : description,
+                'designCategoryId' : designCategoryId,
+                'tags' : tags,
+                'url' : url,
+                'width' : theImg.width() * theImg.scaleX(),
+                'height' : theImg.height() * theImg.scaleY(),
+                'sumbu_x' : theImg.absolutePosition().x,
+                'sumbu_y' : theImg.absolutePosition().y,
+                'price' : price
+            });
         })
     </script>
 

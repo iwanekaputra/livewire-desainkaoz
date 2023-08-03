@@ -5,6 +5,7 @@ namespace App\Http\Livewire\User\Products;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductDesign;
 use App\Models\ProductSize;
 use App\Models\Size;
 use App\Models\UploadProductDesign;
@@ -35,14 +36,14 @@ class ProductsShow extends Component
 
     public function mount($id) {
         $this->productId = $id;
-        $product = UploadProductDesign::where('id', $id)->first();
-        $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->when($this->style ?? false, function($query, $style) {
-            return $query->where('style', $style);
-        })->get();
+        $product = ProductDesign::where('id', $id)->first();
+        // $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->when($this->style ?? false, function($query, $style) {
+        //     return $query->where('style', $style);
+        // })->get();
 
-        if($this->productVariants->count() == 0) {
-            $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->get();
-        }
+        // if($this->productVariants->count() == 0) {
+        //     $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->get();
+        // }
 
         $this->user = $product->user;
         $this->category_id = $product->category_id;
@@ -50,12 +51,12 @@ class ProductsShow extends Component
         $this->price = $product->price;
         $this->username = $product->user->first_name;
         $this->product_id = $product->id;
-        $this->image = $product->uploadProductDesignVariants[0]->image;
-        $this->images = $product->uploadProductDesignVariants;
+        // $this->image = $product->uploadProductDesignVariants[0]->image;
+        // $this->images = $product->uploadProductDesignVariants;
         $this->title = $product->title;
-        $this->design = $product->designCategory->name;
+        // $this->design = $product->designCategory->name;
         $this->total_price = $product->total_price;
-        $this->productDesign = $product->productDesign->image;
+        // $this->productDesign = $product->productDesign->image;
 
         $this->countProduct = $this->getCountProduct();
     }

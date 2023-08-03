@@ -59,34 +59,42 @@ class UploadDesign extends Component
                 'tags' => $data['tags'],
                 'image' => $image_name,
                 'description' => $data['description'],
-                'price' => (int) $data['priceTshirt']
+                'price' => (int) $data['price'],
+                'width' => $data['width'],
+                'height' => $data['height'],
+                'sumbu_x' => $data['sumbu_x'],
+                'sumbu_y' => $data['sumbu_y']
             ]);
-        }
 
-        $createTshirt = UploadProductDesign::create([
-            'category_id' => 1,
-            'product_design_id' => $productDesign->id,
-            'title' => $data['title'],
-            'design_category_id' => $data['designCategoryId'],
-            'tags' => $data['tags'],
-            'description' => $data['description'],
-            'url' => $data['url'],
-            'price_design' => $data['priceTshirt'],
-            'is_approved' => 0,
-            'total_price' => 100000 + (int) $data['priceTshirt'],
-            'user_id' => auth()->user()->id
-        ]);
-
-        if($data['tshirt']) {
-            foreach($data['tshirt'] as $tshirt) {
-                UploadProductDesignVariant::create([
-                    'color' => $tshirt[0],
-                    'style' => $tshirt[1],
-                    'upload_product_design_id' => $createTshirt->id,
-                    'image' => $tshirt[2]
-                ]);
+            if($productDesign) {
+                redirect()->route('designer.design');
             }
         }
+
+        // $createTshirt = UploadProductDesign::create([
+        //     'category_id' => 1,
+        //     'product_design_id' => $productDesign->id,
+        //     'title' => $data['title'],
+        //     'design_category_id' => $data['designCategoryId'],
+        //     'tags' => $data['tags'],
+        //     'description' => $data['description'],
+        //     'url' => $data['url'],
+        //     'price_design' => $data['priceTshirt'],
+        //     'is_approved' => 0,
+        //     'total_price' => 100000 + (int) $data['priceTshirt'],
+        //     'user_id' => auth()->user()->id
+        // ]);
+
+        // if($data['tshirt']) {
+        //     foreach($data['tshirt'] as $tshirt) {
+        //         UploadProductDesignVariant::create([
+        //             'color' => $tshirt[0],
+        //             'style' => $tshirt[1],
+        //             'upload_product_design_id' => $createTshirt->id,
+        //             'image' => $tshirt[2]
+        //         ]);
+        //     }
+        // }
 
         redirect()->route('designer.design');
     }
