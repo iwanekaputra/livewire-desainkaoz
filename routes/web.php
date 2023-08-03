@@ -118,6 +118,11 @@ Route::get('checkout', Checkout::class)->name('checkout')->middleware(['auth']);
 Route::get('upload-design', UploadDesign::class)->name('designer.upload-design')->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware(['auth']);
 
+Route::get('/uploadproduct', [AuthController::class, 'upload']);
+Route::get('/uploadproduct/{id}', [AuthController::class, 'uploadShow']);
+
+
+
 
 
 Route::get('products', ProductsShow::class)->name('products.index');

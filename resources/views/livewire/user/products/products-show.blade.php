@@ -5,7 +5,14 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class=" mb-3">
-                        <img wire:ignore.self class="card-img img-fluid border main-image" src="{{ $image }}" alt="Card image cap" id="product-detail" >
+                        <div id="tshirt-capture" style="width : calc(500px); height : calc(500px)">
+                            <div style="width : calc(500px); height : calc(500px); background-image : url('{{ asset('assets/img/tshirt-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="tshirt-main-image">
+                                <div class="tshirt-layer-5 position-relative"
+                                    style="width : calc(200px); top : calc(40px); left : calc(150px); height : calc(380px); ">
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <div class="row">
@@ -106,7 +113,7 @@
                             <h1 style="font-family: 'Myriad-Pro Bold';">{{ $title }}</h1>
                             <h6 class="py-2">{{ $design }} Tshirt designed and sold by <a href="#"
                                     class="text-decoration-none">{{ $username }}</a></h6>
-                            @if ($productVariants->first()->style)
+                            {{-- @if ($productVariants->first()->style)
                             <div class="row">
                                 <div class="col-2">
                                     <h6 class="mt-2">Style :</h6>
@@ -118,9 +125,8 @@
                                     </select>
                                 </div>
                             </div>
-                            @endif
+                            @endif --}}
 
-                            @if ($productVariants->first()->color)
                             <div class="row">
                                 <div class="col-lg-2 mt-4">
                                     <h6>Color :</h6>
@@ -130,21 +136,34 @@
                                 <div class="col-lg-8">
                                     <ul class="list-inline pb-3">
                                         <div>
-                                            @if ($category_id != 6)
-                                            @foreach ($productVariants as $productVariant)
-                                                <li class="list-inline-item mt-2">
-                                                    <span class="btn btn-color btn-size d-flex justify-content-center align-items-center rounded-0 fw-bold border" style="width : 40px; height : 40px;background-color: {{ $productVariant->color }};" data-img="{{ $productVariant->image }}" wire:click="addColor('{{ $productVariant->color }}')"></span>
-
-                                                </li>
-                                            @endforeach
-                                            @endif
-
+                                            <div class="mt-3 d-flex gap-2">
+                                                <div style="width : 40px; height : 40px; background-color : #141414; border : 2px solid silver"
+                                                    class="tshirt-color" id="tshirt-black" data-image="tshirt-black.png">
+                                                </div>
+                                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
+                                                    class="tshirt-color" id="tshirt-white" data-image="tshirt-white.png">
+                                                </div>
+                                                <div style="width : 40px; height : 40px; background-color : #7b7b7b; border : 2px solid #silver"
+                                                    class="tshirt-color" id="tshirt-silver" data-image="tshirt-silver.png">
+                                                </div>
+                                                <div style="width : 40px; height : 40px; background-color : #a60707; border : 2px solid silver"
+                                                    class="tshirt-color" id="tshirt-red" data-image="tshirt-red.png">
+                                                </div>
+                                                <div style="width : 40px; height : 40px; background-color : #4c5d34; border : 2px solid silver"
+                                                    class="tshirt-color" id="tshirt-green" data-image="tshirt-green.png">
+                                                </div>
+                                                <div style="width : 40px; height : 40px; background-color : #252c5f; border : 2px solid silver"
+                                                    class="tshirt-color" id="tshirt-blue" data-image="tshirt-blue.png">
+                                                </div>
+                                                <div style="width : 40px; height : 40px; background-color : #e47200; border : 2px solid silver"
+                                                    class="tshirt-color" id="tshirt-yellow" data-image="tshirt-yellow.png">
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </ul>
                                 </div>
                             </div>
-                            @endif
 
 
                             @if ($category_id == 1 || $category_id == 2 || $category_id == 3 || $category_id == 4)
@@ -291,10 +310,74 @@
         </div>
     </nav>
 
+    <script src="{{ asset('assets/js/fabric.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+        integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"
+        integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://unpkg.com/konva@7.0.0/konva.min.js"></script> --}}
+    <script src="https://unpkg.com/konva@9.2.0/konva.min.js"></script>
     <script>
         $('.btn-color').click(function() {
             let img = $(this).attr('data-img');
             $('.main-image').attr('src', img)
         })
+
+        $('.tshirt-color').click(function() {
+            let img = $(this).attr('data-image');
+            document.getElementById('tshirt-main-image').style.backgroundImage =
+                `url('{{ asset('assets/img/${img}') }}')`;
+        })
+
+
+    </script>
+
+    <script>
+        function getImg(cl, width, height, image, sumbuX, sumbuY, widthLogo, heightLogo) {
+    var stage = new Konva.Stage({
+                container: cl,
+                width: width,
+                height: height,
+            });
+
+        var layer = new Konva.Layer();
+        stage.add(layer);
+
+        var img = new Image();
+        img.src = image;
+
+
+    // now load the Konva image
+    theImg = new Konva.Image({
+                        name: 'rect',
+                        image: img,
+                        x: sumbuX,
+                        y: sumbuY,
+                        width: widthLogo,
+                        height: heightLogo,
+                        rotation: 0
+                    });
+
+
+
+            layer.add(theImg);
+            layer.draw();
+}
+
+
+
+    $.ajax({
+        url: `/uploadproduct/{{ $productId }}`,
+        type: "GET",
+        cache: false,
+        success:function(response){
+            let data = response.data;
+            getImg(`.tshirt-layer-${data.id}`, 200, 380, `{{ asset('uploads/design/${data.image}' ) }}`, data.sumbu_x, data.sumbu_y, data.width, data.height)
+
+
+        }
+    });
     </script>
 </div>
