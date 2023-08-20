@@ -1,162 +1,93 @@
 <div>
-<h1>Tambah Produk</h1>
-<hr>
-<form wire:submit.prevent="store" method="POST" enctype="multipart/form-data">
-<div class="row mt-5">
-    <div class="col-lg-6">
-        <h3>Produk</h3>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mb-3">
-                        <label for="title-product" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control" wire:model="name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="code-product" class="form-label">Kode Produk</label>
-                        <input type="text" class="form-control" wire:model="code">
-                    </div>
-                    <div class="mb-3">
-                        <label for="weight-product" class="form-label">Berat</label>
-                        <input type="number" class="form-control" wire:model="weight">
-                    </div>
-                    <div class="mb-3">
-                        <label for="price-product" class="form-label">Harga Produk</label>
-                        <input type="number" class="form-control" wire:model="price">
-                    </div>
-                    <div class="mb-3">
-                        <label for="strikethrough-price" class="form-label">Harga Coret</label>
-                        <input type="number" class="form-control" wire:model="strikethrough_price">
-                    </div>
-                    <div class="mb-3">
-                        <label for="preorder" class="form-label">Pre Order</label>
-                        <input type="text" class="form-control" wire:model="preorder">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mb-3">
-                        <label for="reseller-price" class="form-label">Harga Reseller</label>
-                        <input type="number" class="form-control" wire:model="reseller_price">
-                    </div>
-                    <div class="mb-3">
-                        <label for="agent-price" class="form-label">Harga Agen</label>
-                        <input type="number" class="form-control" wire:model="agent_price">
-                    </div>
-                    <div class="mb-3">
-                        <label for="agentsp-price" class="form-label">Harga agen sp</label>
-                        <input type="number" class="form-control" wire:model="agentsp_price">
-                    </div>
-                    <div class="mb-3">
-                        <label for="distribution-price" class="form-label">Harga Distribution</label>
-                        <input type="number" class="form-control" wire:model="distribution_price">
-                    </div>
-                    <div class="mb-3">
-                        <label for="stock" class="form-label">Stok</label>
-                        <input type="number" class="form-control" wire:model="stock">
-                    </div>
-                    <div class="mb-3">
-                        <label for="category" class="form-label">Kategori</label>
-                        <select class="form-select" aria-label="Default select example" wire:model="category_id" required>
-                            <option>Pilih Kategori</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-
-                </div>
-                <div class="col-lg-4">
-                    <div class="mb-3">
-                        <label for="style" class="form-label">Style</label>
-                        <select class="form-select" aria-label="Default select example" wire:model="style_id" required>
-                            <option>Pilih Style</option>
-                            @foreach ($styles as $style)
-                                <option value="{{ $style->id }}">{{ $style->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Ukuran</label>
-                        <div wire:ignore>
-                            <select id="size-dropdown" class="form-control" multiple wire:model="sizes_id">
-                                @foreach($sizes as $size)
-                                    <option value="{{$size->number}}">{{ $size->number }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Image Upload</label>
-                        @if ($images)
-                        <div class="row">
-                            @foreach ($images as $image)
-                            <div class="col-3 card me-1 mb-1">
-                                <img src="{{ $image->temporaryUrl() }}" height="60px">
+    <!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Products</div>
+        <div class="ps-3">
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item"><a href="javascript:;"></a>
+                Create new Product
+                </li>
+            </ol>
+            </nav>
+        </div>
+    </div>
+<!--end breadcrumb-->
+    <form wire:submit.prevent="store" method="POST" enctype="multipart/form-data">  
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="card">
+                    <div class="card-header py-3 bg-transparent"> 
+                        <div class="d-sm-flex align-items-center">
+                            <h5 class="mb-2 mb-sm-0">Add New Product</h5>
+                            <div class="ms-auto">
+                                <button type="button" class="btn btn-secondary rounded-0">Save to Draft</button>
+                                <button class="btn btn-dark px-4 rounded-0">Publish Now</button>
                             </div>
-                            @endforeach
                         </div>
-                        @endif
-                        <input type="file" class="form-control" wire:model="images" multiple>
-                        {{-- <div wire:loading wire:target="images">Uploading...</div> --}}
-                        @error('images.*') <span class="error">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-12 col-lg-8">
+                                <div class="card shadow-none bg-light border">
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-12 col-lg-4">
+                                                <label class="form-label">Product title</label>
+                                                <input type="text" wire:model="name" class="form-control" placeholder="Product title" required>
+                                            </div>
+                                            <div class="col-12 col-lg-4">
+                                                <label class="form-label">Kode</label>
+                                                <input type="text" wire:model="code" class="form-control" placeholder="Kode" required>
+                                            </div>
+                                            <div class="col-12 col-lg-4">
+                                                <label class="form-label">Category</label>
+                                                <select class="form-select" wire:model="category_id" required>
+                                                    <option value="">Pilih Kategori</option>
+                                                    @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="col-12">
+                                                <label class="form-label">Full description</label>
+                                                <textarea wire:model="description" class="form-control editor" placeholder="Full description" rows="4" cols="4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="card shadow-none bg-light border">
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label class="form-label">Harga Dasar</label>
+                                                <input type="text" wire:model="price" class="form-control" placeholder="Price" required>
+                                            </div>
+                                           
+                                            <input type="hidden" name="status" value="1">
+                                        
+                                        
+                                        </div><!--end row-->
+                                    </div>
+                                </div>  
+                            </div>
+                        </div><!--end row-->
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" rows="3" wire:model="description"></textarea>
-                      </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <h3>Produk Variant</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="mb-3">
-                <label for="color" class="form-label">Warna</label>
-                <select class="form-select" aria-label="Default select example" wire:model="color" required>
-                    <option>Pilih Warna</option>
-                    @foreach ($colors as $color)
-                        <option value="{{ $color->name }}">{{ $color->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Image Produk Variant</label>
-                @if ($imageProductVariant)
-                <div class="row">
-                    <div class="col-3 card me-1 mb-3">
-                        <img src="{{ $imageProductVariant->temporaryUrl() }}" height="60px">
-                    </div>
-                </div>
-                @endif
-                <input type="file" class="form-control" wire:model="imageProductVariant">
-                {{-- <div wire:loading wire:target="images">Uploading...</div> --}}
-                @error('imageProductVariant.*') <span class="error">{{ $message }}</span> @enderror
-            </div>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-dark w-100 mt-3 tes">Tambah</button>
-
-</form>
-
-
-
+        </div><!--end row-->
+    </form>
+    
+    
     <script>
         $(document).ready(function () {
             $('#size-dropdown').select2();
             $('#size-dropdown').on('change', function (e) {
                 let data = $(this).val();
-                 @this.set('sizes_id', data);
+                    @this.set('sizes_id', data);
             });
             window.livewire.on('productStore', () => {
                 $('#size-dropdown').select2();

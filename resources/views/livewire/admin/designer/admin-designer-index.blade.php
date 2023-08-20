@@ -1,52 +1,67 @@
 <div>
-    <h3>All Design Designer</h3>
-    <hr>
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col">No</th>
+    <!--breadcrumb-->
+ <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+     <div class="breadcrumb-title pe-3">Design</div>
+     <div class="ps-3">
+         <nav aria-label="breadcrumb">
+         <ol class="breadcrumb mb-0 p-0">
+             <li class="breadcrumb-item"><a href="javascript:;"></a>
+             Approve Design on your page
+             </li>
+         </ol>
+         </nav>
+     </div>
+ </div>
+     <!--end breadcrumb-->
+
+     <div class="card">
+         <div class="card-body">
+             <table id="example2" class="table align-middle table-striped table-bordered" style="width:100%">
+                 <thead>
+                 <tr>
+                    <th width="5%">No</th>
+                    <th scope="col">Design</th>
                     <th scope="col">Nama Designer</th>
-                    <th scope="col">Harga Design</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @forelse ($uploadProductDesigns as $uploadProductDesign)
-                    <tr>
+                    <th width="5%" data-priority="2">Aksi</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                @forelse ($productDesigns as $productDesign)
+                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $uploadProductDesign->user->first_name }}</td>
-                        <td>Rp. {{ number_format($uploadProductDesign->price_design, 0, ',','.') }}</td>
                         <td>
-                            @if (!$uploadProductDesign->is_approved)
-                                Belum Disetujui
+                            <img src=" {{ asset('uploads/design/' . $productDesign->image) }}" alt="" width="120px"></td>
+
+                        </td>
+                        <td>{{ $productDesign->user->first_name }}</td>
+                        <td>{{ $productDesign->DesignCategory->name }}</td>
+                        <td>
+                            @if ($productDesign->is_approved == 1)
+                                <span class="badge rounded-pill bg-success">Disetujui</span>
+                            @elseif($productDesign->is_approved == 2)
+                                <span class="badge rounded-pill bg-danger">Ditolak</span>
                             @else
-                                Sudah Disetujui
+                            <span class="badge rounded-pill bg-primary">Baru</span>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.designer.show', $uploadProductDesign->id) }}" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                            <button class="btn btn-success" wire:click="alertConfirm({{ $uploadProductDesign->id }})">
-                                <i class="fa fa-check" aria-hidden="true">Approve</i>
-                            </button>
-                        </td>
-                    </tr>
-                @empty
-                <tr>
-                    <td colspan="6">
-                        <div class="alert alert-dark text-center" role="alert">
-                            Tidak ada data user
-                        </div>
-                    </td>
-                </tr>
+                            <div class="dropdown">
+                                <button class="btn btn-dark btn-sm dropdown-toggle px-3 rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                                    <ul class="dropdown-menu" style="">
+                                        <li><a class="dropdown-item" href="{{ route('admin.designer.show', $productDesign->id) }}">Detail</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
 
-                @endforelse
-                </tbody>
-              </table>
 
-        </div>
-    </div>
-</div>
+                     </tr>
+                 @endforeach
+
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ </div>

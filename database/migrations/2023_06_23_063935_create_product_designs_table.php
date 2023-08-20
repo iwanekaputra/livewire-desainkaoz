@@ -15,18 +15,18 @@ class CreateProductDesignsTable extends Migration
     {
         Schema::create('product_designs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('design_category_id')->nullable();
-            $table->foreignId('category_id')->nullable();
+            $table->foreignId('image_design_id')->nullable();
+            $table->foreignId('product_id')->nullable();
             $table->foreignId('user_id')->nullable();
-            $table->string('title')->nullable();
-            $table->string('tags')->nullable();
-            $table->string('image')->nullable();
-            $table->text('description')->nullable();
-            $table->string('price')->nullable();
-            $table->string('width')->nullable();
-            $table->string('height')->nullable();
+            $table->foreignId('product_variant_id')->nullable();
+            $table->string('price_design')->nullable();
+            $table->string('total_price')->nullable();
             $table->string('sumbu_x')->nullable();
             $table->string('sumbu_y')->nullable();
+            $table->string('rotation')->nullable();
+            $table->string('width')->nullable();
+            $table->string('height')->nullable();
+            $table->string('is_approved')->nullable();
             $table->timestamps();
         });
     }

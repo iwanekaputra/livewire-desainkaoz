@@ -4,6 +4,7 @@ namespace App\Http\Livewire\User\Products;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductDesign;
 use App\Models\Style;
 use App\Models\UploadProductDesign;
 use Livewire\Component;
@@ -25,7 +26,9 @@ class ProductsCategory extends Component
     public function render()
     {
         return view('livewire.user.products.products-category', [
-            'products' => UploadProductDesign::where('category_id', $this->category_id)->where('is_approved', 1)->paginate(25),
+            'productDesigns' => ProductDesign::whereHas('product', function($query) {
+                $query->where('category_id', $this->category_id);
+            })->where('is_approved', 1)->get(),
             'categories' => Category::get(),
             'styles' => Style::get()
         ])->extends('layouts.app');

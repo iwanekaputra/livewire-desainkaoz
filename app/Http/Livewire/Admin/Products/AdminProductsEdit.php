@@ -4,7 +4,10 @@ namespace App\Http\Livewire\Admin\Products;
 
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Color;
 use App\Models\Product;
+use App\Models\Style;
+use App\Models\ProductVariant;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -15,42 +18,39 @@ class AdminProductsEdit extends Component
     public $product_id;
     public $name;
     public $code;
-    public $weight;
     public $price;
-    public $strikethrough_price;
-    public $preorder;
-    public $reseller_price;
-    public $agent_price;
-    public $agentsp_price;
-    public $distribution_price;
-    public $stock;
     public $category_id;
     public $description;
-    public $images = [];
+    public $imageProductVariant;
+    public $color;
+    public $view;
+    public $style_id;
 
+    public $product;
+    public $productvariant;
+    public $productvariant_id;
+
+
+    public $images = [];
+    protected $listeners = [
+        'remove' => 'destroy'
+    ];
     public function mount($id) {
+
+
         $product = Product::find($id);
 
         if($product) {
             $this->product_id = $product->id;
             $this->name = $product->name;
             $this->code = $product->code;
-            $this->weight = $product->weight;
             $this->price = $product->price;
-            $this->strikethrough_price = $product->strikethrough_price;
-            $this->preorder = $product->preorder;
-            $this->reseller_price = $product->reseller_price;
-            $this->agent_price = $product->agent_price;
-            $this->agentsp_price = $product->agentsp_price;
-            $this->distribution_price = $product->distribution_price;
-            $this->stock = $product->stock;
             $this->category_id = $product->category_id;
             $this->description = $product->description;
         }
 
 
     }
-
 
     public function update() {
         $product = Product::find($this->product_id);
@@ -61,16 +61,8 @@ class AdminProductsEdit extends Component
                 'name' => $this->name,
                 'code' => $this->code,
                 'description' => $this->description,
-                'weight' => $this->weight,
                 'price' => $this->price,
-                'strikethrough_price' => $this->strikethrough_price,
-                'reseller_price' => $this->reseller_price,
-                'agent_price' => $this->agent_price,
-                'agentsp_price' => $this->agentsp_price,
-                'distribution_price' => $this->distribution_price,
-                'stock' => $this->stock,
                 'status' => 1,
-                'preorder' => $this->preorder
             ]);
 
             if($this->images) {
@@ -83,19 +75,72 @@ class AdminProductsEdit extends Component
                 }
             }
 
-            return redirect()->route('admin.products.index');
+
+            return redirect()->route('admin.products.edit', $product->id);
         }
+    }
+
+    public function createproductvariant(){
+        $product = Product::find($this->product_id);
+
+        if($this->imageProductVariant) {
+            $image_name=time().'-'.$this->imageProductVariant->getClientOriginalName();
+    
+                $res = $this->imageProductVariant->storeAs('imageProductVariant',$image_name, 'custom_public_path');
+                $img_path = asset('products/'.$image_name);
+
+            ProductVariant::create([
+                'product_id' => $product->id,
+                'code'       => $this->code,
+                'view'       => $this->view,
+                'price'      => $this->price,
+                'style_id'   => $this->style_id,
+                'color'      => $this->color,
+                'image'      => $image_name ? $image_name : $this->image
+            ]);
+
+            $this->dispatchBrowserEvent('swal:modal', [
+                'type' => 'success',
+                'message' => 'Berhasil tambah Varian product',
+                'text' => '',
+                'timer' => 3000,
+            ]);
+        }
+        return redirect()->route('admin.products.edit', $product->id);
+
     }
 
     public function deleteImage($id) {
         Image::where("id", $id)->delete();
     }
 
+    public function alertConfirm($id)
+    {
+        $this->productvariant_id = $id;
+        $this->dispatchBrowserEvent('swal:confirm', [
+                'type' => 'warning',
+                'message' => 'Are you sure?',
+                'text' => 'If deleted, you will not be able to recover this imaginary file!',
+                'action' => 'remove'
+        ]);
+    }
+
+
+    public function destroy()
+    {
+        $productvariant = ProductVariant::find($this->productvariant_id);
+        $productvariant->delete();
+    }
+
     public function render()
     {
+        $productvarians = ProductVariant::where('product_id', $this->product_id)->get();
         $productImages = Image::where('product_id', $this->product_id)->get();
         return view('livewire.admin.products.admin-products-edit',[
             'categories' => Category::get(),
+            'colors' => Color::get(),
+            'styles' => Style::get(),
+            'productvariants' => $productvarians,
             'productImages' => $productImages
         ])->extends('layouts.admin');
     }

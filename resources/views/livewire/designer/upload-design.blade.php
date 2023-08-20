@@ -38,64 +38,43 @@
             </div>
         </div>
 
+        {{-- navbar step 1 --}}
         <div class="row mt-5">
             <div class="col-lg-12">
                 <ul class="nav nav-tabs w-100 justify-content-evenly border-0" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="tshirt-tab" data-bs-toggle="tab"
-                            data-bs-target="#tshirt-tab-pane" type="button" role="tab"
-                            aria-controls="tshirt-tab-pane" aria-selected="true">
-                            <img src="{{ asset('storage/produk/tshirt.png') }}" alt="" width="75">
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="hoodie-tab" data-bs-toggle="tab"
-                            data-bs-target="#hoodie-tab-pane" type="button" role="tab"
-                            aria-controls="hoodie-tab-pane" aria-selected="false">
-                            <img src="{{ asset('storage/produk/hoodie.png') }}" alt="" width="75">
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="sweater-tab" data-bs-toggle="tab"
-                            data-bs-target="#sweater-tab-pane" type="button" role="tab"
-                            aria-controls="sweater-tab-pane" aria-selected="false">
-                            <img src="{{ asset('storage/produk/sweater.png') }}" alt="" width="75">
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="hat-tab" data-bs-toggle="tab" data-bs-target="#hat-tab-pane"
-                            type="button" role="tab" aria-controls="hat-tab-pane" aria-selected="false">
-                            <img src="{{ asset('storage/produk/topi.png') }}" alt="" width="75">
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="bag-tab" data-bs-toggle="tab"
-                            data-bs-target="#bag-tab-pane" type="button" role="tab"
-                            aria-controls="bag-tab-pane" aria-selected="false">
-                            <img src="{{ asset('storage/produk/bag.png') }}" alt="" width="75">
-                        </button>
-                    </li>
-                    {{-- <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="sticker-tab" data-bs-toggle="tab" data-bs-target="#sticker-tab-pane" type="button" role="tab" aria-controls="sticker-tab-pane" aria-selected="false">
-                        <img src="{{ asset('storage/produk/sticker.png') }}" alt="" width="100">
-                    </button>
-                </li> --}}
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="{{ $products[0]->name }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#{{ $products[0]->name }}-tab-pane" type="button" role="tab"
+                                aria-controls="{{ $products[0]->name }}-tab-pane" aria-selected="true">
+                                <img src="{{ asset('storage/produk/' . $products[0]->category->image) }}" alt="" width="75">
+                            </button>
+                        </li>
+
+                        @foreach ($products->skip(1) as $product)
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="{{ $product->name }}-tab" data-bs-toggle="tab"
+                                    data-bs-target="#{{ $product->name }}-tab-pane" type="button" role="tab"
+                                    aria-controls="{{ $product->name }}-tab-pane" aria-selected="true">
+                                    <img src="{{ asset('storage/produk/' . $product->category->image) }}" alt="" width="75">
+                                </button>
+                            </li>
+                        @endforeach
 
                 </ul>
             </div>
         </div>
 
-        {{-- tab tshirt --}}
+        {{-- tab step 1 --}}
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tshirt-tab-pane" role="tabpanel"
-                aria-labelledby="tshirt-tab" tabindex="0">
+            <div class="tab-pane fade show active" id="{{ $products[0]->name }}-tab-pane" role="tabpanel"
+                aria-labelledby="{{ $products[0]->name }}-tab" tabindex="0">
                 <div class="row mt-5">
                     <div class="col-lg-7">
                         <div id="tshirt-capture" style="width : 500px; height : 500px">
-                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('assets/img/tshirt-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                id="tshirt-main-image">
-                                <div class="tshirt-layer position-relative"
-                                    style="width : 200px; top : 40px; left : 150px; height : 380px; ">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('uploads/imageProductVariant/' . $products[0]->productvariants->first()->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                class="{{ $products[0]->name }}-main-image">
+                                <div class="layer-{{ $products[0]->id }} position-relative"
+                                    style="width : 200px; top : 40px; left : 150px; height : 380px; border : 1px dashed black">
                                 </div>
                             </div>
                         </div>
@@ -103,47 +82,33 @@
 
 
                     <div class="col-lg-5">
-                        <button class="btn rounded-0 w-100 file_input" style="background-color: #c0c0c0"
-                            onclick="document.querySelector('.file_input').click()">Replace Image</button>
                         <h6 class="mt-3 ms-1">Style :</h6>
-                        <select class="form-select" aria-label="Default select example" id="style">
-                            <option value="Lengan Pendek">Lengan Pendek</option>
-                            <option value="Lengan Panjang">Lengan Panjang</option>
-                        </select>
 
+                        {{-- style product step 1 --}}
+                        <select class="form-select style" id="style-{{ $products[0]->name }}" aria-label="Default select example" data-name="{{ $products[0]->name }}">
+                            @foreach ($products[0]->productvariants->groupBy('style.name') as $productVariant  => $value)
+                                <option value="{{ $productVariant }}" data-name="{{ $products[0]->name }}">{{ $productVariant }}</option>
+                            @endforeach
+                        </select>
 
                         <hr>
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-dark rounded-0" style="width : 45%"
-                                id="front-image">Front</button>
-                            <button class="btn btn-dark rounded-0" style="width : 45%"
-                                id="back-image">Back</button>
+                            @forelse ($products[0]->productvariants->groupBy('view') as $productVariant => $value)
+                                <button class="btn btn-dark rounded-0 {{ strtolower($productVariant) }}-image" style="width : 45%" data-id="{{ $products[0]->id }}" data-name="{{ $products[0]->name }}" data-view="{{ $productVariant }}">{{ $productVariant }}</button>
+                            @empty
+
+                            @endforelse
                         </div>
 
+                        {{-- color product step 1 --}}
                         <div class="mt-4">
-                            <h6>Color : Black</h6>
-                            <div class="mt-3 d-flex gap-2">
-                                <div style="width : 40px; height : 40px; background-color : #141414; border : 2px solid silver"
-                                    class="tshirt-color" id="tshirt-black" data-image="tshirt-black.png">
+                            <h6>Color : </h6>
+                            <div class="mt-3 d-flex gap-2 colorr" id="{{ $products[0]->name }}-color">
+                                @foreach ($products[0]->productvariants->where('view', 'front')->groupBy('style.name')->first() as $productVariant)
+                                <div style="width : 40px; height : 40px; background-color : {{ $productVariant->color }}; border : 2px solid silver"
+                                    class="color" id="{{ $products[0]->name }}" data-color="{{ $productVariant->color }}" data-id="{{ $productVariant->id }}" data-idProduct="{{ $products[0]->id }}" data-image="{{ $productVariant->image }}" data-name="{{ $products[0]->name }}">
                                 </div>
-                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
-                                    class="tshirt-color" id="tshirt-white" data-image="tshirt-white.png">
-                                </div>
-                                <div style="width : 40px; height : 40px; background-color : #7b7b7b; border : 2px solid #silver"
-                                    class="tshirt-color" id="tshirt-silver" data-image="tshirt-silver.png">
-                                </div>
-                                <div style="width : 40px; height : 40px; background-color : #a60707; border : 2px solid silver"
-                                    class="tshirt-color" id="tshirt-red" data-image="tshirt-red.png">
-                                </div>
-                                <div style="width : 40px; height : 40px; background-color : #4c5d34; border : 2px solid silver"
-                                    class="tshirt-color" id="tshirt-green" data-image="tshirt-green.png">
-                                </div>
-                                <div style="width : 40px; height : 40px; background-color : #252c5f; border : 2px solid silver"
-                                    class="tshirt-color" id="tshirt-blue" data-image="tshirt-blue.png">
-                                </div>
-                                <div style="width : 40px; height : 40px; background-color : #e47200; border : 2px solid silver"
-                                    class="tshirt-color" id="tshirt-yellow" data-image="tshirt-yellow.png">
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <hr>
@@ -155,7 +120,7 @@
                         <div class="mt-5">
                             <h6>Harga Dasar</h6>
                             <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
-                                value="100000" disabled>
+                                value="{{ $products[0]->price }}" disabled>
                         </div>
                         <hr>
                         <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
@@ -163,106 +128,211 @@
                     </div>
                 </div>
             </div>
+            @foreach ($products->skip(1) as $product)
+                    <div class="tab-pane fade" id="{{ $product->name }}-tab-pane" role="tabpanel"
+                    aria-labelledby="{{ $product->name }}-tab" tabindex="0">
+                    @if ($product->category_id == '6')
+                        <div class="row mt-5">
+                            <div class="col-lg-7">
+                                <div id="tshirt-capture" style="width : 500px; height : 500px">
+                                    <div style="width : 500px; height : 500px; background-repeat : no-repeat; background-size : 100% 100%"
+                                        class="main-image">
+                                        <div class="sticker-layer position-relative" id="container"
+                                            style="width : 200px; top : 40px; left : 150px; height : 380px; ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5">
+                                <h6 class="mt-3 ms-1">Style :</h6>
+
+                                {{-- style product step 1 --}}
+                                <select class="form-select style">
+                                    <option>Sticker Vinyl Putih</option>
+                                </select>
+
+                                <div class="mt-5">
+                                    <h6>Harga Dasar</h6>
+                                    <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
+                                        value="{{ $product->price }}" disabled>
+                                </div>
+                                <hr>
+                                <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
+                                    type="button" disabled wire:ignore.self>Next</button>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row mt-5">
+                            <div class="col-lg-7">
+                                <div id="tshirt-capture" style="width : 500px; height : 500px">
+                                    <div style="width : 500px; height : 500px; background-image : url('{{ asset('uploads/imageProductVariant/' . $product->productvariants->first()->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                        class="{{ $product->name }}-main-image">
+                                        <div class="layer-{{ $product->id }} position-relative"
+                                            style="width : 200px; top : 40px; left : 150px; height : 380px; border : 1px dashed black">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-5">
+                                <h6 class="mt-3 ms-1">Style :</h6>
+
+                                <select class="form-select style" id="style-{{ $product->name }}" aria-label="Default select example" data-name="{{ $product->name }}">
+                                    @foreach ($product->productvariants->groupBy('style.name') as $productVariant  => $value)
+                                        <option value="{{ $productVariant }}" data-name="{{ $product->name }}">{{ $productVariant }}</option>
+                                    @endforeach
+                                </select>
+
+                                <hr>
+                                <div class="d-flex justify-content-between">
+                                    @forelse ($product->productvariants->groupBy('view') as $productVariant => $value)
+                                        <button class="btn btn-dark rounded-0 {{ strtolower($productVariant) }}-image" style="width : 45%" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-view="{{ $productVariant }}">{{ $productVariant }}</button>
+                                    @empty
+
+                                    @endforelse
+                                </div>
+
+                                <div class="mt-4">
+                                    <h6>Color : </h6>
+                                    <div class="mt-3 d-flex gap-2 colorr" id="{{ $product->name }}-color">
+                                        @foreach ($product->productvariants->where('view', 'front')->groupBy('style.name')->first() as $productVariant)
+                                        <div style="width : 40px; height : 40px; background-color : {{ $productVariant->color }}; border : 2px solid silver"
+                                            class="color" id="{{ $product->name }}" data-color="{{ $productVariant->color }}" data-id="{{ $productVariant->id }}" data-idProduct="{{ $product->id }}" data-image="{{ $productVariant->image }}" data-name="{{ $product->name }}">
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-dark rounded-0" style="width : 45%"
+                                        id="vertical">Vertical</button>
+                                    <button class="btn btn-dark rounded-0" style="width : 45%">Horizontal</button>
+                                </div>
+                                <div class="mt-5">
+                                    <h6>Harga Dasar</h6>
+                                    <input style="background-color: #c0c0c0" type="text" class="w-100 text-dark"
+                                        value="{{ $product->price }}" disabled>
+                                </div>
+                                <hr>
+                                <button class="btn btn-dark rounded-0 step-1" style="width : 45%"
+                                    type="button" disabled wire:ignore.self>Next</button>
+                            </div>
+                        </div>
+                    @endif
+                    </div>
+
+            @endforeach
+
         </div>
     </div>
     {{-- end step 1 --}}
 
     {{-- step 2 --}}
     <div class="main step2 d-none">
+        {{-- navbar step 2 --}}
         <div class="row mt-2">
             <div class="col-lg-12">
                 <ul class="nav nav-tabs w-100 justify-content-evenly border-0" id="myTab" role="tablist"
                     wire:ignore>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="tshirt-tab-step-2" data-bs-toggle="tab"
-                            data-bs-target="#tshirt-tab-pane-step-2" type="button" role="tab"
-                            aria-controls="tshirt-tab-pane-step-2" aria-selected="true">
-                            <img src="{{ asset('storage/produk/tshirt.png') }}" alt="" width="75">
+                        <button class="nav-link active" id="{{ $products[0]->name }}-tab-step-2" data-bs-toggle="tab"
+                            data-bs-target="#{{ $products[0]->name }}-tab-pane-step-2" type="button" role="tab"
+                            aria-controls="{{ $products[0]->name }}-tab-pane-step-2" aria-selected="true">
+                            <img src="{{ asset('storage/produk/' . $products[0]->category->image) }}" alt="" width="75">
                         </button>
                     </li>
+                    @foreach ($products->skip(1) as $product)
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="hoodie-tab-step-2" data-bs-toggle="tab"
-                            data-bs-target="#hoodie-tab-pane-step-2" type="button" role="tab"
-                            aria-controls="hoodie-tab-pane-step-2" aria-selected="false">
-                            <img src="{{ asset('storage/produk/hoodie.png') }}" alt="" width="75">
+                        <button class="nav-link" id="{{ $product->name }}-tab-step-2" data-bs-toggle="tab"
+                            data-bs-target="#{{ $product->name }}-tab-pane-step-2" type="button" role="tab"
+                            aria-controls="{{ $product->name }}-tab-pane-step-2" aria-selected="true">
+                            <img src="{{ asset('storage/produk/' . $product->category->image) }}" alt="" width="75">
                         </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="sweater-tab-step-2" data-bs-toggle="tab"
-                            data-bs-target="#sweater-tab-pane-step-2" type="button" role="tab"
-                            aria-controls="sweater-tab-pane-step-2" aria-selected="false">
-                            <img src="{{ asset('storage/produk/sweater.png') }}" alt="" width="75">
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="hat-tab-step-2" data-bs-toggle="tab" data-bs-target="#hat-tab-pane-step-2"
-                            type="button" role="tab" aria-controls="hat-tab-pane-step-2" aria-selected="false">
-                            <img src="{{ asset('storage/produk/topi.png') }}" alt="" width="75">
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="bag-tab-step-2" data-bs-toggle="tab" data-bs-target="#bag-tab-pane-step-2"
-                            type="button" role="tab" aria-controls="bag-tab-pane-step-2" aria-selected="false">
-                            <img src="{{ asset('storage/produk/bag.png') }}" alt="" width="75">
-                        </button>
-                    </li>
+                    @endforeach
+
                 </ul>
             </div>
         </div>
 
-        {{-- tab tshirt step 2 --}}
+        {{-- tab step 2 --}}
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tshirt-tab-pane-step-2" role="tabpanel" aria-labelledby="tshirt-tab"
+            <div class="tab-pane fade show active" id="{{ $products[0]->name }}-tab-pane-step-2" role="tabpanel" aria-labelledby="{{ $products[0]->name }}-tab"
                 tabindex="0" wire:ignore.self>
                 <div class="row mt-5">
                     <div class="col-lg-6" id="preview-image">
-                        <img class="border" id="tshirt-image-step-2" alt="" width="400">
+                        <div id="tshirt-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('uploads/imageProductVariant/' . $products[0]->productvariants->first()->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                class="{{ $products[0]->name }}-main-image-2">
+                                <div class="layer-step-2-{{ $products[0]->id }} position-relative"
+                                    style="width : 200px; top : 40px; left : 150px; height : 380px; ">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
                     <div class="col-lg-6">
-                        <h4><strong>T Shirt</strong> Lengan pendek</h4>
-
-                        <div class="mt-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <p class="mt-2"><strong>Profit Estimator for: </strong></p>
-                                    <p class="mt-4"><strong>Harga Dasar: </strong></p>
-                                    <p class="mt-3"><strong>Royalti Desain </strong></p>
-                                    <p class="mt-4"><strong>Harga Jual: </strong></p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button class="btn w-100 rounded-0" style="background-color: #c0c0c0">T shirt
-                                        lengan pendek</button>
-                                    <p class="mt-3" id="tshirt-harga-dasar">100000</p>
-                                    <input type="number" class="" id="price-tshirt">
-                                    <p class="mt-3" id="tshirt-harga-jual"></p>
-                                </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>{{ $products[0]->name }}</h4>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p class="mt-2"><strong>Profit Estimator for: </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-select" aria-label="Default select example" id="style-step-2">
+                                    @foreach ($products[0]->productvariants->groupBy('style.name') as $productVariant  => $value)
+                                        <option value="{{ $productVariant }}" data-name="{{ $products[0]->name }}">{{ $productVariant }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Harga Dasar: </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p id="{{ $products[0]->name }}-harga-dasar">{{ $products[0]->price }}</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Royalti Desain </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="number" name="price[]" class="price" id="price-{{ $products[0]->name }}" data-product="{{ $products[0]->name }}">
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Harga Jual: </strong></p>
+                            </div>
+
+                        </div>
+                        <div class="mt-6">
                             <div class="row">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <td scope="col">10 items</td>
-                                            <td id="tshirt-10-items" scope="col" class="text-end">
-
+                                            <td id="{{ $products[0]->name }}-10-items" scope="col" class="text-end">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td scope="col">100 items</td>
-                                            <td id="tshirt-100-items" scope="col" class="text-end"></td>
+                                            <td id="{{ $products[0]->name }}-100-items" scope="col" class="text-end"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">250 items</td>
-                                            <td id="tshirt-250-items" scope="col" class="text-end"></td>
+                                            <td id="{{ $products[0]->name }}-250-items" scope="col" class="text-end"></td>
                                         </tr>
                                         <tr>
                                             <td scope="col">500 items</td>
-                                            <td id="tshirt-500-items" scope="col" class="text-end"></td>
+                                            <td id="{{ $products[0]->name }}-500-items" scope="col" class="text-end"></td>
                                         </tr>
                                         <tr class="bg-warning">
                                             <td scope="col">1000 items</td>
-                                            <td id="tshirt-1000-items" scope="col" class="text-end"></td>
+                                            <td id="{{ $products[0]->name }}-1000-items" scope="col" class="text-end"></td>
                                         </tr>
                                     </thead>
 
@@ -282,6 +352,194 @@
                     </div>
                 </div>
             </div>
+            @foreach ($products->skip(1) as $product)
+            <div class="tab-pane fade" id="{{ $product->name }}-tab-pane-step-2" role="tabpanel" aria-labelledby="{{ $product->name }}-tab"
+                tabindex="0" wire:ignore.self>
+                @if ($product->category_id == '6')
+                <div class="row mt-5">
+                    <div class="col-lg-6" id="preview-image">
+                        <div id="tshirt-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-repeat : no-repeat; background-size : 100% 100%"
+                                class="main-image">
+                                <div class="sticker-layer-step-2 position-relative" id="container-2"
+                                    style="width : 200px; top : 40px; left : 150px; height : 380px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>{{ $product->name }}</h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p class="mt-2"><strong>Profit Estimator for: </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-select" aria-label="Default select example" id="style-step-2">
+                                    <option value="" data-name="{{ $product->name }}">Sticker Vinyl Putih</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Harga Dasar: </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p id="{{ $product->name }}-harga-dasar">{{ $product->price }}</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Royalti Desain </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="number" class="price" id="price-{{ $product->name }}" data-product="{{ $product->name }}">
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Harga Jual: </strong></p>
+                            </div>
+
+                        </div>
+                        <div class="mt-6">
+                            <div class="row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td scope="col">10 items</td>
+                                            <td id="{{ $product->name }}-10-items" scope="col" class="text-end">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">100 items</td>
+                                            <td id="{{ $product->name }}-100-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">250 items</td>
+                                            <td id="{{ $product->name }}-250-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">500 items</td>
+                                            <td id="{{ $product->name }}-500-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                        <tr class="bg-warning">
+                                            <td scope="col">1000 items</td>
+                                            <td id="{{ $product->name }}-1000-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
+                                            class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        Back</button>
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
+                                            class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @else
+                <div class="row mt-5">
+                    <div class="col-lg-6" id="preview-image">
+                        <div id="tshirt-capture" style="width : 500px; height : 500px">
+                            <div style="width : 500px; height : 500px; background-image : url('{{ asset('uploads/imageProductVariant/' . $product->productvariants->first()->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                class="{{ $product->name }}-main-image-2">
+                                <div class="layer-step-2-{{ $product->id }} position-relative"
+                                    style="width : 200px; top : 40px; left : 150px; height : 380px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>{{ $product->name }}</h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p class="mt-2"><strong>Profit Estimator for: </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-select" aria-label="Default select example" id="style-step-2">
+                                    @foreach ($product->productvariants->groupBy('style.name') as $productVariant  => $value)
+                                        <option value="{{ $productVariant }}" data-name="{{ $product->name }}">{{ $productVariant }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Harga Dasar: </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p id="{{ $product->name }}-harga-dasar">{{ $product->name }}</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Royalti Desain </strong></p>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="number" name="price[]" class="price" id="price-{{ $product->name }}" data-product="{{ $product->name }}">
+                            </div>
+                            <div class="col-lg-6">
+                                <p><strong>Harga Jual: </strong></p>
+                            </div>
+
+                        </div>
+                        <div class="mt-6">
+                            <div class="row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td scope="col">10 items</td>
+                                            <td id="{{ $product->name }}-10-items" scope="col" class="text-end">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">100 items</td>
+                                            <td id="{{ $product->name }}-100-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">250 items</td>
+                                            <td id="{{ $product->name }}-250-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col">500 items</td>
+                                            <td id="{{ $product->name }}-500-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                        <tr class="bg-warning">
+                                            <td scope="col">1000 items</td>
+                                            <td id="{{ $product->name }}-1000-items" scope="col" class="text-end"></td>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-dark rounded-0 back-step-1" style="width : 45%"><i
+                                            class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        Back</button>
+                                    <button class="btn btn-dark rounded-0 step-2" style="width : 45%">Next <i
+                                            class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+            </div>
+            @endforeach
+
         </div>
     </div>
     {{-- end step 2 --}}
@@ -314,20 +572,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="url" class="form-label">URL</label>
-                        <input type="text" class="form-control" id="url" required>
+                        <input type="text" class="form-control" id="url" value="{{ url($link->first_name) }}" disabled>
                     </div>
                     <button class="btn btn-dark mt-4 rounded-0" id="back-step-2">Back</button>
                     <button class="btn btn-dark mt-4 rounded-0" id="submit">Publish</button>
 
             </div>
-
-            <div class="col-lg-5">
-                <img class="border" alt="" width="350">
-            </div>
         </div>
     </div>
     {{-- end step 3 --}}
-    <script src="{{ asset('assets/js/fabric.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
         integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -340,374 +593,601 @@
 
     <script>
 
-            // layer tshirt
-            var stage = new Konva.Stage({
-                container: '.tshirt-layer',
-                width: 200,
-                height: 380,
+            let tes = @js($products);
+
+            let stage = [];
+            tes.forEach(element => {
+                if(element.category_id == '6') {
+                    return;
+                }
+                let stage = new Konva.Stage({
+                    container: `.layer-${element.id}`,
+                    width: 200,
+                    height: 380,
+                });
+
+                var layer = new Konva.Layer();
+                stage.add(layer);
             });
 
-            var layer = new Konva.Layer();
-            stage.add(layer);
+            //sticker
+            var stage6 = new Konva.Stage({
+                container: 'container',
+                width: 400,
+                height: 400,
+            });
+
+            var layer6 = new Konva.Layer();
+            stage6.add(layer6);
 
 
 
-
+            let urlImage;
+            let theImg;
             $(".file_input").change(function(e) {
+
+
                 var URL = window.webkitURL || window.URL;
                 var url = URL.createObjectURL(e.target.files[0]);
                 var img = new Image();
                 img.src = url;
+                urlImage = url;
+
+
 
                 $('#design-image').attr('src', url);
                 $('.step-1').removeAttr('disabled');
+
+
                 img.onload = function() {
 
-                    var img_width = img.width;
-                    var img_height = img.height;
-
-                    // calculate dimensions to get max 300px
-                    var max = 300;
-                    var ratio = (img_width > img_height ? (img_width / max) : (img_height / max))
-
                     // now load the Konva image
-                    theImg = new Konva.Image({
-                        name: 'rect',
-                        image: img,
-                        x: 26,
-                        y: -1,
-                        width: 150,
-                        height: 55,
-                        draggable: true,
-                        rotation: 0
-                    });
+                    if(theImg) {
+
+                        theImg.destroy();
+
+                        deleteImage(img)
+                        settingImage(img);
+                        stickerImage(url, 'container');
 
 
-
-                    layer.add(theImg);
-                    layer.draw();
-
-
-
-
-
-
-                    // now we wiltheImg.absolutePosition().ydocument.createElement('canvas');
-                    var tempCanvas = document.createElement('canvas');
-
-                    // make all pixels opaque 100% (except pixels that 100% transparent)
-                    function removeTransparency(canvas) {
-                        var ctx = canvas.getContext('2d');
-
-
-
-
-                        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                        var nPixels = imageDat55a.data.length;
-                        for (var i = 3; i < nPixels; i += 4) {
-                        if (imageData.data[i] > 0) {
-                            imageData.data[i] = 255;
-                        }
-                        }
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        ctx.putImageData(imageData, 0, 0);
-                        return canvas;
-                    }
-
-                    function Border(imageData) {
-                        var nPixels = imageData.data.length;
-
-                        var size = this.getAttr('borderSize') || 0;
-
-                        // - first set correct dimensions for canvases
-                        canvas.width = imageData.width;
-                        canvas.height = imageData.height;
-
-                        tempCanvas.width = imageData.width;
-                        tempCanvas.height = imageData.height;
-
-                        // - the draw original shape into temp canvas
-                        tempCanvas.getContext('2d').putImageData(imageData, 0, 0);
-
-                        // - then we need to remove alpha chanel, because it will affect shadow (transparent shapes has smaller shadow)
-                        removeTransparency(tempCanvas);
-
-                        var ctx = canvas.getContext('2d');
-                        var color = this.getAttr('borderColor') || 'black';
-
-                        // 3. we will use shadow as border
-                        // so we just need apply shadow on the original image
-                        ctx.save();
-                        ctx.shadowColor = color;
-                        ctx.shadowBlur = size;
-                        ctx.drawImage(tempCanvas, 0, 0);
-                        ctx.restore();
-
-                        // - Then we will dive in into image data of [original image + shadow]
-                        // and remove transparency from shadow
-                        var tempImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-                        var SMOOTH_MIN_THRESHOLD = 3;
-                        var SMOOTH_MAX_THRESHOLD = 10;
-
-                        let val, hasValue;
-
-                        var offset = 3;55
-
-                        for (var i = 3; i < nPixels; i += 4) {
-                        // skip opaque pixels
-                        if (imageData.data[i] === 255) {
-                            continue;
-                        }
-
-                        val = tempImageData.data[i];
-                        hasValue = val !== 0;
-                        if (!hasValue) {
-                            continue;
-                        }
-                        if (val > SMOOTH_MAX_THRESHOLD) {
-                            val = 255;
-                        } else if (val < SMOOTH_MIN_THRESHOLD) {
-                            val = 0;
                         } else {
-                            val =
-                            ((val - SMOOTH_MIN_TH55RESHOLD) /
-                                (SMOOTH_MAX_THRESHOLD - SMOOTH_MIN_THRESHOLD)) *
-                            255;
+                            settingImage(img);
+                            stickerImage(url, 'container');
                         }
-                        tempImageData.data[i] = val;
-                        }
-
-                        // draw resulted image (original + shadow without opacity) into canvas
-                        ctx.putImageData(tempImageData, 0, 0);
-
-                        // then fill whole image with color (after that shadow is colored)
-                        ctx.save();
-                        ctx.globalCompositeOperation = 'source-in';
-                        ctx.fillStyle = color;
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        ctx.restore();
-
-                        // then we need to copy colored shadow into original imageData
-                        var newImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-                        var indexesToProcess = [];
-                        for (var i = 3; i < nPixels; i += 4) {
-                        var hasTransparentOnTop =
-                            imageData.data[i - imageData.width * 4 * offset] === 0;
-                        var hasTransparentOnTopRight =
-                            imageData.data[i - (imageData.width * 4 + 4) * offset] === 0;
-                        var hasTransp55arentOnTopLeft =
-                            imageData.data[i - (imageData.width * 4 - 4) * offset] === 0;
-                        var hasTransparentOnRight = imageData.data[i + 4 * offset] === 0;
-                        var hasTransparentOnLeft = imageData.data[i - 4 * offset] === 0;
-                        var hasTransparentOnBottom =
-                            imageData.data[i + imageData.width * 4 * offset] === 0;
-                        var hasTransparentOnBottomRight =
-                            imageData.data[i + (imageData.width * 4 + 4) * offset] === 0;
-                        var hasTransparentOnBottomLeft =
-                            imageData.data[i + (imageData.width * 4 - 4) * offset] === 0;
-                        var hasTransparentAround =
-                            hasTransparentOnTop ||
-                            hasTransparentOnRight ||
-                            hasTransparentOnLeft ||
-                            hasTransparentOnBottom ||
-                            hasTransparentOnTopRight ||
-                            hasTransparentOnTopLeft ||
-                            hasTransparentOnBottomRight ||
-                            hasTransparentOnBottomLeft;
-
-                        // if pixel presented in original image - skip it
-                        // because we need to change only shadow area
-                        if (
-                            imageData.data[i] === 255 ||
-                            (imageData.data[i] && !hasTransparentAround)
-                        ) {
-                            continue;
-                        }
-                        if (!newImageData.data[i]) {
-                            // skip transparent pixels
-                            continue;
-                        }
-                        indexesToProcess.push(i);
-                        }
-
-                        for (var index = 0; index < indexesToProcess.length; index += 1) {
-                        var i = indexesToProcess[index];
-
-                        var alpha = imageData.data[i] / 255;
-
-                        if (alpha > 0 && alpha < 1) {
-                            var aa = 1 + 1;
-                        }
-                        imageData.data[i] = newImageData.data[i];
-                        imageData.data[i - 1] =
-                            newImageData.data[i - 1] * (1 - alpha) +
-                            imageData.data[i - 1] * alpha;
-                        imageData.data[i - 2] =
-                            newImageData.data[i - 2] * (1 - alpha) +
-                            imageData.data[i - 2] * alpha;
-                        imageData.data[i - 3] =
-                            newImageData.data[i - 3] * (1 - alpha) +
-                            imageData.data[i - 3] * alpha;
-
-                        if (newImageData.data[i] < 255 && alpha > 0) {
-                            var bb = 1 + 1;
-                        }55
-                        }
-                    }
 
                 }
             });
-            // tshirt
-            var tr = new Konva.Transformer();
-            layer.add(tr);
-
-            // by default select all shapes
 
 
-            // at this point basic demo is finished!!
-            // we just have several transforming nodes
-            layer.draw();
 
-            // add a new feature, lets add ability to draw selection rectangle
-            var selectionRectangle = new Konva.Rect({
-                fill: 'rgba(0,0,255,0.5)',
-            });
-            layer.add(selectionRectangle);
-
-            var x1, y1, x2, y2;
-            stage.on('mousedown touchstart', (e) => {
-                // do nothing if we mousedown on eny shape
-                if (e.target !== stage) {
+            function deleteImage(img) {
+            tes.forEach(element => {
+                if(element.category_id == '6') {
                     return;
                 }
-                x2 = stage.getPointerPosition().x;
-                x1 = stage.getPointerPosition().x;
-                y1 = stage.getPointerPosition().y;
-                y2 = stage.getPointerPosition().y;
-
-
-                selectionRectangle.visible(true);
-                selectionRectangle.width(0);
-                selectionRectangle.height(0);
-                layer.draw();
-            });
-
-
-
-            stage.on('mousemove touchmove', () => {
-                // no nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-                    return;
-                }
-                x2 = stage.getPointerPosition().x;
-                y2 = stage.getPointerPosition().y;
-
-
-                selectionRectangle.setAttrs({
-                    x: Math.min(x1, x2),
-                    y: Math.min(y1, y2),
-                    width: Math.abs(x2 - x1),
-                    height: Math.abs(y2 - y1),
+                let staging = new Konva.Stage({
+                    container: `.layer-${element.id}`,
+                    width: 200,
+                    height: 380,
                 });
-                layer.batchDraw();
-            });
 
-            stage.on('mouseup touchend', () => {
-                // no nothing if we didn't start selection
-                if (!selectionRectangle.visible()) {
-                    return;
-                }
-                // update visibility in timeout, so we can check it in click event
-                setTimeout(() => {
-                    selectionRectangle.visible(false);
+                var layer = new Konva.Layer();
+                staging.add(layer);
+
+                theImg = new Konva.Image({
+                    id: `rect-${element.id}`,
+                    name : 'rect',
+                    image: img,
+                    x: 26,
+                    y: 10,
+                    width: 150,
+                    height: 150,
+                    draggable: true,
+                    rotation: 0,
+                });
+
+                layer.add(theImg);
+                staging.add(layer);
+                staging.id = element.id;
+
+
+                var tr = new Konva.Transformer();
+                layer.add(tr);
+
+                // by default select all shapes
+
+
+                // at this point basic demo is finished!!
+                // we just have several transforming nodes
+                layer.draw();
+
+                // add a new feature, lets add ability to draw selection rectangle
+                var selectionRectangle = new Konva.Rect({
+                    fill: 'rgba(0,0,255,0.5)',
+                });
+                layer.add(selectionRectangle);
+
+                var x1, y1, x2, y2;
+                staging.on('mousedown touchstart', (e) => {
+                    // do nothing if we mousedown on eny shape
+                    if (e.target !== staging) {
+                        return;
+                    }
+                    x2 = staging.getPointerPosition().x;
+                    x1 = staging.getPointerPosition().x;
+                    y1 = staging.getPointerPosition().y;
+                    y2 = staging.getPointerPosition().y;
+
+
+                    selectionRectangle.visible(true);
+                    selectionRectangle.width(0);
+                    selectionRectangle.height(0);
+                    layer.draw();
+                });
+
+
+
+                staging.on('mousemove touchmove', () => {
+                    // no nothing if we didn't start selection
+                    if (!selectionRectangle.visible()) {
+                        return;
+                    }
+                    x2 = staging.getPointerPosition().x;
+                    y2 = staging.getPointerPosition().y;
+
+
+                    selectionRectangle.setAttrs({
+                        x: Math.min(x1, x2),
+                        y: Math.min(y1, y2),
+                        width: Math.abs(x2 - x1),
+                        height: Math.abs(y2 - y1),
+                    });
                     layer.batchDraw();
                 });
 
-                var shapes = stage.find('.rect').toArray();
-                var box = selectionRectangle.getClientRect();
-                var selected = shapes.filter((shape) =>
-                    Konva.Util.haveIntersection(box, shape.getClientRect())
-                );
-                tr.nodes(selected);
-                layer.batchDraw();
-            });
+                staging.on('mouseup touchend', () => {
+                    // no nothing if we didn't start selection
+                    if (!selectionRectangle.visible()) {
+                        return;
+                    }
+                    // update visibility in timeout, so we can check it in click event
+                    setTimeout(() => {
+                        selectionRectangle.visible(false);
+                        layer.batchDraw();
+                    });
 
-            // clicks should select/deselect shapes
-            stage.on('click tap', function(e) {
-                // if we are selecting with rect, do nothing
-                if (selectionRectangle.visible()) {
-                    return;
-                }
+                    var shapes = staging.find('.rect').toArray();
+                    var box = selectionRectangle.getClientRect();
+                    var selected = shapes.filter((shape) =>
+                        Konva.Util.haveIntersection(box, shape.getClientRect())
+                    );
+                    tr.nodes(selected);
+                    layer.batchDraw();
+                });
 
-                // if click on empty area - remove all selections
-                if (e.target === stage) {
-                    tr.nodes([]);
+                // clicks should select/deselect shapes
+                staging.on('click tap', function(e) {
+                    // if we are selecting with rect, do nothing
+                    if (selectionRectangle.visible()) {
+                        return;
+                    }
+
+                    // if click on empty area - remove all selections
+                    if (e.target === staging) {
+                        tr.nodes([]);
+                        layer.draw();
+                        return;
+                    }
+
+                    // do nothing if clicked NOT on our rectangles
+                    if (!e.target.hasName('rect')) {
+                        return;
+                    }
+
+                    // do we pressed shift or ctrl?
+                    const metaPressed = e.evt.shiftKey || e.evt.ctrlKey || e.evt.metaKey;
+                    const isSelected = tr.nodes().indexOf(e.target) >= 0;
+
+                    if (!metaPressed && !isSelected) {
+                        // if no key pressed and the node is not selected
+                        // select just one
+                        tr.nodes([e.target]);
+                    } else if (metaPressed && isSelected) {
+                        // if we pressed keys and node was selected
+                        // we need to remove it from selection:
+                        const nodes = tr.nodes().slice(); // use slice to have new copy of array
+                        // remove node from array
+                        nodes.splice(nodes.indexOf(e.target), 1);
+                        tr.nodes(nodes);
+                    } else if (metaPressed && !isSelected) {
+                        // add the node into selection
+                        const nodes = tr.nodes().concat([e.target]);
+                        tr.nodes(nodes);
+                    }
                     layer.draw();
-                    return;
-                }
+                });
 
-                // do nothing if clicked NOT on our rectangles
-                if (!e.target.hasName('rect')) {
-                    return;
-                }
+                stage.push(staging)
 
-                // do we pressed shift or ctrl?
-                const metaPressed = e.evt.shiftKey || e.evt.ctrlKey || e.evt.metaKey;
-                const isSelected = tr.nodes().indexOf(e.target) >= 0;
+                stage = []
 
-                if (!metaPressed && !isSelected) {
-                    // if no key pressed and the node is not selected
-                    // select just one
-                    tr.nodes([e.target]);
-                } else if (metaPressed && isSelected) {
-                    // if we pressed keys and node was selected
-                    // we need to remove it from selection:
-                    const nodes = tr.nodes().slice(); // use slice to have new copy of array
-                    // remove node from array
-                    nodes.splice(nodes.indexOf(e.target), 1);
-                    tr.nodes(nodes);
-                } else if (metaPressed && !isSelected) {
-                    // add the node into selection
-                    const nodes = tr.nodes().concat([e.target]);
-                    tr.nodes(nodes);
-                }
-                layer.draw();
+
+                layer.destroy();
+                staging.destroy()
+            });
+        }
+
+        function stickerImage(url, cl) {
+            var stage6 = new Konva.Stage({
+                container: cl,
+                width: 400,
+                height: 400,
             });
 
+            var layer6 = new Konva.Layer();
+            stage6.add(layer6);
 
-        $('#back-image').click(function() {
-            document.getElementById('tshirt-main-image').style.backgroundImage =
-                "url('{{ asset('assets/img/tshirt-belakang-black.png') }}')";
+            Konva.Image.fromURL(url, function (image) {
+                layer6.add(image);
+                image.setAttrs({
+                x: 50,
+                y: 50,
+                borderSize: 5,
+                borderColor: '#e3e6e4',
+                width: 180,
+                height: 180,
+                });
 
-                $('#tshirt-black').attr('data-image', 'tshirt-belakang-black.png')
-                $('#tshirt-white').attr('data-image', 'tshirt-belakang-white.png')
-                $('#tshirt-silver').attr('data-image', 'tshirt-belakang-silver.png')
-                $('#tshirt-green').attr('data-image', 'tshirt-belakang-green.png')
-                $('#tshirt-red').attr('data-image', 'tshirt-belakang-red.png')
-                $('#tshirt-blue').attr('data-image', 'tshirt-belakang-blue.png')
-                $('#tshirt-yellow').attr('data-image', 'tshirt-belakang-yellow.png')
-        })
+                image.filters([Border]);
+                image.cache();
+            });
 
-        $('#front-image').click(function() {
-            document.getElementById('tshirt-main-image').style.backgroundImage =
-                "url('{{ asset('assets/img/tshirt-black.png') }}')";
+            // now we will define our border filter
 
-            $('#tshirt-black').attr('data-image', 'tshirt-black.png')
-            $('#tshirt-white').attr('data-image', 'tshirt-white.png')
-            $('#tshirt-silver').attr('data-image', 'tshirt-silver.png')
-            $('#tshirt-green').attr('data-image', 'tshirt-green.png')
-            $('#tshirt-red').attr('data-image', 'tshirt-red.png')
-            $('#tshirt-blue').attr('data-image', 'tshirt-blue.png')
-            $('#tshirt-yellow').attr('data-image', 'tshirt-yellow.png')
-        })
+            var canvas = document.createElement('canvas');
+            var tempCanvas = document.createElement('canvas');
+
+            // make all pixels opaque 100% (except pixels that 100% transparent)
+            function removeTransparency(canvas) {
+                var ctx = canvas.getContext('2d');
+
+                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var nPixels = imageData.data.length;
+                for (var i = 3; i < nPixels; i += 4) {
+                if (imageData.data[i] > 0) {
+                    imageData.data[i] = 255;
+                }
+                }
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.putImageData(imageData, 0, 0);
+                return canvas;
+            }
+
+            function Border(imageData) {
+                var nPixels = imageData.data.length;
+
+                var size = this.getAttr('borderSize') || 0;
+
+                // - first set correct dimensions for canvases
+                canvas.width = imageData.width;
+                canvas.height = imageData.height;
+
+                tempCanvas.width = imageData.width;
+                tempCanvas.height = imageData.height;
+
+                // - the draw original shape into temp canvas
+                tempCanvas.getContext('2d').putImageData(imageData, 0, 0);
+
+                // - then we need to remove alpha chanel, because it will affect shadow (transparent shapes has smaller shadow)
+                removeTransparency(tempCanvas);
+
+                var ctx = canvas.getContext('2d');
+                var color = this.getAttr('borderColor') || 'black';
+
+                // 3. we will use shadow as border
+                // so we just need apply shadow on the original image
+                ctx.save();
+                ctx.shadowColor = color;
+                ctx.shadowBlur = size;
+                ctx.drawImage(tempCanvas, 0, 0);
+                ctx.restore();
+
+                // - Then we will dive in into image data of [original image + shadow]
+                // and remove transparency from shadow
+                var tempImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                var SMOOTH_MIN_THRESHOLD = 3;
+                var SMOOTH_MAX_THRESHOLD = 10;
+
+                let val, hasValue;
+
+                var offset = 3;
+
+                for (var i = 3; i < nPixels; i += 4) {
+                // skip opaque pixels
+                if (imageData.data[i] === 255) {
+                    continue;
+                }
+
+                val = tempImageData.data[i];
+                hasValue = val !== 0;
+                if (!hasValue) {
+                    continue;
+                }
+                if (val > SMOOTH_MAX_THRESHOLD) {
+                    val = 255;
+                } else if (val < SMOOTH_MIN_THRESHOLD) {
+                    val = 0;
+                } else {
+                    val =
+                    ((val - SMOOTH_MIN_THRESHOLD) /
+                        (SMOOTH_MAX_THRESHOLD - SMOOTH_MIN_THRESHOLD)) *
+                    255;
+                }
+                tempImageData.data[i] = val;
+                }
+
+                // draw resulted image (original + shadow without opacity) into canvas
+                ctx.putImageData(tempImageData, 0, 0);
+
+                // then fill whole image with color (after that shadow is colored)
+                ctx.save();
+                ctx.globalCompositeOperation = 'source-in';
+                ctx.fillStyle = color;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.restore();
+
+                // then we need to copy colored shadow into original imageData
+                var newImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                var indexesToProcess = [];
+                for (var i = 3; i < nPixels; i += 4) {
+                var hasTransparentOnTop =
+                    imageData.data[i - imageData.width * 4 * offset] === 0;
+                var hasTransparentOnTopRight =
+                    imageData.data[i - (imageData.width * 4 + 4) * offset] === 0;
+                var hasTransparentOnTopLeft =
+                    imageData.data[i - (imageData.width * 4 - 4) * offset] === 0;
+                var hasTransparentOnRight = imageData.data[i + 4 * offset] === 0;
+                var hasTransparentOnLeft = imageData.data[i - 4 * offset] === 0;
+                var hasTransparentOnBottom =
+                    imageData.data[i + imageData.width * 4 * offset] === 0;
+                var hasTransparentOnBottomRight =
+                    imageData.data[i + (imageData.width * 4 + 4) * offset] === 0;
+                var hasTransparentOnBottomLeft =
+                    imageData.data[i + (imageData.width * 4 - 4) * offset] === 0;
+                var hasTransparentAround =
+                    hasTransparentOnTop ||
+                    hasTransparentOnRight ||
+                    hasTransparentOnLeft ||
+                    hasTransparentOnBottom ||
+                    hasTransparentOnTopRight ||
+                    hasTransparentOnTopLeft ||
+                    hasTransparentOnBottomRight ||
+                    hasTransparentOnBottomLeft;
+
+                // if pixel presented in original image - skip it
+                // because we need to change only shadow area
+                if (
+                    imageData.data[i] === 255 ||
+                    (imageData.data[i] && !hasTransparentAround)
+                ) {
+                    continue;
+                }
+                if (!newImageData.data[i]) {
+                    // skip transparent pixels
+                    continue;
+                }
+                indexesToProcess.push(i);
+                }
+
+                for (var index = 0; index < indexesToProcess.length; index += 1) {
+                var i = indexesToProcess[index];
+
+                var alpha = imageData.data[i] / 255;
+
+                if (alpha > 0 && alpha < 1) {
+                    var aa = 1 + 1;
+                }
+                imageData.data[i] = newImageData.data[i];
+                imageData.data[i - 1] =
+                    newImageData.data[i - 1] * (1 - alpha) +
+                    imageData.data[i - 1] * alpha;
+                imageData.data[i - 2] =
+                    newImageData.data[i - 2] * (1 - alpha) +
+                    imageData.data[i - 2] * alpha;
+                imageData.data[i - 3] =
+                    newImageData.data[i - 3] * (1 - alpha) +
+                    imageData.data[i - 3] * alpha;
+
+                if (newImageData.data[i] < 255 && alpha > 0) {
+                    var bb = 1 + 1;
+                }
+                }
+            }
+        }
+
+        function settingImage(img) {
+            tes.forEach(element => {
+                if(element.category_id == '6') {
+                    return;
+                }
+                let staging = new Konva.Stage({
+                    container: `.layer-${element.id}`,
+                    width: 200,
+                    height: 380,
+                });
+
+                var layer = new Konva.Layer();
+                staging.add(layer);
+
+                theImg = new Konva.Image({
+                    id: `rect-${element.id}`,
+                    name : 'rect',
+                    image: img,
+                    x: 26,
+                    y: 10,
+                    width: 150,
+                    height: 150,
+                    draggable: true,
+                    rotation: 0,
+                });
+
+                layer.add(theImg);
+                staging.add(layer);
+                staging.id = element.id;
 
 
-        $('.tshirt-color').click(function() {
-            let img = $(this).attr('data-image');
-            document.getElementById('tshirt-main-image').style.backgroundImage =
-                `url('{{ asset('assets/img/${img}') }}')`;
+                var tr = new Konva.Transformer();
+                layer.add(tr);
+
+                // by default select all shapes
+
+
+                // at this point basic demo is finished!!
+                // we just have several transforming nodes
+                layer.draw();
+
+                // add a new feature, lets add ability to draw selection rectangle
+                var selectionRectangle = new Konva.Rect({
+                    fill: 'rgba(0,0,255,0.5)',
+                });
+                layer.add(selectionRectangle);
+
+                var x1, y1, x2, y2;
+                staging.on('mousedown touchstart', (e) => {
+                    // do nothing if we mousedown on eny shape
+                    if (e.target !== staging) {
+                        return;
+                    }
+                    x2 = staging.getPointerPosition().x;
+                    x1 = staging.getPointerPosition().x;
+                    y1 = staging.getPointerPosition().y;
+                    y2 = staging.getPointerPosition().y;
+
+
+                    selectionRectangle.visible(true);
+                    selectionRectangle.width(0);
+                    selectionRectangle.height(0);
+                    layer.draw();
+                });
+
+
+
+                staging.on('mousemove touchmove', () => {
+                    // no nothing if we didn't start selection
+                    if (!selectionRectangle.visible()) {
+                        return;
+                    }
+                    x2 = staging.getPointerPosition().x;
+                    y2 = staging.getPointerPosition().y;
+
+
+                    selectionRectangle.setAttrs({
+                        x: Math.min(x1, x2),
+                        y: Math.min(y1, y2),
+                        width: Math.abs(x2 - x1),
+                        height: Math.abs(y2 - y1),
+                    });
+                    layer.batchDraw();
+                });
+
+                staging.on('mouseup touchend', () => {
+                    // no nothing if we didn't start selection
+                    if (!selectionRectangle.visible()) {
+                        return;
+                    }
+                    // update visibility in timeout, so we can check it in click event
+                    setTimeout(() => {
+                        selectionRectangle.visible(false);
+                        layer.batchDraw();
+                    });
+
+                    var shapes = staging.find('.rect').toArray();
+                    var box = selectionRectangle.getClientRect();
+                    var selected = shapes.filter((shape) =>
+                        Konva.Util.haveIntersection(box, shape.getClientRect())
+                    );
+                    tr.nodes(selected);
+                    layer.batchDraw();
+                });
+
+                // clicks should select/deselect shapes
+                staging.on('click tap', function(e) {
+                    // if we are selecting with rect, do nothing
+                    if (selectionRectangle.visible()) {
+                        return;
+                    }
+
+                    // if click on empty area - remove all selections
+                    if (e.target === staging) {
+                        tr.nodes([]);
+                        layer.draw();
+                        return;
+                    }
+
+                    // do nothing if clicked NOT on our rectangles
+                    if (!e.target.hasName('rect')) {
+                        return;
+                    }
+
+                    // do we pressed shift or ctrl?
+                    const metaPressed = e.evt.shiftKey || e.evt.ctrlKey || e.evt.metaKey;
+                    const isSelected = tr.nodes().indexOf(e.target) >= 0;
+
+                    if (!metaPressed && !isSelected) {
+                        // if no key pressed and the node is not selected
+                        // select just one
+                        tr.nodes([e.target]);
+                    } else if (metaPressed && isSelected) {
+                        // if we pressed keys and node was selected
+                        // we need to remove it from selection:
+                        const nodes = tr.nodes().slice(); // use slice to have new copy of array
+                        // remove node from array
+                        nodes.splice(nodes.indexOf(e.target), 1);
+                        tr.nodes(nodes);
+                    } else if (metaPressed && !isSelected) {
+                        // add the node into selection
+                        const nodes = tr.nodes().concat([e.target]);
+                        tr.nodes(nodes);
+                    }
+                    layer.draw();
+                });
+
+                stage.push(staging)
+            });
+        }
+
+
+        let imageDefaultColor = [];
+        $(document).on('click', '.color' , function () {
+            // imageDefaultColor.push({$(this).attr('data-id')});
+            let dataIdProductVariant = $(this).attr('data-id');
+            let image = $(this).attr('data-image');
+            let dataIdProduct = $(this).attr('data-idProduct');
+
+            if(imageDefaultColor.length) {
+
+                const usersMale = imageDefaultColor.filter((user) => user.dataIdProduct !== dataIdProduct);
+
+                usersMale.push({dataIdProduct, dataIdProductVariant, image});
+                imageDefaultColor = usersMale;
+
+            }
+
+            if(!imageDefaultColor.length) {
+                imageDefaultColor.push({dataIdProduct, dataIdProductVariant, image});
+            }
+
+            let name = $(this).attr('data-name');
+            let color = $(this).attr('data-color');
+            document.querySelector(`.${name}-main-image`).style.backgroundImage =
+                `url('{{ asset('uploads/imageProductVariant/${image}') }}')`;
+                document.querySelector(`.${name}-main-image-2`).style.backgroundImage =
+                `url('{{ asset('uploads/imageProductVariant/${image}') }}')`;
+
+            $('#style-step-2').attr('data-color', color);
         })
 
 
@@ -721,6 +1201,13 @@
             $('#harga').css("background-color", 'silver')
             $('#publish').css("background-color", 'silver')
 
+            if(theImg2) {
+                theImg2.position({
+                    x : theImg.absolutePosition().x,
+                    y : theImg.absolutePosition().y
+                })
+            }
+
         })
 
         $('#back-step-2').click(function() {
@@ -733,27 +1220,29 @@
             $('#publish').css("background-color", 'silver')
         })
 
-        $('#price-tshirt').on('input', function() {
-            let items1 = $('#price-tshirt').val() * 10;
-            let items2 = $('#price-tshirt').val() * 100;
-            let items3 = $('#price-tshirt').val() * 250;
-            let items4 = $('#price-tshirt').val() * 500;
-            let items5 = $('#price-tshirt').val() * 1000;
+        $('.price').on('input', function() {
+            let product = $(this).attr('data-product')
+            let items1 = $(`#price-${product}`).val() * 10;
+            let items2 = $(`#price-${product}`).val() * 100;
+            let items3 = $(`#price-${product}`).val() * 250;
+            let items4 = $(`#price-${product}`).val() * 500;
+            let items5 = $(`#price-${product}`).val() * 1000;
 
-            let hargaDasar = parseInt($("#tshirt-harga-dasar").text()) + parseInt($('#price-tshirt').val());
-
+            let hargaDasar = parseInt($(`#${product}-harga-dasar`).text()) + parseInt($('#price-tshirt').val());
+            console.log(hargaDasar);
             $('#tshirt-harga-jual').text('Rp. '+ hargaDasar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'))
 
 
 
-            $('#tshirt-10-items').text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
-            $('#tshirt-100-items').text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
-            $('#tshirt-250-items').text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
-            $('#tshirt-500-items').text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
-            $('#tshirt-1000-items').text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $(`#${product}-10-items`).text( 'Rp. '+ items1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $(`#${product}-100-items`).text( 'Rp. '+ items2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $(`#${product}-250-items`).text( 'Rp. '+ items3.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $(`#${product}-500-items`).text( 'Rp. '+ items4.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+            $(`#${product}-1000-items`).text( 'Rp. '+ items5.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
         })
 
         $('.step-1').click(function() {
+
             $('.step1').addClass('d-none')
             $('.step2').removeClass('d-none')
             $('.step3').addClass('d-none')
@@ -761,42 +1250,225 @@
             $('#harga').css("background-color", '#9da19e')
             $('#upload-design').css("background-color", 'silver')
             $('#publish').css("background-color", 'silver')
-        })
+
+            var img = new Image();
+            img.src = urlImage;
+            stage.forEach(element => {
+                getImg(`.layer-step-2-${element.id}`, 200, 380, urlImage, element.find(`#rect-${element.id}`)[0].absolutePosition().x, element.find(`#rect-${element.id}`)[0].absolutePosition().y, element.find(`#rect-${element.id}`)[0].width() * element.find(`#rect-${element.id}`)[0].scaleX(), element.find(`#rect-${element.id}`)[0].height() * element.find(`#rect-${element.id}`)[0].scaleY(), element.find(`#rect-${element.id}`)[0].getAbsoluteRotation());
+            });
+
+            stickerImage(urlImage, 'container-2');
+
+            })
+
+        let theImg2;
+        function getImg(cl, width, height, image, sumbuX, sumbuY, widthLogo, heightLogo, rotation) {
+                var stage = new Konva.Stage({
+                            container: cl,
+                            width: width,
+                            height: height,
+                        });
+
+                    var layer = new Konva.Layer();
+                    stage.add(layer);
+
+                    var img = new Image();
+                    img.src = image;
+
+
+                // now load the Konva image
+                theImg2 = new Konva.Image({
+                                    name: 'rect',
+                                    image: img,
+                                    x: sumbuX,
+                                    y: sumbuY,
+                                    width: widthLogo,
+                                    height: heightLogo,
+                                    rotation: rotation
+                                });
+
+
+
+                        layer.add(theImg2);
+                        layer.draw();
+
+            }
+
 
         $('.step-2').click(function() {
-            $('.step1').addClass('d-none')
-            $('.step2').addClass('d-none')
-            $('.step3').removeClass('d-none')
 
-            $('#harga').css("background-color", 'silver')
-            $('#upload-design').css("background-color", 'silver')
-            $('#publish').css("background-color", '#9da19e')
+            var prices = $('input[name^=price]').map(function(idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            let checkPrice = prices.filter(el => el == '');
+
+            if(checkPrice.length || $('#price-Sticker').val() == '') {
+                alert('harap diisin semua harga')
+            } else {
+                $('.step1').addClass('d-none')
+                $('.step2').addClass('d-none')
+                $('.step3').removeClass('d-none')
+
+                $('#harga').css("background-color", 'silver')
+                $('#upload-design').css("background-color", 'silver')
+                $('#publish').css("background-color", '#9da19e')
+            }
+
+
+
+        })
+
+        $('.style').change(function() {
+
+            let name = $(this).find(':selected').attr('data-name');
+            let color = $(this).find(':selected').attr('data-color');
+            let value = $(this).val();
+            let products = @js($products).filter(el => el.name == name);
+            let productVariants = products.map(el => {
+                return el.productvariants.filter(e => e.style.name == value && e.view == 'front')
+            });
+
+            console.log(productVariants);
+
+
+            document.querySelector(`.${name}-main-image`).style.backgroundImage = `url('{{ asset('uploads/imageProductVariant/${productVariants[0][0].image}') }}')`;
+
+
+            $(`#${name}-color`).html(productVariants[0].map(el => {
+                    return `<div style="width : 40px; height : 40px; background-color : ${el.color}; border : 2px solid silver"
+                                class="color" id="${value}" data-image="${el.image}" data-name="${name}">
+                            </div>`
+            }))
+
+        })
+
+        $('#style-step-2').change(function() {
+            let name = $(this).find(':selected').attr('data-name');
+            let value = $(this).val();
+            let color = $(this).attr('data-color');
+            let products = @js($products).filter(el => el.name == name);
+            let productVariants = products.map(el => {
+                if(color) {
+                    return el.productvariants.filter(e => e.style.name == value && e.color == color)
+                } else {
+                    return el.productvariants.filter(e => e.style.name == value)
+
+                }
+
+
+            });
+
+            document.querySelector(`.${name}-main-image-2`).style.backgroundImage = `url('{{ asset('uploads/imageProductVariant/${productVariants[0][0].image}') }}')`;
+
+
+            $(`#${name}-color`).html(productVariants[0].map(el => {
+                    return `<div style="width : 40px; height : 40px; background-color : ${el.color}; border : 2px solid silver"
+                                class="color" id="${value}" data-image="${el.image}" data-name="${name}">
+                            </div>`
+            }))
+
+        })
+
+        $('.front-image').on('click', function() {
+            let idProduct = $(this).attr('data-id');
+            let view = $(this).attr('data-view');
+            let name = $(this).attr('data-name');
+            let style = $(`#style-${name}`).find(':selected').val();
+            let products = @js($products).filter(element => element.id == idProduct);
+            let productVariants = products[0].productvariants.filter(el => el.view == view && el.style.name == style)
+
+            document.querySelector(`.${name}-main-image `).style.backgroundImage = `url('{{ asset('uploads/imageProductVariant/${productVariants[0].image}') }}')`;
+
+            $(`#${name}-color`).html(productVariants.map(el => {
+                    return `<div style="width : 40px; height : 40px; background-color : ${el.color}; border : 2px solid silver"
+                                class="color" id="${style}" data-image="${el.image}" data-name="${name}">
+                            </div>`
+            }))
+        })
+
+        $('.back-image').on('click', function() {
+            let idProduct = $(this).attr('data-id');
+            let view = $(this).attr('data-view');
+            let name = $(this).attr('data-name');
+            let style = $(`#style-${name}`).find(':selected').val();
+
+            let products = @js($products).filter(element => element.id == idProduct);
+            let productVariants = products[0].productvariants.filter(el => el.view == view && el.style.name == style)
+
+
+                document.querySelector(`.${name}-main-image `).style.backgroundImage = `url('{{ asset('uploads/imageProductVariant/${productVariants[0]?.image}') }}')`;
+
+                $(`#${name}-color`).html(productVariants.map(el => {
+                    return `<div style="width : 40px; height : 40px; background-color : ${el.color}; border : 2px solid silver"
+                                class="color" id="${style}" data-image="${el.image}" data-name="${name}">
+                            </div>`
+            }))
+
+
         })
 
 
 
         $('#submit').click(function() {
+            var prices = $('input[name^=price]').map(function(idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            let count = 0;
             let title = $('#title').val();
             let description = $('#description').val();
             let designCategoryId = $('#designCategoryId').val();
             let tags = $('#tags').val();
             let url = $('#url').val();
 
-            let price = $('#price-tshirt').val();
 
+
+
+
+            stage.map(function(element) {
+                let productVariant = imageDefaultColor.find(el => el.dataIdProduct == element.id);
+                let products = @js($products).filter(el => el.id == element.id);
+
+
+                window.livewire.emit('submitForm', {
+                    'title' : title,
+                    'description' : description,
+                    'designCategoryId' : designCategoryId,
+                    'imageDefaultColor' : productVariant ? productVariant.dataIdProductVariant : products[0].productvariants[0].id,
+                    'productId' : element.id,
+                    'tags' : tags,
+                    'url' : url,
+                    'width' : element.find(`#rect-${element.id}`)[0].width() * element.find(`#rect-${element.id}`)[0].scaleX(),
+                    'height' : element.find(`#rect-${element.id}`)[0].height() * element.find(`#rect-${element.id}`)[0].scaleY(),
+                    'sumbu_x' : element.find(`#rect-${element.id}`)[0].absolutePosition().x,
+                    'sumbu_y' : element.find(`#rect-${element.id}`)[0].absolutePosition().y,
+                    'rotation' : element.find(`#rect-${element.id}`)[0].getAbsoluteRotation(),
+                    'price' : prices[count++]
+                });
+            })
 
             window.livewire.emit('submitForm', {
-                'title' : title,
-                'description' : description,
-                'designCategoryId' : designCategoryId,
-                'tags' : tags,
-                'url' : url,
-                'width' : theImg.width() * theImg.scaleX(),
-                'height' : theImg.height() * theImg.scaleY(),
-                'sumbu_x' : theImg.absolutePosition().x,
-                'sumbu_y' : theImg.absolutePosition().y,
-                'price' : price
-            });
+                    'title' : title,
+                    'description' : description,
+                    'designCategoryId' : designCategoryId,
+                    'imageDefaultColor' : '1',
+                    'productId' : 6,
+                    'tags' : tags,
+                    'url' : url,
+                    'width' : 0,
+                    'height' : 0,
+                    'sumbu_x' : 0,
+                    'sumbu_y' : 0,
+                    'rotation' : 0,
+                    'price' : $('#price-Sticker').val()
+                });
+        })
+    </script>
+
+    <script>
+        $('#title').on('change', function() {
+            $('#url').val($('#url').val() + '/' +$('#title').val());
         })
     </script>
 

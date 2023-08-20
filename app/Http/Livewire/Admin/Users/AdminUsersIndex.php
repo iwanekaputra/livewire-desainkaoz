@@ -34,7 +34,7 @@ class AdminUsersIndex extends Component
     public function render()
     {
         return view('livewire.admin.users.admin-users-index', [
-            'users' => User::where('role_id', 2)->where('status', 0)->get()
+            'users' => User::where('role_id', 2)->orderBy('status', 'ASC')->get()
         ])->extends('layouts.admin');
     }
 }

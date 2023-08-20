@@ -8,10 +8,26 @@ use Livewire\Component;
 class AdminSubCategoriesIndex extends Component
 {
     public $subCategoryId;
+    public $name;
 
     protected $listeners = [
         'remove'
     ];
+
+    
+    public function store() {
+        SubCategory::create([
+            'name' => $this->name
+        ]);
+
+        $this->dispatchBrowserEvent('swal:modal', [
+            'type' => 'success',
+            'message' => 'Berhasil tambah Sub Kategori',
+            'text' => '',
+            'timer' => 3000,
+            'redirect' => 'moveToIndex'
+        ]);
+    }
 
     public function alertConfirm($id) {
         $this->subCategoryId = $id;

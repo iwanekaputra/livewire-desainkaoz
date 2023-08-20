@@ -99,47 +99,57 @@
                     <h6 class="text-secondary" style="padding-left: 100px">100,000 result</h6>
                 </div>
                 <div class="row" style="gap: 2rem">
-                    @forelse ($products as $product)
+                    @forelse ($productDesigns as $productDesign)
+                    @if ($productDesign->product->category_id == '6')
                     <div class="col-lg-2 col-6 mt-2">
-                        <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark"><div class="card child-card border-0">
-                            <img src="{{ $product->uploadProductDesignVariants[0]->image}}" class="" alt="..." style="border : 0.5px solid black">
-                            <div class="border shadow d-flex justify-content-center align-items-center rounded-circle position-absolute top-0 end-0" style="width : 30px; height : 30px" >
-                                <div class="con-like">
-                                    <input title="like" type="checkbox" class="like">
-                                    <div class="checkmark">
-                                        <svg viewBox="0 0 24 24" class="outline" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"></path>
-                                        </svg>
-                                        <svg viewBox="0 0 24 24" class="filled" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
-                                        </svg>
-                                        <svg class="celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                        <polygon points="10,10 20,20" class="poly"></polygon>
-                                        <polygon points="10,50 20,50" class="poly"></polygon>
-                                        <polygon points="20,80 30,70" class="poly"></polygon>
-                                        <polygon points="90,10 80,20" class="poly"></polygon>
-                                        <polygon points="90,50 80,50" class="poly"></polygon>
-                                        <polygon points="80,80 70,70" class="poly"></polygon>
-                                        </svg>
+                        <a class="text-decoration-none text-dark" >
+                            <div class="card child-card border-0">
+                                <div id="container-{{ $productDesign->id }}" style="width : calc(500px / 3); height : calc(500px / 3)">
+                                    <div style="width : calc(500px / 3); height : calc(500px / 3); background-repeat : no-repeat; background-size : 100% 100%"
+                                        >
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body mt-2 p-0">
-                                <h6 class="card-title" style="font-family: 'Myriad-Pro Bold';">{{ $product->title }}</h6>
-                                <p class="card-title">By {{ $product->user->first_name }}</p>
-                                <h6 class="mt-2" style="font-family: 'Myriad-Pro Bold';">Rp. {{ number_format($product->total_price, 0, ',','.') }}</h6>
+                                <h6 class="card-title" style="font-family:'Myriad-Pro Bold';">
+                                {{ $productDesign->imageDesign->title }}</h6>
+                                <p class="card-title">By {{ $productDesign->user->first_name }}</p>
+                                <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp.
+                                    {{ number_format((int) $productDesign->price_design + (int) $productDesign->product->price, 0, ',', '.') }}</h6>
                             </div>
-                        </div>
-                    </a>
+                        </a>
                     </div>
+                    @else
+                    <div class="col-lg-2 col-6 mt-2">
+                        <a class="text-decoration-none text-dark" href="{{ route('products.show', $productDesign->id) }}">
+                            <div class="card child-card border-0">
+                                <div id="tshirt-capture" style="width : calc(500px / 3); height : calc(500px / 3)">
+                                    <div style="width : calc(500px / 3); height : calc(500px / 3); background-image : url('{{ asset('uploads/imageProductVariant/' . $productDesign->productvariant->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                        id="tshirt-main-image">
+                                        <div class="tshirt-layer-{{ $productDesign->id }} position-relative"
+                                            style="width : calc(200px / 3); top : calc(40px / 3); left : calc(150px / 3); height : calc(380px / 3); ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-2 p-0">
+                                <h6 class="card-title" style="font-family:'Myriad-Pro Bold';">
+                                   {{ $productDesign->imageDesign->title }}</h6>
+                                <p class="card-title">By {{ $productDesign->user->first_name }}</p>
+                                <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp.
+                                    {{ number_format((int) $productDesign->price_design + (int) $productDesign->product->price, 0, ',', '.') }}</h6>
+                            </div>
+                        </a>
+                    </div>
+                    @endif
                     @empty
                     <div class="alert alert-dark text-center" role="alert">
                         Tidak ada product berdasarkan Kategori yang di cari
                         </div>
                     @endforelse
-                    <div class="d-flex justify-content-center">
-                        {{ $products->links() }}
-                    </div>
+                    {{-- <div class="d-flex justify-content-center">
+                        {{ $productDesigns->links() }}
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -152,5 +162,239 @@
     </div>
 </div>
 
+<script src="https://unpkg.com/konva@9.2.0/konva.min.js"></script>
 
+<script>
+    function getImg(cl, width, height, image, sumbuX, sumbuY, widthLogo, heightLogo, rotation) {
+        var stage = new Konva.Stage({
+            container: cl,
+            width: width,
+            height: height,
+        });
+
+        var layer = new Konva.Layer();
+        stage.add(layer);
+
+        var img = new Image();
+        img.src = image;
+
+
+        // now load the Konva image
+        theImg = new Konva.Image({
+            name: 'rect',
+            image: img,
+            x: sumbuX,
+            y: sumbuY,
+            width: widthLogo,
+            height: heightLogo,
+            rotation: rotation
+        });
+
+        layer.add(theImg);
+        layer.draw();
+    }
+
+
+    let productDesigns = @js($productDesigns).filter(el => el.product.category_id !== 6);
+    productDesigns.map(function(productDesign)  {
+        getImg(`.tshirt-layer-${productDesign.id}`, 200 / 3, 380 / 3, `{{ asset('uploads/design/${productDesign.image_design.image}' ) }}`, productDesign.sumbu_x / 3, productDesign.sumbu_y / 3, productDesign.width / 3, productDesign.height / 3, productDesign.rotation)
+    })
+</script>
+
+<script>
+    let productStickers = @js($productDesigns).filter(el => el.product.category_id === 6);
+
+    console.log(productStickers)
+    productStickers.map(function(productSticker) {
+
+        var stage = new Konva.Stage({
+      container: `container-${productSticker.id}`,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+    var layer = new Konva.Layer();
+    stage.add(layer);
+
+    Konva.Image.fromURL(`{{ asset('uploads/design/${productSticker.image_design.image}') }}`, function (image) {
+      layer.add(image);
+      image.setAttrs({
+        x: 0,
+        y: 0,
+        borderSize: 5,
+        borderColor: '#e3e6e4',
+        width : 166,
+        height : 166
+      });
+
+      image.filters([Border]);
+      image.cache();
+    });
+
+    // now we will define our border filter
+
+    var canvas = document.createElement('canvas');
+    var tempCanvas = document.createElement('canvas');
+
+    // make all pixels opaque 100% (except pixels that 100% transparent)
+    function removeTransparency(canvas) {
+      var ctx = canvas.getContext('2d');
+
+      var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      var nPixels = imageData.data.length;
+      for (var i = 3; i < nPixels; i += 4) {
+        if (imageData.data[i] > 0) {
+          imageData.data[i] = 255;
+        }
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.putImageData(imageData, 0, 0);
+      return canvas;
+    }
+
+    function Border(imageData) {
+      var nPixels = imageData.data.length;
+
+      var size = this.getAttr('borderSize') || 0;
+
+      // - first set correct dimensions for canvases
+      canvas.width = imageData.width;
+      canvas.height = imageData.height;
+
+      tempCanvas.width = imageData.width;
+      tempCanvas.height = imageData.height;
+
+      // - the draw original shape into temp canvas
+      tempCanvas.getContext('2d').putImageData(imageData, 0, 0);
+
+      // - then we need to remove alpha chanel, because it will affect shadow (transparent shapes has smaller shadow)
+      removeTransparency(tempCanvas);
+
+      var ctx = canvas.getContext('2d');
+      var color = this.getAttr('borderColor') || 'black';
+
+      // 3. we will use shadow as border
+      // so we just need apply shadow on the original image
+      ctx.save();
+      ctx.shadowColor = color;
+      ctx.shadowBlur = size;
+      ctx.drawImage(tempCanvas, 0, 0);
+      ctx.restore();
+
+      // - Then we will dive in into image data of [original image + shadow]
+      // and remove transparency from shadow
+      var tempImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+      var SMOOTH_MIN_THRESHOLD = 3;
+      var SMOOTH_MAX_THRESHOLD = 10;
+
+      let val, hasValue;
+
+      var offset = 3;
+
+      for (var i = 3; i < nPixels; i += 4) {
+        // skip opaque pixels
+        if (imageData.data[i] === 255) {
+          continue;
+        }
+
+        val = tempImageData.data[i];
+        hasValue = val !== 0;
+        if (!hasValue) {
+          continue;
+        }
+        if (val > SMOOTH_MAX_THRESHOLD) {
+          val = 255;
+        } else if (val < SMOOTH_MIN_THRESHOLD) {
+          val = 0;
+        } else {
+          val =
+            ((val - SMOOTH_MIN_THRESHOLD) /
+              (SMOOTH_MAX_THRESHOLD - SMOOTH_MIN_THRESHOLD)) *
+            255;
+        }
+        tempImageData.data[i] = val;
+      }
+
+      // draw resulted image (original + shadow without opacity) into canvas
+      ctx.putImageData(tempImageData, 0, 0);
+
+      // then fill whole image with color (after that shadow is colored)
+      ctx.save();
+      ctx.globalCompositeOperation = 'source-in';
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+
+      // then we need to copy colored shadow into original imageData
+      var newImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+      var indexesToProcess = [];
+      for (var i = 3; i < nPixels; i += 4) {
+        var hasTransparentOnTop =
+          imageData.data[i - imageData.width * 4 * offset] === 0;
+        var hasTransparentOnTopRight =
+          imageData.data[i - (imageData.width * 4 + 4) * offset] === 0;
+        var hasTransparentOnTopLeft =
+          imageData.data[i - (imageData.width * 4 - 4) * offset] === 0;
+        var hasTransparentOnRight = imageData.data[i + 4 * offset] === 0;
+        var hasTransparentOnLeft = imageData.data[i - 4 * offset] === 0;
+        var hasTransparentOnBottom =
+          imageData.data[i + imageData.width * 4 * offset] === 0;
+        var hasTransparentOnBottomRight =
+          imageData.data[i + (imageData.width * 4 + 4) * offset] === 0;
+        var hasTransparentOnBottomLeft =
+          imageData.data[i + (imageData.width * 4 - 4) * offset] === 0;
+        var hasTransparentAround =
+          hasTransparentOnTop ||
+          hasTransparentOnRight ||
+          hasTransparentOnLeft ||
+          hasTransparentOnBottom ||
+          hasTransparentOnTopRight ||
+          hasTransparentOnTopLeft ||
+          hasTransparentOnBottomRight ||
+          hasTransparentOnBottomLeft;
+
+        // if pixel presented in original image - skip it
+        // because we need to change only shadow area
+        if (
+          imageData.data[i] === 255 ||
+          (imageData.data[i] && !hasTransparentAround)
+        ) {
+          continue;
+        }
+        if (!newImageData.data[i]) {
+          // skip transparent pixels
+          continue;
+        }
+        indexesToProcess.push(i);
+      }
+
+      for (var index = 0; index < indexesToProcess.length; index += 1) {
+        var i = indexesToProcess[index];
+
+        var alpha = imageData.data[i] / 255;
+
+        if (alpha > 0 && alpha < 1) {
+          var aa = 1 + 1;
+        }
+        imageData.data[i] = newImageData.data[i];
+        imageData.data[i - 1] =
+          newImageData.data[i - 1] * (1 - alpha) +
+          imageData.data[i - 1] * alpha;
+        imageData.data[i - 2] =
+          newImageData.data[i - 2] * (1 - alpha) +
+          imageData.data[i - 2] * alpha;
+        imageData.data[i - 3] =
+          newImageData.data[i - 3] * (1 - alpha) +
+          imageData.data[i - 3] * alpha;
+
+        if (newImageData.data[i] < 255 && alpha > 0) {
+          var bb = 1 + 1;
+        }
+      }
+    }
+    })
+
+</script>
 </div>

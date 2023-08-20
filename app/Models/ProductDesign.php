@@ -11,7 +11,22 @@ class ProductDesign extends Model
 
     protected $guarded = ['id'];
 
+    public $with = ['user', 'imageDesign', 'product', 'productvariant'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function imageDesign() {
+        return $this->belongsTo(ImageDesign::class);
+    }
+
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function productVariant() {
+        return $this->belongsTo(ProductVariant::class);
+    }
 }
+

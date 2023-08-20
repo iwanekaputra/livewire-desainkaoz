@@ -59,7 +59,7 @@
                                         <div class="card-body mt-2 p-0">
                                             <h5 class="card-title">{{ $productDesign->title }}</h5>
                                             <p class="card-title">By {{ $productDesign->user->first_name }}</p>
-                                            <h6 class="mt-2">Rp. {{ number_format($productDesign->total_price, 0, ',','.') }}</h6>
+                                            <h6 class="mt-2">Rp. {{ number_format($productDesign->price, 0, ',','.') }}</h6>
                                         </div>
                                     </div>
                                 </a>

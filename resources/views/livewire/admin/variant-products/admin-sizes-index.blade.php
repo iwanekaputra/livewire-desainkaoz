@@ -1,0 +1,68 @@
+<div>
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Colors</div>
+        <div class="ps-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li>
+                        Manage the Size on your page
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!--end breadcrumb-->
+    <hr/>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-lg-4 d-flex">
+                    <div class="card border shadow-none w-100">
+                        <div class="card-body">
+                        <form action="" class="row g-3" wire:submit.prevent="store">
+                            <div class="col-12">
+                                <label class="form-label">Size*</label>
+                                <input type="text" class="form-control" id="number" wire:model="number" required>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-dark px-5 rounded-0">Add</button>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8 d-flex">
+                    <div class="card border shadow-none w-100">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example" class="table table-striped table-bordered align-middle" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Size</th>
+                                            <th width="5%">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($sizes as $row)
+                                        <tr>
+                                            <td><h6>{{ $row->number }}</h6></td>
+                                            <td>
+                                                <button class="btn btn-dark px-3 rounded-0 " wire:click="alertConfirm({{ $row->id }})">
+                                                    <i class="bi bi-trash" aria-hidden="true">  </i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

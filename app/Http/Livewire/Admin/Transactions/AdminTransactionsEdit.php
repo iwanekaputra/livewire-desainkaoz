@@ -29,9 +29,9 @@ class AdminTransactionsEdit extends Component
 
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
-            'message' => 'Berhasil update resi',
+            'message' => 'Update Status Transaksi Berhasil',
             'text' => '',
-            'timer' => 3000,
+            'timer' => 2500,
         ]);
 
         return redirect()->route('admin.transactions.edit', $this->transaction->id);

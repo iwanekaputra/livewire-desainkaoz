@@ -3,9 +3,12 @@
 namespace App\Http\Livewire\Designer;
 
 use App\Models\DesignCategory;
+use App\Models\ImageDesign;
+use App\Models\Product;
 use App\Models\ProductDesign;
 use App\Models\UploadProductDesign;
 use App\Models\UploadProductDesignVariant;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -27,6 +30,11 @@ class UploadDesign extends Component
     public $priceBag;
     public $imageDesign;
     public $style;
+    public $angka;
+
+    public $isAddDesign = false;
+    public $imgDesign;
+    public $link;
 
     protected $listeners = [
         'submitForm',
@@ -34,36 +42,54 @@ class UploadDesign extends Component
         'stepBack'
     ];
 
+    public function mount() {
+        $this->link = User::find(auth()->user()->id);
+
+    }
+
     public function render()
     {
         return view('livewire.designer.upload-design', [
-            'designCategories' => DesignCategory::get()
+            'designCategories' => DesignCategory::get(),
+            'products' => Product::get()
         ])->extends('layouts.app');
     }
 
 
-
-
     public function submitForm($data) {
         if($this->imageDesign) {
-            $image_name=time().'-'.$this->imageDesign->getClientOriginalName();
+            if(!$this->isAddDesign) {
+                $image_name=time().'-'.$this->imageDesign->getClientOriginalName();
 
-            $res = $this->imageDesign->storeAs('design',$image_name, 'custom_public_path');
-            $img_path = asset('uploads/design/'.$image_name);
+                $res = $this->imageDesign->storeAs('design',$image_name, 'custom_public_path');
+                $img_path = asset('uploads/design/'.$image_name);
+
+                $this->imgDesign = ImageDesign::create([
+                    'user_id' => auth()->user()->id,
+                    'design_category_id' => $data['designCategoryId'],
+                    'title' => $data['title'],
+                    'tags' => $data['tags'],
+                    'image' => $image_name,
+                    'description' => $data['description'],
+                    'is_approved' => '0'
+                ]);
+
+                $this->isAddDesign = true;
+            }
+
 
             $productDesign = ProductDesign::create([
-                'design_category_id' => $data['designCategoryId'],
-                'category_id' => 1,
+                'image_design_id' => $this->imgDesign->id,
+                'product_id' => $data['productId'],
                 'user_id' => auth()->user()->id,
-                'title' => $data['title'],
-                'tags' => $data['tags'],
-                'image' => $image_name,
-                'description' => $data['description'],
-                'price' => (int) $data['price'],
+                'price_design' => $data['price'],
+                'product_variant_id' => $data['imageDefaultColor'],
+                'sumbu_y' => $data['sumbu_y'],
+                'sumbu_x' => $data['sumbu_x'],
+                'rotation' => $data['rotation'],
                 'width' => $data['width'],
                 'height' => $data['height'],
-                'sumbu_x' => $data['sumbu_x'],
-                'sumbu_y' => $data['sumbu_y']
+                'is_approved' => '0'
             ]);
 
             if($productDesign) {
