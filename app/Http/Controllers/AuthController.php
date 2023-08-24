@@ -55,16 +55,4 @@ class AuthController extends Controller
 
         return $message;
     }
-
-    public function upload() {
-        return response()->json([
-         'data' => ProductDesign::get()
-        ]);
-    }
-
-    public function uploadShow($id) {
-        return response()->json([
-            'data' => ProductDesign::find($id)
-        ]);
-    }
 }

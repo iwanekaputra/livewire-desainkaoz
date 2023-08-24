@@ -17,6 +17,9 @@ class CreateProductVariantsTable extends Migration
             $table->id();
             $table->foreignId('product_id')->nullable();
             $table->string('color')->nullable();
+            $table->string('style_id')->nullable();
+            $table->string('price')->nullable();
+            $table->string('view')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

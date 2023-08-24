@@ -4,11 +4,10 @@ namespace App\Http\Livewire\Landingpage;
 
 use App\Models\Category;
 use App\Models\DesignCategory;
-use App\Models\Product;
+use App\Models\ImageDesign;
 use App\Models\ProductDesign;
 use App\Models\Slider;
 use App\Models\Store;
-use App\Models\UploadProductDesign;
 use Livewire\Component;
 
 class Index extends Component
@@ -18,9 +17,9 @@ class Index extends Component
         return view('livewire.landingpage.index',[
             'categories' => Category::get(),
             'designCategories' => DesignCategory::get(),
-            'uploadProductDesigns' => UploadProductDesign::where('is_approved', 1)->latest()->paginate(10),
             'sliders' => Slider::get(),
-            'productDesigns' => ProductDesign::latest()->get(),
+            'productDesigns' => ProductDesign::latest()->where('is_approved', 1)->paginate(10),
+            'imageDesigns' => ImageDesign::latest()->where('is_approved', 1)->paginate(10),
             'stores' => Store::latest()->get()
         ])->extends('layouts.app');
     }

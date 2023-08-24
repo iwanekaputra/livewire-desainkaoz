@@ -34,16 +34,11 @@ class ProductsShow extends Component
     public $category_id;
     public $user;
 
+
     public function mount($id) {
         $this->productId = $id;
-        $product = ProductDesign::where('id', $id)->first();
-        // $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->when($this->style ?? false, function($query, $style) {
-        //     return $query->where('style', $style);
-        // })->get();
-
-        // if($this->productVariants->count() == 0) {
-        //     $this->productVariants = UploadProductDesignVariant::where("upload_product_design_id", $id)->get();
-        // }
+        $this->productDesign = ProductDesign::where('id', $id)->first();
+        $product = ProductDesign::find($id);
 
         $this->user = $product->user;
         $this->category_id = $product->category_id;
@@ -51,14 +46,9 @@ class ProductsShow extends Component
         $this->price = $product->price;
         $this->username = $product->user->first_name;
         $this->product_id = $product->id;
-        // $this->image = $product->uploadProductDesignVariants[0]->image;
-        // $this->images = $product->uploadProductDesignVariants;
         $this->title = $product->title;
-        // $this->design = $product->designCategory->name;
-        $this->total_price = $product->total_price;
-        // $this->productDesign = $product->productDesign->image;
+        $this->total_price = 100000 + $product->price_design;
 
-        $this->countProduct = $this->getCountProduct();
     }
 
     public function updatedStyle() {
@@ -115,10 +105,6 @@ class ProductsShow extends Component
 
     public function addColor($color) {
         $this->color = $color;
-    }
-
-    public function getCountProduct() {
-        return UploadProductDesign::where('user_id', $this->user_id)->count();
     }
 
     public function render()

@@ -1,46 +1,62 @@
 <div>
-    <h3 class="mt-2">All Transaction</h3>
-    <hr>
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                  </tr>
+<!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Transactions</div>
+        <div class="ps-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item"><a href="javascript:;"></a>
+                    Manage orders on your page
+                </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="ms-auto ">
+
+            
+        </div>
+    </div>
+        <!--end breadcrumb-->
+    
+    <div class="card">
+        <div class="card-body">
+            <table id="example2" class="table align-middle table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th data-priority="1">#ORDER ID</th>
+                        <th>Customer Name</th>
+                        <th width="10%" >Total</th>
+                        <th width="10%" >Date</th>
+                        <th width="10%" class="text-center">Status</th>
+                        <th width="5%" data-priority="2">Aksi</th>
+                    </tr>
                 </thead>
                 <tbody>
-                @forelse ($transactions as $transaction)
+                    @forelse($transactions as $row)
                     <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $transaction->code }}</td>
-                        <td>{{ $transaction->user->first_name }}</td>
-                        <td>
-                            <span class="badge text-bg-warning">
-                                {{ $transaction->status }}
-                            </span>
+                        <td><?=$row->code; ?></td>
+                        <td  class="productlist">
+                            <?=$row->user_id; ?>
                         </td>
+                        <td ><?=$row->total_price; ?></td> 
+                        <td class="text-center"><?=$row->created_at; ?></td>
+                        <td class="text-center"><span class="badge rounded-pill bg-success"><?=$row->status; ?></span></td>
                         <td>
-                            <a href="{{ route('admin.transactions.edit', $transaction->id) }}" class="text-decoration-none btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    </td>
+                            <div class="dropdown">
+                                <button class="btn btn-dark btn-sm dropdown-toggle px-3 rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                                <ul class="dropdown-menu" style="">
+                                    <li>
+                                        <a href="{{ route('admin.transactions.edit', $row->id) }}" class="dropdown-item">Edit</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
                     </tr>
-                @empty
-                <tr>
-                    <td colspan="6">
-                        <div class="alert alert-dark text-center" role="alert">
-                            Tidak ada data transaksi
-                        </div>
-                    </td>
-                </tr>
-
-                @endforelse
+                    @endforeach
                 </tbody>
-              </table>
+            </table>
 
         </div>
     </div>
 </div>
+

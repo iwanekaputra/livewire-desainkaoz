@@ -6,9 +6,9 @@
                 <div class="col-lg-5 mt-5">
                     <div class=" mb-3">
                         <div id="tshirt-capture" style="width : calc(500px); height : calc(500px)">
-                            <div style="width : calc(500px); height : calc(500px); background-image : url('{{ asset('assets/img/tshirt-black.png') }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                id="tshirt-main-image">
-                                <div class="tshirt-layer-5 position-relative"
+                            <div style="width : calc(500px); height : calc(500px); background-image : url('{{ asset('uploads/imageProductVariant/' . $productDesign->productVariant->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="{{ $productDesign->product->name }}-main-image">
+                                <div class="tshirt-layer-{{ $productId }} position-relative"
                                     style="width : calc(200px); top : calc(40px); left : calc(150px); height : calc(380px); ">
                                 </div>
                             </div>
@@ -136,28 +136,12 @@
                                 <div class="col-lg-8">
                                     <ul class="list-inline pb-3">
                                         <div>
-                                            <div class="mt-3 d-flex gap-2">
-                                                <div style="width : 40px; height : 40px; background-color : #141414; border : 2px solid silver"
-                                                    class="tshirt-color" id="tshirt-black" data-image="tshirt-black.png">
+                                            <div class="mt-3 d-flex gap-2 colorr" id="{{ $productDesign->product->name }}-color">
+                                                @foreach ($productDesign->product->productvariants->where('view', 'front')->groupBy('style.name')->first() as $productVariant)
+                                                <div style="width : 40px; height : 40px; background-color : {{ $productVariant->color }}; border : 2px solid silver"
+                                                    class="color" id="{{ $productDesign->product->name }}" data-color="{{ $productVariant->color }}" data-id="{{ $productVariant->id }}" data-idProduct="{{ $productDesign->id }}" data-image="{{ $productVariant->image }}" data-name="{{ $productDesign->product->name }}">
                                                 </div>
-                                                <div style="width : 40px; height : 40px; background-color : #fff; border : 2px solid silver"
-                                                    class="tshirt-color" id="tshirt-white" data-image="tshirt-white.png">
-                                                </div>
-                                                <div style="width : 40px; height : 40px; background-color : #7b7b7b; border : 2px solid #silver"
-                                                    class="tshirt-color" id="tshirt-silver" data-image="tshirt-silver.png">
-                                                </div>
-                                                <div style="width : 40px; height : 40px; background-color : #a60707; border : 2px solid silver"
-                                                    class="tshirt-color" id="tshirt-red" data-image="tshirt-red.png">
-                                                </div>
-                                                <div style="width : 40px; height : 40px; background-color : #4c5d34; border : 2px solid silver"
-                                                    class="tshirt-color" id="tshirt-green" data-image="tshirt-green.png">
-                                                </div>
-                                                <div style="width : 40px; height : 40px; background-color : #252c5f; border : 2px solid silver"
-                                                    class="tshirt-color" id="tshirt-blue" data-image="tshirt-blue.png">
-                                                </div>
-                                                <div style="width : 40px; height : 40px; background-color : #e47200; border : 2px solid silver"
-                                                    class="tshirt-color" id="tshirt-yellow" data-image="tshirt-yellow.png">
-                                                </div>
+                                                @endforeach
                                             </div>
 
                                         </div>
@@ -271,7 +255,7 @@
                                 <div class="col-lg-2">
                                     <button type="submit" style="background-color: #e9e9e9"
                                         class="btn btn-lg rounded-0 py-3 px-4" name="submit" value="buy">
-                                        <span><strong class="fs-4">{{ $countProduct }}</strong>
+                                        <span><strong class="fs-4">7</strong>
                                             Products</span></button>
                                 </div>
                                 <div class="col-lg-4 d-flex align-items-end">
@@ -310,15 +294,15 @@
         </div>
     </nav>
 
-    <script src="{{ asset('assets/js/fabric.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
         integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"
         integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- <script src="https://unpkg.com/konva@7.0.0/konva.min.js"></script> --}}
     <script src="https://unpkg.com/konva@9.2.0/konva.min.js"></script>
+
+
     <script>
         $('.btn-color').click(function() {
             let img = $(this).attr('data-img');
@@ -330,54 +314,57 @@
             document.getElementById('tshirt-main-image').style.backgroundImage =
                 `url('{{ asset('assets/img/${img}') }}')`;
         })
-
-
     </script>
 
+
     <script>
-        function getImg(cl, width, height, image, sumbuX, sumbuY, widthLogo, heightLogo) {
-    var stage = new Konva.Stage({
+        function getImg(cl, width, height, image, sumbuX, sumbuY, widthLogo, heightLogo, rotation) {
+            var stage = new Konva.Stage({
                 container: cl,
                 width: width,
                 height: height,
             });
 
-        var layer = new Konva.Layer();
-        stage.add(layer);
+            var layer = new Konva.Layer();
+            stage.add(layer);
 
-        var img = new Image();
-        img.src = image;
-
-
-    // now load the Konva image
-    theImg = new Konva.Image({
-                        name: 'rect',
-                        image: img,
-                        x: sumbuX,
-                        y: sumbuY,
-                        width: widthLogo,
-                        height: heightLogo,
-                        rotation: 0
-                    });
+            var img = new Image();
+            img.src = image;
 
 
+            // now load the Konva image
+            theImg = new Konva.Image({
+                name: 'rect',
+                image: img,
+                x: sumbuX,
+                y: sumbuY,
+                width: widthLogo,
+                height: heightLogo,
+                rotation: rotation
+            });
 
             layer.add(theImg);
             layer.draw();
-}
-
-
-
-    $.ajax({
-        url: `/uploadproduct/{{ $productId }}`,
-        type: "GET",
-        cache: false,
-        success:function(response){
-            let data = response.data;
-            getImg(`.tshirt-layer-${data.id}`, 200, 380, `{{ asset('uploads/design/${data.image}' ) }}`, data.sumbu_x, data.sumbu_y, data.width, data.height)
-
-
         }
-    });
+
+        let productDesign = @js($productDesign);
+        getImg(`.tshirt-layer-${productDesign.id}`, 200, 380, `{{ asset('uploads/design/${productDesign.image_design.image}' ) }}`, productDesign.sumbu_x, productDesign.sumbu_y, productDesign.width, productDesign.height, productDesign.rotation)
+
+
+    </script>
+
+    <script>
+        $(document).on('click', '.color' , function () {
+            // imageDefaultColor.push({$(this).attr('data-id')});
+            let dataIdProductVariant = $(this).attr('data-id');
+            let image = $(this).attr('data-image');
+            let dataIdProduct = $(this).attr('data-idProduct');
+
+
+            let name = $(this).attr('data-name');
+            let color = $(this).attr('data-color');
+            document.querySelector(`#${name}-main-image`).style.backgroundImage =
+                `url('{{ asset('uploads/imageProductVariant/${image}') }}')`;
+        })
     </script>
 </div>

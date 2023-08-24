@@ -16,20 +16,11 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
-            $table->foreignId('style_id');
             $table->string('name');
             $table->string('code');
             $table->text('description');
-            $table->string('weight');
             $table->string('price');
-            $table->string('strikethrough_price');
-            $table->string('reseller_price');
-            $table->string('agent_price');
-            $table->string('agentsp_price');
-            $table->string('distribution_price');
-            $table->string('stock');
             $table->string('status');
-            $table->string('preorder');
             $table->timestamps();
         });
     }

@@ -633,7 +633,6 @@
     </script>
     @livewireScripts
 
-    <script src="{{ asset('assets/js/fabric.min.js') }}"></script>
     <script>
         function leftScroll() {
             const left = document.querySelector(".scroll-images");
@@ -672,6 +671,14 @@
                     }
                 });
         });
+
+
+window.addEventListener('name-updated', event => {
+
+    alert('Name updated to: ' + event.detail.newName);
+
+})
+
 
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */

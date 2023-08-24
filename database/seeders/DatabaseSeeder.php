@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Bank;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Mockups;
 use App\Models\DesignCategory;
 use App\Models\ProductDesign;
 use App\Models\Role;

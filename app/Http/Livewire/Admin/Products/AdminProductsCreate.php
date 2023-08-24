@@ -21,14 +21,7 @@ class AdminProductsCreate extends Component
 
     public $name;
     public $code;
-    public $weight;
     public $price;
-    public $strikethrough_price;
-    public $preorder;
-    public $reseller_price;
-    public $agent_price;
-    public $agentsp_price;
-    public $distribution_price;
     public $stock;
     public $category_id;
     public $style_id;
@@ -48,16 +41,9 @@ class AdminProductsCreate extends Component
             'name' => $this->name,
             'code' => $this->code,
             'description' => $this->description,
-            'weight' => $this->weight,
             'price' => $this->price,
-            'strikethrough_price' => $this->strikethrough_price,
-            'reseller_price' => $this->reseller_price,
-            'agent_price' => $this->agent_price,
-            'agentsp_price' => $this->agentsp_price,
-            'distribution_price' => $this->distribution_price,
             'stock' => $this->stock,
             'status' => 1,
-            'preorder' => $this->preorder
         ]);
 
         foreach($this->sizes_id as $size) {

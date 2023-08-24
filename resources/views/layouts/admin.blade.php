@@ -1,167 +1,217 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.104.2">
-    <title>Admin</title>
+<html lang="en" class="semi-dark">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  
+  <!--plugins-->
+  <link href="{{ asset('assets/admin/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/css/bootstrap-extended.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/css/icons.css') }}" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  
+  <!-- loader-->
+  
+  <!--Theme Styles-->
+  <link href="{{ asset('assets/admin/css/dark-theme.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/css/light-theme.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/css/semi-dark.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/css/header-colors.css') }}" rel="stylesheet" />
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script src="{{ asset('assets/admin/plugins/ckeditor/ckeditor.js')}}"></script>
 
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  
+  @livewireStyles
 
+</head>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-        <!-- Custom styles for this template -->
-        <link href="{{ asset('assets/admin/dashboard.css') }}" rel="stylesheet">
+<body>
 
 
-    <style>
+  <!--start wrapper-->
+  <div class="wrapper">
+    <!--start top header-->
+    <header class="top-header">        
+      <nav class="navbar navbar-expand gap-3">
+        <div class="mobile-toggle-icon fs-3">
+            <i class="bi bi-list"></i>
+          </div>
+          <form class="searchbar">
+              <div class="position-absolute top-50 translate-middle-y search-icon ms-3">
+              </div>
+              <div class="position-absolute top-50 translate-middle-y search-close-icon"><i class="bi bi-x-lg"></i></div>
+          </form>
+          <div class="top-navbar-right ms-auto">
+            <ul class="navbar-nav align-items-center">
+              <li class="nav-item search-toggle-icon">
+                <a class="nav-link" href="#">
+                  <div class="">
+                    <i class="bi bi-search"></i>
+                  </div>
+                </a>
+            </li>
+            <li class="">
+              <a class="nav-link" href=" {{ route('index') }}" target="_blank">
+                <div class="projects">
+                 
+                  <i class="bi bi-globe"></i>
+                </div>
+              </a>
+            </li>
 
-@font-face{
-        font-family: "Myriad-Pro";
-        src: url({{ asset('MyriadPro-Regular.otf') }}) format("truetype");
-    }
+            <li class="nav-item dropdown dropdown-user-setting">
+              <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
+                <div class="user-setting d-flex align-items-center">
+                  <img src="#" class="user-img" alt="">
+                </div>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                   <a class="dropdown-item" href="#">
+                     <div class="d-flex align-items-center">
+                        <img src="" alt="" class="rounded-circle" width="54" height="54">
+                        <div class="ms-3">
+                          <h6 class="mb-0 dropdown-user-name">Admin</h6>
+                          <small class="mb-0 dropdown-user-designation text-secondary"></small>
+                        </div>
+                     </div>
+                   </a>
+                 </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                       <div class="d-flex align-items-center">
+                         <div class=""><i class="bi bi-person-fill"></i></div>
+                         <div class="ms-3"><span>Profile</span></div>
+                       </div>
+                     </a>
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                <form action="{{ url('logout') }}" method="POST">
+                  @csrf
+                    <li>
+                      <button class="dropdown-item" type="submit">
+                        <div class="d-flex align-items-center">
+                          <div class=""><i class="bi bi-lock-fill"></i></div>
+                          <div class="ms-3"><span>Logout</span></div>
+                        </div>
+                      </button>
+                    </li>
+                  </form>
+              </ul>
+            </li>
+            </ul>
+          </div>
 
-    *  {
-        font-family: "Myriad-Pro";
-        font-size: 16px;
-    }
+      </nav>
+      
+    </header>
+     <!--end top header-->
 
-    @font-face{
-        font-family: "Myriad-Pro Bold";
-        src: url({{ asset('MyriadPro-Bold.otf') }}) format("truetype");
-    }
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
-
-    @livewireStyles
-
-  </head>
-  <body>
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"></a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" aria-label="Search">
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-
-            </div>
-        </div>
-        </header>
-
-        <div class="container-fluid">
-        <div class="row">
+        <!--start sidebar -->
         @livewire('partials.admin.navbar-admin')
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                @yield('content')
 
-            </main>
-        </div>
-        </div>
+       <!--end sidebar -->
+
+       <!--start content-->
+          <main class="page-content">
+               @yield('content')
+
+          </main>
+       <!--end page main-->
+
+       <!--start overlay-->
+        <div class="overlay nav-toggle-icon"></div>
+       <!--end overlay-->
+
+       <!--Start Back To Top Button-->
+		     <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+       <!--End Back To Top Button-->
+
+  </div>
+  <!--end wrapper-->
+
+  @livewireScripts
+
+  
+  {{-- <!-- Bootstrap bundle JS --> --}}
+  <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}" rel="stylesheet" ></script>
+
+  {{-- // plugins --}}
+  <script src="{{ asset('assets/admin/js/jquery.min.js') }}" rel="stylesheet" ></script>
+
+  <script src="{{ asset('assets/admin/plugins/simplebar/js/simplebar.min.js') }}"></script>
+  <script src="{{ asset('assets/admin/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+  <script src="{{ asset('assets/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+  <script src="{{ asset('assets/admin/js/pace.min.js') }}"></script>
+ 
+  <script src="{{ asset('assets/admin/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('assets/admin/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+  <script src="{{ asset('assets/admin/js/table-datatable.js') }}"></script>
+  <script src="{{ asset('assets/admin/js/jscolor.js')}}"></script>
 
 
-    @livewireScripts
-    <script type="module">
-        import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+  <!--app-->
+  <script src="{{ asset('assets/admin/js/app.js') }}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/admin/dashboard.js') }}"></script>
-
+  {{-- <!--================= CK EDITOR =================--> --}}
+    {{-- <script>
+        var allEditors = document.querySelectorAll('.editor');
+        for (var i = 0; i < allEditors.length; ++i) {
+          ClassicEditor.create(allEditors[i]);
+        }
+    </script> --}}
     <script>
-        window.addEventListener('swal:modal', event => {
-            swal({
-                title: event.detail.message,
-                text: event.detail.text,
-                icon: event.detail.type,
-                timer : 3000
-            }).then(function () {
-                window.livewire.emit(event.detail.redirect);
-            });
-        });
+      window.addEventListener('swal:modal', event => {
+          swal({
+              title: event.detail.message,
+              text: event.detail.text,
+              icon: event.detail.type,
+              timer : 3000
+          }).then(function () {
+              window.livewire.emit(event.detail.redirect);
+          });
+      });
 
-        window.addEventListener('swal:confirm', event => {
-            swal({
-            title: event.detail.message,
-            text: event.detail.text,
-            icon: event.detail.type,
-            buttons: true,
-            dangerMode: true,
-            })
-            .then((willDelete) => {
-            if (willDelete) {
-                window.livewire.emit(event.detail.action);
-            }
-            });
-        });
-    </script>
+      window.addEventListener('swal:confirm', event => {
+          swal({
+          title: event.detail.message,
+          text: event.detail.text,
+          icon: event.detail.type,
+          buttons: true,
+          dangerMode: true,
+          })
+          .then((willDelete) => {
+          if (willDelete) {
+              window.livewire.emit(event.detail.action);
+          }
+          });
+      });
+  </script>
 
-  </body>
+
+  
+ 
+
+
+
+</body>
+
 </html>

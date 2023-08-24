@@ -19,7 +19,8 @@ class AdminProductsIndex extends Component
         $this->dispatchBrowserEvent('swal:confirm', [
                 'type' => 'warning',
                 'message' => 'Are you sure?',
-                'text' => 'If deleted, you will not be able to recover this imaginary file!'
+                'text' => 'If deleted, you will not be able to recover this imaginary file!',
+                'action' => 'remove'
         ]);
     }
 
@@ -32,7 +33,7 @@ class AdminProductsIndex extends Component
     public function render()
     {
         return view('livewire.admin.products.admin-products-index', [
-            'products' => Product::latest()->paginate(5)
+            'products' => Product::latest()->get()
         ])->extends("layouts.admin");
     }
 }
