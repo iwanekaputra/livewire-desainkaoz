@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    public $with = ['category', 'productvariants'];
+    public $with = ['category', 'productvariants', 'mockup', 'productSizes'];
 
 
     // public function scopeFilter($query, array $filters) {
@@ -27,6 +27,14 @@ class Product extends Model
 
     public function productvariants() {
         return $this->hasMany(ProductVariant::class);
+    }
+
+    public function productSizes() {
+        return $this->hasMany(ProductSize::class);
+    }
+
+    public function mockup() {
+        return $this->belongsTo(Mockup::class);
     }
 
 

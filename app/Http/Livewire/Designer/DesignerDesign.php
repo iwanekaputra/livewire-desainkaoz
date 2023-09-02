@@ -8,11 +8,12 @@ use Livewire\Component;
 
 class DesignerDesign extends Component
 {
+
     public function render()
     {
         return view('livewire.designer.designer-design', [
-            'productDesigns' => ProductDesign::where('user_id', auth()->user()->id)->where('is_approved', 0)->paginate(1),
-            'productDesignApproved' => ProductDesign::where('is_approved', 1)->paginate(15)
+            'productDesigns' => ProductDesign::where('user_id', auth()->user()->id)->where('is_approved', 0)->latest()->paginate(1),
+            'productDesignApproved' => ProductDesign::where('user_id', auth()->user()->id)->where('is_approved', 1)->paginate(15)
         ])->extends('layouts.designer');
     }
 }

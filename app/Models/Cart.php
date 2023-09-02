@@ -10,9 +10,9 @@ class Cart extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    public $with = ['uploadProductDesign'];
+    public $with = ['productDesign'];
 
-    public function uploadProductDesign() {
-        return $this->belongsTo(UploadProductDesign::class);
+    public function productDesign() {
+        return $this->belongsTo(ProductDesign::class);
     }
 }

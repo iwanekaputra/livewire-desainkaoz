@@ -6,11 +6,13 @@ use App\Models\DesignCategory;
 use App\Models\ImageDesign;
 use App\Models\Product;
 use App\Models\ProductDesign;
+use App\Models\ProductDesignVariant;
 use App\Models\UploadProductDesign;
 use App\Models\UploadProductDesignVariant;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use illuminate\Support\Str;
 
 class UploadDesign extends Component
 {
@@ -29,15 +31,23 @@ class UploadDesign extends Component
     public $priceHat;
     public $priceBag;
     public $imageDesign;
+    public $imageDesignBack;
+
     public $style;
     public $angka;
 
     public $isAddDesign = false;
+    public $isAddDesignBack = false;
+
     public $imgDesign;
+    public $imgDesignBack;
+
     public $link;
+    public $product_design_id;
 
     protected $listeners = [
         'submitForm',
+        'submitFormBack',
         'change',
         'stepBack'
     ];
@@ -71,6 +81,7 @@ class UploadDesign extends Component
                     'tags' => $data['tags'],
                     'image' => $image_name,
                     'description' => $data['description'],
+                    'view' => 'front',
                     'is_approved' => '0'
                 ]);
 
@@ -81,10 +92,12 @@ class UploadDesign extends Component
             $productDesign = ProductDesign::create([
                 'image_design_id' => $this->imgDesign->id,
                 'product_id' => $data['productId'],
+                'slug' => Str::slug($data['slug']),
                 'user_id' => auth()->user()->id,
                 'price_design' => $data['price'],
                 'product_variant_id' => $data['imageDefaultColor'],
                 'sumbu_y' => $data['sumbu_y'],
+                'view' => 'front',
                 'sumbu_x' => $data['sumbu_x'],
                 'rotation' => $data['rotation'],
                 'width' => $data['width'],
@@ -92,35 +105,65 @@ class UploadDesign extends Component
                 'is_approved' => '0'
             ]);
 
+            $this->product_design_id = $productDesign->id;
+
+            $productDesign->update([
+                'slug' => $productDesign->slug . '-' . $productDesign->id
+            ]);
+
             if($productDesign) {
                 redirect()->route('designer.design');
             }
         }
 
-        // $createTshirt = UploadProductDesign::create([
-        //     'category_id' => 1,
-        //     'product_design_id' => $productDesign->id,
-        //     'title' => $data['title'],
-        //     'design_category_id' => $data['designCategoryId'],
-        //     'tags' => $data['tags'],
-        //     'description' => $data['description'],
-        //     'url' => $data['url'],
-        //     'price_design' => $data['priceTshirt'],
-        //     'is_approved' => 0,
-        //     'total_price' => 100000 + (int) $data['priceTshirt'],
-        //     'user_id' => auth()->user()->id
-        // ]);
+        redirect()->route('designer.design');
+    }
 
-        // if($data['tshirt']) {
-        //     foreach($data['tshirt'] as $tshirt) {
-        //         UploadProductDesignVariant::create([
-        //             'color' => $tshirt[0],
-        //             'style' => $tshirt[1],
-        //             'upload_product_design_id' => $createTshirt->id,
-        //             'image' => $tshirt[2]
-        //         ]);
-        //     }
-        // }
+    public function submitFormBack($data) {
+        if($this->imageDesignBack) {
+            if(!$this->isAddDesignBack) {
+                $image_name=time().'-'.$this->imageDesignBack->getClientOriginalName();
+
+                $res = $this->imageDesignBack->storeAs('design',$image_name, 'custom_public_path');
+                $img_path = asset('uploads/design/'.$image_name);
+
+                $this->imgDesignBack = ImageDesign::create([
+                    'user_id' => auth()->user()->id,
+                    'design_category_id' => $data['designCategoryId'],
+                    'title' => $data['title'],
+                    'tags' => $data['tags'],
+                    'image' => $image_name,
+                    'description' => $data['description'],
+                    'view' => 'back',
+                    'is_approved' => '0'
+                ]);
+
+                $this->isAddDesignBack = true;
+            }
+
+            $productDesign = ProductDesignVariant::create([
+                'product_design_id' => $this->product_design_id,
+                'image_design_id' => $this->imgDesignBack->id,
+                'product_id' => $data['productId'],
+                'user_id' => auth()->user()->id,
+                // 'price_design' => $data['price'],
+                'sumbu_y' => $data['sumbu_y'],
+                'view' => 'Back',
+                'sumbu_x' => $data['sumbu_x'],
+                'rotation' => $data['rotation'],
+                'width' => $data['width'],
+                'height' => $data['height'],
+                'is_approved' => '0'
+            ]);
+
+            // $productDesign->update([
+            //     'slug' => $productDesign->slug . '-' . $productDesign->id
+            // ]);
+
+            if($productDesign) {
+                redirect()->route('designer.design');
+            }
+        }
 
         redirect()->route('designer.design');
     }
