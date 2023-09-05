@@ -51,7 +51,7 @@ $(document).ready(function() {
       $(this).removeClass('btn-secondary');
       $(this).addClass('btn-dark');
       $(this).addClass('text-dark');
-
+      addSize = this_val;
       return false;
     });
     // End roduct detail

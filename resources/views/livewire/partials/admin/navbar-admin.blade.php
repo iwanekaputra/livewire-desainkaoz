@@ -100,7 +100,7 @@
       <ul>
         <li> <a href="#"><i class="bi bi-circle"></i>Setting</a>
         </li>
-        <li> <a href="{{ route('admin.sliders') }}"><i class="bi bi-circle"></i>Sliders</a>
+        <li> <a href="{{ route('admin.sliders.index') }}"><i class="bi bi-circle"></i>Sliders</a>
         </li>
       </ul>
     </li>

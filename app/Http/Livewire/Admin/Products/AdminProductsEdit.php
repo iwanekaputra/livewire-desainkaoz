@@ -7,7 +7,9 @@ use App\Models\Image;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\Style;
+use App\Models\Size;
 use App\Models\ProductVariant;
+use App\Models\ProductSize;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -19,10 +21,12 @@ class AdminProductsEdit extends Component
     public $name;
     public $code;
     public $price;
+    public $price_sablon_belakang;
     public $category_id;
     public $description;
     public $imageProductVariant;
     public $color;
+    public $size;
     public $view;
     public $style_id;
 
@@ -30,7 +34,7 @@ class AdminProductsEdit extends Component
     public $productvariant;
     public $productvariant_id;
 
-
+    public $sizes_id = [];
     public $images = [];
     protected $listeners = [
         'remove' => 'destroy'
@@ -45,10 +49,11 @@ class AdminProductsEdit extends Component
             $this->name = $product->name;
             $this->code = $product->code;
             $this->price = $product->price;
+            $this->price_sablon_belakang = $product->price_sablon_belakang;
             $this->category_id = $product->category_id;
             $this->description = $product->description;
         }
-
+        $this->product = $product;
 
     }
 
@@ -62,6 +67,7 @@ class AdminProductsEdit extends Component
                 'code' => $this->code,
                 'description' => $this->description,
                 'price' => $this->price,
+                'price_sablon_belakang' => $this->price_sablon_belakang,
                 'status' => 1,
             ]);
 
@@ -75,6 +81,19 @@ class AdminProductsEdit extends Component
                 }
             }
 
+            ProductVariant::where('product_id', $this->product_id)->update([
+                'price' => $this->price
+    
+            ]);
+
+            foreach($this->sizes_id as $size) {
+            ProductSize::create([
+                'product_id' => $product->id,
+                'number' => $size
+            ]);
+        }
+
+          
 
             return redirect()->route('admin.products.edit', $product->id);
         }
@@ -141,7 +160,9 @@ class AdminProductsEdit extends Component
             'colors' => Color::get(),
             'styles' => Style::get(),
             'productvariants' => $productvarians,
-            'productImages' => $productImages
+            'productImages' => $productImages,
+            'sizes' => Size::get(),
+            'productsize' => ProductSize::where('product_id', $this->product_id)->get()
         ])->extends('layouts.admin');
     }
 }

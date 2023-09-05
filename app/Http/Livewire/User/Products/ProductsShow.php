@@ -35,10 +35,10 @@ class ProductsShow extends Component
     public $user;
 
 
-    public function mount($id) {
-        $this->productId = $id;
-        $this->productDesign = ProductDesign::where('id', $id)->first();
-        $product = ProductDesign::find($id);
+    public function mount($slug) {
+        $this->productDesign = ProductDesign::where('slug', $slug)->first();
+        $this->productId = $this->productDesign->id;
+        $product = ProductDesign::where('slug', $slug)->first();
 
         $this->user = $product->user;
         $this->category_id = $product->category_id;
@@ -46,8 +46,10 @@ class ProductsShow extends Component
         $this->price = $product->price;
         $this->username = $product->user->first_name;
         $this->product_id = $product->id;
-        $this->title = $product->title;
-        $this->total_price = 100000 + $product->price_design;
+        $this->title = $product->imageDesign->title;
+        $this->category = $product->product->name;
+        $this->total_price = $product->price_design;
+        $this->design = $product->imageDesign->DesignCategory->name;
 
     }
 
@@ -62,42 +64,42 @@ class ProductsShow extends Component
     }
 
 
-    public function addCart() {
-        $findCart = Cart::where('upload_product_design_id', $this->product_id)->first();
-        if($findCart) {
-            $findCart->update([
-                'quantity' => $findCart->quantity + 1,
-                'total_price' => $findCart->uploadProductDesign->total_price * ($findCart->quantity + 1)
-            ]);
+    // public function addCart() {
+    //     $findCart = Cart::where('upload_product_design_id', $this->product_id)->first();
+    //     if($findCart) {
+    //         $findCart->update([
+    //             'quantity' => $findCart->quantity + 1,
+    //             'total_price' => $findCart->uploadProductDesign->total_price * ($findCart->quantity + 1)
+    //         ]);
 
-            $this->dispatchBrowserEvent('swal:modal', [
-                'type' => 'success',
-                'message' => 'Berhasil Update ke Keranjang!',
-                'timer' => 3000
-            ]);
+    //         $this->dispatchBrowserEvent('swal:modal', [
+    //             'type' => 'success',
+    //             'message' => 'Berhasil Update ke Keranjang!',
+    //             'timer' => 3000
+    //         ]);
 
-            return;
-        }
+    //         return;
+    //     }
 
-        $cart = Cart::create([
-            'upload_product_design_id' => $this->product_id,
-            'user_id' => auth()->user()->id,
-            'size' => $this->size ? $this->size : "",
-            'color' => $this->color ? $this->color : "",
-            'total_price' => $this->total_price,
-            'quantity' => 1
-        ]);
+    //     $cart = Cart::create([
+    //         'upload_product_design_id' => $this->product_id,
+    //         'user_id' => auth()->user()->id,
+    //         'size' => $this->size ? $this->size : "",
+    //         'color' => $this->color ? $this->color : "",
+    //         'total_price' => $this->total_price,
+    //         'quantity' => 1
+    //     ]);
 
-        if($cart) {
-            $this->dispatchBrowserEvent('swal:modal', [
-                'type' => 'success',
-                'message' => 'Berhasil Tambah ke Keranjang!',
-                'timer' => 3000
-            ]);
+    //     if($cart) {
+    //         $this->dispatchBrowserEvent('swal:modal', [
+    //             'type' => 'success',
+    //             'message' => 'Berhasil Tambah ke Keranjang!',
+    //             'timer' => 3000
+    //         ]);
 
-            $this->emit('updateCart');
-        }
-    }
+    //         $this->emit('updateCart');
+    //     }
+    // }
 
     public function addSize($size) {
         $this->size = $size;

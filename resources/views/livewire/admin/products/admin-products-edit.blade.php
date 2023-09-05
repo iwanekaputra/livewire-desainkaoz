@@ -22,7 +22,7 @@
                             <h5 class="mb-2 mb-sm-0">Edit Product</h5>
                             <div class="ms-auto">
                                 <button type="button" class="btn btn-secondary rounded-0">Save to Draft</button>
-                                <button class="btn btn-dark px-4 rounded-0">Publish Now</button>
+                                <button class="btn btn-dark px-4 rounded-0" >Publish Now</button>
                             </div>
                         </div>
                     </div>
@@ -48,11 +48,12 @@
                                                 @endforeach
                                                 </select>
                                             </div>
-                                           
                                             
-                                            <div class="col-12">
-                                                <label class="form-label">Full description</label>
-                                                <textarea wire:model="description" class="form-control editor" placeholder="Full description"></textarea>
+                                            <div wire:ignore>
+                                                <textarea wire:model="description"
+                                                          class="form-control"
+                                                          name="description"
+                                                          id="description">{{ $description }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -66,10 +67,41 @@
                                                 <label class="form-label">Harga Dasar</label>
                                                 <input type="text" wire:model="price" class="form-control" placeholder="Price" required>
                                             </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Harga Tambahan Sablon</label>
+                                                <input type="text" wire:model="price_sablon_belakang" class="form-control" placeholder="Price" required>
+                                            </div>
                                             <input type="hidden" name="status" value="1">
                                         </div><!--end row-->
                                     </div>
                                 </div>  
+                                <div class="card shadow-none bg-light border">
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                    <label class="form-label">Size</label>
+                                                    <div wire:ignore>
+                                                        <select id="size-dropdown" class="form-control" multiple wire:model="sizes_id">
+                                                            
+                                                            @foreach($sizes as $size)
+                                                                <option value="{{$size->number}}">{{ $size->number }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row g-3">
+                                            <table class="table">
+                                                <tr>
+                                                    @foreach ($productsize as $row)
+                                                    <td class="text-center">{{ $row->number }}</td>
+                                                    @endforeach
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div><!--end row-->
                     </div>
@@ -138,6 +170,7 @@
                                             <label class="form-label">Harga</label>
                                             <input type="text" wire:model="price" class="form-control" placeholder="Product title">
                                         </div>
+                                        
                                         <input type="hidden" name="status" value="1">
                                     
                                     
@@ -194,6 +227,9 @@
     </div><!--end row-->
     </form>
     
+    
+
+    @push('scripts')
     <script>
         $(document).ready(function () {
             $('#size-dropdown').select2();
@@ -206,4 +242,17 @@
             });
         });
     </script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                @this.set('description', editor.getData());
+                })
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    @endpush
 </div>

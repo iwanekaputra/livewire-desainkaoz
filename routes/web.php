@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DesignController;
 use App\Http\Livewire\Admin\AdminProduct;
 use App\Http\Livewire\Admin\AdminSliderController;
-use App\Http\Livewire\Admin\Categories\AdminCategoriesCreate;
 use App\Http\Livewire\Admin\Categories\AdminCategoriesIndex;
 use App\Http\Livewire\Admin\DashboardController;
 use App\Http\Livewire\Admin\Designer\AdminDesignerIndex;
@@ -11,16 +11,16 @@ use App\Http\Livewire\Admin\Designer\AdminDesignerShow;
 use App\Http\Livewire\Admin\Products\AdminProductsCreate;
 use App\Http\Livewire\Admin\Products\AdminProductsEdit;
 use App\Http\Livewire\Admin\Products\AdminProductsIndex;
-use App\Http\Livewire\Admin\Sliders\AdminSlidersCreate;
-use App\Http\Livewire\Admin\SubCategories\AdminSubCategoriesCreate;
+use App\Http\Livewire\Admin\Products\AdminMockupsEdit;
+use App\Http\Livewire\Admin\Sliders\AdminSlidersIndex;
 use App\Http\Livewire\Admin\SubCategories\AdminSubCategoriesIndex;
+use App\Http\Livewire\Admin\CategoriesDesign\AdminCategoriesDesignIndex;
 use App\Http\Livewire\Admin\Transactions\AdminTransactionsEdit;
 use App\Http\Livewire\Admin\Transactions\AdminTransactionsIndex;
 use App\Http\Livewire\Admin\Users\AdminUsersIndex;
-use App\Http\Livewire\Admin\VariantProducts\AdminColorsCreate;
-use App\Http\Livewire\Admin\VariantProducts\AdminSizesCreate;
-use App\Http\Livewire\Admin\VariantProducts\AdminStylesCreate;
-use App\Http\Livewire\Admin\VariantProducts\AdminVariantIndex;
+use App\Http\Livewire\Admin\VariantProducts\AdminColorsIndex;
+use App\Http\Livewire\Admin\VariantProducts\AdminSizesIndex;
+use App\Http\Livewire\Admin\VariantProducts\AdminStylesIndex;
 use App\Http\Livewire\Designer\DesignerDashboard;
 use App\Http\Livewire\Designer\DesignerDesign;
 use App\Http\Livewire\Designer\DesignerSaldo;
@@ -36,6 +36,7 @@ use App\Http\Livewire\Pay;
 use App\Http\Livewire\User\CartIndex;
 use App\Http\Livewire\User\Checkout;
 use App\Http\Livewire\User\Custom;
+use App\Http\Livewire\User\CustomDesign;
 use App\Http\Livewire\User\Order;
 use App\Http\Livewire\User\Products\ProductsCategory;
 use App\Http\Livewire\User\Products\ProductsShow;
@@ -60,26 +61,27 @@ Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
 Route::get('/custom', Custom::class)->name('custom');
+Route::get('/customDesign', CustomDesign::class)->name('customDesign');
 
 Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::get('dashboard', DashboardController::class)->name('admin.dashboard');
     Route::get('products', AdminProductsIndex::class)->name('admin.products.index');
     Route::get('products/create', AdminProductsCreate::class)->name('admin.products.create');
     Route::get('products/edit/{id}', AdminProductsEdit::class)->name('admin.products.edit');
+    Route::get('products/mockups/{id}', AdminMockupsEdit::class)->name('admin.mockups.edit');
 
-    Route::get('variant/product', AdminVariantIndex::class)->name('admin.variant.index');
-    Route::get('variant/colors/create', AdminColorsCreate::class)->name('admin.colors.create');
-    Route::get('variant/sizes/create', AdminSizesCreate::class)->name('admin.sizes.create');
-    Route::get('variant/styles/create', AdminStylesCreate::class)->name('admin.styles.create');
+    Route::get('variant/colors', AdminColorsIndex::class)->name('admin.colors.index');
+    Route::get('variant/sizes', AdminSizesIndex::class)->name('admin.sizes.index');
+    Route::get('variant/styles', AdminStylesIndex::class)->name('admin.styles.index');
 
-    Route::get('sliders', AdminSliderController::class)->name('admin.sliders');
-    Route::get('sliders/create', AdminSlidersCreate::class)->name('admin.sliders.create');
+    // Route::get('sliders', AdminSliderController::class)->name('admin.sliders');
+    Route::get('sliders', AdminSlidersIndex::class)->name('admin.sliders.index');
 
     Route::get('categories', AdminCategoriesIndex::class)->name('admin.categories.index');
-    Route::get('categories/create', AdminCategoriesCreate::class)->name('admin.categories.create');
 
     Route::get('sub-categories', AdminSubCategoriesIndex::class)->name('admin.sub-categories.index');
-    Route::get('sub-categories/create', AdminSubCategoriesCreate::class)->name('admin.sub-categories.create');
+
+    Route::get('categories-design', AdminCategoriesDesignIndex::class)->name('admin.categories-design.index');
 
     Route::get('designer/index', AdminDesignerIndex::class)->name('admin.designer.index');
     Route::get('designer/show/{id}', AdminDesignerShow::class)->name('admin.designer.show');
@@ -100,7 +102,7 @@ Route::prefix('designer')->middleware(['auth', 'designer'])->group(function () {
 
 Route::get('products', ProductsShow::class)->name('products.index');
 Route::get('products/category/{id}', ProductsCategory::class)->name('products.category');
-Route::get('products/{id}', ProductsShow::class)->name('products.show');
+Route::get('products/{slug}', ProductsShow::class)->name('products.show');
 
 Route::get('shop/{id}', DesignerShop::class)->name('designer.shop');
 
@@ -118,10 +120,6 @@ Route::get('checkout', Checkout::class)->name('checkout')->middleware(['auth']);
 Route::get('upload-design', UploadDesign::class)->name('designer.upload-design')->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware(['auth']);
 
-Route::get('/uploadproduct', [AuthController::class, 'upload']);
-Route::get('/uploadproduct/{id}', [AuthController::class, 'uploadShow']);
-
-
 
 
 
@@ -133,3 +131,7 @@ Route::get('products/design/category/{id}', ProductsDesignCategory::class)->name
 Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
 
 Route::get("pay/{id}", Pay::class)->name('pay');
+
+
+// api
+Route::post('/addCart', [DesignController::class, 'addCart']);

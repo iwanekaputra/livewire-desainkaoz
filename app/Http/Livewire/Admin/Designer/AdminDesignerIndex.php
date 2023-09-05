@@ -36,7 +36,7 @@ class AdminDesignerIndex extends Component
     public function render()
     {
         return view('livewire.admin.designer.admin-designer-index', [
-            'productDesigns' => ImageDesign::orderBy('is_approved', 'ASC')->get(),
+            'productDesigns' => ImageDesign::where('view', 'front')->orderBy('is_approved', 'ASC')->get(),
         ])->extends("layouts.admin");
     }
 }

@@ -22,6 +22,7 @@ class AdminProductsCreate extends Component
     public $name;
     public $code;
     public $price;
+    public $size;
     public $stock;
     public $category_id;
     public $style_id;
@@ -43,6 +44,7 @@ class AdminProductsCreate extends Component
             'description' => $this->description,
             'price' => $this->price,
             'stock' => $this->stock,
+            'size' => $this->size,
             'status' => 1,
         ]);
 

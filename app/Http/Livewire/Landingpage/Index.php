@@ -14,13 +14,16 @@ class Index extends Component
 {
     public function render()
     {
+
+        $randomId = rand(1,6);
         return view('livewire.landingpage.index',[
             'categories' => Category::get(),
             'designCategories' => DesignCategory::get(),
             'sliders' => Slider::get(),
-            'productDesigns' => ProductDesign::latest()->where('is_approved', 1)->paginate(10),
+            'productDesigns' => ProductDesign::inRandomOrder()->where('product_id', $randomId)->where('is_approved', 1)->paginate(10),
             'imageDesigns' => ImageDesign::latest()->where('is_approved', 1)->paginate(10),
             'stores' => Store::latest()->get()
         ])->extends('layouts.app');
+        
     }
 }

@@ -11,7 +11,7 @@ class ProductDesign extends Model
 
     protected $guarded = ['id'];
 
-    public $with = ['user', 'imageDesign', 'product', 'productvariant'];
+    public $with = ['user', 'imageDesign', 'product', 'productvariant', 'productDesignVariants'];
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -27,6 +27,15 @@ class ProductDesign extends Model
 
     public function productVariant() {
         return $this->belongsTo(ProductVariant::class);
+    }
+
+    public function productDesignVariants() {
+        return $this->hasMany(ProductDesignVariant::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
 

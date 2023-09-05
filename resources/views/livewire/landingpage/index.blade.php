@@ -5,27 +5,28 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
+                aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" 
+                aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+                aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                    aria-label="Slide 4"></button>
+                aria-current="true" aria-label="Slide 1"></button>
+               
             </div>
+
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ asset('assets/img/carousel-1.png') }}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('assets/img/carousel-2.png') }}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('assets/img/carousel-3.png') }}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('assets/img/carousel-4.png') }}" class="d-block w-100" alt="...">
-                </div>
+                @foreach ($sliders as $key => $slider)
+                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                        <img src="{{ asset('uploads/banner/' .  $slider->image ) }}" class="d-block w-100">
+                    </div>
+                @endforeach
+                
+            </div>
+            <div style="margin-top:-100px; margin-left:30px; position:relative; z-index:9">
+                <a href="{{ route('designer.upload-design') }}" class="btn btn-dark" style=" margin-left:15px;">SELL ART</a>
+                <a href="{{ route('products.category', 1) }}" class="btn btn-dark" style=" margin-left:15px;">SHOP</a>
+                <a href="{{ route('customDesign') }}" class="btn btn-dark"style=" margin-left:15px;">CUSTOM</a>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
@@ -38,16 +39,17 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
     </div>
     {{-- end corousel --}}
 
     {{-- kategori produk --}}
-    <div class="row mt-4">
+    <div class="row" style="margin-top:100px" >
         <h5 class="text-center" style="font-family:'Myriad-Pro Bold';">Produk</h5>
     </div>
-    <div class="row mt-2">
+    <div class="row">
         @foreach ($categories as $category)
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-md-4 col-sm-3-5 mt-2">
                 <a href="{{ route('products.category', $category->id) }}">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ asset('produk/' . $category->icon) }}" alt="">
@@ -95,7 +97,7 @@
 
 
 
-<div class="main mt-5">
+<div class="main feature-product mt-5">
     <hr>
     {{-- products --}}
     <div class="d-flex justify-content-between">
@@ -103,57 +105,59 @@
         {{-- <h4><a href="{{ route('products.index') }}" class="text-decoration-none text-dark">More <i class="fa fa-arrow-right fs-5" aria-hidden="true"></i>
         </a></h4> --}}
     </div>
-    <div class="row mt-2 justify-content-start" style="gap : 2rem">
-        @forelse ($productDesigns as $productDesign)
-        @if ($productDesign->product->category_id == '6')
-        <div class="col-lg-2 col-6 mt-2">
-            <a class="text-decoration-none text-dark" >
-                <div class="card child-card border-0">
-                    <div id="container-{{ $productDesign->id }}" style="width : calc(500px / 3); height : calc(500px / 3)">
-                        <div style="width : calc(500px / 3); height : calc(500px / 3); background-repeat : no-repeat; background-size : 100% 100%"
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body mt-2 p-0">
-                    <h6 class="card-title" style="font-family:'Myriad-Pro Bold';">
-                       {{ $productDesign->imageDesign->title }}</h6>
-                    <p class="card-title">By {{ $productDesign->user->first_name }}</p>
-                    <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp.
-                        {{ number_format((int) $productDesign->price_design + (int) $productDesign->product->price, 0, ',', '.') }}</h6>
-                </div>
-            </a>
-        </div>
-        @else
-        <div class="col-lg-2 col-6 mt-2">
-            <a class="text-decoration-none text-dark" href="{{ route('products.show', $productDesign->id) }}">
-                <div class="card child-card border-0">
-                    <div id="tshirt-capture" style="width : calc(500px / 3); height : calc(500px / 3)">
-                        <div style="width : calc(500px / 3); height : calc(500px / 3); background-image : url('{{ asset('uploads/imageProductVariant/' . $productDesign->productvariant->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                            id="tshirt-main-image">
-                            <div class="tshirt-layer-{{ $productDesign->id }} position-relative"
-                                style="width : calc(200px / 3); top : calc(40px / 3); left : calc(150px / 3); height : calc(380px / 3); ">
+    <div class="row mt-3">
+            @forelse ($productDesigns as $productDesign)
+            @if ($productDesign->product->category_id == '6')
+            <div class="col-lg-1-5 mt-4" >
+                <a class="text-decoration-none text-dark" >
+                    <div style="border : 0.5px solid black;">
+                        <div id="container-{{ $productDesign->id }}" style="width : calc(500px / 3); height : calc(600px / 3); margin-left:20px" >
+                            <div style="width : calc(600px / 3); height : calc(600px / 3); background-repeat : no-repeat; background-size : 100% 100%"
+                                >
                             </div>
                         </div>
+
                     </div>
-                </div>
-                <div class="card-body mt-2 p-0">
-                    <h6 class="card-title" style="font-family:'Myriad-Pro Bold';">
-                       {{ $productDesign->imageDesign->title }}</h6>
-                    <p class="card-title">By {{ $productDesign->user->first_name }}</p>
-                    <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp.
-                        {{ number_format((int) $productDesign->price_design + (int) $productDesign->product->price, 0, ',', '.') }}</h6>
-                </div>
-            </a>
+                        <h6 class="card-title mt-2" style="font-family:'Myriad-Pro Bold';">
+                           {{ $productDesign->imageDesign->title }}</h6>
+                        <p class="card-title">By {{ $productDesign->user->first_name }}</p>
+                        <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp.
+                            {{ number_format((int) $productDesign->price_design + (int) $productDesign->product->price, 0, ',', '.') }}</h6>
+                </a>
+            </div>
+            @else
+            <div class="col-lg-1-5 mt-4" >
+                <a class="text-decoration-none text-dark" href="{{ route('products.show', $productDesign->slug) }}">
+                    <div style="border : 0.5px solid black;">
+                        <div id="tshirt-capture" style="width : calc(600px / 3); height : calc(600px / 3)"  >
+                            <div style="width : calc(600px / 3); height : calc(600px / 3); background-image : url('{{ asset('uploads/imageProductVariant/' . $productDesign->productvariant->image) }}'); background-repeat : no-repeat; background-size : 100% 100% "
+                                id="tshirt-main-image">
+                                <div class="tshirt-layer-{{ $productDesign->id }} position-relative"
+                                    style="width : calc({{ $productDesign->product->mockup->width_canvas }}px / 3); top : calc({{ $productDesign->product->mockup->top_canvas }}px / 3); left : calc({{ $productDesign->product->mockup->left_canvas }}px / 3); height : calc({{ $productDesign->product->mockup->height_canvas }}px / 3); ">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                        <h6 class="card-title mt-2" style="font-family:'Myriad-Pro Bold';">
+                           {{ $productDesign->imageDesign->title }}</h6>
+                        <p class="card-title">By {{ $productDesign->user->first_name }}</p>
+                        @if($productDesign->productDesignVariants()->first())
+                        <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp.
+                            {{ number_format((int) $productDesign->price_design + (int) $productDesign->product->price + 10000, 0, ',', '.') }}</h6>
+                        @else
+                        <h6 class="mt-2" style="font-family:'Myriad-Pro Bold';">Rp.
+                            {{ number_format((int) $productDesign->price_design + (int) $productDesign->product->price, 0, ',', '.') }}</h6>
+                        @endif
+
+                </a>
+            </div>
+            @endif
+            @empty
+
+            @endforelse
+
         </div>
-        @endif
-        @empty
-
-        @endforelse
-
-
-
-
 
     </div>
 </div>
@@ -167,14 +171,14 @@
         {{-- <h4><a href="" class="text-decoration-none text-dark">More <i class="fa fa-arrow-right fs-5" aria-hidden="true"></i>
         </a></h4> --}}
     </div>
-    <div class="row" style="gap : 2rem">
+    <div class="row" >
         @forelse ($imageDesigns as $imageDesign)
-        <div class="col-lg-2 col-6 mt-2">
-            <div class="card child-card border-0">
+        <div class="col-lg-1-5 col-md-2-5 col-sm-3-5 mt-2">
+            <div class="card border-0">
+                <div class="square" style="border : 0.5px solid black;" width="100%">
 
-                    <img src="{{ asset('uploads/design/' . $imageDesign->image) }}" class="" alt="..." style="border : 0.5px solid black;">
-                <div class="border shadow d-flex justify-content-center align-items-center rounded-circle position-absolute top-0 end-0"
-                            style="width : 30px; height : 30px">
+                    <img src="{{ asset('uploads/design/' . $imageDesign->image) }}" class="" alt="..." width="100%" height="auto">
+                    <div class="border shadow d-flex justify-content-center align-items-center rounded-circle position-absolute top-0 mt-1 me-1 end-0" style="width : 30px; height : 30px">
                             <div class="con-like">
                                 <input title="like" type="checkbox" class="like">
                                 <div class="checkmark">
@@ -200,6 +204,7 @@
                                 </div>
                             </div>
                         </div>
+                </div>
                         <div class="card-body mt-2 p-0">
                             <h6 class="card-title" style="font-family:'Myriad-Pro Bold';">{{ $imageDesign->title }}
                             </h6>
@@ -224,14 +229,14 @@
     <div class="row mt-4">
         <h4 style="font-family:'Myriad-Pro Bold';">Featured Artist</h4>
     </div>
-    <div class="row mt-4" style="margin-bottom: 5rem; gap: 2rem">
+    <div class="row mt-4">
         @forelse ($stores as $store)
-        <div class="col-lg-2 mt-2 mb-5">
-            <div class="card border-0 shadow child-card" style="height : 300px">
-                <img src="{{ asset('uploads/images/' . $store->front_image) }}" class="card-img-top" alt="...">
-                <div class="card-body d-block text-center profile position-relative border-0" style="top : -40px;">
+        <div class="col-lg-1-5 col-sm-3-5 mt-2 mb-5">
+            <div class="card feature-artist border-0 shadow">
+                <img src="{{ asset('uploads/images/' . $store->front_image) }}" class="card-img-top" style="height: auto;" alt="...">
+                <div class="card-body d-block text-center profile position-relative border-0" style="top : -40px; margin-bottom:5px">
                     <img src="{{ asset('uploads/images/' . $store->image) }}" alt="" width="40px" class="rounded-circle img-thumbnail">
-                    <p style="font-size: 15px" class="mt-2" style="font-family:'Myriad-Pro Bold';">DesainKaoz</p>
+                    <p style="font-size: 15px" class="mt-4" style="font-family:'Myriad-Pro Bold';">{{$store->name}}</p>
                     <a href="{{ route('designer.shop', $store->user->id) }}" class="btn btn-white rounded-0 shadow">View Shop</a>
                 </div>
             </div>
@@ -340,7 +345,7 @@
 
         let productDesigns = @js($productDesigns).data.filter(el => el.product.category_id !== 6);
         productDesigns.map(function(productDesign)  {
-            getImg(`.tshirt-layer-${productDesign.id}`, 200 / 3, 380 / 3, `{{ asset('uploads/design/${productDesign.image_design.image}' ) }}`, productDesign.sumbu_x / 3, productDesign.sumbu_y / 3, productDesign.width / 3, productDesign.height / 3, productDesign.rotation)
+            getImg(`.tshirt-layer-${productDesign.id}`, parseInt(productDesign.product.mockup.width_canvas) / 3, parseInt(productDesign.product.mockup.height_canvas) / 3, `{{ asset('uploads/design/${productDesign.image_design.image}' ) }}`, productDesign.sumbu_x / 3, productDesign.sumbu_y / 3, productDesign.width / 3, productDesign.height / 3, productDesign.rotation)
         })
     </script>
 
@@ -350,9 +355,9 @@
         productStickers.map(function(productSticker) {
 
             var stage = new Konva.Stage({
-          container: `container-${productSticker.id}`,
-          width: window.innerWidth,
-          height: window.innerHeight,
+            container: `container-${productSticker.id}`,
+            width: window.innerWidth,
+            height: window.innerHeight,
         });
 
         var layer = new Konva.Layer();

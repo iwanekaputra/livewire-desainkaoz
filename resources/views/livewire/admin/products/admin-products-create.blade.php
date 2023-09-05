@@ -46,13 +46,15 @@
                                                     <option value="">Pilih Kategori</option>
                                                     @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
+                                                    @endforeach
                                                 </select>
                                             </div>
-                                            
-                                            <div class="col-12">
-                                                <label class="form-label">Full description</label>
-                                                <textarea wire:model="description" class="form-control editor" placeholder="Full description" rows="4" cols="4"></textarea>
+                                           
+                                            <div wire:ignore>
+                                                <textarea wire:model="description"
+                                                          class="form-control"
+                                                          name="description"
+                                                          id="description">{{ $description }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -61,6 +63,7 @@
                             <div class="col-12 col-lg-4">
                                 <div class="card shadow-none bg-light border">
                                     <div class="card-body">
+                                        
                                         <div class="row g-3">
                                             <div class="col-12">
                                                 <label class="form-label">Harga Dasar</label>
@@ -72,7 +75,26 @@
                                         
                                         </div><!--end row-->
                                     </div>
-                                </div>  
+                                </div> 
+                                <div class="card shadow-none bg-light border">
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                    <label class="form-label">Size</label>
+                                                    <div wire:ignore>
+                                                        <select id="size-dropdown" class="form-control" multiple wire:model="sizes_id">
+                                                            
+                                                            @foreach($sizes as $size)
+                                                                <option value="{{$size->number}}">{{ $size->number }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                            </div>
+
+                                        </div>
+                                        
+                                    </div>
+                                </div> 
                             </div>
                         </div><!--end row-->
                     </div>
@@ -82,16 +104,31 @@
     </form>
     
     
-    <script>
-        $(document).ready(function () {
-            $('#size-dropdown').select2();
-            $('#size-dropdown').on('change', function (e) {
-                let data = $(this).val();
-                    @this.set('sizes_id', data);
-            });
-            window.livewire.on('productStore', () => {
+    
+        @push('scripts')
+        <script>
+            $(document).ready(function () {
                 $('#size-dropdown').select2();
+                $('#size-dropdown').on('change', function (e) {
+                    let data = $(this).val();
+                        @this.set('sizes_id', data);
+                });
+                window.livewire.on('productStore', () => {
+                    $('#size-dropdown').select2();
+                });
             });
-        });
-    </script>
+        </script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#description'))
+                .then(editor => {
+                    editor.model.document.on('change:data', () => {
+                    @this.set('description', editor.getData());
+                    })
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+        @endpush
 </div>

@@ -121,7 +121,7 @@
                     </div>
                     @else
                     <div class="col-lg-2 col-6 mt-2">
-                        <a class="text-decoration-none text-dark" href="{{ route('products.show', $productDesign->id) }}">
+                        <a class="text-decoration-none text-dark" href="{{ route('products.show', $productDesign->slug) }}">
                             <div class="card child-card border-0">
                                 <div id="tshirt-capture" style="width : calc(500px / 3); height : calc(500px / 3)">
                                     <div style="width : calc(500px / 3); height : calc(500px / 3); background-image : url('{{ asset('uploads/imageProductVariant/' . $productDesign->productvariant->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
