@@ -14,21 +14,17 @@
                 </div>
             @endif
             @foreach ($productDesigns as $productDesign)
-                <div class="col-lg-7">
-                    <div class=" mb-3">
-                        <div id="tshirt-capture" style="width : calc(500px); height : calc(500px)">
-                            <div style="width : calc(500px); height : calc(500px); background-image : url('{{ asset('uploads/imageProductVariant/' . $productDesign->productVariant->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
-                                id="tshirt-main-image">
-                                <div class="tshirt-layer-{{ $productDesign->id }} position-relative"
-                                    style="width : calc(200px); top : calc(40px); left : calc(150px); height : calc(380px); ">
-                                </div>
+            @if ($productDesign->product->category_id == '6')
+                <div class="col-lg-8">
+                    <div class="mb-3">
+                        <div id="sticker" style="width : calc(500px); height : calc(500px); margin-left:20px" >
+                            <div style="width : calc(500px); height : calc(500px); background-repeat : no-repeat; background-size : 100% 100%">
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Nomer ID</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
@@ -57,10 +53,61 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">URL</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
-                            value="" disabled>
+                            value="{{ url($productDesign->slug) }}" disabled>
                     </div>
                 </div>
+            @else
+                <div class="col-lg-8">
+                    <div class=" mb-3">
+                        <div id="tshirt-capture" style="width : calc(600px); height : calc(600px)">
+                            <div style="width : calc(600px); height : calc(600px); background-image : url('{{ asset('uploads/imageProductVariant/' . $productDesign->productVariant->image) }}'); background-repeat : no-repeat; background-size : 100% 100%"
+                                id="tshirt-main-image">
+                                <div class="tshirt-layer-{{ $productDesign->id }} position-relative"
+                                    style="width : calc({{ $productDesign->product->mockup->width_canvas }}px); top : calc({{ $productDesign->product->mockup->top_canvas }}px); left : calc({{ $productDesign->product->mockup->left_canvas }}px); height : calc({{ $productDesign->product->mockup->height_canvas }}px); ">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nomer ID</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            value="{{ $productDesign->id }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            value="{{ $productDesign->imageDesign->title }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Deskripsi</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            value="{{ $productDesign->imageDesign->description }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Kategori</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            value="{{ $productDesign->imageDesign->designCategory->name }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Tags</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            value="{{ $productDesign->imageDesign->tags }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">URL</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                            value="{{ url($productDesign->slug) }}" disabled>
+                    </div>
+                </div>
+            @endif
             @endforeach
+            <div>
+                {{ $productDesigns->links() }}
+            </div>
         </div>
         <hr>
         <div class="row mt-3">
@@ -161,29 +208,28 @@
     </script>
 
 <script>
-    let productStickers = @js($productDesignApproved);
-    let stickers = productStickers.data.filter(el => el.product.category_id === 6);
-
-    stickers.map(function(productSticker) {
+    let productStickers = @js($productDesigns);
+    if(productStickers.data[0].product.category_id == 6) {
+    }
 
         var stage = new Konva.Stage({
-      container: `container-${productSticker.id}`,
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+        container: `sticker`,
+        width: 400,
+        height: 400,
+        });
 
     var layer = new Konva.Layer();
     stage.add(layer);
 
-    Konva.Image.fromURL(`{{ asset('uploads/design/${productSticker.image_design.image}') }}`, function (image) {
+    Konva.Image.fromURL(`{{ asset('uploads/design/${productStickers.data[0].image_design.image}') }}`, function (image) {
       layer.add(image);
       image.setAttrs({
-        x: 0,
-        y: 0,
+        x: 50,
+        y: 50,
         borderSize: 5,
         borderColor: '#e3e6e4',
-        width : 166,
-        height : 166
+        width : 280,
+        height : 280
       });
 
       image.filters([Border]);
@@ -353,7 +399,6 @@
         }
       }
     }
-    })
 
 </script>
 
@@ -389,7 +434,7 @@
 
     let productDesigns = @js($productDesigns);
     let productDesign = productDesigns.data;
-    productDesign.map(el =>  getImg(`.tshirt-layer-${el.id}`, 200, 380, `{{ asset('uploads/design/${el.image_design.image}' ) }}`, el.sumbu_x, el.sumbu_y, el.width, el.height, el.rotation)
+    productDesign.map(el =>  getImg(`.tshirt-layer-${el.id}`, parseInt(el.product.mockup.width_canvas), parseInt(el.product.mockup.height_canvas), `{{ asset('uploads/design/${el.image_design.image}' ) }}`, el.sumbu_x, el.sumbu_y, el.width, el.height, el.rotation)
 )
 
 

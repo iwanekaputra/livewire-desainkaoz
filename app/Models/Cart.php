@@ -15,4 +15,9 @@ class Cart extends Model
     public function productDesign() {
         return $this->belongsTo(ProductDesign::class);
     }
+
+    
+    public function imageDesign() {
+        return $this->belongsTo(ImageDesign::class);
+    }
 }

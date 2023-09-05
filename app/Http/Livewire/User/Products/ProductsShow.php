@@ -46,8 +46,10 @@ class ProductsShow extends Component
         $this->price = $product->price;
         $this->username = $product->user->first_name;
         $this->product_id = $product->id;
-        $this->title = $product->title;
+        $this->title = $product->imageDesign->title;
+        $this->category = $product->product->name;
         $this->total_price = $product->price_design;
+        $this->design = $product->imageDesign->DesignCategory->name;
 
     }
 

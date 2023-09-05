@@ -15,10 +15,12 @@
     <div class="card">
             <div class="card-header py-3 bg-transparent"> 
                 <div class="d-sm-flex align-items-center">
-                    <h5 class="mb-2 mb-sm-0">Edit Product</h5>
+                    <h5 class="mb-2 mb-sm-0">Approve Design</h5>
                     <div class="ms-auto">
-                        {{-- <button type="button" class="btn btn-secondary rounded-0">Save to Draft</button>
-                        <button class="btn btn-dark px-4 rounded-0">Publish Now</button> --}}
+                    <a href="{{ asset('uploads/design/' .$imageDesign->image)}}" download="{{$imageDesign->name}}" class="btn btn-dark px-4 rounded-0">Download Design</a>
+
+                        <button  wire:click="disapproveConfirm({{ $imageDesign->id }})" class="btn btn-secondary rounded-0">Disapprove</button>
+                        <button wire:click="alertConfirm({{ $imageDesign->id }})" class="btn btn-dark px-4 rounded-0">Approve</button>
                     </div>
                 </div>
             </div>
@@ -46,34 +48,15 @@
                          
                         </thead>
                     </table>
-                </div>
                     <p class="fw-bold">Deskripsi : </p>
                     <p>{{ $imageDesign->description }}</p>
-                <div class="col-lg-4">
-                    <img src=" {{ asset('uploads/design/' . $imageDesign->image) }}" alt="" width="100%"></td>
+                </div>
+                <div class="col-lg-6 text-center" style="background-size: cover;background-image: url({{ asset('assets/admin/images/background.jpg')}})">
+                    <img src=" {{ asset('uploads/design/' . $imageDesign->image) }}" alt="" width="80%">
                 </div>
                 
                 
             </div>
-            <div class="row col-lg-4">
-                <div class="col">
-                    <form wire:submit.prevent="alertConfirm({{ $imageDesign->id }})" method="POST" enctype="multipart/form-data">  
-                        <input type="text" wire:model="image_design_id" class="form-control" placeholder="Kode" hidden>
-                        <button class="btn btn-dark px-4 rounded-0">Approve</button>
-                    </form>
-                </div>
-                <div class="col">
-                    <form wire:submit.prevent="disapproveConfirm({{ $imageDesign->id }})" method="POST" enctype="multipart/form-data">  
-                        <input type="text" wire:model="image_design_id" class="form-control" placeholder="Kode" hidden>
-                        <button class="btn btn-warning px-4 rounded-0">Diapprove</button>
-                    </form>
-                </div>
-                <div class="col">
-                    <a href="{{ asset('uploads/design/' .$imageDesign->image)}}" download="{{$imageDesign->name}}" class="btn btn-success px-4 rounded-0">Download Design</a>
-                </div>
-
-            </div>
-
         </div>
 
     </div>

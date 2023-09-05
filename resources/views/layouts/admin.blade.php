@@ -7,12 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  
+
   <!--plugins-->
   <link href="{{ asset('assets/admin/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/admin/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+	<link href="{{ asset('assets/admin/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/admin/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/admin/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
   <!-- Bootstrap CSS -->
   <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/admin/css/bootstrap-extended.css') }}" rel="stylesheet" />
@@ -21,9 +24,9 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  
+
   <!-- loader-->
-  
+
   <!--Theme Styles-->
   <link href="{{ asset('assets/admin/css/dark-theme.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/admin/css/light-theme.css') }}" rel="stylesheet" />
@@ -32,12 +35,13 @@
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-  <script src="{{ asset('assets/admin/plugins/ckeditor/ckeditor.js')}}"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
 
 
 
-  
+
+
   @livewireStyles
 
 </head>
@@ -48,7 +52,7 @@
   <!--start wrapper-->
   <div class="wrapper">
     <!--start top header-->
-    <header class="top-header">        
+    <header class="top-header">
       <nav class="navbar navbar-expand gap-3">
         <div class="mobile-toggle-icon fs-3">
             <i class="bi bi-list"></i>
@@ -70,7 +74,7 @@
             <li class="">
               <a class="nav-link" href=" {{ route('index') }}" target="_blank">
                 <div class="projects">
-                 
+
                   <i class="bi bi-globe"></i>
                 </div>
               </a>
@@ -120,7 +124,7 @@
           </div>
 
       </nav>
-      
+
     </header>
      <!--end top header-->
 
@@ -150,18 +154,19 @@
 
   @livewireScripts
 
-  
+
   {{-- <!-- Bootstrap bundle JS --> --}}
   <script src="{{ asset('assets/admin/js/bootstrap.bundle.min.js') }}" rel="stylesheet" ></script>
 
   {{-- // plugins --}}
   <script src="{{ asset('assets/admin/js/jquery.min.js') }}" rel="stylesheet" ></script>
-
   <script src="{{ asset('assets/admin/plugins/simplebar/js/simplebar.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/metismenu/js/metisMenu.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
   <script src="{{ asset('assets/admin/js/pace.min.js') }}"></script>
- 
+
+  <script src="{{ asset('assets/admin/plugins/select2/js/select2.min.js') }}"></script>
+  <script src="{{ asset('assets/admin/js/form-select2.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
   <script src="{{ asset('assets/admin/js/table-datatable.js') }}"></script>
@@ -170,14 +175,9 @@
 
   <!--app-->
   <script src="{{ asset('assets/admin/js/app.js') }}"></script>
+  @stack('scripts')
 
-  {{-- <!--================= CK EDITOR =================--> --}}
-    {{-- <script>
-        var allEditors = document.querySelectorAll('.editor');
-        for (var i = 0; i < allEditors.length; ++i) {
-          ClassicEditor.create(allEditors[i]);
-        }
-    </script> --}}
+
     <script>
       window.addEventListener('swal:modal', event => {
           swal({
@@ -207,8 +207,8 @@
   </script>
 
 
-  
- 
+
+
 
 
 

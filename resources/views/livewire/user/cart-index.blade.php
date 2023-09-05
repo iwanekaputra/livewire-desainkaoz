@@ -18,7 +18,7 @@
                         @forelse ($carts as $cart)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $cart->uploadProductDesign->title }}</td>
+                                <td>{{ $cart->productDesign }}</td>
                                 <td>Rp. {{ number_format($cart->total_price, 0, ',', '.') }}</td>
                                 <td style="width: 10%;">{{ $cart->quantity }}</td>
                                 <td style="width: 10%;"><input class="form-control" type="number"

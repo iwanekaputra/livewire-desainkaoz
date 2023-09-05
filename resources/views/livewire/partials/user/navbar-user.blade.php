@@ -1,9 +1,9 @@
 <div>
     <nav class="navbar d-flex">
-        <a class="navbar-brand ms-5" href="{{ route('index') }}"><img src="{{ asset('logo/icon-logo.svg') }}"
+        <a class="navbar-brand ms-5" href="{{ route('index') }}"><img class="logo" src="{{ asset('logo/icon-logo.svg') }}"
                 alt=""></a>
 
-        <div class="nav d-flex justify-content-between gap-5">
+        <div class="nav d-flex justify-content-between gap-5 ">
             <div class="col-7">
                 <div class="input-group flex-wrap d-flex">
                     <span class="input-group-text" id="basic-addon1">
@@ -12,7 +12,7 @@
                     <input type="text" class="form-control"aria-describedby="basic-addon1">
                 </div>
             </div>
-            <ul class="nav-links me-5 gap-5" style="padding-right : 80px">
+            <ul class="nav-links me-5 gap-5 " style="padding-right : 80px">
                 @if (auth()->user())
                     <li> <a class="nav-link" aria-current="page" href="#"><img
                                 src="{{ asset('assets/img/icon-love.svg') }}" alt="" width="25">
@@ -31,7 +31,7 @@
                             <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{ asset('assets/img/icon-designer.svg') }}" alt="" width="25">
                             </a>
-                            <ul class="dropdown-menu w-100">
+                            <ul class="dropdown-menu">
                                 @if (auth()->user()->role_id == '2')
                                     <li class="py-1"><a class="dropdown-item text-dark"
                                             href="{{ route('designer.setting') }}"><img
@@ -65,18 +65,18 @@
                                 @endif
 
                                 @if (auth()->user()->role_id == '3')
-                                <li class="py-1"><a class="dropdown-item text-dark"
+                                    <li class="py-1"><a class="dropdown-item text-dark"
                                     href="{{ route('order') }}"><img src="{{ asset('assets/img/sent.png') }}"
                                         alt="" class="px-2" width="38"> Pesanan</a></li>
                                 @endif
 
                                 <form action="{{ url('logout') }}" method="POST">
                                     @csrf
-                                    <li class="py-1" style="font-size : 12px">
+                                    <li class="py-1">
                                         <button class="dropdown-item text-dark" type="submit">
                                             <img src="{{ asset('assets/img/icon-logout.svg') }}" alt=""
-                                                class="px-2" width="40"> Logout</button>
-                                        </a>
+                                                class="px-2" width="40"> Logout
+                                        </button>
                                     </li>
                                 </form>
                             </ul>
@@ -94,7 +94,7 @@
 
 
 
-    <div class="main">
+    <div class="main no-mobile">
         <div class="row mt-3">
             <div class="col d-flex gap-5">
                 <li class="list-group-item">

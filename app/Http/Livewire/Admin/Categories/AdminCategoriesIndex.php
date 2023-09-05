@@ -27,7 +27,7 @@ class AdminCategoriesIndex extends Component
         }
 
         if($this->image) {
-            $this->icon->store('public/produk');
+            $this->image->store('public/produk');
         }
 
         Category::create([

@@ -5,7 +5,7 @@
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Total user</p>
-             <h4 class="mb-0">0</h4>
+             <h4 class="mb-0">{{ $User}}</h4>
            </div>
            <div class="ms-auto widget-icon bg-primary text-white">
              <a href="#" class="text-white"><i class="bi bi-person"></i></a>
@@ -21,7 +21,7 @@
             <div class="d-flex align-items-center">
               <div class="">
                 <p class="mb-1">Total Designer</p>
-                <h4 class="mb-0">0</h4>
+                <h4 class="mb-0">{{ $UserDesigner}}</h4>
               </div>
               <div class="ms-auto widget-icon bg-primary text-white">
                 <a href="#" class="text-white"><i class="bi bi-person"></i></a>
@@ -37,7 +37,7 @@
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Total Design Upload</p>
-             <h4 class="mb-0">0</h4>
+             <h4 class="mb-0">{{ $totaldesign}}</h4>
            </div>
            <div class="ms-auto widget-icon bg-success text-white">
              <i class="bi bi-image"></i>

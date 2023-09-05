@@ -5,6 +5,8 @@
     <title>Page Detail</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -37,7 +39,7 @@
         font-family: "Myriad-Pro";
         font-size: 16px;
     }
-    
+
     @font-face{
     font-family: "Myriad-Pro Bold";
     src: url({{ asset('MyriadPro-Bold.otf') }}) format("truetype");

@@ -16,7 +16,6 @@ class Index extends Component
     {
 
         $randomId = rand(1,6);
-        $randomImage = rand(1,9999);
         return view('livewire.landingpage.index',[
             'categories' => Category::get(),
             'designCategories' => DesignCategory::get(),

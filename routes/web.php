@@ -12,7 +12,7 @@ use App\Http\Livewire\Admin\Products\AdminProductsCreate;
 use App\Http\Livewire\Admin\Products\AdminProductsEdit;
 use App\Http\Livewire\Admin\Products\AdminProductsIndex;
 use App\Http\Livewire\Admin\Products\AdminMockupsEdit;
-use App\Http\Livewire\Admin\Sliders\AdminSlidersCreate;
+use App\Http\Livewire\Admin\Sliders\AdminSlidersIndex;
 use App\Http\Livewire\Admin\SubCategories\AdminSubCategoriesIndex;
 use App\Http\Livewire\Admin\CategoriesDesign\AdminCategoriesDesignIndex;
 use App\Http\Livewire\Admin\Transactions\AdminTransactionsEdit;
@@ -74,8 +74,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::get('variant/sizes', AdminSizesIndex::class)->name('admin.sizes.index');
     Route::get('variant/styles', AdminStylesIndex::class)->name('admin.styles.index');
 
-    Route::get('sliders', AdminSliderController::class)->name('admin.sliders');
-    Route::get('sliders/create', AdminSlidersCreate::class)->name('admin.sliders.create');
+    // Route::get('sliders', AdminSliderController::class)->name('admin.sliders');
+    Route::get('sliders', AdminSlidersIndex::class)->name('admin.sliders.index');
 
     Route::get('categories', AdminCategoriesIndex::class)->name('admin.categories.index');
 
